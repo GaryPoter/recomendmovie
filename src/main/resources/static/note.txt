@@ -1,0 +1,5 @@
+static目录下放所有的除html外的资源文件
+如：
+    js，css，img，music等
+    还有各种插件
+    命名规则：/模块/page/资源（比如user的静态资源都在static/user/下，）
