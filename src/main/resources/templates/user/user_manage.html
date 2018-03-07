@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html;charset=UTF-8"/>
+    <link th:src="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:src="@{/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+    <title>UserManage</title>
+</head>
+<body>
+<script th:src="@{/js/jquery-3.3.1.min.js}" type="text/script"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+
+<div class="">
+    <ul class="">
+        <li class="" th:each="user:${users}">
+            <span th:text="${user.id}"/>
+            <span th:text="${user.name}"/>
+            <span th:text="${user.paswd}"/>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <title>SpringIn Movies 还记得许多年前的春天吗？</title>
+  <link rel="stylesheet" th:href="@{/assets/css/amazeui.css}" />
+  <link rel="stylesheet" th:href="@{/assets/css/common.min.css}" />
+  <link rel="stylesheet" th:href="@{/assets/css/index.min.css}" />
+</head>
+<body>
+  <div class="layout">
+    <!--===========layout-header================-->
+    <div class="layout-header am-hide-sm-only">
+      <!--topbar start-->
+      <div class="topbar">
+        <div class="container">
+          <div class="am-g">
+            <div class="am-u-md-3">
+              <div class="topbar-left">
+                <i class="am-icon-globe"></i>
+                <div class="am-dropdown" data-am-dropdown="">
+                  <button class="am-btn am-btn-primary am-dropdown-toggle" data-am-dropdown-toggle="">Language <span class="am-icon-caret-down"></span></button>
+                  <ul class="am-dropdown-content">
+                    <li><a href="#">English</a></li>
+                    <li class="am-divider"></li>
+                    <li><a href="#">Chinese</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="am-u-md-9">
+              <div class="topbar-right am-text-right am-fr">
+                Follow us
+                <i class="am-icon-facebook"></i>
+                <i class="am-icon-twitter"></i>
+                <i class="am-icon-google-plus"></i>
+                <i class="am-icon-pinterest"></i>
+                <i class="am-icon-instagram"></i>
+                <i class="am-icon-linkedin"></i>
+                <i class="am-icon-youtube-play"></i>
+                <i class="am-icon-rss"></i>
+                <a href="/movie/user/login">登录</a>
+                <a href="/movie/user/register">注册</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--topbar end-->
+
+
+      <div class="header-box" data-am-sticky="">
+        <!--header start-->
+          <div class="container">
+            <div class="header">
+              <div class="am-g">
+                <div class="am-u-lg-2 am-u-sm-12">
+                  <div class="logo">
+                    <a href=""><img th:src="@{/assets/images/logo2_02.png}" alt="" /></a>
+                  </div>
+                </div>
+                <div class="am-u-md-10">
+                  <div class="header-right am-fr">
+                    <div class="header-contact">
+                      <div class="header_contacts--item">
+  											<div class="contact_mini">
+  												<i style="color:#7c6aa6" class="contact-icon am-icon-phone"></i>
+  												<strong>0 (123) 456-7890</strong>
+  												<span>周一~周五, 8:00 - 20:00</span>
+  											</div>
+  										</div>
+                      <div class="header_contacts--item">
+  											<div class="contact_mini">
+  												<i style="color:#7c6aa6" class="contact-icon am-icon-envelope-o"></i>
+  												<strong>springIn@126.com</strong>
+  												<span>随时欢迎您的来信！</span>
+  											</div>
+  										</div>
+                      <div class="header_contacts--item">
+  											<div class="contact_mini">
+  												<i style="color:#7c6aa6" class="contact-icon am-icon-map-marker"></i>
+  												<strong>三江院,</strong>
+  												<span>苏州市工业园区林泉街</span>
+  											</div>
+  										</div>
+                    </div>
+                    <a href="html/administrator.html">
+                      <button type="button" class="am-btn am-btn-secondary am-radius">管理员</button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!--header end-->
+
+
+        <!--nav start-->
+        <div class="nav-contain">
+          <div class="nav-inner">
+            <ul class="am-nav am-nav-pills am-nav-justify">
+              <li class=""><a href="/movie/home">首页</a></li>
+              <li>
+                <a href="#">电影分类</a>
+                <!-- sub-menu start-->
+                <ul class="sub-menu">
+                  <li class="menu-item"><a href="html/product1.html">按内容</a></li>
+                  <li class="menu-item"><a href="html/product2.html">按地区</a></li>
+                  <li class="menu-item"><a href="html/product3.html">按热度</a></li>
+                </ul>
+                <!-- sub-menu end-->
+              </li>
+              <li>
+                <a href="html/news.html">客户端下载</a>
+                <!-- sub-menu start-->
+                <ul class="sub-menu">
+                  <li class="menu-item"><a href="html/news-content.html">Windows版</a></li>
+                  <li class="menu-item"><a href="html/404-dark.html">IOS版</a></li>
+                  <li class="menu-item"><a href="html/404-light.html">ANDROID版</a></li>
+                </ul>
+                <!-- sub-menu end-->
+              </li>
+              <li><a href="html/contact.html">联系我们</a></li>
+            </ul>
+          </div>
+        </div> <script type="text/javascript">
+                    var variables="";
+                    if(session.getAttribute("email")!=null){
+                        variables="<li class=''><a href='/movie/user/login' class='' >登录</a></li>";
+                    }else{
+                        variables="<li class=''>hello:"+session.getAttribute("email")+"</li>";
+                    }
+                    document.write(variables);
+                  </script>
+        <!--nav end-->
+      </div>
+    </div>
+
+    <!--mobile header start-->
+    <div class="m-header">
+      <div class="am-g am-show-sm-only">
+        <div class="am-u-sm-2">
+          <div class="menu-bars">
+            <a href="#doc-oc-demo1" data-am-offcanvas="{effect: 'push'}"><i class="am-menu-toggle-icon am-icon-bars"></i></a>
+            <!-- 侧边栏内容 -->
+            <nav data-am-widget="menu" class="am-menu  am-menu-offcanvas1" data-am-menu-offcanvas="" >
+            <a href="javascript: void(0)" class="am-menu-toggle"></a>
+
+            <div class="am-offcanvas" >
+              <div class="am-offcanvas-bar">
+              <ul class="am-menu-nav am-avg-sm-1">
+                  <li><a href="/movie/home" class="" >首页</a></li>
+                  <li class="am-parent">
+                    <a href="#" class="" >中心</a>
+                      <ul class="am-menu-sub am-collapse ">
+                          <li class="">
+                            <a href="html/product1.html" class="" >产品展示1</a>
+                          </li>
+                          <li class="">
+                            <a href="html/product2.html" class="" >产品展示2</a>
+                          </li>
+                          <li class="">
+                            <a href="html/product3.html" class="" >产品展示3</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li class=""><a href="html/example.html" class="" >客户案例</a></li>
+                  <li class=""><a href="html/solution.html" class="" >解决方案</a></li>
+                  <li class="am-parent">
+                    <a href="html/news.html" class="" >新闻中心</a>
+                      <ul class="am-menu-sub am-collapse  ">
+                          <li class="">
+                            <a href="html/news-content.html" class="" >公司动态</a>
+                          </li>
+                          <li class="">
+                            <a href="html/404-dark.html" class="" >行业动态</a>
+                          </li>
+                          <li class="">
+                            <a href="html/404-light.html" class="" >精彩专题</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li class=""><a href="html/about.html" class="" >关于我们</a></li>
+                  <li class=""><a href="html/join.html" class="" >加入我们</a></li>
+                  <li class=""><a href="html/contact.html" class="" >联系我们</a></li>
+                  <li class="am-parent">
+                    <a href="" class="nav-icon nav-icon-globe" >Language</a>
+                      <ul class="am-menu-sub am-collapse  ">
+                          <li>
+                            <a href="#" >English</a>
+                          </li>
+                          <li class="">
+                            <a href="#" >Chinese</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li class="nav-share-contain">
+                    <div class="nav-share-links">
+                      <i class="am-icon-facebook"></i>
+                      <i class="am-icon-twitter"></i>
+                      <i class="am-icon-google-plus"></i>
+                      <i class="am-icon-pinterest"></i>
+                      <i class="am-icon-instagram"></i>
+                      <i class="am-icon-linkedin"></i>
+                      <i class="am-icon-youtube-play"></i>
+                      <i class="am-icon-rss"></i>
+                    </div>
+                  </li>
+                  <script type="text/javascript">
+                      var variables="";
+                      if(session.getAttribute("email")!=null){
+                          variables="<li class=''><a href='/movie/user/login' class='' >登录</a></li>";
+                      }else{
+                          variables="<li class=''>hello:"+session.getAttribute("email")+"</li>";
+                      }
+                      document.write(variables);
+                  </script>
+                  <li class=""><a href="/movie/user/register" class="" >注册</a></li>
+              </ul>
+
+              </div>
+            </div>
+          </nav>
+
+          </div>
+        </div>
+        <div class="am-u-sm-5 am-u-end">
+          <div class="m-logo">
+            <a href=""><img th:src="@{/assets/images/logo.png}" alt=""/></a>
+          </div>
+        </div>
+      </div>
+    <!--mobile header end-->
+    </div>
+
+
+
+
+    <!--===========layout-container================-->
+    <div class="layout-container">
+      <div class="index-page">
+        <div data-am-widget="tabs" class="am-tabs am-tabs-default">
+          <div class="am-tabs-bd">
+            <div data-tab-panel-0="" class="am-tab-panel am-active">
+              <div class="index-banner">
+                <div class="index-mask">
+                  <div class="container">
+                    <div class="am-g">
+                      <div class="am-u-md-10 am-u-sm-centered">
+                        <h1 class="slide_simple--title">唐人街探案 2</h1>
+                            <p class="slide_simple--text am-text-left">
+												 唐仁为巨额奖金欺骗秦风到纽约参加世界名侦探大赛。唐人街第一神探组合再次披挂，抽丝剥茧，冒着生命危险闹翻宇宙中心-纽约&nbsp;&nbsp;&nbsp;&nbsp;“唐人街第一神探”的招牌岌岌可危？
+							</p>
+                        <div class="slide_simple--buttons">
+  												<button type="button" class="am-btn am-btn-danger">点击观看</button>
+											  </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div data-tab-panel-1="" class="am-tab-panel ">
+              <div class="index-banner1">
+                <div class="index-mask">
+                  <div class="container">
+                    <div class="am-g">
+                      <div class="am-u-md-10 am-u-sm-centered">
+                        <h1 class="slide_simple--title">红海行动</h1>
+                            <p class="slide_simple--text am-text-left">
+												  中国海军“蛟龙突击队”8人小组奉命执行撤侨任务，突击队兵分两路进行救援，但不幸遭到伏击，人员伤亡；同时在粉碎叛军武装首领的惊天阴谋中惨胜的故事
+							</p>
+                        <div class="slide_simple--buttons">
+  												<button type="button" class="am-btn am-btn-danger">点击观看</button>
+											  </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div data-tab-panel-2="" class="am-tab-panel ">
+              <div class="index-banner2">
+                <div class="index-mask">
+                  <div class="container">
+                    <div class="am-g">
+                      <div class="am-u-md-10 am-u-sm-centered">
+                        <h1 class="slide_simple--title">英雄本色</h1>
+                            <p class="slide_simple--text am-text-left">
+												  该片讲述了宋子豪、Mark、宋子杰三人之间的江湖情以及三个主人公各自的挫折、失败、忏悔和报复
+							</p>
+                        <div class="slide_simple--buttons">
+  												<button type="button" class="am-btn am-btn-danger">点击观看</button>
+											  </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div data-tab-panel-3="" class="am-tab-panel ">
+              <div class="index-banner3">
+                <div class="index-mask">
+                  <div class="container">
+                    <div class="am-g">
+                      <div class="am-u-md-10 am-u-sm-centered">
+                        <h1 class="slide_simple--title">肖申克的救赎</h1>
+                            <p class="slide_simple--text am-text-left">
+												  该片中涵盖全片的主题是“希望”，全片透过监狱这一强制剥夺自由、高度强调纪律的特殊背景来展现作为个体的人对“时间流逝、环境改造”的恐惧。影片的结局有《基督山伯爵》式的复仇宣泄。
+							</p>
+                        <div class="slide_simple--buttons">
+  												<button type="button" class="am-btn am-btn-danger">点击观看</button>
+											  </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <ul class="am-tabs-nav am-cf index-tab">
+            <li class="am-active">
+              <a href="[data-tab-panel-0] am-g">
+                <div class="am-u-md-3 am-u-sm-3 am-padding-right-0">
+                  <i class="am-icon-cog"></i>
+                </div>
+                <div class="school-item-right am-u-md-9 am-u-sm-9 am-text-left">
+                  <strong class="promo_slider_nav--item_title">唐人街探案2</strong>
+                  <p class="promo_slider_nav--item_description">唐人街神探在纽约</p>
+                </div>
+              </a>
+            </li>
+            <li class="a">
+              <a href="[data-tab-panel-1] am-g">
+                <div class="am-u-md-3 am-u-sm-3 am-padding-right-0">
+                  <i class="am-icon-lightbulb-o"></i>
+                </div>
+                <div class="school-item-right am-u-md-9 am-u-sm-9 am-text-left">
+                  <strong class="promo_slider_nav--item_title">红海行动</strong>
+                  <p class="promo_slider_nav--item_description">反恐 我们来真的</p>
+                </div>
+              </a>
+            </li>
+            <li class="">
+              <a href="[data-tab-panel-2] am-g">
+                <div class="am-u-md-3 am-u-sm-3 am-padding-right-0">
+                  <i class="am-icon-line-chart"></i>
+                </div>
+                <div class="school-item-right am-u-md-9 am-u-sm-9 am-text-left">
+                  <strong class="promo_slider_nav--item_title">英雄本色</strong>
+                  <p class="promo_slider_nav--item_description">对！ 这就是小马哥</p>
+                </div>
+              </a>
+            </li>
+            <li class="">
+              <a href="[data-tab-panel-3] am-g">
+                <div class="am-u-md-3 am-u-sm-3 am-padding-right-0">
+                  <i class="am-icon-hourglass-end"></i>
+                </div>
+                <div class="school-item-right am-u-md-9 am-u-sm-9 am-text-left">
+                  <strong class="promo_slider_nav--item_title">肖申克的救赎</strong>
+                  <p class="promo_slider_nav--item_description">get busy living?get busy dying？</p>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="section">
+      <div class="container">
+        <div class="section--header">
+					<h2 class="section--title">寻找电影</h2>
+					<p class="section--description">
+						致力于寻找你最爱的电影
+						<br/>获得了阿里巴巴以及bilibili的扶持，陆金所资本、天创资本等国际顶级风投机构的投资。
+					</p>
+				</div>
+
+        <!--index-container start-->
+        <div class="index-container">
+          <div class="am-g">
+            <div class="am-u-md-3">
+              <div class="features_item">
+								<img th:src="@{/assets/images/index/f01.jpg}" alt=""/>
+								<h3 class="features_item--title">猜你喜欢</h3>
+								<p class="features_item--text">
+									通过你点击电影的频次推荐你爱的电影
+								</p>
+							</div>
+            </div>
+            <div class="am-u-md-3">
+              <div class="features_item">
+								<img th:src="@{/assets/images/index/f02.jpg}" alt=""/>
+								<h3 class="features_item--title">最新院线</h3>
+								<p class="features_item--text">
+									国内外最新热映的电影
+								</p>
+							</div>
+            </div>
+            <div class="am-u-md-3">
+              <div class="features_item">
+								<img th:src="@{/assets/images/index/f03.jpg}" alt=""/>
+								<h3 class="features_item--title">评分最高</h3>
+								<p class="features_item--text">
+									通过用户打分确定的高分电影
+                                </p>
+							</div>
+            </div>
+            <div class="am-u-md-3">
+              <div class="features_item">
+								<img th:src="@{/assets/images/index/f04.jpg}" alt=""/>
+								<h3 class="features_item--title">重温经典</h3>
+								<p class="features_item--text">
+									经典电影，愈久弥香
+								</p>
+							</div>
+            </div>
+          </div>
+
+          <div class="index-more">
+            <button type="button" class="am-btn am-btn-secondary">MORE&nbsp;&nbsp;>></button>
+          </div>
+        </div>
+        <!--index-container end-->
+      </div>
+    </div>
+
+  </div>
+
+  <!--promo_detailed start-->
+  <div class="promo_detailed">
+    <div class="promo_detailed-container" >
+      <div class="container">
+        <div class="am-g">
+          <div class="am-u-md-6">
+            <ul class="promo_detailed--list">
+              <li class="promo_detailed--list_item">
+                <span class="promo_detailed--list_item_icon">
+                  <i class="am-icon-diamond"></i>
+                </span>
+                <dl>
+                  <dt>多层次的用户管理功能</dt>
+                  <dd>
+                    支持用户的添加和导入，实时同步最新的用户信息，从而方便对用户进行管理。
+                  </dd>
+                </dl>
+              </li>
+              <li class="promo_detailed--list_item">
+                <span class="promo_detailed--list_item_icon">
+                  <i class="am-icon-dollar" style="margin-left: 15px;"></i>
+                </span>
+                <dl>
+                  <dt>丰富的VIP体验</dt>
+                  <dd>
+          VIP能享受看最新电影，无广告等尊贵体验
+                  </dd>
+                </dl>
+              </li>
+              <li class="promo_detailed--list_item">
+                <span class="promo_detailed--list_item_icon">
+                  <i class="am-icon-bank" style="margin-left: 10px;"></i>
+                </span>
+                <dl>
+                  <dt>丰富的应用程序管理</dt>
+                  <dd>
+                    支持网页应用、手机应用、iPad应用等多种应用类型。
+                  </dd>
+                </dl>
+              </li>
+            </ul>
+          </div>
+
+          <div class="am-u-md-6">
+            <div class="promo_detailed--cta">
+              <div class="promo_detailed--cta_wrap">
+                <div class="promo_detailed--cta_text">
+									提供设备的远程锁定，擦除等功能。在设备出现遗失的情况下可以最大程度的保护用户的信息不被泄露。
+								</div>
+                <div class="promo_detailed--cta_footer">
+                  <button type="button" class="am-btn am-btn-danger">MORE&nbsp;&nbsp;>></button>
+                </div>
+              </div>
+              <div class="promo_detailed-img am-show-sm-only" th:style="'background-image: url(' + @{/assets/images/index/promo_detailed_bg.jpg} + ');'"/>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="promo_detailed-img am-hide-sm-only" th:style="'background-image: url(' + @{/assets/images/index/promo_detailed_bg.jpg} + ');'"></div>
+  </div>
+  <!--promo_detailed end-->
+
+  <div class="section"  style="border-bottom: 1px solid #e9e9e9;">
+    <div class="container">
+      <div class="section--header">
+        <h2 class="section--title">我们的服务</h2>
+        <p class="section--description">
+          没什么可说的，就是推荐你喜欢的电影
+          <br/>获得了阿里巴巴以及bilibili的扶持，陆金所资本、天创资本等国际顶级风投机构的投资。
+        </p>
+      </div>
+
+      <!--index-container start-->
+      <div class="index-container">
+					<div class="am-g">
+						<div class="am-u-md-4">
+							<div class="contact_card">
+								<i style="color:#59bcdb" class="contact_card--icon am-icon-phone"></i>
+								<strong class="contact_card--title">Contact Us</strong>
+								<p class="contact_card--text">Feel free to call us on <br/> <strong>0 (123) 456-7890</strong> <br/> Monday - Friday, 8am - 7pm</p>
+								<button type="button" class="am-btn am-btn-secondary">Order a Call Back</button>
+							</div>
+						</div>
+						<div class="am-u-md-4">
+							<div class="contact_card">
+								<i style="color:#59bcdb" class="contact_card--icon am-icon-envelope-o"></i>
+								<strong class="contact_card--title">Our Email</strong>
+								<p class="contact_card--text">Drop us a line anytime at <br/> <strong><a href="mailto:springIn@126.com">springIn@126.com</a>,</strong> <br/> and we’ll get back soon.</p>
+								<button type="button" class="am-btn am-btn-secondary">Start Writing</button>
+							</div>
+						</div>
+						<div class="am-u-md-4">
+							<div class="contact_card">
+								<i style="color:#59bcdb" class="contact_card--icon am-icon-map-marker"></i>
+								<strong class="contact_card--title">Our Address</strong>
+								<p class="contact_card--text">Come visit us at <br/> <strong>SpringIn Building, Shen Zhen,</strong> <br/> SZ 93459</p>
+								<button type="button" class="am-btn am-btn-secondary">See the Map</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--index-container end-->
+			</div>
+		</div>
+
+		<!--===========layout-container================-->
+		<center>
+			<p>Copyright © 2017 -
+				<script type="text/javascript">
+					document.write(new Date().getFullYear());
+				</script> SpringIn.
+				<a target="_blank" href="#" rel="noopener nofollow" title="All Rights Reserved.">All Rights Reserved.</a>
+			</p>
+			<p>春天里公司
+				<a target="_blank" href="#" rel="noopener nofollow" title="版权所有">版权所有</a>
+				<a target="_blank" href="#" rel="noopener nofollow" title="春天里网络文化经营许可证">春天里网络文化经营许可证</a>
+			</p>
+		</center>
+  <script th:src="@{/assets/js/jquery-2.1.0.js}" charset="utf-8"></script>
+  <script th:src="@{/assets/js/amazeui.js}" charset="utf-8"></script>
+  <script th:src="@{/assets/js/common.js}" charset="utf-8"></script>
+</body>
+
+</html>
