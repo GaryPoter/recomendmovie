@@ -44,8 +44,8 @@ $(document).ready(function(){
 	<div class="place">
     <span>位置：</span>
     <ul class="placeul">
-    <li><a href="/movie/user/home">首页</a></li>
-    <li><a href="#">电影列表</a></li>
+    <li><a href="/movie/home">首页</a></li>
+    <li><a href="/movie/movies/getAllMovies">电影列表</a></li>
     </ul>
     </div>
     
@@ -54,7 +54,7 @@ $(document).ready(function(){
     <div class="tools">
     
     	<ul class="toolbar">
-	        <li><a href="addmovie.html"><span><img th:src="@{/assets/images/movies/t01.png}"/></span>添加</a></li>
+	        <li><a href="/movie/movies/addMovie"><span><img th:src="@{/assets/images/movies/t01.png}"/></span>添加</a></li>
 	        <li class="click"><span><img th:src="@{/assets/images/movies/t03.png}"/></span>删除</li>
         </ul>
 
@@ -81,19 +81,21 @@ $(document).ready(function(){
     
     <tbody>
     
-    <tr>
-	    <td><input name="" type="checkbox" value="" /></td>
-	    <td class="imgtd"><img th:src="@{/assets/images/movies/img11.png}" /></td>
-	    <td><a href="#">爱在记忆消逝前</a><p>发布时间：2013-10-12 </p></td>
-	    <td>剧情 / 爱情<p>ID: 82122</p></td>
-	    <td> 保罗·维尔齐</td>
-	    <td>海伦·米伦 / 唐纳德·萨</td>
-	    <td>英语</td>
-	    <td>112分钟</td>
-	    <td>https://movie.douban.com/subject/26649604/?from=showing</td>
-	    <td><a href="#" class="tablelink">删除</a>   
+    <tr th:each="movie:${movies}">
+        <div th:data="${movie.id}">
+	        <td><input name="" type="checkbox" value="" /></td>
+	        <td class="imgtd"><img th:src="@{/assets/images/movies/img11.png}" /></td>
+	        <td><a href="#" th:text="${movie.movie_name}"></a><p>发布时间：2013-10-12 </p></td>
+            <td th:text="${movie.type_name}"></td>
+            <td th:text="${movie.director}"> </td>
+            <td th:text="${movie.starring}"></td>
+	        <td th:text="${movie.area}"></td>
+	        <td th:text="${movie.duration}"></td>
+	        <td th:text="${movie.movie_resouse_url}"></td>
+	        <td><a th:href="${'/movie/movies/delete/'+movie.id}" class="tablelink">删除</a>
         	<a href="#" class="tablelink">修改</a>     
         </td>
+        </div>
     </tr>
 
     
@@ -107,7 +109,7 @@ $(document).ready(function(){
     
    
     <div class="pagin">
-    	<div class="message">共<i class="blue">1256</i>条记录，当前显示第&nbsp;<i class="blue">2&nbsp;</i>页</div>
+    	<div class="message">共<i class="blue" th:text="${count}">1256</i>条记录，当前显示第&nbsp;<i class="blue">2&nbsp;</i>页</div>
         <ul class="paginList">
         <li class="paginItem"><a href="javascript:;"><span class="pagepre"></span></a></li>
         <li class="paginItem"><a href="javascript:;">1</a></li>

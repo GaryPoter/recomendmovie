@@ -3,6 +3,7 @@ package com.spring.recomendmovie.movie_api.service;
 
 import com.spring.recomendmovie.movie_api.pojo.Movie;
 import com.spring.recomendmovie.movie_api.pojo.MovieDetail;
+import com.spring.recomendmovie.movie_api.pojo.MovieType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,5 +33,8 @@ public interface MovieService {
 //    //删除勾选的电影 p操作
 //    int deleteMovies(List<Movie> movies);
 
+
+    //获取所有电影类型
+    ArrayList<MovieType> getAllMovieType();
 
 }

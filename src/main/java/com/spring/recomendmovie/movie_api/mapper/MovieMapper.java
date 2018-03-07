@@ -3,6 +3,7 @@ package com.spring.recomendmovie.movie_api.mapper;
 
 import com.spring.recomendmovie.movie_api.pojo.Movie;
 import com.spring.recomendmovie.movie_api.pojo.MovieDetail;
+import com.spring.recomendmovie.movie_api.pojo.MovieType;
 import com.spring.recomendmovie.utils.mapper.ObjMapper;
 import org.apache.ibatis.annotations.*;
 
@@ -28,4 +29,7 @@ public interface MovieMapper extends ObjMapper<Movie> {
 
     @Update("update movie set movie_name=#{movie_name},movie_resouse_url=#{movie_resouse_url},image_id=#{image_id} where id=#{id}")
     boolean updateMovie(Movie movie);
+
+    @Select("select * from movietype")
+    ArrayList<MovieType> getAllMovieType();
 }
