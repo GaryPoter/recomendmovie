@@ -12,7 +12,6 @@ public class Movie {
 
     public static final String IMAGEID = "image_id";
 
-    public static final String CATEGORYID = "category_id";
 
     private Long id;
 
@@ -22,17 +21,29 @@ public class Movie {
 
     private Long image_id;
 
-    private Long category_id;
+    private String director;
+
+    private String starring;
+
+    private String area;
+
+    private String duration;
+
+    private Long typeId;
 
     public Movie() {
     }
 
-    public Movie(Long id, String movie_name, String movie_resouse_url, Long image_id, Long category_id) {
+    public Movie(Long id, String movie_name, String movie_resouse_url, Long image_id, String director, String starring, String area, String duration, Long typeId) {
         this.id = id;
         this.movie_name = movie_name;
         this.movie_resouse_url = movie_resouse_url;
         this.image_id = image_id;
-        this.category_id = category_id;
+        this.director = director;
+        this.starring = starring;
+        this.area = area;
+        this.duration = duration;
+        this.typeId = typeId;
     }
 
     public Long getId() {
@@ -67,11 +78,47 @@ public class Movie {
         this.image_id = image_id;
     }
 
-    public Long getCategory_id() {
-        return category_id;
+    public static String getTABLENAME() {
+        return TABLENAME;
     }
 
-    public void setCategory_id(Long category_id) {
-        this.category_id = category_id;
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public String getStarring() {
+        return starring;
+    }
+
+    public void setStarring(String starring) {
+        this.starring = starring;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+    public Long getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Long typeId) {
+        this.typeId = typeId;
     }
 }

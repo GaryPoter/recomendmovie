@@ -9,6 +9,16 @@ public class MovieDetail {
 
     private String image_url;
 
+    private String director;
+
+    private String starring;
+
+    private String area;
+
+    private String duration;
+
+    private String type_name;
+
     public MovieDetail() {
     }
 
@@ -42,5 +52,45 @@ public class MovieDetail {
 
     public void setImage_url(String image_url) {
         this.image_url = image_url;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public String getStarring() {
+        return starring;
+    }
+
+    public void setStarring(String starring) {
+        this.starring = starring;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+    public String getType_name() {
+        return type_name;
+    }
+
+    public void setType_name(String type_name) {
+        this.type_name = type_name;
     }
 }

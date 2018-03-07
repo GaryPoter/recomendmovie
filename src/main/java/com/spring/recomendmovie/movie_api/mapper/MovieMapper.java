@@ -11,13 +11,13 @@ import java.util.ArrayList;
 
 @Mapper
 public interface MovieMapper extends ObjMapper<Movie> {
-    @Select("select movie.id,movie_name,movie_resouse_url,image_url from image,movie where image_id=image.id and movie_name = #{movie_name}")
+    @Select("select movie.id,movie_name,movie_resouse_url,image_url,director,starring,area,duration,type_name from image,movie,movietype where image_id=image.id and typeId=type_id and movie_name = #{movie_name}")
     ArrayList<MovieDetail> getMovieByName(@Param("movie_name") String movieName);
 
     @SelectProvider(type = MovieProvide.class, method = "getMovieByLikeName")
     ArrayList<Movie> getMovieByLikeName(String likeName);
 
-    @Select("select movie.id,movie_name,movie_resouse_url,image_url from image,movie where image_id=image.id")
+    @Select("select movie.id,movie_name,movie_resouse_url,image_url,director,starring,area,duration,type_name from image,movie,movietype where image_id=image.id and typeId=type_id")
     ArrayList<MovieDetail> getAllMovies();
 
     @Delete("delete from movie where id =#{movie_id}")
