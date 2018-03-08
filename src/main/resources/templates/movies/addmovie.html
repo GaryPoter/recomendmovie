@@ -62,18 +62,17 @@
     <li><label>电影名<b>*</b></label><input type="text" id="movie_name" class="dfinput" value=""  style="width:200px;"/></li>
     <li ><label>电影类型<b>*</b></label>
         <div class="vocation" >
-        <select class="select1">
-        <option th:each="movieType:${movieTypes}"  th:text="${movieType.type_name}">
-            <p hidden="true" id="typeId" th:value="${movieType.type_id}"></p>
+        <select class="select1" id="typeId">
+        <option th:each="movieType:${movieTypes}"  th:text="${movieType.type_name}" th:value="${movieType.type_id}">
         </option>
         </select>
         </div>
     </li>
     
-    <li><label>导演<b>*</b></label><input type="text" class="dfinput" value=""  style="width:200px;" id="director"/></li>
+    <li><label>导演<b>*</b></label><input type="text" id="director" class="dfinput" value=""  style="width:200px;" /></li>
     
-    <li><label>主演<b>*</b></label><input type="text" class="dfinput" value=""  style="width:200px;" id="starring"/></li>
-    
+    <li><label>主演<b>*</b></label><input type="text" id="starring" class="dfinput" value=""  style="width:200px;" /></li>
+
     <li><label>地区<b>*</b></label>
     <div class="vocation">
     <select class="select1" id="area">

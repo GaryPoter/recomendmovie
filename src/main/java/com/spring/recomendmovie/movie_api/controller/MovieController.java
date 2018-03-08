@@ -60,6 +60,11 @@ public class MovieController {
         return result;
     }
 
+//    @RequestMapping("/insert")
+//    public boolean insertMovie(Movie movie){
+//        return movieService.insertMovie(movie);
+//    }
+
     @RequestMapping("/update")
     public Result updateMovie(Movie movie){
         Result result = new Result();
@@ -73,5 +78,6 @@ public class MovieController {
         }
         return result;
     }
+
 
 }

@@ -45,7 +45,7 @@ function addMovieAction() {
     var starring=$("#starring").val();
     var area =$("#area").val();
     var duration=$("#duration").val();
-    var typeId=$("#typeId optiion:selected").text();
+    var typeId=$("#typeId").val();
     if(movie_name != ''&&movie_resouse_url != '') {
         $.ajax({
             async:false,

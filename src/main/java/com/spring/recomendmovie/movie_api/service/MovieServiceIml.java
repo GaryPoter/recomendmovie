@@ -106,4 +106,7 @@ public class MovieServiceIml implements MovieService {
     public ArrayList<MovieType> getAllMovieType(){
         return movieMapper.getAllMovieType();
     }
+
+    @Override
+    public  Movie getMovieById(Long id){return movieMapper.getMovieById(id);}
 }

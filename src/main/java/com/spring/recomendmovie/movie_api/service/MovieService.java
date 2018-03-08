@@ -37,4 +37,7 @@ public interface MovieService {
     //获取所有电影类型
     ArrayList<MovieType> getAllMovieType();
 
+    //根据电影ID查询电影
+    Movie getMovieById(Long id);
+
 }

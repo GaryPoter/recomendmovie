@@ -24,12 +24,18 @@ public interface MovieMapper extends ObjMapper<Movie> {
     @Delete("delete from movie where id =#{movie_id}")
     boolean deleteMovie(@Param("movie_id") int id);
 
-    @Insert("insert into movie(movie_name,movie_resouse_url,image_id) values(#{movie_name},#{movie_resouse_url},#{image_id})")
+    @Insert("insert into movie(movie_name,movie_resouse_url,image_id,director,starring,area,duration,typeId) values(#{movie_name},#{movie_resouse_url},#{image_id},#{director},#{starring},#{area},#{duration},#{typeId})")
     boolean insertMovie(Movie movie);
 
-    @Update("update movie set movie_name=#{movie_name},movie_resouse_url=#{movie_resouse_url},image_id=#{image_id} where id=#{id}")
+    @Update("update movie set movie_name=#{movie_name},movie_resouse_url=#{movie_resouse_url},image_id=#{image_id},director=#{director},starring=#{starring},area=#{area},duration=#{duration},typeId=#{typeId} where id=#{id}")
     boolean updateMovie(Movie movie);
 
     @Select("select * from movietype")
     ArrayList<MovieType> getAllMovieType();
+
+    @Select("select * from movie where id=#{movie_id}")
+    Movie getMovieById(Long id);
+
+//    @Select("select * from image")
+//    ArrayList<>
 }
