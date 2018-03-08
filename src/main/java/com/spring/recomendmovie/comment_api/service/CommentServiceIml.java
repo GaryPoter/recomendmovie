@@ -3,6 +3,7 @@ package com.spring.recomendmovie.comment_api.service;
 
 import com.spring.recomendmovie.comment_api.mapper.CommentMapper;
 import com.spring.recomendmovie.comment_api.pojo.Comment;
+import com.spring.recomendmovie.comment_api.pojo.CommentDetail;
 import com.spring.recomendmovie.movie_api.pojo.Movie;
 import com.spring.recomendmovie.user_api.pojo.User;
 import com.spring.recomendmovie.utils.Table;
@@ -12,19 +13,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 
-@Service
+@Service    //对应的是业务层Bean  在类前注释，将此类实例化
 @Transactional(readOnly = true)
 public class CommentServiceIml implements CommentService {
-    @Autowired
+    @Autowired  // 在属性前配置，将属性对应的对象从工厂中取出并注入到该bean中
     private CommentMapper commentMapper;
 
     private Table commentTable = new Table(Comment.TABLENAME);
 
 
     @Override
-    public ArrayList<Comment> getAllComment() {
-        commentTable.clear();
-        return commentMapper.getObjWithParams(commentTable);
+    public ArrayList<CommentDetail> getAllComments(){
+        return commentMapper.getAllComments();
     }
 
     @Override
@@ -55,6 +55,16 @@ public class CommentServiceIml implements CommentService {
         });
     }
 
+    @Override
+    public ArrayList<Comment> getCommentsByMovieName(String movie_name) {
+        return null;
+    }
+
+    @Override
+    public ArrayList<Movie> getMoviesByUserName(String user_name) {
+        return null;
+    }
+
     /**
      *
      * @param comment 评论comment，打分score
@@ -80,10 +90,10 @@ public class CommentServiceIml implements CommentService {
         return 0;
     }
 
-    @Override
-    public ArrayList<Movie> selectMoviesByUserId(User user) {
-        return null;
-    }
+//    @Override
+//    public ArrayList<Movie> selectMoviesByUserId(User user) {
+//        return null;
+//    }
 
     @Override
     public int deleteComments(ArrayList<Comment> comments) {

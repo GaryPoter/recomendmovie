@@ -125,18 +125,18 @@ public class UserServiceIml implements UserService{
     }
 
     /**
-     *
      * @param tableName 表名字
      * @return 一张新表
      */
     private Table getTable(String tableName){
+
         Table table = new Table(tableName);
         return table;
     }
 
     @Override
     public User getUserById(Long id){
-//        return userMapper.getUserById(id);
+//      return userMapper.getUserById(id);
         Table table = getTable(User.TABLENAME);
         table.setSearch_k(new String[]{User.ID});
         table.setSearch_v(new String[]{id.toString()});
