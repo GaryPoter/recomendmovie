@@ -47,7 +47,7 @@ $(document).ready(function(){
     <div class="tools">
     
     	<ul class="toolbar">
-        	<li class="click"><span><img src="images/t03.png" /></span>删除</li>
+        	<li class="click"><span><img th:src="@{/assets/images/t03.png}" /></span>删除</li>
       	</ul>
       	
     </div>
@@ -58,7 +58,7 @@ $(document).ready(function(){
     	<thead>
 	    	<tr>
 		        <th><input name="" type="checkbox" value="" checked="checked"/></th>
-		        <th>编号<i class="sort"><img src="images/px.gif" /></i></th>
+		        <th>编号<i class="sort"><img th:src="@{/assets/images/px.gif}" /></i></th>
 		        <th>电影名</th>
 		        <th>用户名</th>
 		        <th>评论内容</th>
@@ -69,7 +69,7 @@ $(document).ready(function(){
       </thead>
         
         <tbody>
-	        <tr>
+	        <tr th:each="">
 	        <td><input name="" type="checkbox" value="" /></td>
 	        <td>20130908</td>
 	        <td>爱在记忆消逝前</td>
@@ -77,7 +77,7 @@ $(document).ready(function(){
 	        <td>心都化了！</td>
 	        <td>2018-3-4</td>
 	        <td>9.0</td>
-	        <td><a href="#" class="tablelink">查看</a> <a href="#" class="tablelink"> 删除</a>  </td>
+	        <td><a href="" class="tablelink">查看</a> <a href="" class="tablelink"> 删除</a>  </td>
 	        </tr> 
         </tbody>
     </table>

@@ -2,6 +2,7 @@ package com.spring.recomendmovie.movie_api.controller;
 
 import com.spring.recomendmovie.movie_api.pojo.Movie;
 import com.spring.recomendmovie.movie_api.pojo.MovieDetail;
+import com.spring.recomendmovie.movie_api.pojo.MovieType;
 import com.spring.recomendmovie.movie_api.service.MovieService;
 import com.spring.recomendmovie.utils.message.Result;
 import com.sun.deploy.net.HttpResponse;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.swing.*;
 import javax.websocket.server.PathParam;
@@ -27,17 +29,22 @@ public class MovieController {
     }
 
     @RequestMapping(value="/delete/{movie_id}",method=RequestMethod.GET)
-    public ArrayList<MovieDetail> delete(@PathVariable("movie_id") int id){
+    public ModelAndView delete(@PathVariable("movie_id") int id,Model model){
         movieService.deleteMovie(id);
            // JOptionPane.showMessageDialog(null, "删除成功");
 
-        return movieService.getAllMovies();
+        return getAllMovies(model);
 
     }
 
     @RequestMapping("/getAllMovies")
-    public ArrayList<MovieDetail> getAllMovies(){
-        return movieService.getAllMovies();
+    public ModelAndView getAllMovies(Model model){
+        ModelAndView modelAndView = new ModelAndView("movies/movietable");
+        ArrayList<MovieDetail> movieDetails = movieService.getAllMovies();
+        int lenth = movieDetails.size();
+        modelAndView.addObject("count",lenth);
+        modelAndView.addObject("movies",movieDetails);
+        return modelAndView;
     }
 
     @RequestMapping("/insert")
@@ -53,6 +60,11 @@ public class MovieController {
         return result;
     }
 
+//    @RequestMapping("/insert")
+//    public boolean insertMovie(Movie movie){
+//        return movieService.insertMovie(movie);
+//    }
+
     @RequestMapping("/update")
     public Result updateMovie(Movie movie){
         Result result = new Result();
@@ -66,4 +78,6 @@ public class MovieController {
         }
         return result;
     }
+
+
 }

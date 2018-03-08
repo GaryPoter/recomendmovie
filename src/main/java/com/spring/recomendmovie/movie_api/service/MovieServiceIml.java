@@ -4,6 +4,7 @@ package com.spring.recomendmovie.movie_api.service;
 import com.spring.recomendmovie.movie_api.mapper.MovieMapper;
 import com.spring.recomendmovie.movie_api.pojo.Movie;
 import com.spring.recomendmovie.movie_api.pojo.MovieDetail;
+import com.spring.recomendmovie.movie_api.pojo.MovieType;
 import com.spring.recomendmovie.utils.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -101,4 +102,11 @@ public class MovieServiceIml implements MovieService {
         return movieMapper.updateMovie(movie);
     }
 
+    @Override
+    public ArrayList<MovieType> getAllMovieType(){
+        return movieMapper.getAllMovieType();
+    }
+
+    @Override
+    public  Movie getMovieById(Long id){return movieMapper.getMovieById(id);}
 }

@@ -17,11 +17,11 @@ public interface CommentService {
 
     //根据电影名查询该电影所有相关的评论
     @Transactional(readOnly = true)
-    ArrayList<Comment> getCommentsByMovieName(String movie_name);
+    ArrayList<CommentDetail> getCommentsByMovieName(String movie_name);
 
-    //根据用户名查询所有该用户评论的电影
+    //根据用户名查询所有该用户所有的评论
     @Transactional(readOnly = true)
-    ArrayList<Movie> getMoviesByUserName(String user_name);
+    ArrayList<CommentDetail> getCommentsByUserName(String user_name);
 
     //评论电影
     @Transactional(readOnly = false)
@@ -33,7 +33,7 @@ public interface CommentService {
 
     //删除电影评价
     @Transactional(readOnly = false)
-    int deleteComment(Comment comment);
+    int deleteComment(int comment_id);
 
     //删除电影评价 p操作
     @Transactional(readOnly = false)

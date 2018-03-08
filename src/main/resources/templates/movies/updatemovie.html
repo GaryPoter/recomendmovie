@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>修改电影</title>
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/css/select.css}"/>
+    <script type="text/javascript" th:src="@{/assets/js/jquery.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/jquery.idTabs.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/select-ui.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/kindeditor.js}"></script>
+
+    <script type="text/javascript">
+        KE.show({
+            id : 'content7',
+            cssPath : './index.css'
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            $(".select1").uedSelect({
+                width : 345
+            });
+            $(".select2").uedSelect({
+                width : 167
+            });
+            $(".select3").uedSelect({
+                width : 100
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+
+<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+        <li><a href="/movie/movies/getAllMovies">首页</a></li>
+        <li><a href="#">系统设置</a></li>
+    </ul>
+</div>
+
+<div class="formbody">
+    <div id="usual1" class="usual">
+        <div class="itab">
+            <ul>
+                <li><a href="#tab1" class="selected">修改电影</a></li>
+            </ul>
+        </div>
+
+        <div id="tab1" class="tabson">
+
+            <div class="formtext">Hi，<b>admin</b>，欢迎您使用修改电影功能！</div>
+
+            <ul class="forminfo" >
+                <li><label>电影封面<b>*</b></label><input type="text" class="dfinput" th:value="${movie.image_id}"  style="width:200px;" id="image_id"/></li>
+                <li><label>电影名<b>*</b></label><input type="text" id="movie_name" class="dfinput" th:value="${movie.movie_name}"  style="width:200px;"/></li>
+                <li ><label>电影类型<b>*</b></label>
+                    <div class="vocation" >
+                        <select class="select1" id="typeId" >
+                            <option th:each="movieType:${movieTypes}"  th:text="${movieType.type_name}" th:value="${movieType.type_id}">
+                            </option>
+                        </select>
+                    </div>
+                </li>
+
+                <li><label>导演<b>*</b></label><input type="text" id="director" class="dfinput" th:value="${movie.director}"  style="width:200px;" /></li>
+
+                <li><label>主演<b>*</b></label><input type="text" id="starring" class="dfinput" th:value="${movie.starring}"  style="width:200px;" /></li>
+
+                <li><label>地区<b>*</b></label>
+                    <div class="vocation">
+                        <select class="select1" id="area" >
+                            <option>中国</option>
+                            <option>美国</option>
+                            <option>日本</option>
+                            <option>韩国</option>
+                            <option>中国（香港）</option>
+                            <option>中国（台湾）</option>
+                            <option>法国</option>
+                            <option>英国</option>
+                            <option>其他</option>
+                        </select>
+                    </div>
+                </li>
+
+                <li><label>链接<b>*</b></label><input type="text" class="dfinput" value=""  style="width:200px;" id="movie_resouse_url"/></li>
+
+                <li><label>时长<b>*</b></label><input type="text" class="dfinput" value=""  style="width:200px;" id="duration"/></li>
+
+
+                <li><label>&nbsp;</label><input id="updateMovie" type="button" class="btn" onclick="updateMovieAction()" value="马上修改"/></li>
+
+            </ul>
+
+        </div>
+    </div>
+
+</div>
+
+<script th:src="@{/movie/movie_update.js}" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $("#usual1 ul").idTabs();
+</script>
+
+<script type="text/javascript">
+    $('.tablelist tbody tr:odd').addClass('odd');
+</script>
+
+
+
+</body>
+</html>
