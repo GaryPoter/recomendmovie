@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.springframework.org/schema/jdbc">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>网站后台管理系统</title>
@@ -69,20 +69,24 @@ $(document).ready(function(){
       </thead>
         
         <tbody>
-	        <tr th:each="">
-	        <td><input name="" type="checkbox" value="" /></td>
-	        <td>20130908</td>
-	        <td>爱在记忆消逝前</td>
-	        <td>珍珍</td>
-	        <td>心都化了！</td>
-	        <td>2018-3-4</td>
-	        <td>9.0</td>
-	        <td><a href="" class="tablelink">查看</a> <a href="" class="tablelink"> 删除</a>  </td>
-	        </tr> 
+	        <tr th:each="commentDetail:${commentDetails}">
+                <div>
+                    <td><input name="" type="checkbox" value="" /></td>
+                    <td th:text="${commentDetail.id}"></td>
+                    <td th:text="${commentDetail.movie_name}"></td>
+                    <td th:text="${commentDetail.username}"></td>
+                    <td th:text="${commentDetail.comment}"></td>
+                    <td th:text="${commentDetail.comment_time}"></td>
+                    <td th:text="${commentDetail.score}"></td>
+                    <td><a class="tablelink" href="javascript:;" th:onclick="'deleteAction(\''+${commentDetail.id}+'\');'">删除</a>
+                </div>
+            </tr>
+
         </tbody>
     </table>
-    
-   
+
+        <script th:src="@{/comment.js/comment_manage.js}" type="text/javascript"></script>
+
     <div class="pagin">
     	<div class="message">共<i class="blue">1256</i>条记录，当前显示第&nbsp;<i class="blue">2&nbsp;</i>页</div>
         <ul class="paginList">

@@ -21,7 +21,7 @@ public interface CommentService {
 
     //根据用户名查询所有该用户所有的评论
     @Transactional(readOnly = true)
-    ArrayList<CommentDetail> getCommentsByUserName(String user_name);
+    ArrayList<CommentDetail> getCommentsByUserName(String username);
 
     //评论电影
     @Transactional(readOnly = false)

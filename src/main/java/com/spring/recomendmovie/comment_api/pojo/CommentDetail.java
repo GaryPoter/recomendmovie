@@ -9,7 +9,7 @@ public class CommentDetail {
     private Long id;
 
     @NotNull
-    private String user_name;
+    private String username;
 
     @NotNull
     private String movie_name;
@@ -30,12 +30,12 @@ public class CommentDetail {
         this.id = id;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getMovie_name() {
@@ -76,7 +76,7 @@ public class CommentDetail {
 
     public CommentDetail(Long id, String user_name, String movie_name, String comment, Date comment_time, Double score) {
         this.id = id;
-        this.user_name = user_name;
+        this.username = user_name;
         this.movie_name = movie_name;
         this.comment = comment;
         this.comment_time = comment_time;

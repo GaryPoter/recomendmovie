@@ -43,8 +43,8 @@ public class CommentServiceIml implements CommentService {
 
     @Override
     @Transactional(readOnly = true)
-    public ArrayList<CommentDetail> getCommentsByUserName(String user_name) {
-        return commentMapper.getCommentsByUserName(user_name);
+    public ArrayList<CommentDetail> getCommentsByUserName(String username) {
+        return commentMapper.getCommentsByUserName(username);
     }
 
     @Override

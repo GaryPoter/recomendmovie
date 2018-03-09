@@ -95,7 +95,7 @@ $(document).ready(function(){
 	        <td th:text="${movie.movie_resouse_url}"></td>
             <!--th:href="${'/movie/movies/delete/'+movie.id}" -->
 	        <td><a class="tablelink" href="javascript:;" th:onclick="'deleteAction(\''+${movie.id}+'\');'">删除</a>
-        	<a th:href="${'/movie/movies/updateMovie/'+movie.id}" class="tablelink">修改</a>
+        	<a th:href="${'/movie/movies/updateMovie/'+ movie.id}" class="tablelink">修改</a>
         </td>
         </div>
     </tr>
