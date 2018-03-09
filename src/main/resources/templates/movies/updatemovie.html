@@ -89,9 +89,9 @@
                     </div>
                 </li>
 
-                <li><label>链接<b>*</b></label><input type="text" class="dfinput" value=""  style="width:200px;" id="movie_resouse_url"/></li>
+                <li><label>链接<b>*</b></label><input type="text" class="dfinput" th:value="${movie.movie_resouse_url}"  style="width:200px;" id="movie_resouse_url"/></li>
 
-                <li><label>时长<b>*</b></label><input type="text" class="dfinput" value=""  style="width:200px;" id="duration"/></li>
+                <li><label>时长<b>*</b></label><input type="text" class="dfinput" th:value="${movie.duration}"  style="width:200px;" id="duration"/></li>
 
 
                 <li><label>&nbsp;</label><input id="updateMovie" type="button" class="btn" onclick="updateMovieAction()" value="马上修改"/></li>
