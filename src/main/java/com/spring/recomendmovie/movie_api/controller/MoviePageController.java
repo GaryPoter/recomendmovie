@@ -50,6 +50,8 @@ public class MoviePageController {
         ArrayList<MovieType> movieTypes = movieService.getAllMovieType();
         modelAndView.addObject("movieTypes",movieTypes);
         return modelAndView;
-        }
+    }
+
+
 
 }

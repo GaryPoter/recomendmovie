@@ -36,6 +36,9 @@ public interface MovieMapper extends ObjMapper<Movie> {
     @Select("select * from movie where id=#{movie_id}")
     Movie getMovieById(Long id);
 
+    @Select("select movie.id,movie_name,movie_resouse_url,image_url,director,starring,area,duration,type_name from image,movie,movietype where image_id=image.id and typeId=type_id order by movie.id desc limit #{firstRec},#{lastRec}")
+    ArrayList<MovieDetail> getAllMoviesBy(@Param("firstRec") Integer firstRec,@Param("lastRec") Integer lastRec);
+
 //    @Select("select * from image")
 //    ArrayList<>
 }

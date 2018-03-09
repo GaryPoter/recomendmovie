@@ -40,4 +40,5 @@ public interface MovieService {
     //根据电影ID查询电影
     Movie getMovieById(Long id);
 
+    ArrayList<MovieDetail> getAllMoviesBy(Integer currentPage);
 }

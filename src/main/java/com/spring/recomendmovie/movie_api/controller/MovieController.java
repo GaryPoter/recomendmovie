@@ -4,6 +4,7 @@ import com.spring.recomendmovie.movie_api.pojo.Movie;
 import com.spring.recomendmovie.movie_api.pojo.MovieDetail;
 import com.spring.recomendmovie.movie_api.pojo.MovieType;
 import com.spring.recomendmovie.movie_api.service.MovieService;
+import com.spring.recomendmovie.utils.PageBean;
 import com.spring.recomendmovie.utils.message.Result;
 import com.sun.deploy.net.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,10 +40,18 @@ public class MovieController {
 
     @RequestMapping("/getAllMovies")
     public ModelAndView getAllMovies(Model model){
+        return getAllMoviesBy(1,model);
+    }
+
+    @RequestMapping(value = "/getAllMovies/{current_page}", method=RequestMethod.GET)
+    public ModelAndView getAllMoviesBy(@PathVariable("current_page") Integer currentPage,Model model){
+        ArrayList<MovieDetail> movieDetails1 = movieService.getAllMovies();
+        ArrayList<MovieDetail> movieDetails = movieService.getAllMoviesBy(currentPage);
         ModelAndView modelAndView = new ModelAndView("movies/movietable");
-        ArrayList<MovieDetail> movieDetails = movieService.getAllMovies();
-        int lenth = movieDetails.size();
+        PageBean pageBean = new PageBean(currentPage,10,movieDetails,movieDetails1.size());
+        int lenth = movieDetails1.size();
         modelAndView.addObject("count",lenth);
+        modelAndView.addObject("pageBean",pageBean);
         modelAndView.addObject("movies",movieDetails);
         return modelAndView;
     }
@@ -78,6 +87,17 @@ public class MovieController {
         }
         return result;
     }
+
+//    @RequestMapping(value = "/getAllMovies/{currentPage}", method=RequestMethod.GET)
+//    public ModelAndView getAllMoviesBy(Model model,@PathVariable("currentPage") Integer currentPage){
+//        ModelAndView modelAndView = new ModelAndView("movies/movietable");
+//        ArrayList<MovieDetail> movieDetails = movieService.getAllMovies();
+//        int lenth = movieDetails.size();
+//        modelAndView.addObject("count",lenth);
+//        modelAndView.addObject("currentPage",currentPage);
+//        modelAndView.addObject("movies",movieDetails);
+//        return modelAndView;
+//    }
 
 
 }

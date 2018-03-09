@@ -29,6 +29,14 @@ public class MovieServiceIml implements MovieService {
         return movieMapper.getAllMovies();
     }
 
+    @Override
+    public ArrayList<MovieDetail> getAllMoviesBy(Integer currentPage) {
+        //movieTable.clear();
+        Integer firstRec=(currentPage-1)*10;
+        Integer lastRec=currentPage*10;
+        return movieMapper.getAllMoviesBy(firstRec,lastRec);
+    }
+
 //    @Override
 //    @Transactional(readOnly = false)
 //    public int addMovie(Movie movie) {
