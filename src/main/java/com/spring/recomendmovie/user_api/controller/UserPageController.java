@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpSession;
+import javax.xml.ws.http.HTTPBinding;
 
 
 @Controller
@@ -36,5 +38,11 @@ public class UserPageController {
     @RequestMapping(value = "/register")
     public String registerPage(){
         return "register";
+    }
+
+    @RequestMapping(value = "/logOut")
+    public String logOut(HttpSession httpSession){
+        httpSession.setAttribute("user", null);
+        return "index";
     }
 }

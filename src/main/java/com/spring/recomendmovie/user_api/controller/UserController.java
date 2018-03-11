@@ -4,14 +4,15 @@ package com.spring.recomendmovie.user_api.controller;
 import com.spring.recomendmovie.user_api.pojo.User;
 import com.spring.recomendmovie.user_api.service.UserService;
 import com.spring.recomendmovie.utils.message.Result;
+import com.spring.recomendmovie.utils.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 
-
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/movie/user")
@@ -20,8 +21,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-//    @Autowired
-//    private ItemService itemService;
+    @Autowired
+    private ItemService itemService;
 
 
     /**
@@ -31,6 +32,18 @@ public class UserController {
     @RequestMapping("/getAllUser")
     public ArrayList<User> getAllUser(){
         return userService.getAll();
+    }
+
+    /**
+     * 商品分页功能(集成mybatis的分页插件pageHelper实现)
+     *
+     * @param currentPage    :当前页数
+     * @param pageSize        :每页显示的总记录数
+     * @return
+     */
+    @RequestMapping(value = "/itemsPage/{currentPage}/{pageSize}", method = RequestMethod.GET)
+    public List<User> itemsPage(@PathVariable int currentPage, @PathVariable int pageSize){
+        return itemService.findItemByPage(currentPage, pageSize);
     }
 
     /**
@@ -58,8 +71,14 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/loginAction", method = {RequestMethod.POST})
-    public Result login(String email, String password){
-        return userService.login(new User(new Long(-1),null, email, password));
+    public Result login(String email, String password, Model model, HttpSession httpSession){
+        User user = userService.login(new User(new Long(-1),null, email, password));
+        if(user == null){
+            return new Result(Result.FAIL_CODE);
+        }else {
+            httpSession.setAttribute("user", user);
+            return new Result(Result.SUCCESS_CODE);
+        }
     }
 
     /**
