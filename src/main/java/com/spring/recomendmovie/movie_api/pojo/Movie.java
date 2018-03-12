@@ -19,7 +19,7 @@ public class Movie {
 
     private String movie_resouse_url;
 
-    private Long image_id;
+    private String image_url;
 
     private String director;
 
@@ -34,11 +34,11 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(Long id, String movie_name, String movie_resouse_url, Long image_id, String director, String starring, String area, String duration, Long typeId) {
+    public Movie(Long id, String movie_name, String movie_resouse_url, String image_url, String director, String starring, String area, String duration, Long typeId) {
         this.id = id;
         this.movie_name = movie_name;
         this.movie_resouse_url = movie_resouse_url;
-        this.image_id = image_id;
+        this.image_url = image_url;
         this.director = director;
         this.starring = starring;
         this.area = area;
@@ -70,12 +70,12 @@ public class Movie {
         this.movie_resouse_url = movie_resouse_url;
     }
 
-    public Long getImage_id() {
-        return image_id;
+    public String getImage_url() {
+        return image_url;
     }
 
-    public void setImage_id(Long image_id) {
-        this.image_id = image_id;
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
     }
 
     public static String getTABLENAME() {

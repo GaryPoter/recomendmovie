@@ -94,19 +94,19 @@ public class MovieServiceIml implements MovieService {
     @Override
     @Transactional(readOnly = false)
     public boolean insertMovie(Movie movie){
-        ArrayList<MovieDetail> moviedetail = movieMapper.getMovieByName(movie.getMovie_name());
-        if(moviedetail!=null&&moviedetail.size()!=0) {
-            return false;
-        }
+//        ArrayList<MovieDetail> moviedetail = movieMapper.getMovieByName(movie.getMovie_name());
+//        if(moviedetail!=null&&moviedetail.size()!=0) {
+//            return false;
+//        }
             return movieMapper.insertMovie(movie);
     }
     @Override
     @Transactional(readOnly = false)
     public boolean updateMovie(Movie movie){
-        ArrayList<MovieDetail> moviedetail = movieMapper.getMovieByName(movie.getMovie_name());
-        if(moviedetail!=null&&moviedetail.size()!=0) {
-            return false;
-        }
+//        ArrayList<MovieDetail> moviedetail = movieMapper.getMovieByName(movie.getMovie_name());
+//        if(moviedetail!=null&&moviedetail.size()!=0) {
+//            return false;
+//        }
         return movieMapper.updateMovie(movie);
     }
 

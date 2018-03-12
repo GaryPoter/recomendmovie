@@ -58,13 +58,14 @@
             <div class="formtext">Hi，<b>admin</b>，欢迎您使用修改电影功能！</div>
 
             <ul class="forminfo" >
-                <li><label>电影封面<b>*</b></label><input type="text" class="dfinput" th:value="${movie.image_id}"  style="width:200px;" id="image_id"/></li>
+                <li><label>电影封面<b>*</b></label><input type="text" class="dfinput" th:value="${movie.image_url}"  style="width:200px;" id="image_id"/></li>
                 <li><label>电影名<b>*</b></label><input type="text" id="movie_name" class="dfinput" th:value="${movie.movie_name}"  style="width:200px;"/></li>
                 <li ><label>电影类型<b>*</b></label>
                     <div class="vocation" >
                         <select class="select1" id="typeId" >
-                            <option th:each="movieType:${movieTypes}"  th:text="${movieType.type_name}" th:value="${movieType.type_id}">
-                            </option>
+                            <option th:each="movieType:${movieTypes}"  th:text="${movieType.type_name}" th:value="${movieType.type_id}" th:if="${movie.typeId eq movieType.type_id}" selected="selected" disabled="true" onclick="false" style="display: none"></option>
+
+                            <option th:each="movieType:${movieTypes}"  th:text="${movieType.type_name}" th:value="${movieType.type_id}"></option>
                         </select>
                     </div>
                 </li>
@@ -76,6 +77,7 @@
                 <li><label>地区<b>*</b></label>
                     <div class="vocation">
                         <select class="select1" id="area" >
+                            <option disabled="true" onclick="false" th:text="${movie.area}" selected="selected" style="display: none"></option>
                             <option>中国</option>
                             <option>美国</option>
                             <option>日本</option>

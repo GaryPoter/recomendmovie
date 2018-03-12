@@ -86,7 +86,7 @@
   											</div>
   										</div>
                     </div>
-                    <a href="/movie/movies/getAllMovies">
+                    <a href="html/administrator.html">
                       <button type="button" class="am-btn am-btn-secondary am-radius">管理员</button>
                     </a>
                   </div>
@@ -125,15 +125,7 @@
               <li><a href="html/contact.html">联系我们</a></li>
             </ul>
           </div>
-        </div> <script type="text/javascript">
-                    var variables="";
-                    if(session.getAttribute("email")!=null){
-                        variables="<li class=''><a href='/movie/user/login' class='' >登录</a></li>";
-                    }else{
-                        variables="<li class=''>hello:"+session.getAttribute("email")+"</li>";
-                    }
-                    document.write(variables);
-                  </script>
+        </div>
         <!--nav end-->
       </div>
     </div>
@@ -208,15 +200,7 @@
                       <i class="am-icon-rss"></i>
                     </div>
                   </li>
-                  <script type="text/javascript">
-                      var variables="";
-                      if(session.getAttribute("email")!=null){
-                          variables="<li class=''><a href='/movie/user/login' class='' >登录</a></li>";
-                      }else{
-                          variables="<li class=''>hello:"+session.getAttribute("email")+"</li>";
-                      }
-                      document.write(variables);
-                  </script>
+
                   <li class=""><a href="/movie/user/register" class="" >注册</a></li>
               </ul>
 

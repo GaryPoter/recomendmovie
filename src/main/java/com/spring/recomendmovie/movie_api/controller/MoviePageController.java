@@ -53,5 +53,9 @@ public class MoviePageController {
     }
 
 
+    @RequestMapping("/movieDetails")
+    public String movieDetails(){
+        return "movies/movieDetail";
+    }
 
 }

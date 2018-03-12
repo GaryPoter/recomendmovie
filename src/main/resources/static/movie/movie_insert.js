@@ -40,7 +40,7 @@
 function addMovieAction() {
     var movie_name=$("#movie_name").val();
     var movie_resouse_url=$("#movie_resouse_url").val();
-    var image_id = $("#image_id").val();
+    var image_url = $("#image_url").val();
     var director=$("#director").val();
     var starring=$("#starring").val();
     var area =$("#area").val();
@@ -51,7 +51,7 @@ function addMovieAction() {
             async:false,
             type:'POST',
             dataType:'json',
-            data:{movie_name:movie_name,movie_resouse_url:movie_resouse_url,image_id:image_id,director:director,starring:starring,area:area,duration:duration,typeId:typeId},
+            data:{movie_name:movie_name,movie_resouse_url:movie_resouse_url,image_url:image_url,director:director,starring:starring,area:area,duration:duration,typeId:typeId},
             url:'/movie/movies/insert',
             error:function(XMLHttpRequest, textStatus, errorThrown) {
                 console.log(XMLHttpRequest);

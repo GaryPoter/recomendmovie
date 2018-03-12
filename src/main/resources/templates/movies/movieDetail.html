@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <title>SpringIn Movies 还记得许多年前的春天吗？</title>
+    <link rel="stylesheet" th:href="@{/assets/css/amazeui.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/common.min.css}" />
+  <link rel="stylesheet" th:href="@{/assets/css/news.min.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/index.min.css}" />
+</head>
+<body>
+  <div class="layout">
+    <!--===========layout-header================-->
+    <div class="layout-header am-hide-sm-only">
+      <!--topbar start-->
+      <div class="topbar">
+        <div class="container">
+          <div class="am-g">
+            <div class="am-u-md-3">
+              <div class="topbar-left">
+                <i class="am-icon-globe"></i>
+                <div class="am-dropdown" data-am-dropdown="">
+                  <button class="am-btn am-btn-primary am-dropdown-toggle" data-am-dropdown-toggle="">Language <span class="am-icon-caret-down"></span></button>
+                  <ul class="am-dropdown-content">
+                    <li><a href="#">English</a></li>
+                    <li class="am-divider"></li>
+                    <li><a href="#">Chinese</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="am-u-md-9">
+              <div class="topbar-right am-text-right am-fr">
+                Follow us
+                <i class="am-icon-facebook"></i>
+                <i class="am-icon-twitter"></i>
+                <i class="am-icon-google-plus"></i>
+                <i class="am-icon-pinterest"></i>
+                <i class="am-icon-instagram"></i>
+                <i class="am-icon-linkedin"></i>
+                <i class="am-icon-youtube-play"></i>
+                <i class="am-icon-rss"></i>
+                  <a href="/movie/user/login">登录</a>
+                  <a href="/movie/user/register">注册</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--&lt;!&ndash;topbar end&ndash;&gt;-->
+
+      <div class="header-box" data-am-sticky="">
+        <!--header start-->
+          <div class="container">
+            <div class="header">
+              <div class="am-g">
+                <div class="am-u-lg-2 am-u-sm-12">
+                  <div class="logo">
+                      <a href=""><img th:src="@{/assets/images/logo2_02.png}" alt="" /></a>
+                  </div>
+                </div>
+                <div class="am-u-md-10">
+                  <div class="header-right am-fr">
+                    <div class="header-contact">
+                      <div class="header_contacts--item">
+  											<div class="contact_mini">
+  												<i style="color:#7c6aa6" class="contact-icon am-icon-phone"></i>
+                                                <strong>0 (123) 456-7890</strong>
+                                                <span>周一~周五, 8:00 - 20:00</span>
+                                            </div>
+                      </div>
+                        <div class="header_contacts--item">
+                            <div class="contact_mini">
+                                <i style="color:#7c6aa6" class="contact-icon am-icon-envelope-o"></i>
+                                <strong>springIn@126.com</strong>
+                                <span>随时欢迎您的来信！</span>
+                            </div>
+                        </div>
+                        <div class="header_contacts--item">
+                            <div class="contact_mini">
+                                <i style="color:#7c6aa6" class="contact-icon am-icon-map-marker"></i>
+                                <strong>三江院,</strong>
+                                <span>苏州市工业园区林泉街</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="html/contact.html" class="contact-btn">
+                      <button type="button" class="am-btn am-btn-secondary am-radius">管理员</button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!--&lt;!&ndash;header end&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;nav start&ndash;&gt;-->
+          <div class="nav-contain">
+              <div class="nav-inner">
+                  <ul class="am-nav am-nav-pills am-nav-justify">
+                      <li class=""><a href="/movie/home">首页</a></li>
+                      <li>
+                          <a href="#">电影分类</a>
+                          <!-- sub-menu start-->
+                          <ul class="sub-menu">
+                              <li class="menu-item"><a href="html/product1.html">按内容</a></li>
+                          </ul>
+                          <!-- sub-menu end-->
+                      </li>
+                      <li>
+                          <a href="html/news.html">客户端下载</a>
+                          <!-- sub-menu start-->
+                          <ul class="sub-menu">
+                              <li class="menu-item"><a href="html/news-content.html">Windows版</a></li>
+                              <li class="menu-item"><a href="html/404-dark.html">IOS版</a></li>
+                              <li class="menu-item"><a href="html/404-light.html">ANDROID版</a></li>
+                          </ul>
+                          <!-- sub-menu end-->
+                      </li>
+                      <li><a href="html/contact.html">联系我们</a></li>
+                  </ul>
+              </div>
+          </div>
+        <!--nav end-->
+      </div>
+
+    </div>
+
+
+
+
+    <!--mobile header start-->
+    <div class="m-header">
+      <div class="am-g am-show-sm-only">
+        <div class="am-u-sm-2">
+          <div class="menu-bars">
+            <a href="#doc-oc-demo1" data-am-offcanvas="{effect: 'push'}"><i class="am-menu-toggle-icon am-icon-bars"></i></a>
+            <!-- 侧边栏内容 -->
+            <nav data-am-widget="menu" class="am-menu  am-menu-offcanvas1" data-am-menu-offcanvas="" >
+              <a href="javascript: void(0)" class="am-menu-toggle"></a>
+
+              <div class="am-offcanvas" >
+                <div class="am-offcanvas-bar">
+                  <ul class="am-menu-nav am-avg-sm-1">
+                    <li><a href="../index.html" class="" >首页</a></li>
+                    <li class="am-parent">
+                      <a href="#" class="" >产品中心</a>
+                      <ul class="am-menu-sub am-collapse ">
+                        <li class="">
+                          <a href="./product1.html" class="" >产品展示1</a>
+                        </li>
+                        <li class="">
+                          <a href="./product2.html" class="" >产品展示2</a>
+                        </li>
+                        <li class="">
+                          <a href="./product3.html" class="" >产品展示3</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class=""><a href="./example.html" class="" >客户案例</a></li>
+                    <li class=""><a href="./solution.html" class="" >解决方案</a></li>
+                    <li class="am-parent">
+                      <a href="./news.html" class="" >新闻中心</a>
+                      <ul class="am-menu-sub am-collapse  ">
+                        <li class="">
+                          <a href="./news-content.html" class="" >公司动态</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class=""><a href="./about.html" class="" >关于我们</a></li>
+                    <li class="am-parent">
+                      <a href="./news.html" class="nav-icon nav-icon-globe" >Language</a>
+                      <ul class="am-menu-sub am-collapse  ">
+                        <li>
+                          <a href="#" >English</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="nav-share-contain">
+                      <div class="nav-share-links">
+                        <i class="am-icon-facebook"></i>
+                        <i class="am-icon-twitter"></i>
+                        <i class="am-icon-google-plus"></i>
+                        <i class="am-icon-pinterest"></i>
+                        <i class="am-icon-instagram"></i>
+                        <i class="am-icon-linkedin"></i>
+                        <i class="am-icon-youtube-play"></i>
+                        <i class="am-icon-rss"></i>
+                      </div>
+                    </li>
+
+                  </ul>
+
+                </div>
+              </div>
+            </nav>
+
+          </div>
+        </div>
+        <div class="am-u-sm-5 am-u-end">
+          <div class="m-logo">
+              <a href=""><img th:src="@{/assets/images/logo.png}" alt=""></img></a>
+          </div>
+        </div>
+      </div>
+      <!--mobile header end-->
+    </div>
+
+
+
+
+
+    <!--===========layout-container================-->
+    <div class="layout-container">
+        <div class="index-page">
+        <div data-am-widget="tabs" class="am-tabs am-tabs-default">
+            <div class="am-tabs-bd">
+
+                <div data-tab-panel-0="" class="am-tab-panel am-active">
+                    <div class="index-banner">
+                        <div class="index-mask">
+                            <div class="container">
+                                <div class="am-g">
+                                    <div class="am-u-md-10 am-u-sm-centered">
+                                        <h1 class="slide_simple--title">唐人街探案 2</h1>
+                                        <p class="slide_simple--text am-text-left">
+                                            唐仁为巨额奖金欺骗秦风到纽约参加世界名侦探大赛。唐人街第一神探组合再次披挂，抽丝剥茧，冒着生命危险闹翻宇宙中心-纽约&nbsp;&nbsp;&nbsp;&nbsp;“唐人街第一神探”的招牌岌岌可危？
+                                        </p>
+                                        <div class="slide_simple--buttons">
+                                            <button type="button" class="am-btn am-btn-danger">点击观看</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+
+      <div class="breadcrumb-box">
+        <div class="am-container">
+          <ol class="am-breadcrumb">
+            <li><a href="../index.html">首页</a></li>
+            <li class="am-active">电影详情</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="section news-section">
+      <div class="container">
+        <!--news-section left start-->
+        <div class="am-u-md-9">
+          <div class="article">
+            <!--<header class="article&#45;&#45;header">-->
+              <h4>唐仁为巨额奖金欺骗秦风到纽约参加世界名侦探大赛。唐人街第一神探组合再次披挂，抽丝剥茧，冒着生命危险闹翻宇宙中心-纽约&nbsp;&nbsp;&nbsp;&nbsp;“唐人街第一神探”的招牌岌岌可危？</h4>
+              <ul class="article--meta">
+                <li class="article--meta_item"><i>导演：</i>陈思成</li>
+                <li class="article--meta_item"><i>主演：</i>王宝强、刘昊然</li>
+                <li class="article--meta_item"><i >地区：</i>中国</li>
+              </ul>
+              <ul class="article--meta">
+                  <li class="article--meta_item"><i>时长：</i>180分钟</li>
+                  <li class="article--meta_item"><i>电影类型：</i>喜剧</li>
+                  <li class="article--meta_item"><i>上映日期：</i>2018/2/5</li>
+                  <li class="article--meta_item"><i >评分：</i>9.4</li>
+              </ul>
+            <!--</header>-->
+
+          </div>
+
+
+
+
+
+
+          <div class="comments">
+            <div class="comments">
+							<h2 class="comments--title">评论 (2)</h2>
+							<ul class="comments_list">
+								<li class="comment">
+									<header class="comment--header">
+										<figure class="comment--userpic"><img th:src="@{/assets/images/news/av01.jpg}" alt=""></img></figure>
+										<strong class="comment--username"><a href="#">Brad Bukovsky</a></strong>
+										<time datetime="2001-05-15T19:00" class="comment--date">30th of January, 2016</time>
+									</header>
+									<div class="comment--content">
+										<p>
+                                           陈思成真帅啊啊啊啊！！！！
+										</p>
+									</div>
+								</li>
+							</ul>
+							<div class="comment_form">
+								<h2 class="comment_form--title">发表评论</h2>
+
+
+
+
+                <form class="am-form am-form-horizontal">
+                  <div class="am-form-group">
+
+                    <div class="am-g">
+                      <textarea name="comment" cols="30" rows="10" placeholder="Type in here..."></textarea>
+                    </div>
+                    <div class="comment-form-footer">
+                      <button type="button" class="am-btn am-btn-secondary">确认提交</button>
+                    </div>
+                  </div>
+                </form>
+
+
+
+					</div>
+				</div>
+          </div>
+        </div>
+
+
+
+
+
+        <!--news-section left end-->
+
+        <!--news-section right start-->
+        <div class="am-u-md-3">
+          <div class="blog_sidebar">
+            <div class="widget">
+              <h2 class="widget--title"><i class="am-icon-file-text-o"></i>猜你喜欢</h2>
+              <ul>
+								<li><a href="#">至暗时刻</a></li>
+								<li><a href="#">爱乐之城</a></li>
+								<li><a href="#">诗歌天使</a></li>
+              </ul>
+            </div>
+            <div class="widget">
+              <h2 class="widget--title"><i class="am-icon-comments-o"></i>最新上线</h2>
+              <ul>
+								<li><a href="#">鼠胆熊心</a></li>
+								<li><a href="#">造梦大师2</a></li>
+								<li><a href="#">再见18班</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!--news-section right end-->
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="section" style="margin-top:0px;background-image: url('../assets/images/pattern-light.png');">
+    <div class="container">
+      <!--index-container start-->
+      <div class="index-container">
+        <div class="am-g">
+          <div class="am-u-md-4">
+            <div class="contact_card">
+                <i style="color:#59bcdb" class="contact_card--icon am-icon-phone"></i>
+                <strong class="contact_card--title">Contact Us</strong>
+                <p class="contact_card--text">Feel free to call us on <br/> <strong>0 (855) 233-5385</strong> <br/> Monday - Friday, 8am - 7pm</p>
+              <button type="button" class="am-btn am-btn-secondary">Order a Call Back</button>
+            </div>
+          </div>
+          <div class="am-u-md-4">
+            <div class="contact_card">
+                <i style="color:#59bcdb" class="contact_card--icon am-icon-envelope-o"></i>
+                <strong class="contact_card--title">Our Email</strong>
+                <p class="contact_card--text">Drop us a line anytime at <br/> <strong><a href="mailto:info@financed.com">info@financed.com</a>,</strong> <br/> and we’ll get back soon.</p>
+                <button type="button" class="am-btn am-btn-secondary">Start Writing</button>
+			</div>
+          </div>
+        </div>
+      </div>
+      <!--index-container end-->
+    </div>
+  </div>
+
+  <!--===========layout-container================-->
+  <div class="layout-footer">
+    <div class="footer">
+      <div style="background-color:#383d61" class="footer--bg"></div>
+      <div class="footer--inner">
+        <div class="container">
+          <div class="footer_main">
+            <div class="am-g">
+              <div class="am-u-md-3 ">
+                <div class="footer_main--column">
+                  <strong class="footer_main--column_title">关于我们</strong>
+                  <div class="footer_about">
+                      <p class="footer_about--text">
+                        云适配(AllMobilize Inc.) 是全球领先的HTML5企业移动化解决方案供应商，由前微软美国总部IE浏览器核心研发团队成员及移动互联网行业专家在美国西雅图创立.
+                      </p>
+                      <p class="footer_about--text">
+                        云适配跨屏云也成功应用于超过30万家企业网站，包括微软、联想等世界500强企业
+                      </p>
+                    </div>
+                </div>
+              </div>
+
+              <div class="am-u-md-3 ">
+                <div class="footer_main--column">
+                  <strong class="footer_main--column_title">产品中心</strong>
+                  <ul class="footer_navigation">
+                    <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">Enterplorer 企业浏览器</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="am-u-md-3 ">
+                <div class="footer_main--column">
+                  <strong class="footer_main--column_title">技术支持</strong>
+                  <ul class="footer_navigation">
+                    <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">企业移动信息化白皮书</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="am-u-md-3 ">
+                <div class="footer_main--column">
+                  <strong class="footer_main--column_title">联系详情</strong>
+                  <ul class="footer_contact_info">
+                    <li class="footer_contact_info--item"><i class="am-icon-phone"></i><span>服务专线：400 069 0309</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script th:src="@{/assets/js/jquery-2.1.0.js}" charset="utf-8"></script>
+  <script th:src="@{/assets/js/amazeui.js}" charset="utf-8"></script>
+  <script th:src="@{/assets/js/common.js}" charset="utf-8"></script>
+</body>
+
+</html>
