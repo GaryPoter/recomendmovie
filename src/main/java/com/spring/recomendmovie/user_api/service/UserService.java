@@ -97,7 +97,7 @@ public interface UserService {
 
     ArrayList<User> getAll();
 
-    @Transactional(readOnly = false)
+    @Transactional(readOnly = false)    //可读写
     int addUser(User user);
 
     @Transactional(readOnly = false)

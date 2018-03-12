@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Select;
 
 
 
-@Mapper
+@Mapper // 为了让 UserMapper 能够被别的类进行引用
 public interface UserMapper extends ObjMapper<User> {
 
 //    @SelectProvider(type = DynaSqlProvider.class, method = "selectWithParam")

@@ -1,9 +1,9 @@
-function deleteAction(movieId) {
+function deleteAction(comment_id) {
     //  alert("dddd");
     // alert(movieId);
     // var r=confirm("确定要删除吗？");
     if(window.confirm("确定删除？")){
-        $(window).attr('location','/movie/movies/delete/'+movieId);
+        $(window).attr('location','/movie/movies/delete/'+ comment_id);
     }else{
         $(window).attr('location','/movie/movies/getAllMovies');
     }

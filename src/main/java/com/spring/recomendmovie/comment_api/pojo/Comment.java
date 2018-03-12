@@ -1,5 +1,6 @@
 package com.spring.recomendmovie.comment_api.pojo;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class Comment {
@@ -19,23 +20,26 @@ public class Comment {
 
     public static final String CLICKCOUNT = "click_count";
 
+    @NotNull
     private Long id;
 
+    @NotNull
     private Long user_id;
 
+    @NotNull
     private Long movie_id;
 
     private String comment;
 
+    @NotNull
     private Date comment_time;
 
+    @NotNull
     private Double score;
 
     private Integer click_count;
 
-    public Long getUser_id() {
-        return user_id;
-    }
+    public Long getUser_id() { return user_id; }
 
     public void setUser_id(Long user_id) {
         this.user_id = user_id;
@@ -99,6 +103,7 @@ public class Comment {
         this.click_count = click_count;
     }
 
+    //jackson对象的转换需要默认构造函数
     public Comment() {
     }
 }
