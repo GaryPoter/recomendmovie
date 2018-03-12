@@ -4,6 +4,7 @@ package com.spring.recomendmovie.user_api.controller;
 import com.spring.recomendmovie.user_api.pojo.User;
 import com.spring.recomendmovie.user_api.service.UserService;
 import com.spring.recomendmovie.utils.message.Result;
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,6 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+=======
+import com.spring.recomendmovie.utils.service.ItemService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
+>>>>>>> origin/my
 
 @RestController
 @RequestMapping("/movie/user")
@@ -21,6 +33,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+<<<<<<< HEAD
 //    @Autowired
 //    private ItemService itemService;
 
@@ -31,6 +44,12 @@ public class UserController {
     private static Result SUCCESS = new Result(Result.SUCCESS_CODE);
 
     private static Result FAIL = new Result(Result.FAIL_CODE);
+=======
+    @Autowired
+    private ItemService itemService;
+
+
+>>>>>>> origin/my
     /**
      *
      * @return 获得所有的用户
@@ -41,6 +60,21 @@ public class UserController {
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * 商品分页功能(集成mybatis的分页插件pageHelper实现)
+     *
+     * @param currentPage    :当前页数
+     * @param pageSize        :每页显示的总记录数
+     * @return
+     */
+    @RequestMapping(value = "/itemsPage/{currentPage}/{pageSize}", method = RequestMethod.GET)
+    public List<User> itemsPage(@PathVariable int currentPage, @PathVariable int pageSize){
+        return itemService.findItemByPage(currentPage, pageSize);
+    }
+
+    /**
+>>>>>>> origin/my
      *
      * @param users jackson 数据
      * @return
@@ -65,12 +99,23 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/loginAction", method = {RequestMethod.POST})
+<<<<<<< HEAD
     public Result login(String email, String password){
         if((userService.login(new User(new Long(-1),null, email, password)).equals(SUCCESS))){
             session = request.getSession();
             session.setAttribute("email",email);
         }
         return userService.login(new User(new Long(-1),null, email, password));
+=======
+    public Result login(String email, String password, Model model, HttpSession httpSession){
+        User user = userService.login(new User(new Long(-1),null, email, password));
+        if(user == null){
+            return new Result(Result.FAIL_CODE);
+        }else {
+            httpSession.setAttribute("user", user);
+            return new Result(Result.SUCCESS_CODE);
+        }
+>>>>>>> origin/my
     }
 
     /**

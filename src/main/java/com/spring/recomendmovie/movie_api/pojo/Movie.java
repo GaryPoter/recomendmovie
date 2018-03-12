@@ -8,15 +8,24 @@ public class Movie {
 
     public static final String MOVIENAME = "movie_name";
 
+<<<<<<< HEAD
     public static final String MOVIERESOUCEURL = "movie_resouse_url";
 
     public static final String IMAGEID = "image_id";
 
+=======
+    public static final String MOVIERESOUCEURL = "movie_resource_url";
+
+    public static final String IMAGEID = "image_id";
+
+    public static final String CATEGORYID = "category_id";
+>>>>>>> origin/my
 
     private Long id;
 
     private String movie_name;
 
+<<<<<<< HEAD
     private String movie_resouse_url;
 
     private String image_url;
@@ -30,10 +39,18 @@ public class Movie {
     private String duration;
 
     private Long typeId;
+=======
+    private String movie_resource_url;
+
+    private Long image_id;
+
+    private Long category_id;
+>>>>>>> origin/my
 
     public Movie() {
     }
 
+<<<<<<< HEAD
     public Movie(Long id, String movie_name, String movie_resouse_url, String image_url, String director, String starring, String area, String duration, Long typeId) {
         this.id = id;
         this.movie_name = movie_name;
@@ -44,6 +61,14 @@ public class Movie {
         this.area = area;
         this.duration = duration;
         this.typeId = typeId;
+=======
+    public Movie(Long id, String movie_name, String movie_resource_url, Long image_id, Long category_id) {
+        this.id = id;
+        this.movie_name = movie_name;
+        this.movie_resource_url = movie_resource_url;
+        this.image_id = image_id;
+        this.category_id = category_id;
+>>>>>>> origin/my
     }
 
     public Long getId() {
@@ -62,6 +87,7 @@ public class Movie {
         this.movie_name = movie_name;
     }
 
+<<<<<<< HEAD
     public String getMovie_resouse_url() {
         return movie_resouse_url;
     }
@@ -120,5 +146,29 @@ public class Movie {
 
     public void setTypeId(Long typeId) {
         this.typeId = typeId;
+=======
+    public String getMovie_resource_url() {
+        return movie_resource_url;
+    }
+
+    public void setMovie_resource_url(String movie_resource_url) {
+        this.movie_resource_url = movie_resource_url;
+    }
+
+    public Long getImage_id() {
+        return image_id;
+    }
+
+    public void setImage_id(Long image_id) {
+        this.image_id = image_id;
+    }
+
+    public Long getCategory_id() {
+        return category_id;
+    }
+
+    public void setCategory_id(Long category_id) {
+        this.category_id = category_id;
+>>>>>>> origin/my
     }
 }

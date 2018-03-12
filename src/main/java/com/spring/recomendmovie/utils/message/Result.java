@@ -6,6 +6,7 @@ public class Result {
 
     public static int FAIL_CODE = 1;
 
+<<<<<<< HEAD
     private Object item;
 
     public Object getItem() {
@@ -16,6 +17,8 @@ public class Result {
         this.item = item;
     }
 
+=======
+>>>>>>> origin/my
     public Result() {
     }
 

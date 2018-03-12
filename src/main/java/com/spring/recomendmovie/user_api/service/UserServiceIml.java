@@ -16,6 +16,7 @@ import java.util.ArrayList;
 @Service
 @Transactional(readOnly = true)
 public class UserServiceIml implements UserService{
+<<<<<<< HEAD
 //    ArrayList<User> getAll(Table table);
 //
 //    ArrayList<User> getObjByNotDefineName(Table table);
@@ -227,5 +228,49 @@ public class UserServiceIml implements UserService{
         }else {
             return FAIL;
         }
+=======
+    @Autowired
+    private UserMapper userMapper;
+
+    @Override
+    public User getUserById(Long id) {
+        return null;
+    }
+
+    @Override
+    public User getUser(User user) {
+        return null;
+    }
+
+    @Override
+    public ArrayList<User> getAll() {
+        return null;
+    }
+
+    @Override
+    public int addUser(User user) {
+        return 0;
+    }
+
+    @Override
+    public int addUsers(ArrayList<User> users) {
+        return 0;
+    }
+
+    @Override
+    public User login(User user) {
+//        User result = userMapper.login(user.getEmail(), user.getPassword());
+        return userMapper.login(user.getEmail(), user.getPassword());
+    }
+
+    @Override
+    public Result register(User user) {
+        return null;
+    }
+
+    @Override
+    public Result deleteUser(User user) {
+        return null;
+>>>>>>> origin/my
     }
 }

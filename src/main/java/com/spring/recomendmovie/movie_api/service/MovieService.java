@@ -2,14 +2,18 @@ package com.spring.recomendmovie.movie_api.service;
 
 
 import com.spring.recomendmovie.movie_api.pojo.Movie;
+<<<<<<< HEAD
 import com.spring.recomendmovie.movie_api.pojo.MovieDetail;
 import com.spring.recomendmovie.movie_api.pojo.MovieType;
+=======
+>>>>>>> origin/my
 
 import java.util.ArrayList;
 import java.util.List;
 
 public interface MovieService {
     //获取所有的电影列表
+<<<<<<< HEAD
     ArrayList<MovieDetail> getAllMovies();
     //删除电影
     boolean deleteMovie(int id);
@@ -41,4 +45,19 @@ public interface MovieService {
     Movie getMovieById(Long id);
 
     ArrayList<MovieDetail> getAllMoviesBy(Integer currentPage);
+=======
+    ArrayList<Movie> getAll();
+
+    //添加电影
+    int addMovie(Movie movie);
+
+    //删除电影
+    int deleteMovie(Movie movie);
+
+    //修改电影
+    int alterMovie(Movie movie);
+
+    //删除勾选的电影 p操作
+    int deleteMovies(List<Movie> movies);
+>>>>>>> origin/my
 }

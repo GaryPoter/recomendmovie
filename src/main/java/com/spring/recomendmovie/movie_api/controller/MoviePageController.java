@@ -1,5 +1,6 @@
 package com.spring.recomendmovie.movie_api.controller;
 
+<<<<<<< HEAD
 import com.spring.recomendmovie.movie_api.pojo.Movie;
 import com.spring.recomendmovie.movie_api.pojo.MovieType;
 import com.spring.recomendmovie.movie_api.service.MovieService;
@@ -12,10 +13,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+=======
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+>>>>>>> origin/my
 
 @Controller
 @RequestMapping("/movie/movies")
 public class MoviePageController {
+<<<<<<< HEAD
     @Autowired
     private MovieService movieService;
 
@@ -58,4 +64,6 @@ public class MoviePageController {
         return "movies/movieDetail";
     }
 
+=======
+>>>>>>> origin/my
 }

@@ -24,6 +24,10 @@ $('#loginBtn').on('click', function () {
 					alert("登录成功!");
                     // window.location.href = "http://www.baidu.com";
                     // $(location).prop('href', 'http://www.jb51.net');
+<<<<<<< HEAD
+=======
+					$.cookie("email", email, { expires: 7 })
+>>>>>>> origin/my
                     $(window).attr('location','/movie/home');
                     console.log("重定向");
                 }else {
@@ -34,4 +38,14 @@ $('#loginBtn').on('click', function () {
 	}else{
 		alert("输入的邮箱或者密码格式错误");
 	}
+<<<<<<< HEAD
+=======
+});
+
+$(function () {
+	var email = $.cookie("email")
+	if(email != null){
+		$("input#email").val(email)
+	}
+>>>>>>> origin/my
 });

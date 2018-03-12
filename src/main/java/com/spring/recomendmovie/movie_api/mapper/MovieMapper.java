@@ -2,6 +2,7 @@ package com.spring.recomendmovie.movie_api.mapper;
 
 
 import com.spring.recomendmovie.movie_api.pojo.Movie;
+<<<<<<< HEAD
 import com.spring.recomendmovie.movie_api.pojo.MovieDetail;
 import com.spring.recomendmovie.movie_api.pojo.MovieType;
 import com.spring.recomendmovie.utils.mapper.ObjMapper;
@@ -41,4 +42,11 @@ public interface MovieMapper extends ObjMapper<Movie> {
 
 //    @Select("select * from image")
 //    ArrayList<>
+=======
+import com.spring.recomendmovie.utils.mapper.ObjMapper;
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface MovieMapper extends ObjMapper<Movie> {
+>>>>>>> origin/my
 }

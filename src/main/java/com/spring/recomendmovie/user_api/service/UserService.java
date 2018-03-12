@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 
 public interface UserService {
+<<<<<<< HEAD
 //    @Autowired
 //    private UserMapper userMapper;
 //
@@ -90,6 +91,8 @@ public interface UserService {
 //            return FAIL;
 //        }
 //    }
+=======
+>>>>>>> origin/my
 
     User getUserById(Long id);
 
@@ -97,13 +100,21 @@ public interface UserService {
 
     ArrayList<User> getAll();
 
+<<<<<<< HEAD
     @Transactional(readOnly = false)    //可读写
+=======
+    @Transactional(readOnly = false)
+>>>>>>> origin/my
     int addUser(User user);
 
     @Transactional(readOnly = false)
     int addUsers(ArrayList<User> users);
 
+<<<<<<< HEAD
     Result login(User user);
+=======
+    User login(User user);
+>>>>>>> origin/my
 
     @Transactional(readOnly = false)
     Result register(User user);
