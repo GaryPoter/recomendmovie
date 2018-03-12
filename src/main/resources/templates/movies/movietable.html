@@ -117,6 +117,7 @@ $(document).ready(function(){
     	<div class="message">共<i class="blue" th:text="${count}"></i>条记录，当前显示第&nbsp;<i class="blue" th:text="${pageBean.getCurrentPage()}">&nbsp;</i>页</div>
         <ul class="paginList">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <li class="paginItem"><a href="javascript:;"><span class="pagepre"></span></a></li>
         <li class="paginItem"><a href="javascript:;">1</a></li>
         <li class="paginItem current"><a href="javascript:;">2</a></li>
@@ -127,6 +128,19 @@ $(document).ready(function(){
         <li class="paginItem"><a href="javascript:;">10</a></li>
         <li class="paginItem"><a href="javascript:;"><span class=""></span></a></li>
 =======
+=======
+<!--<<<<<<< HEAD-->
+        <!--<li class="paginItem"><a href="javascript:;"><span class="pagepre"></span></a></li>-->
+        <!--<li class="paginItem"><a href="javascript:;">1</a></li>-->
+        <!--<li class="paginItem current"><a href="javascript:;">2</a></li>-->
+        <!--<li class="paginItem"><a href="javascript:;">3</a></li>-->
+        <!--<li class="paginItem"><a href="javascript:;">4</a></li>-->
+        <!--<li class="paginItem"><a href="javascript:;">5</a></li>-->
+        <!--<li class="paginItem more"><a href="javascript:;">...</a></li>-->
+        <!--<li class="paginItem"><a href="javascript:;">10</a></li>-->
+        <!--<li class="paginItem"><a href="javascript:;"><span class=""></span></a></li>-->
+<!--=======-->
+>>>>>>> 5433d29737e5397230f9fa0566e937dae61b70b1
             <li class="paginItem" th:if="${pageBean.getCurrentPage() - 1 gt 0}"><a th:href="${'/movie/movies/getAllMovies/'+ (pageBean.getCurrentPage() - 1)}"><span class="pagepre"></span></a></li>
             <li class="paginItem" ><a th:href="${'/movie/movies/getAllMovies/'+pageBean.getBeginPageIndex()}">首页</a></li>
             <li class="paginItem" th:if="${pageBean.getCurrentPage() - 2 gt 0}"><a th:href="${'/movie/movies/getAllMovies/'+ (pageBean.getCurrentPage() - 2)}" th:text="${pageBean.getCurrentPage() - 2}"></a></li>
@@ -136,7 +150,11 @@ $(document).ready(function(){
             <li class="paginItem" th:if="${(pageBean.getCurrentPage() + 2) le pageBean.getEndPageIndex()}"><a th:href="${'/movie/movies/getAllMovies/'+ (pageBean.getCurrentPage() + 2)}" th:text="${pageBean.getCurrentPage() + 2}"></a></li>
             <li class="paginItem"><a th:href="${'/movie/movies/getAllMovies/'+ pageBean.getEndPageIndex()}">末页</a></li>
             <li class="paginItem" th:if="${pageBean.getCurrentPage()+1 le pageBean.getEndPageIndex()}"><a th:href="${'/movie/movies/getAllMovies/'+ (pageBean.getCurrentPage() + 1)}"><span class="pagenxt" ></span></a></li>
+<<<<<<< HEAD
 >>>>>>> 4196fc944e7b90e90680ff5735e7310293af71b8
+=======
+<!--&gt;>>>>>> 4196fc944e7b90e90680ff5735e7310293af71b8-->
+>>>>>>> 5433d29737e5397230f9fa0566e937dae61b70b1
         </ul>
     </div>
     
