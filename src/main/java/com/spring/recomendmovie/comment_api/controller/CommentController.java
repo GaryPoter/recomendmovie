@@ -1,6 +1,5 @@
 package com.spring.recomendmovie.comment_api.controller;
 
-<<<<<<< HEAD
 import com.spring.recomendmovie.comment_api.pojo.Comment;
 import com.spring.recomendmovie.comment_api.pojo.CommentDetail;
 import com.spring.recomendmovie.comment_api.service.CommentService;
@@ -13,20 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
-=======
-import com.spring.recomendmovie.comment_api.service.CommentService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
->>>>>>> origin/my
+
 
 @RestController
 @RequestMapping(value = "/movie/comment", method = RequestMethod.POST)
 public class CommentController {
     @Autowired
     private CommentService commentService;
-<<<<<<< HEAD
 
 //    @RequestMapping(value = "/getAllComments", method = RequestMethod.GET)
 //    public ArrayList<CommentDetail> getAllComments(){
@@ -42,6 +34,4 @@ public class CommentController {
 //        modelAndView.addObject("comments",commentDetails);
 //        return modelAndView;
 //    }
-=======
->>>>>>> origin/my
 }

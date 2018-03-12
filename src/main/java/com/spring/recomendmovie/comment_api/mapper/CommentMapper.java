@@ -2,7 +2,6 @@ package com.spring.recomendmovie.comment_api.mapper;
 
 
 import com.spring.recomendmovie.comment_api.pojo.Comment;
-<<<<<<< HEAD
 import com.spring.recomendmovie.comment_api.pojo.CommentDetail;
 import com.spring.recomendmovie.utils.mapper.ObjMapper;
 import org.apache.ibatis.annotations.Delete;
@@ -27,12 +26,4 @@ public interface CommentMapper extends ObjMapper<Comment> {
     @Select("select user_comment_movie.id,username,movie_name,comment,comment_time,score from movie,user,user_comment_movie where movie.id=movie_id and user.id=user_id and username=#{user_name}")
     ArrayList<CommentDetail> getCommentsByUserName(@Param("user_name") String user_name);
 
-
-=======
-import com.spring.recomendmovie.utils.mapper.ObjMapper;
-import org.apache.ibatis.annotations.Mapper;
-
-@Mapper
-public interface CommentMapper extends ObjMapper<Comment> {
->>>>>>> origin/my
 }

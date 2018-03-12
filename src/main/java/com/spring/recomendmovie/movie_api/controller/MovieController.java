@@ -1,6 +1,5 @@
 package com.spring.recomendmovie.movie_api.controller;
 
-<<<<<<< HEAD
 import com.spring.recomendmovie.movie_api.pojo.Movie;
 import com.spring.recomendmovie.movie_api.pojo.MovieDetail;
 import com.spring.recomendmovie.movie_api.pojo.MovieType;
@@ -100,13 +99,4 @@ public class MovieController {
 //        return modelAndView;
 //    }
 
-
-=======
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-@Controller
-@RequestMapping("/movie/movies")
-public class MovieController {
->>>>>>> origin/my
 }

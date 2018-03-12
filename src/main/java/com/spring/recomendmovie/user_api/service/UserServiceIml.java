@@ -16,7 +16,6 @@ import java.util.ArrayList;
 @Service
 @Transactional(readOnly = true)
 public class UserServiceIml implements UserService{
-<<<<<<< HEAD
 //    ArrayList<User> getAll(Table table);
 //
 //    ArrayList<User> getObjByNotDefineName(Table table);
@@ -177,20 +176,20 @@ public class UserServiceIml implements UserService{
         return count;
     }
 
-    @Override
-    public Result login(User user){
-        //查找数据库中是否有user并返回userTmp
-        //select * from user where name = user.getName() and paswd = user.getPaswd()
-        Table table = getTable(User.TABLENAME);
-        table.setSearch_k(new String[]{User.EMAIL, User.PASSWORD});
-        table.setSearch_v(new String[]{user.getEmail(), user.getPassword()});
-        ArrayList<User> userTmp = userMapper.getObjWithParams(table);
-        if(null != userTmp && userTmp.size() != 0){
-            return SUCCESS;
-        }else{
-            return FAIL;
-        }
-    }
+//    @Override
+//    public Result login(User user){
+//        //查找数据库中是否有user并返回userTmp
+//        //select * from user where name = user.getName() and paswd = user.getPaswd()
+//        Table table = getTable(User.TABLENAME);
+//        table.setSearch_k(new String[]{User.EMAIL, User.PASSWORD});
+//        table.setSearch_v(new String[]{user.getEmail(), user.getPassword()});
+//        ArrayList<User> userTmp = userMapper.getObjWithParams(table);
+//        if(null != userTmp && userTmp.size() != 0){
+//            return SUCCESS;
+//        }else{
+//            return FAIL;
+//        }
+//    }
 
     @Override
     @Transactional(readOnly = false)
@@ -219,42 +218,15 @@ public class UserServiceIml implements UserService{
 
     @Override
     @Transactional(readOnly = false)
-    public Result deleteUser(User user){
+    public Result deleteUser(User user) {
         Table table = new Table(User.TABLENAME);
         table.setK(new String[]{User.ID});
         table.setV(new String[]{user.getId().toString()});
-        if(0 != userMapper.deleteObjWithParams(table)){
+        if (0 != userMapper.deleteObjWithParams(table)) {
             return SUCCESS;
-        }else {
+        } else {
             return FAIL;
         }
-=======
-    @Autowired
-    private UserMapper userMapper;
-
-    @Override
-    public User getUserById(Long id) {
-        return null;
-    }
-
-    @Override
-    public User getUser(User user) {
-        return null;
-    }
-
-    @Override
-    public ArrayList<User> getAll() {
-        return null;
-    }
-
-    @Override
-    public int addUser(User user) {
-        return 0;
-    }
-
-    @Override
-    public int addUsers(ArrayList<User> users) {
-        return 0;
     }
 
     @Override
@@ -263,14 +235,4 @@ public class UserServiceIml implements UserService{
         return userMapper.login(user.getEmail(), user.getPassword());
     }
 
-    @Override
-    public Result register(User user) {
-        return null;
-    }
-
-    @Override
-    public Result deleteUser(User user) {
-        return null;
->>>>>>> origin/my
-    }
 }
