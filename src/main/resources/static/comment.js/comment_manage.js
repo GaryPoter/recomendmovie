@@ -3,9 +3,9 @@ function deleteAction(comment_id) {
     // alert(movieId);
     // var r=confirm("确定要删除吗？");
     if(window.confirm("确定删除？")){
-        $(window).attr('location','/movie/movies/delete/'+ comment_id);
+        $(window).attr('location','/movie/comment/delete/'+ comment_id);
     }else{
-        $(window).attr('location','/movie/movies/getAllMovies');
+        $(window).attr('location','/movie/comment/getAllComments');
     }
 }
 

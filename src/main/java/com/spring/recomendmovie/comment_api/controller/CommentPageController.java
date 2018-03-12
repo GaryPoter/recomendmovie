@@ -25,8 +25,11 @@ public class CommentPageController {
         int lenth = commentDetails.size();
         modelAndView.addObject("count",lenth);
         modelAndView.addObject("commentDetails",commentDetails);
+
         return modelAndView;
     }
+
+
 
     @RequestMapping(value="/delete/{comment_id}",method=RequestMethod.GET)
     public ModelAndView delete(@PathVariable("comment_id") int id, Model model){
