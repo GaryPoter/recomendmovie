@@ -40,4 +40,6 @@ public interface MovieService {
     Movie getMovieById(Long id);
 
     ArrayList<MovieDetail> getAllMoviesBy(Integer currentPage);
+
+    ArrayList<Movie> getFourMovies();
 }
