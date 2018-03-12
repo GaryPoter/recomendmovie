@@ -18,7 +18,7 @@ public interface MovieMapper extends ObjMapper<Movie> {
     @SelectProvider(type = MovieProvide.class, method = "getMovieByLikeName")
     ArrayList<Movie> getMovieByLikeName(String likeName);
 
-    @Select("select movie.id,movie_name,movie_resouse_url,image_url,director,starring,area,duration,type_name from movie,movietype where typeId=type_id")
+    @Select("select movie.id,movie_name,movie_resouse_url,image_url,director,starring,area,duration,type_name from movie,movietype where typeId=type_id order by movie.id desc")
     ArrayList<MovieDetail> getAllMovies();
 
     @Delete("delete from movie where id =#{movie_id}")
@@ -38,6 +38,10 @@ public interface MovieMapper extends ObjMapper<Movie> {
 
     @Select("select movie.id,movie_name,movie_resouse_url,image_url,director,starring,area,duration,type_name from movie,movietype where typeId=type_id order by movie.id desc limit #{firstRec},#{lastRec}")
     ArrayList<MovieDetail> getAllMoviesBy(@Param("firstRec") Integer firstRec,@Param("lastRec") Integer lastRec);
+
+
+    @Select("select * from movie order by id limit 1,4")
+    ArrayList<Movie> getFourMovies();
 
 //    @Select("select * from image")
 //    ArrayList<>

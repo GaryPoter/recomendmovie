@@ -118,4 +118,9 @@ public class MovieServiceIml implements MovieService {
 
     @Override
     public  Movie getMovieById(Long id){return movieMapper.getMovieById(id);}
+
+    @Override
+    public ArrayList<Movie> getFourMovies(){
+        return movieMapper.getFourMovies();
+    }
 }
