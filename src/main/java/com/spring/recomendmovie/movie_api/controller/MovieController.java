@@ -24,9 +24,23 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
 
-    @RequestMapping(value = "/search/{movie_name}", method = RequestMethod.GET)
-    public ArrayList<MovieDetail> searchMovie(@PathVariable("movie_name") String movieName){
-        return movieService.searchMovieByMovieName(movieName);
+    @RequestMapping(value = "/search", method = RequestMethod.POST)
+    public ModelAndView searchMovie(@RequestParam("searchContent") String movieName,Model model){
+        return searchMovieBy(1,movieName,model);
+    }
+
+    @RequestMapping(value="/search/{searchContent}/{current_page}",method = RequestMethod.GET)
+    public ModelAndView searchMovieBy(@PathVariable("current_page") Integer currentPage,@PathVariable("searchContent") String movieName,Model model){
+        ArrayList<MovieDetail> movieDetails1 = movieService.searchMovieByMovieName(movieName);
+        ArrayList<MovieDetail> movieDetails = movieService.searchMovieByMovieNamePage(movieName,currentPage);
+        ModelAndView modelAndView = new ModelAndView("movies/searchMovieTable");
+        PageBean pageBean = new PageBean(currentPage,10,movieDetails,movieDetails1.size());
+        int lenth = movieDetails1.size();
+        modelAndView.addObject("count",lenth);
+        modelAndView.addObject("pageBean",pageBean);
+        modelAndView.addObject("movies",movieDetails);
+        modelAndView.addObject("searchContent",movieName);
+        return modelAndView;
     }
 
     @RequestMapping(value="/delete/{movie_id}",method=RequestMethod.GET)

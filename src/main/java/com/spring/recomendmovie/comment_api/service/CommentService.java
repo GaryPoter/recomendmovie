@@ -39,4 +39,6 @@ public interface CommentService {
     @Transactional(readOnly = false)
 
     int deleteComments(ArrayList<Comment> comments);
+
+    ArrayList<CommentDetail> getAllCommentsBy(Integer currentPage);
 }

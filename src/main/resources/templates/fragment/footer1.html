@@ -209,8 +209,8 @@
                     <div class="am-g" >
                         <div class="am-u-md-3">
                             <div class="features_item" >
-                                <img th:src="@{/assets/images/index/f01.jpg}" alt=""/>
-                                <h3 class="features_item--title" th:text="${movies.movie_name}">tangrenjie</h3>
+                                <img th:src="@{/assets/images/index/f01.jpg}" alt="" th:id="${movies.id}"/>
+                                <h3 class="features_item--title" ><a  th:href="${'/movie/movies/movieDetails/'+movies.id}" th:text="${movies.movie_name}"></a></h3>
 
                             </div>
                         </div>

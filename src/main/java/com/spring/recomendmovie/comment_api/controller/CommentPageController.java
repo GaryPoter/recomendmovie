@@ -2,6 +2,7 @@ package com.spring.recomendmovie.comment_api.controller;
 
 import com.spring.recomendmovie.comment_api.pojo.CommentDetail;
 import com.spring.recomendmovie.comment_api.service.CommentService;
+import com.spring.recomendmovie.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,11 +21,19 @@ public class CommentPageController {
 
     @RequestMapping("/getAllComments")
     public ModelAndView getAllComments(Model model){
+        return getAllCommentsBy(1,model);
+    }
+    @RequestMapping(value = "/getAllComments/{currentPage}",method = RequestMethod.GET)
+    public ModelAndView getAllCommentsBy(@PathVariable("currentPage") Integer currentPage, Model model){
         ModelAndView modelAndView = new ModelAndView("comment/commenttable");
-        ArrayList<CommentDetail> commentDetails = commentService.getAllComments();
+        ArrayList<CommentDetail> commentDetails1 = commentService.getAllComments();
+        ArrayList<CommentDetail> commentDetails =commentService.getAllCommentsBy(currentPage);
+        PageBean pageBean = new PageBean(currentPage,10,commentDetails,commentDetails1.size());
         int lenth = commentDetails.size();
+        modelAndView.addObject("pageBean",pageBean);
         modelAndView.addObject("count",lenth);
         modelAndView.addObject("commentDetails",commentDetails);
+        modelAndView.addObject("commentDetails1",commentDetails1);
         return modelAndView;
     }
 

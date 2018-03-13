@@ -32,4 +32,8 @@ public class HomeController {
         modelAndView.addObject("movies",movies);
         return  modelAndView;
     }
+    @RequestMapping("/manager")
+    public String manager(){
+        return "main";
+    }
 }

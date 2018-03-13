@@ -33,17 +33,15 @@
             </div>
             <div class="am-u-md-9">
               <div class="topbar-right am-text-right am-fr">
-                Follow us
-                <i class="am-icon-facebook"></i>
-                <i class="am-icon-twitter"></i>
-                <i class="am-icon-google-plus"></i>
-                <i class="am-icon-pinterest"></i>
-                <i class="am-icon-instagram"></i>
-                <i class="am-icon-linkedin"></i>
-                <i class="am-icon-youtube-play"></i>
-                <i class="am-icon-rss"></i>
-                  <a href="/movie/user/login">登录</a>
-                  <a href="/movie/user/register">注册</a>
+
+                  <div th:if="${session.user == null}">
+                      <a href="/movie/user/login">登录</a>
+                      <a href="/movie/user/register">注册</a>
+                  </div>
+                  <div th:if="${session.user != null}">
+                      <a href="/movie/user/userDetailPage" th:text="${session.user.getEmail()}"></a>
+                      <a href="/movie/user/logOut">登出</a>
+                  </div>
               </div>
             </div>
           </div>
@@ -265,13 +263,13 @@
             <!--<header class="article&#45;&#45;header">-->
               <h4>唐仁为巨额奖金欺骗秦风到纽约参加世界名侦探大赛。唐人街第一神探组合再次披挂，抽丝剥茧，冒着生命危险闹翻宇宙中心-纽约&nbsp;&nbsp;&nbsp;&nbsp;“唐人街第一神探”的招牌岌岌可危？</h4>
               <ul class="article--meta">
-                <li class="article--meta_item"><i>导演：</i>陈思成</li>
-                <li class="article--meta_item"><i>主演：</i>王宝强、刘昊然</li>
-                <li class="article--meta_item"><i >地区：</i>中国</li>
+                <li class="article--meta_item" ><i>导演：</i><i th:text="${movieDetail.director}"></i></li>
+                <li class="article--meta_item" ><i>主演：</i><i th:text="${movieDetail.starring}"></i></li>
+                <li class="article--meta_item" ><i >地区：</i><i th:text="${movieDetail.area}"></i></li>
               </ul>
               <ul class="article--meta">
-                  <li class="article--meta_item"><i>时长：</i>180分钟</li>
-                  <li class="article--meta_item"><i>电影类型：</i>喜剧</li>
+                  <li class="article--meta_item"><i>时长：</i><i th:text="${movieDetail.duration}"></i></li>
+                  <li class="article--meta_item"><i></i><i th:text="${movieDetail.type_name}"></i></li>
                   <li class="article--meta_item"><i>上映日期：</i>2018/2/5</li>
                   <li class="article--meta_item"><i >评分：</i>9.4</li>
               </ul>
