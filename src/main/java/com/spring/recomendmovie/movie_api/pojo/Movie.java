@@ -13,6 +13,8 @@ public class Movie {
 
     public static final String IMAGEID = "image_id";
 
+    public static final String TYPEID1 = "typeId";
+
     private Long id;
 
     private String movie_name;

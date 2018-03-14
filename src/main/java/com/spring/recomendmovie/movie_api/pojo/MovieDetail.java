@@ -1,6 +1,7 @@
 package com.spring.recomendmovie.movie_api.pojo;
 
 public class MovieDetail {
+
     private Long id;
 
     private String movie_name;

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>电影列表</title>
     <link rel="stylesheet" th:href="@{/assets/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/css/searchbox.css}"/>
     <script type="text/javascript" th:src="@{/assets/js/jquery.js}"></script>
     <script language="javascript">
     $(function(){
@@ -58,10 +59,13 @@ $(document).ready(function(){
 	        <li class="click"><span><img th:src="@{/assets/images/movies/t03.png}"/></span>删除</li>
         </ul>
 
-        <form>
-            <input id="searchInput" name="index_none_header_sysc" placeholder="搜索" autocomplete="off" type="text"></input>
-            <input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit"></input>
+        <div class="search bar" style="float: right">
+        <form th:async="true" action="/movie/movies/search" method="post">
+            <input type="text" id="searchContent" th:name="searchContent" style="font-size: 17px"/>
+            <button type="submit" value="搜索">
+            </button>
         </form>
+    </div>
     </div>
     
     

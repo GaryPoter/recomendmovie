@@ -1,6 +1,11 @@
 package com.spring.recomendmovie.movie_api.pojo;
 
 public class MovieType {
+
+    public static final String TABLENAME = "movietype";
+    public static final String TYPEID = "type_id";
+
+
     private Long type_id;
 
     private String type_name;

@@ -151,53 +151,53 @@
     <div class="section" th:fragment="helper">
         <div class="container">
             <div class="section--header">
-                <h2 class="section--title">寻找电影</h2>
-                <p class="section--description">
-                    致力于寻找你最爱的电影
-                    <br/>获得了阿里巴巴以及bilibili的扶持，陆金所资本、天创资本等国际顶级风投机构的投资。
-                </p>
+                <h2 class="section--title">恐怖电影</h2>
+                <!--<p class="section&#45;&#45;description">-->
+                    <!--致力于寻找你最爱的电影-->
+                    <!--<br/>获得了阿里巴巴以及bilibili的扶持，陆金所资本、天创资本等国际顶级风投机构的投资。-->
+                <!--</p>-->
             </div>
 
             <!--index-container start-->
             <div class="index-container">
-                <div class="am-g">
-                    <div class="am-u-md-3">
-                        <div class="features_item">
-                            <img th:src="@{/assets/images/index/f01.jpg}" alt=""/>
-                            <h3 class="features_item--title">猜你喜欢</h3>
-                            <p class="features_item--text">
-                                通过你点击电影的频次推荐你爱的电影
-                            </p>
-                        </div>
-                    </div>
-                    <div class="am-u-md-3">
-                        <div class="features_item">
-                            <img th:src="@{/assets/images/index/f02.jpg}" alt=""/>
-                            <h3 class="features_item--title">最新院线</h3>
-                            <p class="features_item--text">
-                                国内外最新热映的电影
-                            </p>
-                        </div>
-                    </div>
-                    <div class="am-u-md-3">
-                        <div class="features_item">
-                            <img th:src="@{/assets/images/index/f03.jpg}" alt=""/>
-                            <h3 class="features_item--title">评分最高</h3>
-                            <p class="features_item--text">
-                                通过用户打分确定的高分电影
-                            </p>
-                        </div>
-                    </div>
-                    <div class="am-u-md-3">
-                        <div class="features_item">
-                            <img th:src="@{/assets/images/index/f04.jpg}" alt=""/>
-                            <h3 class="features_item--title">重温经典</h3>
-                            <p class="features_item--text">
-                                经典电影，愈久弥香
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <!--<div class="am-g">-->
+                    <!--<div class="am-u-md-3">-->
+                        <!--<div class="features_item">-->
+                            <!--<img th:src="@{/assets/images/index/f01.jpg}" alt=""/>-->
+                            <!--<h3 class="features_item&#45;&#45;title">猜你喜欢</h3>-->
+                            <!--<p class="features_item&#45;&#45;text">-->
+                                <!--通过你点击电影的频次推荐你爱的电影-->
+                            <!--</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="am-u-md-3">-->
+                        <!--<div class="features_item">-->
+                            <!--<img th:src="@{/assets/images/index/f02.jpg}" alt=""/>-->
+                            <!--<h3 class="features_item&#45;&#45;title">最新院线</h3>-->
+                            <!--<p class="features_item&#45;&#45;text">-->
+                                <!--国内外最新热映的电影-->
+                            <!--</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="am-u-md-3">-->
+                        <!--<div class="features_item">-->
+                            <!--<img th:src="@{/assets/images/index/f03.jpg}" alt=""/>-->
+                            <!--<h3 class="features_item&#45;&#45;title">评分最高</h3>-->
+                            <!--<p class="features_item&#45;&#45;text">-->
+                                <!--通过用户打分确定的高分电影-->
+                            <!--</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="am-u-md-3">-->
+                        <!--<div class="features_item">-->
+                            <!--<img th:src="@{/assets/images/index/f04.jpg}" alt=""/>-->
+                            <!--<h3 class="features_item&#45;&#45;title">重温经典</h3>-->
+                            <!--<p class="features_item&#45;&#45;text">-->
+                                <!--经典电影，愈久弥香-->
+                            <!--</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
 
 
 
@@ -209,8 +209,8 @@
                     <div class="am-g" >
                         <div class="am-u-md-3">
                             <div class="features_item" >
-                                <img th:src="@{/assets/images/index/f01.jpg}" alt=""/>
-                                <h3 class="features_item--title" th:text="${movies.movie_name}">tangrenjie</h3>
+                                <img th:src="@{/assets/images/index/f01.jpg}" alt="" th:id="${movies.id}"/>
+                                <h3 class="features_item--title" ><a  th:href="${'/movie/movies/movieDetails'+movies.id}" th:text="${movies.movie_name}"></a></h3>
 
                             </div>
                         </div>

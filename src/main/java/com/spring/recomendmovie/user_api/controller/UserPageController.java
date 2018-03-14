@@ -22,6 +22,7 @@ public class UserPageController {
     @Autowired
     private UserService userService;
 
+    @Autowired
     private MovieService movieService;
     @RequestMapping("/userManage")
     public String userManage(Model model){

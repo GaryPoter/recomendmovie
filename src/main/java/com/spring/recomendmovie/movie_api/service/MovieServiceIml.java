@@ -25,28 +25,24 @@ public class MovieServiceIml implements MovieService {
 
     @Override
     public ArrayList<MovieDetail> getAllMovies() {
-        //movieTable.clear();
 
         return movieMapper.getAllMovies();
     }
 
     @Override
     public ArrayList<MovieDetail> getAllMoviesBy(Integer currentPage) {
-        //movieTable.clear();
         Integer firstRec=(currentPage-1)*10;
         Integer lastRec=currentPage*10;
         return movieMapper.getAllMoviesBy(firstRec,lastRec);
     }
+    @Override
+    public ArrayList<MovieDetail> searchMovieByMovieNamePage(String movieName, Integer currentPage){
+        Integer firstRec=(currentPage-1)*10;
+        Integer lastRec=currentPage*10;
+        return movieMapper.searchMovieByMovieNamePage(movieName,firstRec,lastRec);
+    }
 
-//    @Override
-//    @Transactional(readOnly = false)
-//    public int addMovie(Movie movie) {
-//        movieTable.clear();
-//        setValue(movie);
-//        setWhere(movie);
-//
-//        return movieMapper.addObjWithParams(movieTable);
-//    }
+
 
     @Override
     @Transactional(readOnly = false)
@@ -55,59 +51,22 @@ public class MovieServiceIml implements MovieService {
         return movieMapper.deleteMovie(id);
     }
 
-//    @Override
-//    @Transactional(readOnly = false)
-//    public int alterMovie(Movie movie) {
-//        movieTable.clear();
-//        setValue(movie);
-//        setWhere(movie);
-//        return movieMapper.updateObjWirhParams(movieTable);
-//    }
 
-//    @Override
-//    @Transactional(readOnly = false)
-//    public int deleteMovies(List<Movie> movies) {
-//        int count = 0;
-//        for (Movie movie: movies
-//             ) {
-//            count += deleteMovie(movie);
-//        }
-//        return count;
-//    }
 
     @Override
     public ArrayList<MovieDetail> searchMovieByMovieName(String movieName) {
         return movieMapper.getMovieByName(movieName);
     }
 
-//    private void setValue(Movie movie){
-//        movieTable.setK(new String[]{Movie.MOVIENAME,
-//                Movie.MOVIERESOUCEURL, Movie.IMAGEID, Movie.CATEGORYID});
-//        movieTable.setV(new String[]{movie.getMovie_name(),
-//                movie.getMovie_resource_url(), movie.getImage_id().toString(),
-//                movie.getCategory_id().toString()});
-//    }
-//
-//    private void setWhere(Movie movie){
-//        movieTable.setSearch_k(new String[]{Movie.ID});
-//        movieTable.setSearch_v(new String[]{movie.getId().toString()});
-//    }
+
     @Override
     @Transactional(readOnly = false)
     public boolean insertMovie(Movie movie){
-//        ArrayList<MovieDetail> moviedetail = movieMapper.getMovieByName(movie.getMovie_name());
-//        if(moviedetail!=null&&moviedetail.size()!=0) {
-//            return false;
-//        }
             return movieMapper.insertMovie(movie);
     }
     @Override
     @Transactional(readOnly = false)
     public boolean updateMovie(Movie movie){
-//        ArrayList<MovieDetail> moviedetail = movieMapper.getMovieByName(movie.getMovie_name());
-//        if(moviedetail!=null&&moviedetail.size()!=0) {
-//            return false;
-//        }
         return movieMapper.updateMovie(movie);
     }
 
@@ -122,5 +81,10 @@ public class MovieServiceIml implements MovieService {
     @Override
     public ArrayList<Movie> getFourMovies(){
         return movieMapper.getFourMovies();
+    }
+
+    @Override
+    public MovieDetail getMovieDetailById(Long id){
+        return movieMapper.getMovieDetailById(id);
     }
 }

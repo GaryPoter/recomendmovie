@@ -42,8 +42,12 @@ public interface CommentService {
     @Transactional(readOnly = false)
     int deleteComments(ArrayList<Comment> comments);
 
+//<<<<<<< 添加
     //更新评论操作
 //    @Transactional(readOnly = false)
 //    int updateComment(long comment_id);
     int updateComment(Comment comment);
-    }
+//=======原来
+    ArrayList<CommentDetail> getAllCommentsBy(Integer currentPage);
+}
+//>>>>>>>

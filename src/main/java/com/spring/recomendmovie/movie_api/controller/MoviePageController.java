@@ -1,6 +1,7 @@
 package com.spring.recomendmovie.movie_api.controller;
 
 import com.spring.recomendmovie.movie_api.pojo.Movie;
+import com.spring.recomendmovie.movie_api.pojo.MovieDetail;
 import com.spring.recomendmovie.movie_api.pojo.MovieType;
 import com.spring.recomendmovie.movie_api.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,9 +54,13 @@ public class MoviePageController {
     }
 
 
-    @RequestMapping("/movieDetails")
-    public String movieDetails(){
-        return "movies/movieDetail";
+    @RequestMapping(value="/movieDetails/{id}",method = RequestMethod.GET)
+    public ModelAndView movieDetails(Model model,@PathVariable("id") Long id)
+    {
+        ModelAndView modelAndView = new ModelAndView("movies/movieDetail");
+        MovieDetail movieDetail = movieService.getMovieDetailById(id);
+        modelAndView.addObject("movieDetail",movieDetail);
+        return modelAndView;
     }
 
 }

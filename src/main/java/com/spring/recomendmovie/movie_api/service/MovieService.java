@@ -42,4 +42,8 @@ public interface MovieService {
     ArrayList<MovieDetail> getAllMoviesBy(Integer currentPage);
 
     ArrayList<Movie> getFourMovies();
+
+    MovieDetail getMovieDetailById(Long id);
+
+    ArrayList<MovieDetail> searchMovieByMovieNamePage(String movieName, Integer currentPage);
 }

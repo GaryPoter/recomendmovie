@@ -55,11 +55,6 @@ public class CommentServiceIml implements CommentService {
         return commentMapper.insertComment(comment);
     }
 
-//    @Override
-//    @Transactional(readOnly = true)
-//    public int commentOnMovie(Comment comment){
-//        return commentMapper.commentOnMovie(comment);
-//    }
 
     @Override
     public int scoreOnMovie(Comment comment) {
@@ -72,6 +67,7 @@ public class CommentServiceIml implements CommentService {
     }
 
     @Override
+//<<<<<<< HEAD
     @Transactional(readOnly = false)
 //    public int updateComment(long comment_id) {
 //        return commentMapper.updateComment(comment_id);
@@ -123,4 +119,12 @@ public class CommentServiceIml implements CommentService {
 //        });
 //
 //    }
+//=======
+    public ArrayList<CommentDetail> getAllCommentsBy(Integer currentPage){
+        Integer firstRec=(currentPage-1)*10;
+        Integer lastRec=currentPage*10;
+        return commentMapper.getAllCommentsBy(firstRec,lastRec);}
+
+
+//>>>>>>> 2b57dfcb6b503c9a69ce55e533b8e4411d051478
 }
