@@ -49,8 +49,10 @@ public class CommentServiceIml implements CommentService {
     }
 
     @Override
-    public int commentOnMovie(Comment comment) {
-        return 0;
+    @Transactional(readOnly = false)
+    public int insertComment(Comment comment) {
+
+        return commentMapper.insertComment(comment);
     }
 
 //    @Override
@@ -67,6 +69,15 @@ public class CommentServiceIml implements CommentService {
     @Override
     public int deleteComments(ArrayList<Comment> comments) {
         return 0;
+    }
+
+    @Override
+    @Transactional(readOnly = false)
+//    public int updateComment(long comment_id) {
+//        return commentMapper.updateComment(comment_id);
+//    }
+    public int updateComment(Comment comment) {
+        return commentMapper.updateComment(comment);
     }
 
 //    @Override

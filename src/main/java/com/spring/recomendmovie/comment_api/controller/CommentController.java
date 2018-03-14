@@ -4,6 +4,7 @@ import com.spring.recomendmovie.comment_api.pojo.Comment;
 import com.spring.recomendmovie.comment_api.pojo.CommentDetail;
 import com.spring.recomendmovie.comment_api.service.CommentService;
 import com.spring.recomendmovie.movie_api.pojo.MovieDetail;
+import com.spring.recomendmovie.utils.message.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,4 +35,29 @@ public class CommentController {
 //        modelAndView.addObject("comments",commentDetails);
 //        return modelAndView;
 //    }
+
+    @RequestMapping("/insert")
+    public Result insert(Comment comment){
+        Result result =  new Result();
+        if (commentService.insertComment(comment) != 0){
+
+            result.setCode(Result.SUCCESS_CODE);
+        }else{
+            result.setCode(Result.FAIL_CODE);
+        }
+        return result;
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.GET)
+    public Result update(Long comment_id){
+        Result result = new Result();
+        Comment comment = new Comment();
+        comment.setId(comment_id);
+        if (commentService.updateComment(comment) != 0){
+            result.setCode(Result.SUCCESS_CODE);
+        }else {
+            result.setCode(Result.FAIL_CODE);
+        }
+        return result;
+    }
 }

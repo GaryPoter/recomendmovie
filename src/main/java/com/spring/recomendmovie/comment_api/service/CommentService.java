@@ -24,8 +24,11 @@ public interface CommentService {
     ArrayList<CommentDetail> getCommentsByUserName(String username);
 
     //评论电影
+//    @Transactional(readOnly = false)
+//    int insertComment(CommentDetail commentDetail);
+
     @Transactional(readOnly = false)
-    int commentOnMovie(Comment comment);
+    int insertComment(Comment comment);
 
     //给电影打分
     @Transactional(readOnly = false)
@@ -37,6 +40,10 @@ public interface CommentService {
 
     //删除电影评价 p操作
     @Transactional(readOnly = false)
-
     int deleteComments(ArrayList<Comment> comments);
-}
+
+    //更新评论操作
+//    @Transactional(readOnly = false)
+//    int updateComment(long comment_id);
+    int updateComment(Comment comment);
+    }

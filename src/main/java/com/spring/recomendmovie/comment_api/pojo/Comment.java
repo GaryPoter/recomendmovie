@@ -3,6 +3,9 @@ package com.spring.recomendmovie.comment_api.pojo;
 
 import javax.validation.constraints.NotNull;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Comment {
@@ -28,12 +31,21 @@ public class Comment {
     @NotNull
     private Long user_id;
 
-    private Long movie_id;
+    public String getComment() {
+        return comment;
+    }
 
-    private String comment;
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    private Long movie_id;
 
     @NotNull
     private Date comment_time;
+
+    private String comment;
+
 
     private Double score;
 
@@ -51,14 +63,6 @@ public class Comment {
 
     public void setMovie_id(Long movie_id) {
         this.movie_id = movie_id;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
     }
 
     public Date getComment_time() {
@@ -93,16 +97,30 @@ public class Comment {
         this.id = id;
     }
 
-    public Comment(Long id, Long user_id, Long movie_id, String comment, Date comment_time, Double score, Integer click_count) {
-        this.id = id;
-        this.user_id = user_id;
-        this.movie_id = movie_id;
-        this.comment = comment;
-        this.comment_time = comment_time;
-        this.score = score;
-        this.click_count = click_count;
-    }
+
     //jackson对象的转换需要默认构造函数
     public Comment() {
+    }
+
+
+    public Comment(Long user_id, Long movie_id, Date comment_time, Double score) {
+        this.user_id = user_id;
+        this.movie_id = movie_id;
+        this.comment_time = comment_time;
+        this.score = score;
+    }
+
+    public Comment(Long user_id, Long movie_id, String comment, String comment_time, Double score) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        DateFormat dateFormat1 = DateFormat.getDateInstance();
+        this.user_id = user_id;
+        this.movie_id = movie_id;
+
+        try {
+            this.comment_time = simpleDateFormat.parse(comment_time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        this.score = score;
     }
 }
