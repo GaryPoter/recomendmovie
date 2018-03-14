@@ -45,7 +45,7 @@
             }
 
             .bar input {
-                border: 2px solid #065423;
+                border: 2px solid #9acfea;
                 border-radius: 5px;
                 background: transparent;
                 top: 0;
@@ -53,7 +53,7 @@
             }
 
             .bar button {
-                background: #065423;
+                background: #9acfea;
                 border-radius: 0 5px 5px 0;
                 width: 100px;
                 top: 0;
@@ -63,5 +63,5 @@
             .bar button:before {
                 content: "搜索";
                 font-size: 20px;
-                color: #F9F0DA;
+                color: #ffffdd;
             }

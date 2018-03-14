@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
   <title>SpringIn Movies 还记得许多年前的春天吗？</title>
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}"/>
     <link rel="stylesheet" th:href="@{/assets/css/amazeui.css}" />
     <link rel="stylesheet" th:href="@{/assets/css/common.min.css}" />
   <link rel="stylesheet" th:href="@{/assets/css/news.min.css}" />
@@ -42,8 +43,15 @@
             </div>
             <div class="am-u-md-9">
               <div class="topbar-right am-text-right am-fr">
-                  <a href="/movie/user/login">登录</a>
-                  <a href="/movie/user/register">注册</a>
+
+                  <div th:if="${session.user == null}">
+                      <a href="/movie/user/login">登录</a>
+                      <a href="/movie/user/register">注册</a>
+                  </div>
+                  <div th:if="${session.user != null}">
+                      <a href="/movie/user/userDetailPage" th:text="${session.user.getEmail()}"></a>
+                      <a href="/movie/user/logOut">登出</a>
+                  </div>
               </div>
             </div>
           </div>
@@ -209,39 +217,45 @@
       <!--mobile header end-->
     </div>
 
-    <!--修改的部分-->
+    <!--===========layout-container================-->
       <div class="section news-section">
+          <tr th:each="movie:${movies}">
           <div class="container">
               <div class="am-u-md-9" style="display: -webkit-box;">
 
                   <div class="am-u-md-6">
                       <div class="promo_detailed--cta">
-                        <img th:src="@{/assets/images/movie0.png}" style="height: 100%"></img>
+                          <img th:src="@{/assets/images/movie0.png}" style="height: 100%"></img>
                       </div>
                   </div>
 
                   <div class="am-u-md-6">
                       <ul class="promo_detailed--list" style="list-style-type:none;display:block;list-style-type:none;">
                           <li class="promo_detailed--list_item">
-                            <span style="font-weight:bold">导演：</span>陈思成
+                              <span style="font-weight:bold">导演：<i th:text="${movie.director}"></i></span>
+
                           </li>
                           <li class="promo_detailed--list_item">
-                            <span style="font-weight:bold">主演：</span>王宝强、刘昊然
+                              <span style="font-weight:bold">主演：<i th:text="${movie.starring}"></i></span>
+
                           </li>
                           <li class="promo_detailed--list_item">
-                            <span style="font-weight:bold">地区：</span>中国
+                              <span style="font-weight:bold">地区：<i th:text="${movie.area}"></i></span>
+
                           </li>
                           <li class="promo_detailed--list_item">
-                            <span style="font-weight:bold">时长：</span>180分钟
+                              <span style="font-weight:bold">时长：<i th:text="${movie.duration}"></i></span>
+
                           </li>
                           <li class="promo_detailed--list_item">
-                            <span style="font-weight:bold">电影类型：</span>喜剧
+                              <span style="font-weight:bold">电影类型：<i th:text="${movie.type_name}"></i></span>
+
                           </li>
                           <li class="promo_detailed--list_item">
-                            <span style="font-weight:bold">上映日期：</span>2018/2/5
+                              <span style="font-weight:bold">上映日期：<i>2018/2/5</i></span>
                           </li>
                           <li class="promo_detailed--list_item">
-                            <span style="font-weight:bold">评分：</span>9.5
+                              <span style="font-weight:bold">评分：<i>9.5</i></span>
                           </li>
                       </ul>
                   </div>
@@ -249,105 +263,47 @@
                   <div style="margin-top:25px; margin-bottom: 25px;width:33%">
                       <p style="color: #006400;font-weight:bold">剧情简介....</p>
                       <!--<li style="list-style: none;margin: 0px;padding-left: 25px;text-indent: -25px;">-->
-                          <p style="text-align: left;margin: 0px;padding: 0px;overflow: hidden;text-overflow:
+                      <p style="text-align: left;margin: 0px;padding: 0px;overflow: hidden;text-overflow:
                           ellipsis;display: -webkit-box;-webkit-line-clamp: 12;-webkit-box-orient: vertical;">
-                              女孩克里斯汀（西尔莎·罗南 Saoirse Ronan 饰）跟随着家人来到了位于加州的一间教会学校开始了她的高中生涯，
-                              虽然心中有百般的不愿意，但克里斯汀尚且没有足够的力量来反抗家人和生活的安排。
-                              在学校里，克里斯汀最好的朋友是朱丽（比妮·费尔德斯坦 Beanie Feldstein 饰），三观相近的两人无话不谈。
-                              克里斯汀参加了舞台剧比赛，并因此结识了名为丹尼（卢卡斯·赫奇斯 Lucas Hedges 饰）的男孩，相互吸引的两人很快就走到了一起。
-                              然而，这段感情最终以分手告终。为了和校园交际花珍娜（奥德娅·拉什 Odeya Rush 饰）套近乎，克里斯汀不惜撒谎，遗憾的是，
-                              谎言并不能换来真正的友谊。当克里斯汀身陷同凯尔（提莫西·查拉梅 Timothée Chalamet 饰）的感情纠葛之中时，
-                              她的家庭也在经历着艰难时期。
-                          </p>
+                          女孩克里斯汀（西尔莎·罗南 Saoirse Ronan 饰）跟随着家人来到了位于加州的一间教会学校开始了她的高中生涯，
+                          虽然心中有百般的不愿意，但克里斯汀尚且没有足够的力量来反抗家人和生活的安排。
+                          在学校里，克里斯汀最好的朋友是朱丽（比妮·费尔德斯坦 Beanie Feldstein 饰），三观相近的两人无话不谈。
+                          克里斯汀参加了舞台剧比赛，并因此结识了名为丹尼（卢卡斯·赫奇斯 Lucas Hedges 饰）的男孩，相互吸引的两人很快就走到了一起。
+
+                      </p>
                       <!--</li>-->
                   </div>
               </div>
 
           </div>
+              <hr></hr>
+          </tr>
       </div>
 
-      <!--<div class="section news-section">-->
-          <!--<div class="container"style="height: 20px">-->
-              <!--<p>剧情简介</p>-->
-          <!--</div>-->
-      <!--</div>-->
 
-
-    <div class="section news-section">
-      <div class="container">
-        <!--news-section left start-->
-        <div class="am-u-md-9">
-          <div class="comments">
-            <div class="comments">
-							<h2 class="comments--title">评论</h2>
-							<ul class="comments_list">
-								<li class="comment">
-									<header class="comment--header">
-										<figure class="comment--userpic"><img th:src="@{/assets/images/news/av01.jpg}" alt=""></img></figure>
-										<strong class="comment--username"><a href="#">Brad Bukovsky</a></strong>
-										<time datetime="2001-05-15T19:00" class="comment--date">30th of January, 2016</time>
-									</header>
-									<div class="comment--content">
-										<p>
-                                           lalalla！！！！
-										</p>
-									</div>
-								</li>
-							</ul>
-							<div class="comment_form">
-                                <h2 class="comment_form--title">发表评论</h2>
-
-
-                <form class="am-form am-form-horizontal">
-                  <div class="am-form-group">
-
-                    <div class="am-g">
-                      <textarea name="comment" cols="30" rows="10" placeholder="Type in here..."></textarea>
-                    </div>
-                    <div class="comment-form-footer">
-                      <button type="button" class="am-btn am-btn-secondary">确认提交</button>
-                    </div>
-                  </div>
-                </form>
-
-
-
-					</div>
-				</div>
-          </div>
-        </div>
-
-
-
-
-
-        <!--news-section left end-->
-
-        <!--news-section right start-->
-        <div class="am-u-md-3">
-          <div class="blog_sidebar">
-            <div class="widget">
-              <h2 class="widget--title"><i class="am-icon-file-text-o"></i>猜你喜欢</h2>
-              <ul>
-								<li><a href="#">至暗时刻</a></li>
-								<li><a href="#">爱乐之城</a></li>
-								<li><a href="#">诗歌天使</a></li>
-              </ul>
-            </div>
-            <div class="widget">
-              <h2 class="widget--title"><i class="am-icon-comments-o"></i>最新上线</h2>
-              <ul>
-								<li><a href="#">鼠胆熊心</a></li>
-								<li><a href="#">造梦大师2</a></li>
-								<li><a href="#">再见18班</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!--news-section right end-->
-      </div>
-    </div>
   </div>
+
+
+
+
+
+    <div class="pagin" style="height: 50px">
+        <div class="message">共<i class="blue" th:text="${count}"></i>条记录，当前显示第&nbsp;<i class="blue" th:text="${pageBean.getCurrentPage()}">&nbsp;</i>页</div>
+        <ul class="paginList">
+            <li class="paginItem" th:if="${pageBean.getCurrentPage() - 1 gt 0}"><a th:href="${'/movie/movies/getAllMovies/'+ (pageBean.getCurrentPage() - 1)}"><span class="pagepre"></span></a></li>
+            <li class="paginItem" ><a th:href="${'/movie/movies/getAllMovies/'+pageBean.getBeginPageIndex()}">首页</a></li>
+            <li class="paginItem" th:if="${pageBean.getCurrentPage() - 2 gt 0}"><a th:href="${'/movie/movies/getAllMovies/'+ (pageBean.getCurrentPage() - 2)}" th:text="${pageBean.getCurrentPage() - 2}"></a></li>
+            <li class="paginItem" th:if="${pageBean.getCurrentPage() - 1 gt 0}"><a th:href="${'/movie/movies/getAllMovies/'+ (pageBean.getCurrentPage() - 1)}" th:text="${pageBean.getCurrentPage() - 1}"></a></li>
+            <li class="paginItem current"><a th:href="${'/movie/movies/getAllMovies/'+ pageBean.getCurrentPage()}" th:text="${pageBean.getCurrentPage()}" disabled="true" onclick="false"></a></li>
+            <li class="paginItem"  th:if="${(pageBean.getCurrentPage() + 1) le pageBean.getEndPageIndex()}"><a th:href="${'/movie/movies/getAllMovies/'+ (pageBean.getCurrentPage() + 1)}" th:text="${pageBean.getCurrentPage() + 1}"></a></li>
+            <li class="paginItem" th:if="${(pageBean.getCurrentPage() + 2) le pageBean.getEndPageIndex()}"><a th:href="${'/movie/movies/getAllMovies/'+ (pageBean.getCurrentPage() + 2)}" th:text="${pageBean.getCurrentPage() + 2}"></a></li>
+            <li class="paginItem"><a th:href="${'/movie/movies/getAllMovies/'+ pageBean.getEndPageIndex()}">末页</a></li>
+            <li class="paginItem" th:if="${pageBean.getCurrentPage()+1 le pageBean.getEndPageIndex()}"><a th:href="${'/movie/movies/getAllMovies/'+ (pageBean.getCurrentPage() + 1)}"><span class="pagenxt" ></span></a></li>
+        </ul>
+    </div>
+
+
+
 
 
 
@@ -364,29 +320,30 @@
                   <strong class="footer_main--column_title">关于我们</strong>
                   <div class="footer_about">
                       <p class="footer_about--text">
-                        一个全球领先的电影推荐网站，由春天里研发团队于2018年3月建立。
+                          一个全球领先的电影推荐网站，由春天里研发团队于2018年3月建立。
+
                       </p>
                     </div>
                 </div>
               </div>
 
-              <div class="am-u-md-3 ">
-                <div class="footer_main--column">
-                  <strong class="footer_main--column_title">推荐中心</strong>
-                  <ul class="footer_navigation">
-                    <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">Enterplorer 电影推荐首页</a></li>
-                  </ul>
+                <div class="am-u-md-3 ">
+                    <div class="footer_main--column">
+                        <strong class="footer_main--column_title">推荐中心</strong>
+                        <ul class="footer_navigation">
+                            <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">Enterplorer 电影推荐首页</a></li>
+                        </ul>
+                    </div>
                 </div>
-              </div>
 
-              <div class="am-u-md-3 ">
-                <div class="footer_main--column">
-                  <strong class="footer_main--column_title">技术支持</strong>
-                  <ul class="footer_navigation">
-                    <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">网站开发白皮书</a></li>
-                  </ul>
+                <div class="am-u-md-3 ">
+                    <div class="footer_main--column">
+                        <strong class="footer_main--column_title">技术支持</strong>
+                        <ul class="footer_navigation">
+                            <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">网站开发白皮书</a></li>
+                        </ul>
+                    </div>
                 </div>
-              </div>
 
               <div class="am-u-md-3 ">
                 <div class="footer_main--column">

@@ -20,11 +20,7 @@ public class HomeController {
     @Autowired
     private MovieService movieService;
 
-//    @RequestMapping("/home")
-//    public String home(){
-//        return "index";
-//    }
-//
+
     @RequestMapping("/home")
     public ModelAndView home(Model model){
         ModelAndView modelAndView = new ModelAndView("/index");
@@ -36,4 +32,6 @@ public class HomeController {
     public String manager(){
         return "main";
     }
+
+
 }

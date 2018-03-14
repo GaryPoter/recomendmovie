@@ -53,6 +53,5 @@ public interface MovieMapper extends ObjMapper<Movie> {
     @Select("select movie.id,movie_name,movie_resouse_url,image_url,director,starring,area,duration,type_name from movie,movietype where typeId=type_id and movie_name like CONCAT('%',#{movie_name},'%') order by movie.id desc limit #{firstRec},#{lastRec}")
     ArrayList<MovieDetail> searchMovieByMovieNamePage(@Param("movie_name") String movieName,@Param("firstRec") Integer firstRec,@Param("lastRec") Integer lastRec);
 
-//    @Select("select * from image")
-//    ArrayList<>
+
 }

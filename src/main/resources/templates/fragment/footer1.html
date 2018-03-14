@@ -160,57 +160,13 @@
 
             <!--index-container start-->
             <div class="index-container">
-                <!--<div class="am-g">-->
-                    <!--<div class="am-u-md-3">-->
-                        <!--<div class="features_item">-->
-                            <!--<img th:src="@{/assets/images/index/f01.jpg}" alt=""/>-->
-                            <!--<h3 class="features_item&#45;&#45;title">猜你喜欢</h3>-->
-                            <!--<p class="features_item&#45;&#45;text">-->
-                                <!--通过你点击电影的频次推荐你爱的电影-->
-                            <!--</p>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="am-u-md-3">-->
-                        <!--<div class="features_item">-->
-                            <!--<img th:src="@{/assets/images/index/f02.jpg}" alt=""/>-->
-                            <!--<h3 class="features_item&#45;&#45;title">最新院线</h3>-->
-                            <!--<p class="features_item&#45;&#45;text">-->
-                                <!--国内外最新热映的电影-->
-                            <!--</p>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="am-u-md-3">-->
-                        <!--<div class="features_item">-->
-                            <!--<img th:src="@{/assets/images/index/f03.jpg}" alt=""/>-->
-                            <!--<h3 class="features_item&#45;&#45;title">评分最高</h3>-->
-                            <!--<p class="features_item&#45;&#45;text">-->
-                                <!--通过用户打分确定的高分电影-->
-                            <!--</p>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="am-u-md-3">-->
-                        <!--<div class="features_item">-->
-                            <!--<img th:src="@{/assets/images/index/f04.jpg}" alt=""/>-->
-                            <!--<h3 class="features_item&#45;&#45;title">重温经典</h3>-->
-                            <!--<p class="features_item&#45;&#45;text">-->
-                                <!--经典电影，愈久弥香-->
-                            <!--</p>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-
-
-
-
-
 
                 <div class="index-container"  style="display: inline-table;float:left" th:each="movies:${movies}">
                     <div class="am-g" >
                         <div class="am-u-md-3">
                             <div class="features_item" >
                                 <img th:src="@{/assets/images/index/f01.jpg}" alt="" th:id="${movies.id}"/>
-                                <h3 class="features_item--title" ><a  th:href="${'/movie/movies/movieDetails'+movies.id}" th:text="${movies.movie_name}"></a></h3>
+                                <h3 class="features_item--title" ><a  th:href="${'/movie/movies/movieDetails/'+movies.id}" th:text="${movies.movie_name}"></a></h3>
 
                             </div>
                         </div>
@@ -234,78 +190,12 @@
 </div>
 
 <!--promo_detailed start-->
-<div class="promo_detailed" th:fragment="movie_service">
-    <div class="promo_detailed-container" >
-        <div class="container">
-            <div class="am-g">
-                <div class="am-u-md-6">
-                    <ul class="promo_detailed--list">
-                        <li class="promo_detailed--list_item">
-                <span class="promo_detailed--list_item_icon">
-                  <i class="am-icon-diamond"></i>
-                </span>
-                            <dl>
-                                <dt>多层次的用户管理功能</dt>
-                                <dd>
-                                    支持用户的添加和导入，实时同步最新的用户信息，从而方便对用户进行管理。
-                                </dd>
-                            </dl>
-                        </li>
-                        <li class="promo_detailed--list_item">
-                <span class="promo_detailed--list_item_icon">
-                  <i class="am-icon-dollar" style="margin-left: 15px;"></i>
-                </span>
-                            <dl>
-                                <dt>丰富的VIP体验</dt>
-                                <dd>
-                                    VIP能享受看最新电影，无广告等尊贵体验
-                                </dd>
-                            </dl>
-                        </li>
-                        <li class="promo_detailed--list_item">
-                <span class="promo_detailed--list_item_icon">
-                  <i class="am-icon-bank" style="margin-left: 10px;"></i>
-                </span>
-                            <dl>
-                                <dt>丰富的应用程序管理</dt>
-                                <dd>
-                                    支持网页应用、手机应用、iPad应用等多种应用类型。
-                                </dd>
-                            </dl>
-                        </li>
-                    </ul>
-                </div>
 
-                <div class="am-u-md-6">
-                    <div class="promo_detailed--cta">
-                        <div class="promo_detailed--cta_wrap">
-                            <div class="promo_detailed--cta_text">
-                                提供设备的远程锁定，擦除等功能。在设备出现遗失的情况下可以最大程度的保护用户的信息不被泄露。
-                            </div>
-                            <div class="promo_detailed--cta_footer">
-                                <button type="button" class="am-btn am-btn-danger">MORE&nbsp;&nbsp;>></button>
-                            </div>
-                        </div>
-                        <div class="promo_detailed-img am-show-sm-only" th:style="'background-image: url(' + @{/assets/images/index/promo_detailed_bg.jpg} + ');'"/>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <div class="promo_detailed-img am-hide-sm-only" th:style="'background-image: url(' + @{/assets/images/index/promo_detailed_bg.jpg} + ');'"></div>
-</div>
 <!--promo_detailed end-->
 
 <div class="section"  style="border-bottom: 1px solid #e9e9e9;" th:fragment="footer1">
     <div class="container">
-        <div class="section--header">
-            <h2 class="section--title">我们的服务</h2>
-            <p class="section--description">
-                没什么可说的，就是推荐你喜欢的电影
-                <br/>获得了阿里巴巴以及bilibili的扶持，陆金所资本、天创资本等国际顶级风投机构的投资。
-            </p>
-        </div>
+        
 
         <!--index-container start-->
         <div class="index-container">

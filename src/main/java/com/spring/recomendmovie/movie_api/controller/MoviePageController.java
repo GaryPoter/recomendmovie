@@ -20,15 +20,6 @@ public class MoviePageController {
     @Autowired
     private MovieService movieService;
 
-//    @RequestMapping("/movieManager")
-//    public String toMovieManager(){
-//        return "movies/movie_manager";
-//    }
-
-//    @RequestMapping("/addMovie")
-//    public String addMoviePage(){
-//        return "movies/movie_insert";
-//    }
 
     @RequestMapping(value ="/updateMovie/{id}", method = RequestMethod.GET)
     public ModelAndView updateMoviePage(Model model, @PathVariable("id") Long id){
@@ -40,10 +31,6 @@ public class MoviePageController {
         return modelAndView;
     }
 
-//    @RequestMapping("/movieManage")
-//    public String movieManagePage(){
-//        return "movies/movietable";
-//    }
 
     @RequestMapping ("/addMovieInfo")
     public ModelAndView addMovieInfoPage(Model model){

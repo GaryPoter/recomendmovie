@@ -46,7 +46,6 @@ public class MovieController {
     @RequestMapping(value="/delete/{movie_id}",method=RequestMethod.GET)
     public ModelAndView delete(@PathVariable("movie_id") int id,Model model){
         movieService.deleteMovie(id);
-           // JOptionPane.showMessageDialog(null, "删除成功");
 
         return getAllMovies(model);
 
@@ -83,11 +82,6 @@ public class MovieController {
         return result;
     }
 
-//    @RequestMapping("/insert")
-//    public boolean insertMovie(Movie movie){
-//        return movieService.insertMovie(movie);
-//    }
-
     @RequestMapping("/update")
     public Result updateMovie(Movie movie){
         Result result = new Result();
@@ -102,15 +96,26 @@ public class MovieController {
         return result;
     }
 
-//    @RequestMapping(value = "/getAllMovies/{currentPage}", method=RequestMethod.GET)
-//    public ModelAndView getAllMoviesBy(Model model,@PathVariable("currentPage") Integer currentPage){
-//        ModelAndView modelAndView = new ModelAndView("movies/movietable");
-//        ArrayList<MovieDetail> movieDetails = movieService.getAllMovies();
-//        int lenth = movieDetails.size();
-//        modelAndView.addObject("count",lenth);
-//        modelAndView.addObject("currentPage",currentPage);
-//        modelAndView.addObject("movies",movieDetails);
-//        return modelAndView;
-//    }
+
+
+    @RequestMapping(value = "/movieListByUser",method=RequestMethod.POST)
+    public ModelAndView getMovieList(@RequestParam("searchContent") String searchContent,Model model){
+        return getMovieListByUser(searchContent,1,model);
+    }
+
+    @RequestMapping(value = "/movieListByUser/{searchContent}/{currentPage}",method = RequestMethod.GET)
+    public ModelAndView getMovieListByUser(@PathVariable("searchContent") String searchContent,@PathVariable("currentPage") Integer currentPage, Model model){
+        ModelAndView modelAndView = new ModelAndView("movies/movieListByUser");
+        ArrayList<MovieDetail> movieDetails = movieService.searchMovieByMovieName(searchContent);
+        ArrayList<MovieDetail> movieDetails1 = movieService.searchMovieByMovieNamePage(searchContent,currentPage);
+        PageBean pageBean = new PageBean(currentPage,5,movieDetails1,movieDetails.size());
+        int lenth=movieDetails.size();
+        modelAndView.addObject("count",lenth);
+        modelAndView.addObject("pageBean",pageBean);
+        modelAndView.addObject("movies",movieDetails1);
+        modelAndView.addObject("searchContent",searchContent);
+        return modelAndView;
+    }
+
 
 }

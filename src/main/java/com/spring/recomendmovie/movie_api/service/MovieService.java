@@ -21,17 +21,6 @@ public interface MovieService {
 
     //更新某条电影记录
     boolean updateMovie(Movie movie);
-//    //添加电影
-//    int addMovie(Movie movie);
-//
-
-//
-//    //修改电影
-//    int alterMovie(Movie movie);
-
-//    //删除勾选的电影 p操作
-//    int deleteMovies(List<Movie> movies);
-
 
     //获取所有电影类型
     ArrayList<MovieType> getAllMovieType();

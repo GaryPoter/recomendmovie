@@ -8,23 +8,23 @@ function deleteAction(movieId) {
         $(window).attr('location','/movie/movies/getAllMovies');
     }
 }
+//
+// function searchMovieAction() {
+//     var searchContent = $("#searchContent").val();
+//     $.ajax({
+//         async:false,
+//         type:'GET',
+//         dataType:'json',
+//         data:{searchContent:searchContent},
+//         url:'/movie/movies/search/'+searchContent,
+//         error:function(XMLHttpRequest, textStatus, errorThrown) {
+//             console.log(XMLHttpRequest);
+//             console.log(textStatus);
+//             console.log(errorThrown);
+//         }
+//     });
 
-function searchMovieAction() {
-    var searchContent = $("#searchContent").val();
-    $.ajax({
-        async:false,
-        type:'GET',
-        dataType:'json',
-        data:{searchContent:searchContent},
-        url:'/movie/movies/search/'+searchContent,
-        error:function(XMLHttpRequest, textStatus, errorThrown) {
-            console.log(XMLHttpRequest);
-            console.log(textStatus);
-            console.log(errorThrown);
-        }
-    });
-
-}
+// }
 // $("#delete").on("click",function () {
 //     alert("dddd");
 //     var movieId=movieId.val();
