@@ -1,5 +1,6 @@
 package com.spring.recomendmovie.comment_api.controller;
 
+import com.spring.recomendmovie.comment_api.pojo.Comment;
 import com.spring.recomendmovie.comment_api.pojo.CommentDetail;
 import com.spring.recomendmovie.comment_api.service.CommentService;
 import com.spring.recomendmovie.utils.PageBean;
@@ -46,4 +47,22 @@ public class CommentPageController {
         return getAllComments(model);
     }
 
+    @RequestMapping("/addCommentInfo")
+    public ModelAndView addCommentInfo(Model model){
+        ModelAndView modelAndView = new ModelAndView("comment/insertComment");
+        return modelAndView;
+    }
+
+//    @RequestMapping("/addCommentInfo")
+//    public String addCommentInfo(Model model){
+//        return "comment/insertComment";
+//    }
+
+    @RequestMapping(value = "/updateComment", method = RequestMethod.GET)
+    public ModelAndView updateCommentPage(Model model){
+       // commentService.updateComment(comment);
+        //return getAllComments(model);
+        ModelAndView modelAndView = new ModelAndView("comment/updateComment");
+        return modelAndView;
+    }
 }
