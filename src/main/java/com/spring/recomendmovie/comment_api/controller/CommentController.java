@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
 
@@ -37,13 +38,19 @@ public class CommentController {
 //    }
 
     @RequestMapping("/insert")
-    public Result insert(Comment comment){
+    public Result insert(Comment comment, HttpSession httpSession){
         Result result =  new Result();
-        if (commentService.insertComment(comment) != 0){
+        if(httpSession.getAttribute("user") == null)
+        {
+            result.setCode(Result.NOT_LOGIN_CODE);
+        }
+        else {
+            if (commentService.insertComment(comment) != 0){
 
-            result.setCode(Result.SUCCESS_CODE);
-        }else{
-            result.setCode(Result.FAIL_CODE);
+                result.setCode(Result.SUCCESS_CODE);
+            }else{
+                result.setCode(Result.FAIL_CODE);
+            }
         }
         return result;
     }

@@ -70,6 +70,9 @@ function addCommentAction() {
 
                     $(window).attr('location','/movie/comment/getAllComments');
                     console.log("重定向");
+                }else if(2 == response["code"]){
+                    alert("您还未登录，无法评论！");
+                    $(window).attr('location','/movie/user/login');
                 }else {
                     $('#user_id').select().focus();
                 }
