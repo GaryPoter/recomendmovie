@@ -5,8 +5,6 @@ import com.spring.recomendmovie.comment_api.mapper.CommentMapper;
 import com.spring.recomendmovie.comment_api.pojo.Comment;
 import com.spring.recomendmovie.comment_api.pojo.CommentDetail;
 
-import com.spring.recomendmovie.movie_api.pojo.Movie;
-import com.spring.recomendmovie.user_api.pojo.User;
 import com.spring.recomendmovie.utils.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +38,16 @@ public class CommentServiceIml implements CommentService {
     @Transactional(readOnly = true)
     public ArrayList<CommentDetail> getCommentsByMovieName(String movie_name) {
         return commentMapper.getCommentsByMovieName(movie_name);
+    }
+
+    @Override
+    public ArrayList<CommentDetail> getCommentsByMovieId(long movie_id) {
+        return commentMapper.getCommentsByMovieId(movie_id);
+    }
+
+    @Override
+    public CommentDetail getCommentById(long comment_id) {
+        return commentMapper.getCommentById(comment_id);
     }
 
     @Override

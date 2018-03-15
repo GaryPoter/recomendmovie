@@ -11,14 +11,18 @@ import java.util.Date;
 
 @Mapper
 public interface CommentMapper extends ObjMapper<Comment> {
-    @Select("select user_comment_movie.id,username,movie_name,comment,comment_time,score from movie,user,user_comment_movie where movie.id=movie_id and user.id=user_id and user_comment_movie.id = #{user_comment_movie.id}")
-    ArrayList<CommentDetail> getCommentById(@Param("comment_id") long comment_id);
+    @Select("select username,movie_name,comment,comment_time,score from movie,user,user_comment_movie where user_comment_movie.id = #{comment_id}")
+    CommentDetail getCommentById(@Param("comment_id") long comment_id);
 
     @Select("select user_comment_movie.id,username,movie_name,comment,comment_time,score from movie,user,user_comment_movie where movie.id=movie_id and user.id=user_id order by user_comment_movie.id desc")
     ArrayList<CommentDetail> getAllComments();
 
     @Delete("delete from user_comment_movie where id =#{comment_id}")
     int deleteComment(@Param("comment_id") long comment_id);
+
+//    @Select("select username,comment,comment_time,score from user_comment_movie,user,movie where user_comment_movie.movie_id=#{movie_id}")
+    @Select("SELECT username,comment,comment_time,score FROM commentDetail WHERE movie_id = #{movie_id}")
+    ArrayList<CommentDetail> getCommentsByMovieId(@Param("movie_id") long movie_id);
 
     @Select("select user_comment_movie.id,username,movie_name,comment,comment_time,score from movie,user,user_comment_movie where movie.id=movie_id and user.id=user_id and movie_name=#{movie_name} order by user_comment_movie.id desc")
     ArrayList<CommentDetail> getCommentsByMovieName(@Param("movie_name") String movie_name);

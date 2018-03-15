@@ -6,6 +6,8 @@ public class Result {
 
     public static int FAIL_CODE = 1;
 
+    public static int NOT_LOGIN = 2;
+
     private Object item;
 
     public Object getItem() {

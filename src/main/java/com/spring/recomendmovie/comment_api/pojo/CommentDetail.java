@@ -82,4 +82,12 @@ public class CommentDetail {
         this.comment_time = comment_time;
         this.score = score;
     }
+
+    public CommentDetail(Long id, String username, String movie_name, String comment, Double score) {
+        this.id = id;
+        this.username = username;
+        this.movie_name = movie_name;
+        this.comment = comment;
+        this.score = score;
+    }
 }

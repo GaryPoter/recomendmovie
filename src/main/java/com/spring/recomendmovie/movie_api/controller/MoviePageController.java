@@ -1,9 +1,12 @@
 package com.spring.recomendmovie.movie_api.controller;
 
+import com.spring.recomendmovie.comment_api.pojo.Comment;
+import com.spring.recomendmovie.comment_api.pojo.CommentDetail;
 import com.spring.recomendmovie.movie_api.pojo.Movie;
 import com.spring.recomendmovie.movie_api.pojo.MovieDetail;
 import com.spring.recomendmovie.movie_api.pojo.MovieType;
 import com.spring.recomendmovie.movie_api.service.MovieService;
+import com.spring.recomendmovie.comment_api.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,13 +15,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Comment;
 
 @Controller
 @RequestMapping("/movie/movies")
 public class MoviePageController {
     @Autowired
     private MovieService movieService;
+
+    @Autowired
+    private CommentService commentService;
 
 
     @RequestMapping(value ="/updateMovie/{id}", method = RequestMethod.GET)
@@ -42,11 +51,13 @@ public class MoviePageController {
 
 
     @RequestMapping(value="/movieDetails/{id}",method = RequestMethod.GET)
-    public ModelAndView movieDetails(Model model,@PathVariable("id") Long id)
+    public ModelAndView movieDetails(Model model, @PathVariable("id") Long id)
     {
         ModelAndView modelAndView = new ModelAndView("movies/movieDetail");
         MovieDetail movieDetail = movieService.getMovieDetailById(id);
+        ArrayList<CommentDetail> commentDetails = commentService.getCommentsByMovieId(id);
         modelAndView.addObject("movieDetail",movieDetail);
+        modelAndView.addObject("comments", commentDetails);
         return modelAndView;
     }
 
