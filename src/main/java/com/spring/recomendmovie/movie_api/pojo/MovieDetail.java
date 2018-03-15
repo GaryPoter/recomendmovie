@@ -6,21 +6,43 @@ public class MovieDetail {
 
     private String movie_name;
 
-    private String movie_resouse_url;
+    private String download_url;
 
     private String image_url;
 
     private String director;
 
-    private String starring;
+    private String star;
 
     private String area;
 
     private String duration;
 
-    private String type_name;
+    private String type;
+
+
+    private String time;
+
+    private Double rating;
+
+    private String mabstract;
 
     public MovieDetail() {
+    }
+
+    public MovieDetail(Long id, String movie_name, String download_url, String image_url, String director, String star, String area, String duration, String type, String time, Double rating, String mabstract) {
+        this.id = id;
+        this.movie_name = movie_name;
+        this.download_url = download_url;
+        this.image_url = image_url;
+        this.director = director;
+        this.star = star;
+        this.area = area;
+        this.duration = duration;
+        this.type = type;
+        this.time = time;
+        this.rating = rating;
+        this.mabstract = mabstract;
     }
 
     public Long getId() {
@@ -39,12 +61,12 @@ public class MovieDetail {
         this.movie_name = movie_name;
     }
 
-    public String getMovie_resouse_url() {
-        return movie_resouse_url;
+    public String getDownload_url() {
+        return download_url;
     }
 
-    public void setMovie_resouse_url(String movie_resouse_url) {
-        this.movie_resouse_url = movie_resouse_url;
+    public void setDownload_url(String download_url) {
+        this.download_url = download_url;
     }
 
     public String getImage_url() {
@@ -63,12 +85,12 @@ public class MovieDetail {
         this.director = director;
     }
 
-    public String getStarring() {
-        return starring;
+    public String getStar() {
+        return star;
     }
 
-    public void setStarring(String starring) {
-        this.starring = starring;
+    public void setStar(String star) {
+        this.star = star;
     }
 
     public String getArea() {
@@ -87,11 +109,35 @@ public class MovieDetail {
         this.duration = duration;
     }
 
-    public String getType_name() {
-        return type_name;
+    public String getType() {
+        return type;
     }
 
-    public void setType_name(String type_name) {
-        this.type_name = type_name;
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public Double getRating() {
+        return rating;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
+    }
+
+    public String getMabstract() {
+        return mabstract;
+    }
+
+    public void setMabstract(String mabstract) {
+        this.mabstract = mabstract;
     }
 }

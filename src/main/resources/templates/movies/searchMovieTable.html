@@ -72,40 +72,41 @@
     <table class="imgtable">
 
         <thead>
-        <tr>
-            <th><input name="" type="checkbox" value="" checked="checked"/></th>
-            <th width="100px;"></th>
-            <th>电影名</th>
-            <th>类型</th>
-            <th>导演</th>
-            <th>主演</th>
-            <th>地区</th>
-            <th>时长</th>
-            <th>链接</th>
-            <th>操作</th>
+        <tr style="height: 40px;font-size: 20px" >
+            <!--<th><input name="" type="checkbox" value="" checked="checked"/></th>-->
+            <!--<th width="100px;"></th>-->
+            <th style="width:10%">电影名</th>
+            <th style="width:5%">类型</th>
+            <th style="width:20%">导演</th>
+            <th style="width:20%">主演</th>
+            <th style="width:10%">地区</th>
+            <th style="width:5%">时长</th>
+            <th style="width:20%">链接</th>
+            <th style="width:10%">操作</th>
         </tr>
         </thead>
 
         <tbody>
 
-        <tr th:each="movie:${movies}">
+        <tr th:each="movie:${movies}" style="height: 40px;font-size: 20px" >
             <!--<div th:value="${movie.id}" >-->
             <div>
-                <td><input name="" type="checkbox" value="" /></td>
-                <td class="imgtd"><img th:src="@{/assets/images/movies/img11.png}" /></td>
-                <td><a href="#" th:text="${movie.movie_name}"></a><p>发布时间：2013-10-12 </p></td>
-                <td th:text="${movie.type_name}"></td>
-                <td th:text="${movie.director}"> </td>
-                <td th:text="${movie.starring}"></td>
+                <!--<td><input name="" type="checkbox" value="" /></td>-->
+                <!--<td class="imgtd"><img th:src="@{/assets/images/movies/img11.png}" /></td>-->
+                <td><a href="#" th:text="${movie.movie_name}"></a></td>
+                <td th:text="${movie.type}"></td>
+                <td th:text="${movie.director}" > </td>
+                <td th:text="${movie.star}" style="width:500px;display:block;overflow:hidden;word-break:keep-all;white-space:nowrap;text-overflow:ellipsis;"></td>
                 <td th:text="${movie.area}"></td>
                 <td th:text="${movie.duration}"></td>
-                <td th:text="${movie.movie_resouse_url}"></td>
+                <td th:text="${movie.download_url}"></td>
                 <!--th:href="${'/movie/movies/delete/'+movie.id}" -->
                 <td><a class="tablelink" href="javascript:;" th:onclick="'deleteAction(\''+${movie.id}+'\');'">删除</a>
                     <a th:href="${'/movie/movies/updateMovie/'+ movie.id}" class="tablelink">修改</a>
                 </td>
             </div>
         </tr>
+
 
 
         </tbody>
@@ -132,13 +133,13 @@
             <!--<li class="paginItem"><a href="javascript:;"><span class=""></span></a></li>-->
             <!--=======-->
             <li class="paginItem" th:if="${pageBean.getCurrentPage() - 1 gt 0}"><a th:href="${'/movie/movies/search/'+ searchContent+'/'+(pageBean.getCurrentPage() - 1)}"><span class="pagepre"></span></a></li>
-            <li class="paginItem" ><a th:href="${'/movie/movies/search/'+ searchContent+'/'+pageBean.getBeginPageIndex()}">首页</a></li>
+            <li class="paginItem" ><a th:href="${'/movie/movies/search/'+ searchContent+'/'+1}">首页</a></li>
             <li class="paginItem" th:if="${pageBean.getCurrentPage() - 2 gt 0}"><a th:href="${'/movie/movies/search/'+ searchContent+'/'+ (pageBean.getCurrentPage() - 2)}" th:text="${pageBean.getCurrentPage() - 2}"></a></li>
             <li class="paginItem" th:if="${pageBean.getCurrentPage() - 1 gt 0}"><a th:href="${'/movie/movies/search/'+ searchContent+'/'+ (pageBean.getCurrentPage() - 1)}" th:text="${pageBean.getCurrentPage() - 1}"></a></li>
             <li class="paginItem current"><a th:href="${'/movie/movies/search/'+ searchContent+'/'+ pageBean.getCurrentPage()}" th:text="${pageBean.getCurrentPage()}" disabled="true" onclick="false"></a></li>
-            <li class="paginItem"  th:if="${(pageBean.getCurrentPage() + 1) le pageBean.getEndPageIndex()}"><a th:href="${'/movie/movies/search/'+ searchContent+'/'+ (pageBean.getCurrentPage() + 1)}" th:text="${pageBean.getCurrentPage() + 1}"></a></li>
-            <li class="paginItem" th:if="${(pageBean.getCurrentPage() + 2) le pageBean.getEndPageIndex()}"><a th:href="${'/movie/movies/search/'+ searchContent+'/'+ (pageBean.getCurrentPage() + 2)}" th:text="${pageBean.getCurrentPage() + 2}"></a></li>
-            <li class="paginItem"><a th:href="${'/movie/movies/search/'+ searchContent+'/'+ pageBean.getEndPageIndex()}">末页</a></li>
+            <li class="paginItem"  th:if="${(pageBean.getCurrentPage() + 1) le pageBean.pageCount}"><a th:href="${'/movie/movies/search/'+ searchContent+'/'+ (pageBean.getCurrentPage() + 1)}" th:text="${pageBean.getCurrentPage() + 1}"></a></li>
+            <li class="paginItem" th:if="${(pageBean.getCurrentPage() + 2) le pageBean.pageCount}"><a th:href="${'/movie/movies/search/'+ searchContent+'/'+ (pageBean.getCurrentPage() + 2)}" th:text="${pageBean.getCurrentPage() + 2}"></a></li>
+            <li class="paginItem"><a th:href="${'/movie/movies/search/'+ searchContent+'/'+ pageBean.pageCount}">末页</a></li>
             <li class="paginItem" th:if="${pageBean.getCurrentPage()+1 le pageBean.getEndPageIndex()}"><a th:href="${'/movie/movies/search/'+ searchContent+'/'+ (pageBean.getCurrentPage() + 1)}"><span class="pagenxt" ></span></a></li>
         </ul>
     </div>

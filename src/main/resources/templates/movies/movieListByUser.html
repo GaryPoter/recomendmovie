@@ -23,220 +23,34 @@
     </style>
   <div class="layout">
     <!--===========layout-header================-->
-    <div class="layout-header am-hide-sm-only">
-      <!--topbar start-->
-      <div class="topbar">
-        <div class="container">
-          <div class="am-g">
-            <div class="am-u-md-3">
-              <div class="topbar-left">
-                <i class="am-icon-globe"></i>
-                <div class="am-dropdown" data-am-dropdown="">
-                  <button class="am-btn am-btn-primary am-dropdown-toggle" data-am-dropdown-toggle="">Language <span class="am-icon-caret-down"></span></button>
-                  <ul class="am-dropdown-content">
-                    <li><a href="#">English</a></li>
-                    <li class="am-divider"></li>
-                    <li><a href="#">Chinese</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="am-u-md-9">
-              <div class="topbar-right am-text-right am-fr">
-
-                  <div th:if="${session.user == null}">
-                      <a href="/movie/user/login">登录</a>
-                      <a href="/movie/user/register">注册</a>
-                  </div>
-                  <div th:if="${session.user != null}">
-                      <a href="/movie/user/userDetailPage" th:text="${session.user.getEmail()}"></a>
-                      <a href="/movie/user/logOut">登出</a>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--&lt;!&ndash;topbar end&ndash;&gt;-->
-
-      <div class="header-box" data-am-sticky="">
-        <!--header start-->
-          <div class="container">
-            <div class="header">
-              <div class="am-g">
-                <div class="am-u-lg-2 am-u-sm-12">
-                  <div class="logo">
-                      <a href=""><img th:src="@{/assets/images/logo2_02.png}" alt="" /></a>
-                  </div>
-                </div>
-                <div class="am-u-md-10">
-                  <div class="header-right am-fr">
-                    <div class="header-contact">
-                      <div class="header_contacts--item">
-  											<div class="contact_mini">
-  												<i style="color:#7c6aa6" class="contact-icon am-icon-phone"></i>
-                                                <strong>0 (123) 456-7890</strong>
-                                                <span>周一~周五, 8:00 - 20:00</span>
-                                            </div>
-                      </div>
-                        <div class="header_contacts--item">
-                            <div class="contact_mini">
-                                <i style="color:#7c6aa6" class="contact-icon am-icon-envelope-o"></i>
-                                <strong>springIn@126.com</strong>
-                                <span>随时欢迎您的来信！</span>
-                            </div>
-                        </div>
-                        <div class="header_contacts--item">
-                            <div class="contact_mini">
-                                <i style="color:#7c6aa6" class="contact-icon am-icon-map-marker"></i>
-                                <strong>三江院,</strong>
-                                <span>苏州市工业园区林泉街</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="html/contact.html" class="contact-btn">
-                      <button type="button" class="am-btn am-btn-secondary am-radius">管理员</button>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        <!--&lt;!&ndash;header end&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;nav start&ndash;&gt;-->
-          <div class="nav-contain">
-              <div class="nav-inner">
-                  <ul class="am-nav am-nav-pills am-nav-justify">
-                      <li class=""><a href="/movie/home">首页</a></li>
-                      <li>
-                          <a href="#">电影分类</a>
-                          <!-- sub-menu start-->
-                          <ul class="sub-menu">
-                              <li class="menu-item"><a href="html/product1.html">按内容</a></li>
-                          </ul>
-                          <!-- sub-menu end-->
-                      </li>
-                      <li>
-                          <a href="html/news.html">客户端下载</a>
-                          <!-- sub-menu start-->
-                          <ul class="sub-menu">
-                              <li class="menu-item"><a href="html/news-content.html">Windows版</a></li>
-                              <li class="menu-item"><a href="html/404-dark.html">IOS版</a></li>
-                              <li class="menu-item"><a href="html/404-light.html">ANDROID版</a></li>
-                          </ul>
-                          <!-- sub-menu end-->
-                      </li>
-                      <li><a href="html/contact.html">联系我们</a></li>
-                  </ul>
-              </div>
-          </div>
-        <!--nav end-->
+      <div class="layout-header am-hide-sm-only">
+      <div th:include="fragment/header::header"/>
       </div>
 
-    </div>
-
-
-
-
-    <!--mobile header start-->
-    <div class="m-header">
-      <div class="am-g am-show-sm-only">
-        <div class="am-u-sm-2">
-          <div class="menu-bars">
-            <a href="#doc-oc-demo1" data-am-offcanvas="{effect: 'push'}"><i class="am-menu-toggle-icon am-icon-bars"></i></a>
-            <!-- 侧边栏内容 -->
-            <nav data-am-widget="menu" class="am-menu  am-menu-offcanvas1" data-am-menu-offcanvas="" >
-              <a href="javascript: void(0)" class="am-menu-toggle"></a>
-
-              <div class="am-offcanvas" >
-                <div class="am-offcanvas-bar">
-                  <ul class="am-menu-nav am-avg-sm-1">
-                    <li><a href="../index.html" class="" >首页</a></li>
-                    <li class="am-parent">
-                      <a href="#" class="" >产品中心</a>
-                      <ul class="am-menu-sub am-collapse ">
-                        <li class="">
-                          <a href="./product1.html" class="" >产品展示1</a>
-                        </li>
-                        <li class="">
-                          <a href="./product2.html" class="" >产品展示2</a>
-                        </li>
-                        <li class="">
-                          <a href="./product3.html" class="" >产品展示3</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class=""><a href="./example.html" class="" >客户案例</a></li>
-                    <li class=""><a href="./solution.html" class="" >解决方案</a></li>
-                    <li class="am-parent">
-                      <a href="./news.html" class="" >新闻中心</a>
-                      <ul class="am-menu-sub am-collapse  ">
-                        <li class="">
-                          <a href="./news-content.html" class="" >公司动态</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class=""><a href="./about.html" class="" >关于我们</a></li>
-                    <li class="am-parent">
-                      <a href="./news.html" class="nav-icon nav-icon-globe" >Language</a>
-                      <ul class="am-menu-sub am-collapse  ">
-                        <li>
-                          <a href="#" >English</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="nav-share-contain">
-                      <div class="nav-share-links">
-                        <i class="am-icon-facebook"></i>
-                        <i class="am-icon-twitter"></i>
-                        <i class="am-icon-google-plus"></i>
-                        <i class="am-icon-pinterest"></i>
-                        <i class="am-icon-instagram"></i>
-                        <i class="am-icon-linkedin"></i>
-                        <i class="am-icon-youtube-play"></i>
-                        <i class="am-icon-rss"></i>
-                      </div>
-                    </li>
-
-                  </ul>
-
-                </div>
-              </div>
-            </nav>
-
-          </div>
-        </div>
-        <div class="am-u-sm-5 am-u-end">
-          <div class="m-logo">
-              <a href=""><img th:src="@{/assets/images/logo.png}" alt=""></img></a>
-          </div>
-        </div>
-      </div>
-      <!--mobile header end-->
-    </div>
 
     <!--===========layout-container================-->
       <div class="section news-section">
-          <tr th:each="movie:${movies}">
+          <tr th:if="${count} gt 0"  th:each="movie:${movies}">
           <div class="container">
               <div class="am-u-md-9" style="display: -webkit-box;">
-
                   <div class="am-u-md-6">
                       <div class="promo_detailed--cta">
-                          <img th:src="@{/assets/images/movie0.png}" style="height: 100%"></img>
+                          <img th:src="${movie.image_url}" style="width:300px;height:400px"></img>
                       </div>
                   </div>
 
                   <div class="am-u-md-6">
                       <ul class="promo_detailed--list" style="list-style-type:none;display:block;list-style-type:none;">
                           <li class="promo_detailed--list_item">
+                              <span style="font-weight:bold">电影名：<a th:href="${'/movie/movies/movieDetails/'+movie.id+'/'+1}"><i th:text="${movie.movie_name}"></i></a></span>
+
+                          </li>
+                          <li class="promo_detailed--list_item">
                               <span style="font-weight:bold">导演：<i th:text="${movie.director}"></i></span>
 
                           </li>
                           <li class="promo_detailed--list_item">
-                              <span style="font-weight:bold">主演：<i th:text="${movie.starring}"></i></span>
+                              <span style="font-weight:bold">主演：<i style="width:300px;display:block;overflow:hidden;word-break:keep-all;white-space:nowrap;text-overflow:ellipsis;" th:text="${movie.star}"></i></span>
 
                           </li>
                           <li class="promo_detailed--list_item">
@@ -248,14 +62,16 @@
 
                           </li>
                           <li class="promo_detailed--list_item">
-                              <span style="font-weight:bold">电影类型：<i th:text="${movie.type_name}"></i></span>
+                              <span style="font-weight:bold">电影类型：<i th:text="${movie.type}"></i></span>
 
                           </li>
                           <li class="promo_detailed--list_item">
-                              <span style="font-weight:bold">上映日期：<i>2018/2/5</i></span>
+                              <span style="font-weight:bold">上映日期：<i th:text="${movie.time}"></i></span>
+
                           </li>
                           <li class="promo_detailed--list_item">
-                              <span style="font-weight:bold">评分：<i>9.5</i></span>
+                              <span style="font-weight:bold">评分：<i th:text="${movie.rating}"></i></span>
+
                           </li>
                       </ul>
                   </div>
@@ -264,12 +80,7 @@
                       <p style="color: #006400;font-weight:bold">剧情简介....</p>
                       <!--<li style="list-style: none;margin: 0px;padding-left: 25px;text-indent: -25px;">-->
                       <p style="text-align: left;margin: 0px;padding: 0px;overflow: hidden;text-overflow:
-                          ellipsis;display: -webkit-box;-webkit-line-clamp: 12;-webkit-box-orient: vertical;">
-                          女孩克里斯汀（西尔莎·罗南 Saoirse Ronan 饰）跟随着家人来到了位于加州的一间教会学校开始了她的高中生涯，
-                          虽然心中有百般的不愿意，但克里斯汀尚且没有足够的力量来反抗家人和生活的安排。
-                          在学校里，克里斯汀最好的朋友是朱丽（比妮·费尔德斯坦 Beanie Feldstein 饰），三观相近的两人无话不谈。
-                          克里斯汀参加了舞台剧比赛，并因此结识了名为丹尼（卢卡斯·赫奇斯 Lucas Hedges 饰）的男孩，相互吸引的两人很快就走到了一起。
-
+                          ellipsis;display: -webkit-box;-webkit-line-clamp: 8;-webkit-box-orient: vertical;" th:text="${movie.mabstract}">
                       </p>
                       <!--</li>-->
                   </div>
@@ -278,6 +89,13 @@
           </div>
               <hr></hr>
           </tr>
+
+          <tr th:if="${count} le 0">
+              <div class="container" style="text-align: center">
+                  <h style="font-size: 15px;">抱歉，未找到该搜索结果，</h><a th:href="${'/movie/home'}">点此返回首页</a>
+              </div>
+          </tr>
+
       </div>
 
 
@@ -290,15 +108,15 @@
     <div class="pagin" style="height: 50px">
         <div class="message">共<i class="blue" th:text="${count}"></i>条记录，当前显示第&nbsp;<i class="blue" th:text="${pageBean.getCurrentPage()}">&nbsp;</i>页</div>
         <ul class="paginList">
-            <li class="paginItem" th:if="${pageBean.getCurrentPage() - 1 gt 0}"><a th:href="${'/movie/movies/getAllMovies/'+ (pageBean.getCurrentPage() - 1)}"><span class="pagepre"></span></a></li>
-            <li class="paginItem" ><a th:href="${'/movie/movies/getAllMovies/'+pageBean.getBeginPageIndex()}">首页</a></li>
-            <li class="paginItem" th:if="${pageBean.getCurrentPage() - 2 gt 0}"><a th:href="${'/movie/movies/getAllMovies/'+ (pageBean.getCurrentPage() - 2)}" th:text="${pageBean.getCurrentPage() - 2}"></a></li>
-            <li class="paginItem" th:if="${pageBean.getCurrentPage() - 1 gt 0}"><a th:href="${'/movie/movies/getAllMovies/'+ (pageBean.getCurrentPage() - 1)}" th:text="${pageBean.getCurrentPage() - 1}"></a></li>
-            <li class="paginItem current"><a th:href="${'/movie/movies/getAllMovies/'+ pageBean.getCurrentPage()}" th:text="${pageBean.getCurrentPage()}" disabled="true" onclick="false"></a></li>
-            <li class="paginItem"  th:if="${(pageBean.getCurrentPage() + 1) le pageBean.getEndPageIndex()}"><a th:href="${'/movie/movies/getAllMovies/'+ (pageBean.getCurrentPage() + 1)}" th:text="${pageBean.getCurrentPage() + 1}"></a></li>
-            <li class="paginItem" th:if="${(pageBean.getCurrentPage() + 2) le pageBean.getEndPageIndex()}"><a th:href="${'/movie/movies/getAllMovies/'+ (pageBean.getCurrentPage() + 2)}" th:text="${pageBean.getCurrentPage() + 2}"></a></li>
-            <li class="paginItem"><a th:href="${'/movie/movies/getAllMovies/'+ pageBean.getEndPageIndex()}">末页</a></li>
-            <li class="paginItem" th:if="${pageBean.getCurrentPage()+1 le pageBean.getEndPageIndex()}"><a th:href="${'/movie/movies/getAllMovies/'+ (pageBean.getCurrentPage() + 1)}"><span class="pagenxt" ></span></a></li>
+            <li class="paginItem" th:if="${pageBean.getCurrentPage() - 1 gt 0}"><a th:href="${'/movie/movies/movieListByUser/'+ searchContent+'/'+(pageBean.getCurrentPage() - 1)}"><span class="pagepre"></span></a></li>
+            <li class="paginItem" ><a th:href="${'/movie/movies/movieListByUser/'+ searchContent+'/'+1}">首页</a></li>
+            <li class="paginItem" th:if="${pageBean.getCurrentPage() - 2 gt 0}"><a th:href="${'/movie/movies/movieListByUser/'+ searchContent+'/'+ (pageBean.getCurrentPage() - 2)}" th:text="${pageBean.getCurrentPage() - 2}"></a></li>
+            <li class="paginItem" th:if="${pageBean.getCurrentPage() - 1 gt 0}"><a th:href="${'/movie/movies/movieListByUser/'+ searchContent+'/'+ (pageBean.getCurrentPage() - 1)}" th:text="${pageBean.getCurrentPage() - 1}"></a></li>
+            <li class="paginItem current"><a th:href="${'/movie/movies/movieListByUser/'+ searchContent+'/'+ pageBean.getCurrentPage()}" th:text="${pageBean.getCurrentPage()}" disabled="true" onclick="false"></a></li>
+            <li class="paginItem"  th:if="${(pageBean.getCurrentPage() + 1) le pageBean.pageCount}"><a th:href="${'/movie/movies/movieListByUser/'+ searchContent+'/'+ (pageBean.getCurrentPage() + 1)}" th:text="${pageBean.getCurrentPage() + 1}"></a></li>
+            <li class="paginItem" th:if="${(pageBean.getCurrentPage() + 2) le pageBean.pageCount}"><a th:href="${'/movie/movies/movieListByUser/'+ searchContent+'/'+ (pageBean.getCurrentPage() + 2)}" th:text="${pageBean.getCurrentPage() + 2}"></a></li>
+            <li class="paginItem"><a th:href="${'/movie/movies/movieListByUser/'+ searchContent+'/'+ pageBean.pageCount}">末页</a></li>
+            <li class="paginItem" th:if="${pageBean.getCurrentPage()+1 le pageBean.pageCount}"><a th:href="${'/movie/movies/movieListByUser/'+ searchContent+'/'+ (pageBean.getCurrentPage() + 1)}"><span class="pagenxt" ></span></a></li>
         </ul>
     </div>
 

@@ -1,3 +1,48 @@
+function inserCommentAction() {
+    var user_id=$("#uId").val();
+    var movie_id=$("#mId").val();
+    var comment = $("#comment").val();
+    var score=$("#score").val();
+    var myDate = new Date();
+    var comment_time=myDate.toLocaleString( );
+    if(score=='')
+        score=0;
+    if(user_id!=null){
+        if(comment!=''){
+            $.ajax({
+                async:false,
+                type:'POST',
+                dataType:'json',
+                data:{user_id:user_id, movie_id:movie_id ,comment:comment, comment_time:comment_time,score:score},
+                url:'/movie/comment/insert',
+                error:function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest);
+                    console.log(textStatus);
+                    console.log(errorThrown);
+                },
+                success: function(response) {
+
+                    if (0 == response["code"]) {
+                        alert("添加成功!");
+
+                        $(window).attr('location','/movie/movies/movieDetails/'+movie_id+'/'+1);
+                        console.log("重定向");
+                    }
+                }
+
+            });
+        }else{
+            alert("未输入评论");
+        }
+
+    }else{
+        alert("您还未登录！");
+        $(window).attr('location','/movie/user/login');
+    }
+}
+
+
+
 function addCommentAction() {
     alert("ffff");
     var user_id=$("#user_id").val();

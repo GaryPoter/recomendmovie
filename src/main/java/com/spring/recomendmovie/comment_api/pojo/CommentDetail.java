@@ -17,7 +17,7 @@ public class CommentDetail {
     private String comment;
 
     @NotNull
-    private Date comment_time;
+    private String comment_time;
 
     @NotNull
     private Double score;
@@ -54,11 +54,11 @@ public class CommentDetail {
         this.comment = comment;
     }
 
-    public Date getComment_time() {
+    public String getComment_time() {
         return comment_time;
     }
 
-    public void setComment_time(Date comment_time) {
+    public void setComment_time(String comment_time) {
         this.comment_time = comment_time;
     }
 
@@ -74,7 +74,7 @@ public class CommentDetail {
     public CommentDetail() {
     }
 
-    public CommentDetail(Long id, String user_name, String movie_name, String comment, Date comment_time, Double score) {
+    public CommentDetail(Long id, String user_name, String movie_name, String comment, String comment_time, Double score) {
         this.id = id;
         this.username = user_name;
         this.movie_name = movie_name;
