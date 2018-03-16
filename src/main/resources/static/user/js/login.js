@@ -25,7 +25,7 @@ $('#loginBtn').on('click', function () {
                     // window.location.href = "http://www.baidu.com";
                     // $(location).prop('href', 'http://www.jb51.net');
 
-					$.cookie("email", email, { expires: 7 })
+					$.cookie("email", email, { expires: 7 });
                     $(window).attr('location','/movie/home');
                     console.log("重定向");
                 }else {

@@ -1,4 +1,4 @@
-package com.spring.recomendmovie.log;
+package com.spring.recomendmovie.config;
 
 import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;

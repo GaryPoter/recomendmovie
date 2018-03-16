@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-<<<<<<< HEAD
 import java.text.SimpleDateFormat;
-=======
->>>>>>> 92db22d256a3e5ba03e91f311011c5ccd1bf8266
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -46,9 +43,8 @@ public class CommentController {
     @RequestMapping("/insert")
     public Result insert(Comment comment, HttpSession httpSession){
         Result result =  new Result();
-<<<<<<< HEAD
         if(httpSession.getAttribute("user") == null){
-            result.setCode(Result.NOT_LOGIN);
+            result.setCode(Result.NOT_LOGIN_CODE);
         }
         else{
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -56,15 +52,6 @@ public class CommentController {
             comment.setComment_time(df.format(new Date()));
             if (commentService.insertComment(comment) != 0){
 
-=======
-        if(httpSession.getAttribute("user") == null)
-        {
-            result.setCode(Result.NOT_LOGIN_CODE);
-        }
-        else {
-            if (commentService.insertComment(comment) != 0){
-
->>>>>>> 92db22d256a3e5ba03e91f311011c5ccd1bf8266
                 result.setCode(Result.SUCCESS_CODE);
             }else{
                 result.setCode(Result.FAIL_CODE);
