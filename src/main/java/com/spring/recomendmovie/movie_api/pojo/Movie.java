@@ -15,37 +15,86 @@ public class Movie {
 
     public static final String TYPEID1 = "typeId";
 
+
+
     private Long id;
 
     private String movie_name;
 
-    private String movie_resouse_url;
+    private String download_url;
 
     private String image_url;
 
     private String director;
 
-    private String starring;
+    private String star;
 
     private String area;
 
     private String duration;
 
-    private Long typeId;
+    private Long type;
+
+    private String time;
+
+    private Double rating;
+
+    private String mabstract;
 
     public Movie() {
     }
 
-    public Movie(Long id, String movie_name, String movie_resouse_url, String image_url, String director, String starring, String area, String duration, Long typeId) {
+    public Movie(Long id, String movie_name, String download_url, String image_url, String director, String star, String area, String duration, Long type, String time, Double rating, String mabstract) {
         this.id = id;
         this.movie_name = movie_name;
-        this.movie_resouse_url = movie_resouse_url;
+        this.download_url = download_url;
         this.image_url = image_url;
         this.director = director;
-        this.starring = starring;
+        this.star = star;
         this.area = area;
         this.duration = duration;
-        this.typeId = typeId;
+        this.type = type;
+        this.time = time;
+        this.rating = rating;
+        this.mabstract = mabstract;
+    }
+
+    public Movie(Long id, String movie_name, String download_url, String image_url, String director, String star, String area, String duration, Long type, String time, String mabstract) {
+        this.id = id;
+        this.movie_name = movie_name;
+        this.download_url = download_url;
+        this.image_url = image_url;
+        this.director = director;
+        this.star = star;
+        this.area = area;
+        this.duration = duration;
+        this.type = type;
+        this.time = time;
+        this.mabstract = mabstract;
+    }
+
+    public static String getTABLENAME() {
+        return TABLENAME;
+    }
+
+    public static String getID() {
+        return ID;
+    }
+
+    public static String getMOVIENAME() {
+        return MOVIENAME;
+    }
+
+    public static String getMOVIERESOUCEURL() {
+        return MOVIERESOUCEURL;
+    }
+
+    public static String getIMAGEID() {
+        return IMAGEID;
+    }
+
+    public static String getTYPEID1() {
+        return TYPEID1;
     }
 
     public Long getId() {
@@ -64,12 +113,12 @@ public class Movie {
         this.movie_name = movie_name;
     }
 
-    public String getMovie_resouse_url() {
-        return movie_resouse_url;
+    public String getDownload_url() {
+        return download_url;
     }
 
-    public void setMovie_resouse_url(String movie_resouse_url) {
-        this.movie_resouse_url = movie_resouse_url;
+    public void setDownload_url(String download_url) {
+        this.download_url = download_url;
     }
 
     public String getImage_url() {
@@ -80,10 +129,6 @@ public class Movie {
         this.image_url = image_url;
     }
 
-    public static String getTABLENAME() {
-        return TABLENAME;
-    }
-
     public String getDirector() {
         return director;
     }
@@ -92,12 +137,12 @@ public class Movie {
         this.director = director;
     }
 
-    public String getStarring() {
-        return starring;
+    public String getStar() {
+        return star;
     }
 
-    public void setStarring(String starring) {
-        this.starring = starring;
+    public void setStar(String star) {
+        this.star = star;
     }
 
     public String getArea() {
@@ -116,11 +161,35 @@ public class Movie {
         this.duration = duration;
     }
 
-    public Long getTypeId() {
-        return typeId;
+    public Long getType() {
+        return type;
     }
 
-    public void setTypeId(Long typeId) {
-        this.typeId = typeId;
+    public void setType(Long type) {
+        this.type = type;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public Double getRating() {
+        return rating;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
+    }
+
+    public String getMabstract() {
+        return mabstract;
+    }
+
+    public void setMabstract(String mabstract) {
+        this.mabstract = mabstract;
     }
 }

@@ -41,21 +41,7 @@ public class UserController {
         return userService.getAll();
     }
 
-//    /**
-//=======
-//     * 商品分页功能(集成mybatis的分页插件pageHelper实现)
-//     *
-//     * @param currentPage    :当前页数
-//     * @param pageSize        :每页显示的总记录数
-//     * @return
-//     */
-//    @RequestMapping(value = "/itemsPage/{currentPage}/{pageSize}", method = RequestMethod.GET)
-//    public List<User> itemsPage(@PathVariable int currentPage, @PathVariable int pageSize){
-//        return itemService.findItemByPage(currentPage, pageSize);
-//    }
-//
-//    /**
-//>>>>>>> origin/my
+
      /**
      * @param users jackson 数据
      * @return
@@ -73,20 +59,7 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-//    /**
-//     *
-//     * @param email 前端json中的email
-//     * @param password 前端json中的password
-//     * @return
-//     */
-//    @RequestMapping(value = "/loginAction", method = {RequestMethod.POST})
-//    public Result login(String email, String password){
-//        if((userService.login(new User(new Long(-1),null, email, password)).equals(SUCCESS))){
-//            session = request.getSession();
-//            session.setAttribute("email",email);
-//        }
-//        return userService.login(new User(new Long(-1),null, email, password));
-//    }
+
 
     @RequestMapping(value = "/loginAction", method = {RequestMethod.POST})
     public Result login(String email, String password, Model model, HttpSession httpSession) {

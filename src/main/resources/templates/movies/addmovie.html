@@ -40,8 +40,8 @@
 	<div class="place">
     <span>位置：</span>
     <ul class="placeul">
-	    <li><a href="/movie/movies/getAllMovies">首页</a></li>
-	    <li><a href="#">系统设置</a></li>
+	    <li><a href="/movie/movies/getAllMovies">电影列表</a></li>
+        <li><a href="#">添加电影></a></li>
     </ul>
   </div>
     
@@ -58,12 +58,12 @@
     <div class="formtext">Hi，<b>admin</b>，欢迎您使用添加电影功能！</div>
 
         <ul class="forminfo">
-            <li><label>电影封面<b>*</b></label><input type="text" class="dfinput" value="点击上传图片"  style="width:200px;" id="image_url"/></li>
+            <li><label>电影封面<b>*</b></label><input type="text" class="dfinput" placeholder="请输入图片地址"   style="width:200px;" id="image_url"/></li>
             <li><label>电影名<b>*</b></label><input type="text" id="movie_name" class="dfinput" value=""  style="width:200px;"/></li>
             <li ><label>电影类型<b>*</b></label>
                 <div class="vocation" >
-                    <select class="select1" id="typeId">
-                        <option th:each="movieType:${movieTypes}"  th:text="${movieType.type_name}" th:value="${movieType.type_id}">
+                    <select class="select1" id="type">
+                        <option th:each="movieType:${movieTypes}"  th:text="${movieType.type}" th:value="${movieType.id}">
                         </option>
                     </select>
                 </div>
@@ -71,27 +71,17 @@
     
     <li><label>导演<b>*</b></label><input type="text" id="director" class="dfinput" value=""  style="width:200px;" /></li>
     
-    <li><label>主演<b>*</b></label><input type="text" id="starring" class="dfinput" value=""  style="width:200px;" /></li>
+    <li><label>主演<b>*</b></label><input type="text" id="star" class="dfinput" value=""  style="width:200px;" /></li>
 
-    <li><label>地区<b>*</b></label>
-    <div class="vocation">
-    <select class="select1" id="area">
-    <option>中国</option>
-    <option>美国</option>
-    <option>日本</option>
-    <option>韩国</option>
-    <option>中国（香港）</option>
-    <option>中国（台湾）</option>
-    <option>法国</option>
-    <option>英国</option>
-    <option>其他</option>
-    </select>
-    </div>
-    </li>
+    <li><label>地区<b>*</b></label><input type="text" id="area" class="dfinput" value=""  style="width:200px;" /></li>
     
-    <li><label>链接<b>*</b></label><input type="text" class="dfinput" value=""  style="width:200px;" id="movie_resouse_url"/></li>
+    <li><label>链接<b>*</b></label><input type="text" class="dfinput" value=""  style="width:200px;" id="download_url"/></li>
 
      <li><label>时长<b>*</b></label><input type="text" class="dfinput" value=""  style="width:200px;" id="duration"/></li>
+
+     <li><label>上映时间<b>*</b></label><input type="text" class="dfinput" value=""  style="width:200px;" id="time"/></li>
+
+     <li><label>简介<b>*</b></label><textarea class="dfinput" style="width:600px;height: 450px" id="mabstract"></textarea></li>
 
 
     <li><label>&nbsp;</label><input id="addMovie" type="button" class="btn" onclick="addMovieAction()" value="马上添加"/></li>

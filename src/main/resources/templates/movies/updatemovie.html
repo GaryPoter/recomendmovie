@@ -40,8 +40,8 @@
 <div class="place">
     <span>位置：</span>
     <ul class="placeul">
-        <li><a href="/movie/movies/getAllMovies">首页</a></li>
-        <li><a href="#">系统设置</a></li>
+        <li><a href="/movie/movies/getAllMovies">电影列表</a></li>
+        <li><a href="#">修改电影</a></li>
     </ul>
 </div>
 
@@ -58,42 +58,32 @@
             <div class="formtext">Hi，<b>admin</b>，欢迎您使用修改电影功能！</div>
 
             <ul class="forminfo" >
-                <li><label>电影封面<b>*</b></label><input type="text" class="dfinput" th:value="${movie.image_url}"  style="width:200px;" id="image_id"/></li>
+                <li><label>电影封面<b>*</b></label><input type="text" id="image_url" class="dfinput" th:value="${movie.image_url}"  style="width:200px;" /></li>
                 <li><label>电影名<b>*</b></label><input type="text" id="movie_name" class="dfinput" th:value="${movie.movie_name}"  style="width:200px;"/></li>
                 <li ><label>电影类型<b>*</b></label>
                     <div class="vocation" >
-                        <select class="select1" id="typeId" >
-                            <option th:each="movieType:${movieTypes}"  th:text="${movieType.type_name}" th:value="${movieType.type_id}" th:if="${movie.typeId eq movieType.type_id}" selected="selected" disabled="true" onclick="false" style="display: none"></option>
+                        <select class="select1" id="type" >
+                            <option th:each="movieType:${movieTypes}"  th:text="${movieType.type}" th:value="${movieType.id}" th:if="${movie.type eq movieType.id}" selected="selected" disabled="true" onclick="false" style="display: none"></option>
 
-                            <option th:each="movieType:${movieTypes}"  th:text="${movieType.type_name}" th:value="${movieType.type_id}"></option>
+                            <option th:each="movieType:${movieTypes}"  th:text="${movieType.type}" th:value="${movieType.id}"></option>
                         </select>
                     </div>
                 </li>
 
                 <li><label>导演<b>*</b></label><input type="text" id="director" class="dfinput" th:value="${movie.director}"  style="width:200px;" /></li>
 
-                <li><label>主演<b>*</b></label><input type="text" id="starring" class="dfinput" th:value="${movie.starring}"  style="width:200px;" /></li>
+                <li><label>主演<b>*</b></label><input type="text" id="star" class="dfinput" th:value="${movie.star}"  style="width:200px;" /></li>
 
-                <li><label>地区<b>*</b></label>
-                    <div class="vocation">
-                        <select class="select1" id="area" >
-                            <option disabled="true" onclick="false" th:text="${movie.area}" selected="selected" style="display: none"></option>
-                            <option>中国</option>
-                            <option>美国</option>
-                            <option>日本</option>
-                            <option>韩国</option>
-                            <option>中国（香港）</option>
-                            <option>中国（台湾）</option>
-                            <option>法国</option>
-                            <option>英国</option>
-                            <option>其他</option>
-                        </select>
-                    </div>
-                </li>
+                <li><label>地区<b>*</b></label><input type="text" id="area" class="dfinput" th:value="${movie.area}"  style="width:200px;" /></li>
 
-                <li><label>链接<b>*</b></label><input type="text" class="dfinput" th:value="${movie.movie_resouse_url}"  style="width:200px;" id="movie_resouse_url"/></li>
+                <li><label>链接<b>*</b></label><input type="text" id="download_url" class="dfinput" th:value="${movie.download_url}"  style="width:200px;" /></li>
 
-                <li><label>时长<b>*</b></label><input type="text" class="dfinput" th:value="${movie.duration}"  style="width:200px;" id="duration"/></li>
+                <li><label>时长<b>*</b></label><input type="text" id="duration" class="dfinput" th:value="${movie.duration}"  style="width:200px;" /></li>
+
+                <li><label>上映时间<b>*</b></label><input type="text" id="time" class="dfinput" th:value="${movie.time}"  style="width:200px;" /></li>
+
+                <li><label>简介<b>*</b></label>
+                    <textarea class="dfinput" id="mabstract" th:text="${movie.mabstract}"  style="width:600px;height: 450px" ></textarea></li>
 
 
                 <li><label>&nbsp;</label><input id="updateMovie" type="button" class="btn" onclick="updateMovieAction()" value="马上修改"/></li>
