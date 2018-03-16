@@ -274,8 +274,8 @@
                   <div style="margin-top:25px; margin-bottom: 25px;width:33%">
                       <p style="color: #006400;font-weight:bold">剧情简介....</p>
                       <!--<li style="list-style: none;margin: 0px;padding-left: 25px;text-indent: -25px;">-->
-                      <p style="text-align: left;margin: 0px;padding: 0px;overflow: hidden;text-overflow:
-                          ellipsis;display: -webkit-box;-webkit-line-clamp: 8;-webkit-box-orient: vertical;" th:text="${movieDetail.mabstract}">
+                      <p class="description" style="text-align: left;margin: 0px;padding: 0px;display: -webkit-box;overflow:hidden;text-overflow:
+                          ellipsis;-webkit-line-clamp: 16;-webkit-box-orient: vertical;" th:text="${movieDetail.mabstract}">
                       </p>
                       <!--</li>-->
                   </div>
@@ -447,6 +447,7 @@
   <script th:src="@{/assets/js/amazeui.js}" charset="utf-8"></script>
   <script th:src="@{/assets/js/common.js}" charset="utf-8"></script>
     <script th:src="@{/comment.js/comment_insert.js}" type="text/javascript"></script>
+    <script th:src="@{/js/jquery.cookie.js}" type="text/javascript"></script>
 </body>
 
 </html>

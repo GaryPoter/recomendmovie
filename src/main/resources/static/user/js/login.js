@@ -20,7 +20,12 @@ $('#loginBtn').on('click', function () {
 				if(0 == response["code"]){
 					alert("登录成功!");
 					$.cookie("email", email, { expires: 7 })
+					// if($.cookie("pastUrl")){
+                     //    $(window).attr('location',$.cookie("pastUrl"));
+					// }else{
                     $(window).attr('location','/movie/home');
+					// }
+
                     console.log("重定向");
                 }else {
 					$('#email').select().focus();
