@@ -42,7 +42,7 @@ public class Comment {
     private Long movie_id;
 
     @NotNull
-    private Date comment_time;
+    private String comment_time;
 
     private String comment;
 
@@ -65,11 +65,11 @@ public class Comment {
         this.movie_id = movie_id;
     }
 
-    public Date getComment_time() {
+    public String getComment_time() {
         return comment_time;
     }
 
-    public void setComment_time(Date comment_time) {
+    public void setComment_time(String comment_time) {
         this.comment_time = comment_time;
     }
 
@@ -103,24 +103,11 @@ public class Comment {
     }
 
 
-    public Comment(Long user_id, Long movie_id, Date comment_time, Double score) {
+
+    public Comment(Long user_id, Long movie_id, String comment, Double score) {
         this.user_id = user_id;
         this.movie_id = movie_id;
-        this.comment_time = comment_time;
-        this.score = score;
-    }
-
-    public Comment(Long user_id, Long movie_id, String comment, String comment_time, Double score) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//        DateFormat dateFormat1 = DateFormat.getDateInstance();
-        this.user_id = user_id;
-        this.movie_id = movie_id;
-
-        try {
-            this.comment_time = simpleDateFormat.parse(comment_time);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        this.comment = comment;
         this.score = score;
     }
 }

@@ -48,11 +48,19 @@ public class CommentPageController {
         return getAllComments(model);
     }
 
-    @RequestMapping("/addCommentInfo")
-    public ModelAndView addCommentInfo(Model model){
-        ModelAndView modelAndView = new ModelAndView("comment/insertComment");
-        return modelAndView;
-    }
+//    @RequestMapping("/addCommentInfo")
+//    public ModelAndView addCommentInfo(Model model){
+//        ModelAndView modelAndView = new ModelAndView("comment/insertComment");
+//        return modelAndView;
+//    }
+//       @RequestMapping(value="/movieDetails/{id}",method = RequestMethod.GET)
+//        public ModelAndView movieDetails(Model model, @PathVariable("id") Long id)
+//        {
+//            ModelAndView modelAndView = new ModelAndView("movies/movieDetail");
+//            ArrayList<Comment> comments = commentService.getCommentsByMovieId(id);
+//            modelAndView.addObject("comments", comments);
+//            return modelAndView;
+//        }
 
 //    @RequestMapping("/addCommentInfo")
 //    public String addCommentInfo(Model model){

@@ -6,7 +6,15 @@ public class Result {
 
     public static int FAIL_CODE = 1;
 
+<<<<<<< HEAD
     public static int NOT_LOGIN_CODE = 2;
+=======
+<<<<<<< HEAD
+    public static int NOT_LOGIN = 2;
+=======
+    public static int NOT_LOGIN_CODE = 2;
+>>>>>>> 92db22d256a3e5ba03e91f311011c5ccd1bf8266
+>>>>>>> 44afb6ab8a920ace2f477b3ca87a7381fdb22208
 
     private Object item;
 
