@@ -61,7 +61,6 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-
     @RequestMapping(value = "/loginAction", method = {RequestMethod.POST})
     public Result login(String email, String password, Model model, HttpSession httpSession) {
         User user = userService.login(new User(new Long(-1), null, email, password));

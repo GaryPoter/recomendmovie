@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -25,52 +26,24 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
-//    @RequestMapping(value = "/getAllComments", method = RequestMethod.GET)
-//    public ArrayList<CommentDetail> getAllComments(){
-//        return commentService.getAllComments();
-//    }
-
-//    @RequestMapping("/getAllComments")
-//    public ModelAndView getAllComments(Model model){
-//        ModelAndView modelAndView = new ModelAndView("comments/commenttable");
-//        ArrayList<CommentDetail> commentDetails = commentService.getAllComments();
-//        int lenth = commentDetails.size();
-//        modelAndView.addObject("count",lenth);
-//        modelAndView.addObject("comments",commentDetails);
-//        return modelAndView;
-//    }
-
     @RequestMapping("/insert")
-    public Result insert(Comment comment, HttpSession httpSession){
-        Result result =  new Result();
-        if(httpSession.getAttribute("user") == null){
+    public Result insert(Comment comment, HttpSession httpSession) {
+        Result result = new Result();
+        if (httpSession.getAttribute("user") == null) {
             result.setCode(Result.NOT_LOGIN_CODE);
-        }
-        else{
+        } else {
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
             comment.setComment_time(df.format(new Date()));
-            if (commentService.insertComment(comment) != 0){
-
+            if (commentService.insertComment(comment) != 0) {
                 result.setCode(Result.SUCCESS_CODE);
-            }else{
+            } else {
                 result.setCode(Result.FAIL_CODE);
             }
         }
         return result;
     }
-
-    @RequestMapping(value = "/update", method = RequestMethod.GET)
-    public Result update(Long comment_id){
-        Result result = new Result();
-        Comment comment = new Comment();
-        comment.setId(comment_id);
-        if (commentService.updateComment(comment) != 0){
-            result.setCode(Result.SUCCESS_CODE);
-        }else {
-            result.setCode(Result.FAIL_CODE);
-        }
-        return result;
-    }
-
 }
+
+
+

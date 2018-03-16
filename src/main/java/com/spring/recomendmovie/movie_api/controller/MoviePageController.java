@@ -2,11 +2,14 @@ package com.spring.recomendmovie.movie_api.controller;
 
 import com.spring.recomendmovie.comment_api.pojo.Comment;
 import com.spring.recomendmovie.comment_api.pojo.CommentDetail;
+
 import com.spring.recomendmovie.movie_api.pojo.Movie;
 import com.spring.recomendmovie.movie_api.pojo.MovieDetail;
 import com.spring.recomendmovie.movie_api.pojo.MovieType;
 import com.spring.recomendmovie.movie_api.service.MovieService;
+
 import com.spring.recomendmovie.comment_api.service.CommentService;
+import com.spring.recomendmovie.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,14 +53,20 @@ public class MoviePageController {
     }
 
 
-    @RequestMapping(value="/movieDetails/{id}",method = RequestMethod.GET)
-    public ModelAndView movieDetails(Model model, @PathVariable("id") Long id)
+    @RequestMapping(value="/movieDetails/{id}/{currentPage}",method = RequestMethod.GET)
+    public ModelAndView movieDetails(Model model,@PathVariable("id") Long id,@PathVariable("currentPage") int currentPage)
     {
         ModelAndView modelAndView = new ModelAndView("movies/movieDetail");
         MovieDetail movieDetail = movieService.getMovieDetailById(id);
-        ArrayList<CommentDetail> commentDetails = commentService.getCommentsByMovieId(id);
+        int pageSize=7;
+        ArrayList<CommentDetail> commentDetails = commentService.getAllCommentsByMovie(id);
+        ArrayList<CommentDetail> commentDetails1 = commentService.getAllCommentsByMoviePage(id,currentPage,pageSize);
+        PageBean pageBean = new PageBean(currentPage,pageSize,commentDetails1,commentDetails.size());
+        int lenth=commentDetails.size();
+        modelAndView.addObject("count",lenth);
+        modelAndView.addObject("pageBean",pageBean);
         modelAndView.addObject("movieDetail",movieDetail);
-        modelAndView.addObject("comments", commentDetails);
+        modelAndView.addObject("commentDetails",commentDetails1);
         return modelAndView;
     }
 

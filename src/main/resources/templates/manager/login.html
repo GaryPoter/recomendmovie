@@ -45,9 +45,12 @@
     <div class="loginbox">
     
     <ul>
-    <li><input name="" type="text" class="loginuser" value="admin" onclick="JavaScript:this.value=''"/></li>
-    <li><input name="" type="text" class="loginpwd" value="密码" onclick="JavaScript:this.value=''"/></li>
-    <li><input name="" type="button" class="loginbtn" value="登录"  onclick="javascript:window.location='main.html'"  /><label><input name="" type="checkbox" value="" checked="checked" />记住密码</label><label><a href="#">忘记密码？</a></label></li>
+    <li><input type="text" class="loginuser" value="admin" onclick="JavaScript:this.value=''" id="mName"/></li>
+    <li><input type="password" class="loginpwd" value="密码" onclick="JavaScript:this.value=''" id="mPassword"/></li>
+    <li><input type="button" class="loginbtn" value="登录" onclick="loginAction()"  />
+        <label><input name="" type="checkbox" value="" checked="checked" />记住密码</label>
+        <label><a href="#">忘记密码？</a></label>
+    </li>
     </ul>
     
     
@@ -58,5 +61,7 @@
     
     
     <div class="loginbm">版权所有：Spring团队</div>
+    <script th:src="@{/js/jquery.cookie.js}" type="text/javascript"></script>
+    <script th:src="@{/movie/login.js}" type='text/javascript'></script>
 </body>
 </html>

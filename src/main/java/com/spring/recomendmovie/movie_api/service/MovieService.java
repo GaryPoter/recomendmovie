@@ -1,9 +1,12 @@
 package com.spring.recomendmovie.movie_api.service;
 
 
+import com.spring.recomendmovie.movie_api.pojo.ManagerInfo;
 import com.spring.recomendmovie.movie_api.pojo.Movie;
 import com.spring.recomendmovie.movie_api.pojo.MovieDetail;
 import com.spring.recomendmovie.movie_api.pojo.MovieType;
+import org.apache.catalina.Manager;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,11 +31,13 @@ public interface MovieService {
     //根据电影ID查询电影
     Movie getMovieById(Long id);
 
-    ArrayList<MovieDetail> getAllMoviesBy(Integer currentPage);
+    ArrayList<MovieDetail> getAllMoviesBy(Integer currentPage,int pageSize);
 
     ArrayList<Movie> getFourMovies();
 
     MovieDetail getMovieDetailById(Long id);
 
-    ArrayList<MovieDetail> searchMovieByMovieNamePage(String movieName, Integer currentPage);
+    ArrayList<MovieDetail> searchMovieByMovieNamePage(String movieName, Integer currentPage,int pageSize);
+
+    ManagerInfo login(ManagerInfo manager);
 }

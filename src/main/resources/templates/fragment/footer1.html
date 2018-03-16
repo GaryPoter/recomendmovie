@@ -163,13 +163,17 @@
 
                 <div class="index-container"  style="display: inline-table;float:left" th:each="movies:${movies}">
                     <div class="am-g" >
-                        <div class="am-u-md-3">
-                            <div class="features_item" >
-                                <img th:src="@{/assets/images/index/f01.jpg}" alt="" th:id="${movies.id}"/>
-                                <h3 class="features_item--title" ><a  th:href="${'/movie/movies/movieDetails/'+movies.id}" th:text="${movies.movie_name}"></a></h3>
+                        <!--<div class="am-u-md-3">-->
+                            <!--<div class="features_item" >-->
+
+                            <div style="width:280px;height: 300px;float: left">
+                                <img th:src="${movies.image_url}" alt="" th:id="${movies.id}" style="height: 250px;width:250px"/>
+                                <p style="text-align: center">
+                                    <a  th:href="${'/movie/movies/movieDetails/'+movies.id+'/'+1}" th:text="${movies.movie_name}"></a>
+                                </p>
 
                             </div>
-                        </div>
+
                     </div>
                 </div>
 

@@ -51,6 +51,11 @@ public interface CommentService {
 //    int updateComment(long comment_id);
     int updateComment(Comment comment);
 //=======原来
-    ArrayList<CommentDetail> getAllCommentsBy(Integer currentPage);
+    ArrayList<CommentDetail> getAllCommentsBy(Integer currentPage,int pageSize);
+
+    ArrayList<CommentDetail> getAllCommentsByMovie(Long id);
+
+
+    ArrayList<CommentDetail> getAllCommentsByMoviePage(Long id, int currentPage, int pageSize);
 }
 //>>>>>>>

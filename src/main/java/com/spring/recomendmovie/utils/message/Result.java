@@ -8,6 +8,9 @@ public class Result {
 
     public static int NOT_LOGIN_CODE = 2;
 
+
+
+
     private Object item;
 
     public Object getItem() {

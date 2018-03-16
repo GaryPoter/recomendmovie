@@ -39,19 +39,21 @@
 
 function addMovieAction() {
     var movie_name=$("#movie_name").val();
-    var movie_resouse_url=$("#movie_resouse_url").val();
+    var download_url=$("#download_url").val();
     var image_url = $("#image_url").val();
     var director=$("#director").val();
-    var starring=$("#starring").val();
+    var star=$("#star").val();
     var area =$("#area").val();
     var duration=$("#duration").val();
-    var typeId=$("#typeId").val();
-    if(movie_name != ''&&movie_resouse_url != '') {
+    var type=$("#type").val();
+    var time=$("#time").val();
+    var mabstract=$("#mabstract").val();
+    if(movie_name != '') {
         $.ajax({
             async:false,
             type:'POST',
             dataType:'json',
-            data:{movie_name:movie_name,movie_resouse_url:movie_resouse_url,image_url:image_url,director:director,starring:starring,area:area,duration:duration,typeId:typeId},
+            data:{movie_name:movie_name,download_url:download_url,image_url:image_url,director:director,star:star,area:area,duration:duration,type:type,time:time,mabstract:mabstract},
             url:'/movie/movies/insert',
             error:function(XMLHttpRequest, textStatus, errorThrown) {
                 console.log(XMLHttpRequest);
@@ -72,6 +74,6 @@ function addMovieAction() {
             }
         });
     }else{
-        alert("未输入电影名字或电影链接！");
+        alert("未输入电影名字！");
     }
 }
