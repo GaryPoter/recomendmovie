@@ -1,5 +1,4 @@
 function addCommentAction() {
-    alert("ffff");
     var user_id=$("#user_id").val();
     var movie_id=$("#movie_id").val();
     var comment = $("#commentContent").val();
@@ -24,21 +23,14 @@ function addCommentAction() {
                 if (0 == response["code"]) {
                     alert("添加成功!");
 
-                    $(window).attr('location','/movie/movies/movieDetails');
+                    $(window).attr('location','/movie/movies/movieDetails/' + movie_id);
                     console.log("重定向");
                 }else if(2 == response["code"]){
-<<<<<<< HEAD
-                    alert("您还未登录");
-                    $(window).attr('location','/movie/home');
-                }
-                else {
-                    $('#comment').select().focus();
-=======
+
                     alert("您还未登录，无法评论！");
                     $(window).attr('location','/movie/user/login');
                 }else {
                     $('#user_id').select().focus();
->>>>>>> 92db22d256a3e5ba03e91f311011c5ccd1bf8266
                 }
 
             }
