@@ -27,11 +27,18 @@ function addCommentAction() {
                     $(window).attr('location','/movie/movies/movieDetails');
                     console.log("重定向");
                 }else if(2 == response["code"]){
+<<<<<<< HEAD
                     alert("您还未登录");
                     $(window).attr('location','/movie/home');
                 }
                 else {
                     $('#comment').select().focus();
+=======
+                    alert("您还未登录，无法评论！");
+                    $(window).attr('location','/movie/user/login');
+                }else {
+                    $('#user_id').select().focus();
+>>>>>>> 92db22d256a3e5ba03e91f311011c5ccd1bf8266
                 }
 
             }
