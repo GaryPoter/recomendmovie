@@ -62,8 +62,16 @@ public class UserServiceIml implements UserService{
     }
 
     @Override
+    @Transactional(readOnly = false)
     public Result register(User user) {
-        return null;
+        Result result = new Result();
+        int i = userMapper.insertUser(user);
+        if(i != 0){
+            result.setCode(Result.SUCCESS_CODE);
+        }else{
+            result.setCode(Result.FAIL_CODE);
+        }
+        return result;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.spring.recomendmovie.user_api.mapper;
 
 import com.spring.recomendmovie.user_api.pojo.User;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.jdbc.SQL;
 
 public class UserProvider {
@@ -59,6 +60,20 @@ public class UserProvider {
                 SELECT("*");
                 FROM(User.TABLENAME);
                 WHERE(User.EMAIL + " like '%" + email + "%'");
+            }
+        }.toString();
+    }
+
+    public String insertUser(User user){
+        return new SQL(){
+            {
+                INSERT_INTO(User.TABLENAME);
+                VALUES("username",
+                        "'" + user.getUsername() + "'");
+                VALUES("email",
+                        "'" + user.getEmail() + "'");
+                VALUES("password",
+                        "'" + user.getPassword() + "'");
             }
         }.toString();
     }

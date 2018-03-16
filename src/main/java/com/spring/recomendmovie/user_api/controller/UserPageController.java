@@ -5,11 +5,8 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.spring.recomendmovie.movie_api.pojo.Movie;
 import com.spring.recomendmovie.movie_api.service.MovieService;
-import com.spring.recomendmovie.user_api.mapper.UserMapper;
 import com.spring.recomendmovie.user_api.pojo.User;
 import com.spring.recomendmovie.user_api.service.UserService;
-import com.spring.recomendmovie.utils.message.Result;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import javax.xml.ws.http.HTTPBinding;
 import java.util.ArrayList;
 import java.util.List;
 

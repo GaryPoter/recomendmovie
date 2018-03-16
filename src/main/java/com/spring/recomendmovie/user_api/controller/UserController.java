@@ -1,22 +1,18 @@
 package com.spring.recomendmovie.user_api.controller;
 
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
+
 import com.spring.recomendmovie.user_api.pojo.User;
 import com.spring.recomendmovie.user_api.service.UserService;
 import com.spring.recomendmovie.utils.message.Result;
-import com.sun.deploy.net.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("/movie/user")
@@ -80,7 +76,13 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/registerAction", method = RequestMethod.POST)
-    public Result register(String name, String email, String password){
+    public Result register(String name, String email, String password,
+                           HttpSession httpSession){
+        User user = new User(new Long(-1), name, email, password);
+        Result result = userService.register(user);
+        if (result.getCode() == Result.SUCCESS_CODE){
+            httpSession.setAttribute("user", userService.login(user));
+        }
         return userService.register(new User(new Long(-1), name, email, password));
     }
 

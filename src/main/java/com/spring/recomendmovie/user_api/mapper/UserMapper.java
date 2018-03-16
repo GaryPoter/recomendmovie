@@ -38,4 +38,7 @@ public interface UserMapper{
 
     @Select("select * from user where email like CONCAT('%',#{email},'%')")
     ArrayList<User> searchUserByLKEmail(@Param("email") String username);
+
+    @InsertProvider(type = UserProvider.class, method = "insertUser")
+    int insertUser(User user);
 }
