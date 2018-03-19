@@ -1,10 +1,12 @@
 package com.spring.recomendmovie.movie_api.mapper;
 
 
+import com.spring.recomendmovie.movie_api.pojo.ManagerInfo;
 import com.spring.recomendmovie.movie_api.pojo.Movie;
 import com.spring.recomendmovie.movie_api.pojo.MovieDetail;
 import com.spring.recomendmovie.movie_api.pojo.MovieType;
 import com.spring.recomendmovie.utils.mapper.ObjMapper;
+import org.apache.catalina.Manager;
 import org.apache.ibatis.annotations.*;
 
 import javax.websocket.server.PathParam;
@@ -13,13 +15,13 @@ import java.util.ArrayList;
 @Mapper
 public interface MovieMapper extends ObjMapper<Movie> {
 
-    @Select("select movie.id,movie_name,movie_resouse_url,image_url,director,starring,area,duration,type_name from movie,movietype where typeId=type_id and movie_name like CONCAT('%',#{movie_name},'%')")
+    @Select("select movie1.id,movie_name,download_url,image_url,director,star,area,duration,time,mabstract,rating,type.type from movie1,type where movie1.type=type.id and movie_name like CONCAT('%',#{movie_name},'%')")
     ArrayList<MovieDetail> getMovieByName(@Param("movie_name") String movieName);
 
     @SelectProvider(type = MovieProvide.class, method = "getMovieByLikeName")
     ArrayList<Movie> getMovieByLikeName(String likeName);
 
-    @Select("select movie.id,movie_name,movie_resouse_url,image_url,director,starring,area,duration,type_name from movie,movietype where typeId=type_id order by movie.id desc")
+    @Select("select movie1.id,movie_name,download_url,image_url,director,star,area,duration,type.type,time,mabstract from movie1,type where movie1.type=type.id order by movie1.id desc")
     ArrayList<MovieDetail> getAllMovies();
 
 //   @SelectProvider(type=MovieProvide.class,method="getMovieDetailLikeName")
@@ -28,30 +30,44 @@ public interface MovieMapper extends ObjMapper<Movie> {
     @Delete("delete from movie where id =#{movie_id}")
     boolean deleteMovie(@Param("movie_id") int id);
 
-    @Insert("insert into movie(movie_name,movie_resouse_url,image_url,director,starring,area,duration,typeId) values(#{movie_name},#{movie_resouse_url},#{image_url},#{director},#{starring},#{area},#{duration},#{typeId})")
+    @Insert("insert into movie1(movie_name,download_url,image_url,director,star,area,duration,type,time,mabstract) values(#{movie_name},#{download_url},#{image_url},#{director},#{star},#{area},#{duration},#{type},#{time},#{mabstract})")
     boolean insertMovie(Movie movie);
 
-    @Update("update movie set movie_name=#{movie_name},movie_resouse_url=#{movie_resouse_url},image_url=#{image_url},director=#{director},starring=#{starring},area=#{area},duration=#{duration},typeId=#{typeId} where id=#{id}")
+    @Update("update movie1 set movie_name=#{movie_name},download_url=#{download_url},image_url=#{image_url},director=#{director},star=#{star},area=#{area},duration=#{duration},type=#{type},time=#{time},mabstract=#{mabstract} where id=#{id}")
     boolean updateMovie(Movie movie);
 
-    @Select("select * from movietype")
+    @Select("select * from type")
     ArrayList<MovieType> getAllMovieType();
 
-    @Select("select * from movie where id=#{movie_id}")
+    @Select("select * from movie1 where id=#{movie_id}")
     Movie getMovieById(Long id);
 
-    @Select("select movie.id,movie_name,movie_resouse_url,image_url,director,starring,area,duration,type_name from movie,movietype where typeId=type_id order by movie.id desc limit #{firstRec},#{lastRec}")
-    ArrayList<MovieDetail> getAllMoviesBy(@Param("firstRec") Integer firstRec,@Param("lastRec") Integer lastRec);
+    @Select("select movie1.id,movie_name,download_url,image_url,director,star,area,duration,type.type from movie1,type where movie1.type=type.id order by movie1.id desc limit #{firstRec},#{pageSize}")
+    ArrayList<MovieDetail> getAllMoviesBy(@Param("firstRec") Integer firstRec,@Param("pageSize") int pageSize);
 
 
-    @Select("select * from movie order by id limit 1,4")
+    @Select("select * from movie1 where type=10 order by id limit 1,4")
     ArrayList<Movie> getFourMovies();
 
-    @Select("select movie.id,movie_name,movie_resouse_url,image_url,director,starring,area,duration,type_name from movie,movietype where typeId=type_id and movie.id=#{id}")
+    @Select("select movie1.id,movie_name,download_url,image_url,director,star,area,duration,time,mabstract,rating,type.type from movie1,type where movie1.type=type.id and movie1.id=#{id}")
     MovieDetail getMovieDetailById(Long id);
 
-    @Select("select movie.id,movie_name,movie_resouse_url,image_url,director,starring,area,duration,type_name from movie,movietype where typeId=type_id and movie_name like CONCAT('%',#{movie_name},'%') order by movie.id desc limit #{firstRec},#{lastRec}")
-    ArrayList<MovieDetail> searchMovieByMovieNamePage(@Param("movie_name") String movieName,@Param("firstRec") Integer firstRec,@Param("lastRec") Integer lastRec);
+    @Select("select movie1.id,movie_name,download_url,image_url,director,star,area,duration,time,mabstract,rating,type.type from movie1,type where movie1.type=type.id and movie_name like CONCAT('%',#{movie_name},'%') order by movie1.id desc limit #{firstRec},#{pageSize}")
+    ArrayList<MovieDetail> searchMovieByMovieNamePage(@Param("movie_name") String movieName,@Param("firstRec") Integer firstRec,@Param("pageSize") int pageSize);
+
+    @Select("select * from manager where mName=#{mName} and mPassword=#{mPassword}")
+    ManagerInfo login(@Param("mName") String mName,@Param("mPassword") String mPassword);
+
+    @Select("select * from movie1,TopTenOfPerson where movie1.id=movieID and userID=#{userID} order by id limit 5,4")
+    ArrayList<Movie> getTopTenMovies(@Param("userID") Long id);
+
+    @Select("select movie1.id,movie_name,download_url,image_url,director,star,area,duration,time,mabstract,rating,type.type from movie1,TopTenOfPerson,type where movie1.id=movieID and movie1.type=type.id  and userID=#{userID}")
+    ArrayList<MovieDetail> recommendMoviesForUser(Integer userID);
 
 
+    @Select("select * from movie1 where type=2 order by id limit 1,4")
+    ArrayList<Movie> getFourMoviesx();
+
+    @Select("select * from movie1 where type=9 order by id limit 8,4")
+    ArrayList<Movie> getFourMoviesk();
 }

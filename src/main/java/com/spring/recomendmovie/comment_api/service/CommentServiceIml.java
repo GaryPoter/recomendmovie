@@ -5,8 +5,6 @@ import com.spring.recomendmovie.comment_api.mapper.CommentMapper;
 import com.spring.recomendmovie.comment_api.pojo.Comment;
 import com.spring.recomendmovie.comment_api.pojo.CommentDetail;
 
-import com.spring.recomendmovie.movie_api.pojo.Movie;
-import com.spring.recomendmovie.user_api.pojo.User;
 import com.spring.recomendmovie.utils.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,6 +41,16 @@ public class CommentServiceIml implements CommentService {
     }
 
     @Override
+    public ArrayList<CommentDetail> getCommentsByMovieId(long movie_id) {
+        return commentMapper.getCommentsByMovieId(movie_id);
+    }
+
+    @Override
+    public CommentDetail getCommentById(long comment_id) {
+        return commentMapper.getCommentById(comment_id);
+    }
+
+    @Override
     @Transactional(readOnly = true)
     public ArrayList<CommentDetail> getCommentsByUserName(String username) {
         return commentMapper.getCommentsByUserName(username);
@@ -67,64 +75,26 @@ public class CommentServiceIml implements CommentService {
     }
 
     @Override
-//<<<<<<< HEAD
-    @Transactional(readOnly = false)
-//    public int updateComment(long comment_id) {
-//        return commentMapper.updateComment(comment_id);
-//    }
+
     public int updateComment(Comment comment) {
         return commentMapper.updateComment(comment);
     }
 
-//    @Override
-//    @Transactional(readOnly = false)
-//    public int commentOnMovie(Comment comment) {
-//        commentTable.clear();
-//        setValue(comment);
-//        setWhere(comment);
-//        ArrayList<Comment> tmp = commentMapper.getObjWithParams(commentTable);
-//        if(tmp.size() != 0)
-//            return commentMapper.addObjWithParams(commentTable);
-//        else {
-//            return 0;
-//        }
-//    }
-//
-//    /**
-//     *
-//     * @param comment 用户id，电影id
-//     */
-//    private void setWhere(Comment comment) {
-//        commentTable.setSearch_k(new String[]{
-//                Comment.USERID, Comment.MOVIEID
-//        });
-//        commentTable.setSearch_v(new String[]{
-//                comment.getUser_id().toString(), comment.getMovie_id().toString()
-//        });
-//    }
-//
-//
-//
-//    /**
-//     *
-//     * @param comment 评论comment，打分score
-//     */
-//    private void setValue(Comment comment) {
-//        commentTable.setK(new String[]{
-//                Comment.COMMENT, Comment.SCORE, Comment.COMMENTTIME
-//        });
-//        commentTable.setV(new String[]{
-//                comment.getComment(), comment.getScore().toString(),
-//                comment.getComment_time().toString()
-//        });
-//
-//    }
-//=======
-    public ArrayList<CommentDetail> getAllCommentsBy(Integer currentPage){
-        Integer firstRec=(currentPage-1)*10;
-        Integer lastRec=currentPage*10;
-        return commentMapper.getAllCommentsBy(firstRec,lastRec);}
+
+    public ArrayList<CommentDetail> getAllCommentsBy(Integer currentPage,int pageSize){
+        Integer firstRec=(currentPage-1)*pageSize;
+        return commentMapper.getAllCommentsBy(firstRec,pageSize);}
+
+    @Override
+    public ArrayList<CommentDetail> getAllCommentsByMovie(Long id) {
+        return commentMapper.getAllCommentsByMovies(id);
+    }
+
+    @Override
+    public ArrayList<CommentDetail> getAllCommentsByMoviePage(Long id, int currentPage, int pageSize) {
+        int firstRec=(currentPage-1)*pageSize;
+        return commentMapper.getAllCommentsByMoviePage(id,firstRec,pageSize);
+    }
 
 
-//>>>>>>> 2b57dfcb6b503c9a69ce55e533b8e4411d051478
 }

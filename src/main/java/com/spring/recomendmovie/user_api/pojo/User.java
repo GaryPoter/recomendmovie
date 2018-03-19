@@ -19,7 +19,7 @@ public class User {
 
     @NotNull
 //    @Size(min = 5, max = 20)
-    private String name;
+    private String username;
 
     @NotNull
 //    @Size(min = 8, max = 20)
@@ -33,7 +33,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        password = password;
+        this.password = password;
     }
 
     public String getEmail() {
@@ -44,9 +44,9 @@ public class User {
         this.email = email;
     }
 
-    public User(Long id, String name, String email, String password) {
+    public User(Long id, String username, String email, String password) {
         this.id = id;
-        this.name = name;
+        this.username = username;
         this.password = password;
         this.email = email;
     }
@@ -63,12 +63,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
 }

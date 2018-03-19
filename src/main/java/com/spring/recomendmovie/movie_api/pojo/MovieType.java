@@ -2,30 +2,43 @@ package com.spring.recomendmovie.movie_api.pojo;
 
 public class MovieType {
 
-    public static final String TABLENAME = "movietype";
-    public static final String TYPEID = "type_id";
+    public static final String TABLENAME = "type";
+    public static final String TYPEID = "id";
 
 
-    private Long type_id;
+    private Long id;
 
-    private String type_name;
+    private String type;
 
     public MovieType() {
     }
 
-    public Long getType_id() {
-        return type_id;
+    public MovieType(Long id, String type) {
+        this.id = id;
+        this.type = type;
     }
 
-    public void setType_id(Long type_id) {
-        this.type_id = type_id;
+    public static String getTABLENAME() {
+        return TABLENAME;
     }
 
-    public String getType_name() {
-        return type_name;
+    public static String getTYPEID() {
+        return TYPEID;
     }
 
-    public void setType_name(String type_name) {
-        this.type_name = type_name;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

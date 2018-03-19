@@ -1,19 +1,21 @@
 package com.spring.recomendmovie.user_api.controller;
 
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.spring.recomendmovie.movie_api.pojo.Movie;
 import com.spring.recomendmovie.movie_api.service.MovieService;
+import com.spring.recomendmovie.user_api.pojo.User;
 import com.spring.recomendmovie.user_api.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import javax.xml.ws.http.HTTPBinding;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
@@ -24,10 +26,47 @@ public class UserPageController {
 
     @Autowired
     private MovieService movieService;
-    @RequestMapping("/userManage")
-    public String userManage(Model model){
-        model.addAttribute("users", userService.getAll());
-        return "user/user_manage";
+
+    @PostMapping("/searchUser")
+    public ModelAndView searchUser(String username){
+        ModelAndView modelAndView = new ModelAndView("user/user_manage");
+        List<User> list = userService.getUsersByLikeWord(username);
+        modelAndView.addObject("pageInfo", getPageInfo(list, 1, 10));
+        return modelAndView;
+    }
+
+    private PageInfo<User> getPageInfo(List<User> list, Integer pageNum, Integer pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        PageInfo<User> pageInfo = new PageInfo<>(list);
+        return pageInfo;
+    }
+
+//    private PageInfo<User> queryAll(Integer pageNum, Integer pageSize) {
+//        PageHelper.startPage(pageNum, pageSize);
+//        List<User> list = userService.getAll();
+//        PageInfo<User> pageInfo = new PageInfo<User>(list);
+//        return  pageInfo;
+//    }
+
+    @RequestMapping(value = "/userManage", method = RequestMethod.GET)
+    public ModelAndView userManage(@RequestParam(value = "pageNum", required = false, defaultValue="1") Integer pageNum,
+                                   @RequestParam(value = "pageSize", required = false, defaultValue="10") Integer pageSize){
+        ModelAndView modelAndView = new ModelAndView("user/user_manage");
+        List<User> list = userService.getAll();
+        modelAndView.addObject("pageInfo",getPageInfo(list, pageNum, pageSize));
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/updateUserPage")
+    public ModelAndView userDetail(@RequestParam(value = "id") Long id){
+        ModelAndView modelAndView = new ModelAndView("user/personalPage");
+        User user = userService.getUserById(id);
+        if(user != null) {
+            modelAndView.addObject("user", user);
+        }else{
+            modelAndView.addObject("user",new User());
+        }
+        return modelAndView;
     }
 
     @RequestMapping("/home")
@@ -54,8 +93,4 @@ public class UserPageController {
         modelAndView.addObject("movies",movies);
         return  modelAndView;
     }
-//    public String logOut(HttpSession httpSession){
-//        httpSession.setAttribute("user", null);
-//        return "index";
-//    }
 }

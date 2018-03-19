@@ -2,11 +2,13 @@ package com.spring.recomendmovie.movie_api.service;
 
 
 import com.spring.recomendmovie.movie_api.mapper.MovieMapper;
+import com.spring.recomendmovie.movie_api.pojo.ManagerInfo;
 import com.spring.recomendmovie.movie_api.pojo.Movie;
 import com.spring.recomendmovie.movie_api.pojo.MovieDetail;
 import com.spring.recomendmovie.movie_api.pojo.MovieType;
 
 import com.spring.recomendmovie.utils.Table;
+import org.apache.catalina.Manager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,18 +32,41 @@ public class MovieServiceIml implements MovieService {
     }
 
     @Override
-    public ArrayList<MovieDetail> getAllMoviesBy(Integer currentPage) {
-        Integer firstRec=(currentPage-1)*10;
-        Integer lastRec=currentPage*10;
-        return movieMapper.getAllMoviesBy(firstRec,lastRec);
+    public ArrayList<MovieDetail> getAllMoviesBy(Integer currentPage,int pageSize) {
+        Integer firstRec=(currentPage-1)*pageSize;
+        return movieMapper.getAllMoviesBy(firstRec,pageSize);
     }
     @Override
-    public ArrayList<MovieDetail> searchMovieByMovieNamePage(String movieName, Integer currentPage){
-        Integer firstRec=(currentPage-1)*10;
-        Integer lastRec=currentPage*10;
-        return movieMapper.searchMovieByMovieNamePage(movieName,firstRec,lastRec);
+    public ArrayList<MovieDetail> searchMovieByMovieNamePage(String movieName, Integer currentPage,int pageSize){
+        Integer firstRec=(currentPage-1)*pageSize;
+
+        return movieMapper.searchMovieByMovieNamePage(movieName,firstRec,pageSize);
     }
 
+    @Override
+    public ManagerInfo login(ManagerInfo managerInfo) {
+        return movieMapper.login(managerInfo.getmName(),managerInfo.getmPassword());
+    }
+
+    @Override
+    public ArrayList<Movie> getTopTenMovies(Long id) {
+        return movieMapper.getTopTenMovies(id);
+    }
+
+    @Override
+    public ArrayList<MovieDetail> recommendMoviesForUser(Integer userID) {
+        return movieMapper.recommendMoviesForUser(userID);
+    }
+
+    @Override
+    public ArrayList<Movie> getFourMoviesx() {
+        return movieMapper.getFourMoviesx();
+    }
+
+    @Override
+    public ArrayList<Movie> getFourMoviesk() {
+        return movieMapper.getFourMoviesk();
+    }
 
 
     @Override

@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public interface UserService {
@@ -111,4 +112,9 @@ public interface UserService {
 
     @Transactional(readOnly = false)
     Result deleteUser(User user);
+
+    @Transactional(readOnly = false)
+    Result updateUser(User user);
+
+    List<User> getUsersByLikeWord(String username);
 }

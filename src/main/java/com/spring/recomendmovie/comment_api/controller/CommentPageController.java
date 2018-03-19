@@ -26,13 +26,14 @@ public class CommentPageController {
     }
     @RequestMapping(value = "/getAllComments/{currentPage}",method = RequestMethod.GET)
     public ModelAndView getAllCommentsBy(@PathVariable("currentPage") Integer currentPage, Model model){
+        int pageSize=20;
         ModelAndView modelAndView = new ModelAndView("comment/commenttable");
         ArrayList<CommentDetail> commentDetails1 = commentService.getAllComments();
-        ArrayList<CommentDetail> commentDetails =commentService.getAllCommentsBy(currentPage);
-        PageBean pageBean = new PageBean(currentPage,10,commentDetails,commentDetails1.size());
-        int lenth = commentDetails.size();
+        ArrayList<CommentDetail> commentDetails =commentService.getAllCommentsBy(currentPage,pageSize);
+        PageBean pageBean = new PageBean(currentPage,pageSize,commentDetails,commentDetails1.size());
+        int length = commentDetails1.size();
         modelAndView.addObject("pageBean",pageBean);
-        modelAndView.addObject("count",lenth);
+        modelAndView.addObject("count",length);
         modelAndView.addObject("commentDetails",commentDetails);
         modelAndView.addObject("commentDetails1",commentDetails1);
         return modelAndView;
@@ -47,11 +48,19 @@ public class CommentPageController {
         return getAllComments(model);
     }
 
-    @RequestMapping("/addCommentInfo")
-    public ModelAndView addCommentInfo(Model model){
-        ModelAndView modelAndView = new ModelAndView("comment/insertComment");
-        return modelAndView;
-    }
+//    @RequestMapping("/addCommentInfo")
+//    public ModelAndView addCommentInfo(Model model){
+//        ModelAndView modelAndView = new ModelAndView("comment/insertComment");
+//        return modelAndView;
+//    }
+//       @RequestMapping(value="/movieDetails/{id}",method = RequestMethod.GET)
+//        public ModelAndView movieDetails(Model model, @PathVariable("id") Long id)
+//        {
+//            ModelAndView modelAndView = new ModelAndView("movies/movieDetail");
+//            ArrayList<Comment> comments = commentService.getCommentsByMovieId(id);
+//            modelAndView.addObject("comments", comments);
+//            return modelAndView;
+//        }
 
 //    @RequestMapping("/addCommentInfo")
 //    public String addCommentInfo(Model model){
@@ -64,5 +73,10 @@ public class CommentPageController {
         //return getAllComments(model);
         ModelAndView modelAndView = new ModelAndView("comment/updateComment");
         return modelAndView;
+    }
+
+    @RequestMapping(value = "rightPage", method = RequestMethod.GET)
+    public String rightFragment(){
+        return "fragment/right";
     }
 }

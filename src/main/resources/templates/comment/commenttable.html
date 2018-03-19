@@ -37,7 +37,7 @@ $(document).ready(function(){
 	<div class="place">
     <span>位置：</span>
     <ul class="placeul">
-	    <li><a href="#">首页</a></li>
+	    <li><a th:href="@{/movie/manager}">首页</a></li>
 	    <li><a href="#">评论列表</a></li>
     </ul>
     </div>
@@ -56,22 +56,22 @@ $(document).ready(function(){
     <table class="tablelist">
     	
     	<thead>
-	    	<tr>
-		        <th><input name="" type="checkbox" value="" checked="checked"/></th>
-		        <th>编号<i class="sort"><img th:src="@{/assets/images/px.gif}" /></i></th>
-		        <th>电影名</th>
-		        <th>用户名</th>
-		        <th>评论内容</th>
-		        <th>评论时间</th>
-		        <th>评分</th>
-		        <th>操作</th>
+	    	<tr style="height: 40px;font-size: 20px">
+		        <!--<th><input name="" type="checkbox" value="" checked="checked"/></th>-->
+		        <th style="width:5%">编号<i class="sort"><img th:src="@{/assets/images/px.gif}" /></i></th>
+		        <th style="width:25%">电影名</th>
+		        <th style="width:10%">用户名</th>
+		        <th style="width:35%">评论内容</th>
+		        <th style="width:15%">评论时间</th>
+		        <th style="width:5%">评分</th>
+		        <th style="width:5%">操作</th>
 	      </tr>
       </thead>
         
         <tbody>
-	        <tr th:each="commentDetail:${commentDetails}">
+	        <tr th:each="commentDetail:${commentDetails}" style="height: 40px;font-size: 20px">
                 <div>
-                    <td><input name="" type="checkbox" value="" /></td>
+                    <!--<td><input name="" type="checkbox" value="" /></td>-->
                     <td th:text="${commentDetail.id}"></td>
                     <td th:text="${commentDetail.movie_name}"></td>
                     <td th:text="${commentDetail.username}"></td>
@@ -96,10 +96,10 @@ $(document).ready(function(){
                 <li class="paginItem" th:if="${pageBean.getCurrentPage() - 2 gt 0}"><a th:href="${'/movie/comment/getAllComments/'+ (pageBean.getCurrentPage() - 2)}" th:text="${pageBean.getCurrentPage() - 2}"></a></li>
                 <li class="paginItem" th:if="${pageBean.getCurrentPage() - 1 gt 0}"><a th:href="${'/movie/comment/getAllComments/'+ (pageBean.getCurrentPage() - 1)}" th:text="${pageBean.getCurrentPage() - 1}"></a></li>
                 <li class="paginItem current"><a th:href="${'/movie/comment/getAllComments/'+ pageBean.getCurrentPage()}" th:text="${pageBean.getCurrentPage()}" disabled="true" onclick="false"></a></li>
-                <li class="paginItem"  th:if="${(pageBean.getCurrentPage() + 1) le pageBean.getEndPageIndex()}"><a th:href="${'/movie/comment/getAllComments/'+ (pageBean.getCurrentPage() + 1)}" th:text="${pageBean.getCurrentPage() + 1}"></a></li>
-                <li class="paginItem" th:if="${(pageBean.getCurrentPage() + 2) le pageBean.getEndPageIndex()}"><a th:href="${'/movie/comment/getAllComments/'+ (pageBean.getCurrentPage() + 2)}" th:text="${pageBean.getCurrentPage() + 2}"></a></li>
-                <li class="paginItem"><a th:href="${'/movie/comment/getAllComments/'+ pageBean.getEndPageIndex()}">末页</a></li>
-                <li class="paginItem" th:if="${pageBean.getCurrentPage()+1 le pageBean.getEndPageIndex()}"><a th:href="${'/movie/comment/getAllComments/'+ (pageBean.getCurrentPage() + 1)}"><span class="pagenxt" ></span></a></li>
+                <li class="paginItem"  th:if="${(pageBean.getCurrentPage() + 1) le pageBean.pageCount}"><a th:href="${'/movie/comment/getAllComments/'+ (pageBean.getCurrentPage() + 1)}" th:text="${pageBean.getCurrentPage() + 1}"></a></li>
+                <li class="paginItem" th:if="${(pageBean.getCurrentPage() + 2) le pageBean.pageCount}"><a th:href="${'/movie/comment/getAllComments/'+ (pageBean.getCurrentPage() + 2)}" th:text="${pageBean.getCurrentPage() + 2}"></a></li>
+                <li class="paginItem"><a th:href="${'/movie/comment/getAllComments/'+ pageBean.pageCount}">末页</a></li>
+                <li class="paginItem" th:if="${pageBean.getCurrentPage()+1 le pageBean.pageCount}"><a th:href="${'/movie/comment/getAllComments/'+ (pageBean.getCurrentPage() + 1)}"><span class="pagenxt" ></span></a></li>
             </ul>
         </div>
     

@@ -1,5 +1,6 @@
 package com.spring.recomendmovie.movie_api.controller;
 
+import com.spring.recomendmovie.movie_api.pojo.ManagerInfo;
 import com.spring.recomendmovie.movie_api.pojo.Movie;
 import com.spring.recomendmovie.movie_api.pojo.MovieDetail;
 import com.spring.recomendmovie.movie_api.pojo.MovieType;
@@ -7,12 +8,14 @@ import com.spring.recomendmovie.movie_api.service.MovieService;
 import com.spring.recomendmovie.utils.PageBean;
 import com.spring.recomendmovie.utils.message.Result;
 import com.sun.deploy.net.HttpResponse;
+import org.apache.catalina.Manager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import javax.swing.*;
 import javax.websocket.server.PathParam;
 import java.util.ArrayList;
@@ -31,10 +34,11 @@ public class MovieController {
 
     @RequestMapping(value="/search/{searchContent}/{current_page}",method = RequestMethod.GET)
     public ModelAndView searchMovieBy(@PathVariable("current_page") Integer currentPage,@PathVariable("searchContent") String movieName,Model model){
+        int pageSize = 20;
         ArrayList<MovieDetail> movieDetails1 = movieService.searchMovieByMovieName(movieName);
-        ArrayList<MovieDetail> movieDetails = movieService.searchMovieByMovieNamePage(movieName,currentPage);
+        ArrayList<MovieDetail> movieDetails = movieService.searchMovieByMovieNamePage(movieName,currentPage,pageSize);
         ModelAndView modelAndView = new ModelAndView("movies/searchMovieTable");
-        PageBean pageBean = new PageBean(currentPage,10,movieDetails,movieDetails1.size());
+        PageBean pageBean = new PageBean(currentPage,pageSize,movieDetails,movieDetails1.size());
         int lenth = movieDetails1.size();
         modelAndView.addObject("count",lenth);
         modelAndView.addObject("pageBean",pageBean);
@@ -58,10 +62,11 @@ public class MovieController {
 
     @RequestMapping(value = "/getAllMovies/{current_page}", method=RequestMethod.GET)
     public ModelAndView getAllMoviesBy(@PathVariable("current_page") Integer currentPage,Model model){
+        int pageSize = 20;
         ArrayList<MovieDetail> movieDetails1 = movieService.getAllMovies();
-        ArrayList<MovieDetail> movieDetails = movieService.getAllMoviesBy(currentPage);
+        ArrayList<MovieDetail> movieDetails = movieService.getAllMoviesBy(currentPage,pageSize);
         ModelAndView modelAndView = new ModelAndView("movies/movietable");
-        PageBean pageBean = new PageBean(currentPage,10,movieDetails,movieDetails1.size());
+        PageBean pageBean = new PageBean(currentPage,pageSize,movieDetails,movieDetails1.size());
         int lenth = movieDetails1.size();
         modelAndView.addObject("count",lenth);
         modelAndView.addObject("pageBean",pageBean);
@@ -105,10 +110,11 @@ public class MovieController {
 
     @RequestMapping(value = "/movieListByUser/{searchContent}/{currentPage}",method = RequestMethod.GET)
     public ModelAndView getMovieListByUser(@PathVariable("searchContent") String searchContent,@PathVariable("currentPage") Integer currentPage, Model model){
+        int pageSize=5;
         ModelAndView modelAndView = new ModelAndView("movies/movieListByUser");
         ArrayList<MovieDetail> movieDetails = movieService.searchMovieByMovieName(searchContent);
-        ArrayList<MovieDetail> movieDetails1 = movieService.searchMovieByMovieNamePage(searchContent,currentPage);
-        PageBean pageBean = new PageBean(currentPage,5,movieDetails1,movieDetails.size());
+        ArrayList<MovieDetail> movieDetails1 = movieService.searchMovieByMovieNamePage(searchContent,currentPage,pageSize);
+        PageBean pageBean = new PageBean(currentPage,pageSize,movieDetails1,movieDetails.size());
         int lenth=movieDetails.size();
         modelAndView.addObject("count",lenth);
         modelAndView.addObject("pageBean",pageBean);
@@ -118,4 +124,23 @@ public class MovieController {
     }
 
 
+    @RequestMapping("/loginAction")
+    public Result login(String mName, String mPassword, HttpSession session){
+        ManagerInfo managerInfo = movieService.login(new ManagerInfo(new Long(-1),mName,mPassword));
+        if(managerInfo==null){
+            return new Result(Result.FAIL_CODE);
+        }else{
+            session.setAttribute("managerInfo", managerInfo);
+            return new Result((Result.SUCCESS_CODE));
+        }
+    }
+
+    @RequestMapping(value = "/moviesRecommendForUser/{userID}",method = RequestMethod.GET)
+    public ModelAndView RecommendMoviesForUser(Model model,@PathVariable("userID") Integer userID){
+        ModelAndView modelAndView = new ModelAndView("movies/recommendMovieForUser");
+        ArrayList<MovieDetail> movieDetails1 = movieService.recommendMoviesForUser(userID);
+        modelAndView.addObject("movies",movieDetails1);
+        return modelAndView;
+
+    }
 }

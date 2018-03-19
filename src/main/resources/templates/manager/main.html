@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head th:replace="fragment/left::head">
+</head>
+
+<body>
+<div>
+    <div th:include="fragment/top::top" class="row"
+         th:style="'background:url(' + @{/assets/images/topbg.gif} + ') repeat-x;'"/>
+    <div class="row">
+        <div th:include="fragment/left::left" class="col-md-2"/>
+        <!--<div th:include="fragment/right::right" name="right"class="col-md-10"/>-->
+        <div class="col-md-10">
+        <iframe style="width:92%;height: 1100px;margin:0" scrolling="no" name="right" frameborder="0" src="comment/rightPage"
+                ></iframe></div>
+    </div>
+</div>
+
+<!--&lt;!&ndash;iframe模板&ndash;&gt;-->
+<!--<iframe id="top" name="top" frameborder="0" th:src="@{fragment/top}"></iframe>-->
+<!--<iframe id="left" name="left" frameborder="0" th:src="@{fragment/left}"></iframe>-->
+<!--<iframe id="right" name="right" frameborder="0" th:src="@{fragment/right}"></iframe>-->
+
+</body>
+</html>
