@@ -86,6 +86,12 @@
                                     </div>
                                 </div>
 
+
+                                <form style="margin-top: 60px" th:async="true" action="/movie/movies/movieListByUser" method="post">
+                                    <input type="text" style="width: 400px;height: 40px;border: 1px solid #2a3e93;" id="searchContent" th:name="searchContent"/>
+                                    <input type="submit" value="搜索" placeholder="请输入电影名/导演/演员" style="height: 40px;width: 65px;color:#ffffdd;font-size: 18px;background-color: #6975a6;"/>
+                                </form>
+
                             </div>
 
                         </div>
@@ -93,45 +99,10 @@
                 </div>
             </div>
             <!--header end-->
-            <div >
-                <center>
-                <form th:async="true" action="/movie/movies/movieListByUser" method="post">
-                    <input type="text" style="width: 500px;height: 50px;border: 1px solid #2a3e93;" id="searchContent" th:name="searchContent"/>
-                    <input type="submit" value="搜索" style="height: 50px;width: 90px;color:#ffffdd;font-size: 20px;background-color: #6975a6;"/>
-                </form>
-                </center>
-            </div>
 
 
             <!--nav start-->
-            <div class="nav-contain">
-                <div class="nav-inner">
-                    <ul class="am-nav am-nav-pills am-nav-justify">
-                        <li class=""><a href="/movie/home">首页</a></li>
-                        <li>
-                            <a href="#">电影分类</a>
-                            <!-- sub-menu start-->
-                            <ul class="sub-menu">
-                                <li class="menu-item"><a href="html/product1.html">按内容</a></li>
-                                <li class="menu-item"><a href="html/product2.html">按地区</a></li>
-                                <li class="menu-item"><a href="html/product3.html">按热度</a></li>
-                            </ul>
-                            <!-- sub-menu end-->
-                        </li>
-                        <li>
-                            <a href="html/news.html">客户端下载</a>
-                            <!-- sub-menu start-->
-                            <ul class="sub-menu">
-                                <li class="menu-item"><a href="html/news-content.html">Windows版</a></li>
-                                <li class="menu-item"><a href="html/404-dark.html">IOS版</a></li>
-                                <li class="menu-item"><a href="html/404-light.html">ANDROID版</a></li>
-                            </ul>
-                            <!-- sub-menu end-->
-                        </li>
-                        <li><a href="html/contact.html">联系我们</a></li>
-                    </ul>
-                </div>
-            </div>
+
             <!--nav end-->
         </div>
     </div>

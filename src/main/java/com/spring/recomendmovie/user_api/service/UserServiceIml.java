@@ -116,4 +116,10 @@ public class UserServiceIml implements UserService{
         return result;
     }
 
+    @Override
+    @Transactional(readOnly = false)
+    public boolean deleteUserById(Long uId) {
+        return userMapper.deleteUserById(uId);
+    }
+
 }

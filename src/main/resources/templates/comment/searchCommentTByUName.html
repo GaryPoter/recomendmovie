@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>网站后台管理系统</title>
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/css/searchbox.css}"/>
+    <script type="text/javascript" th:src="@{/assets/js/jquery.js}"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".click").click(function(){
+                $(".tip").fadeIn(200);
+            });
+
+            $(".tiptop a").click(function(){
+                $(".tip").fadeOut(200);
+            });
+
+            $(".sure").click(function(){
+                $(".tip").fadeOut(100);
+            });
+
+            $(".cancel").click(function(){
+                $(".tip").fadeOut(100);
+            });
+            $("#hxy").click(function(){
+                if(this.checked){
+                    $("[name=hxy]").attr("checked",true);}
+                else{ $("[name=hxy]").attr("checked",false);}
+            });
+
+        });
+    </script>
+
+
+</head>
+
+
+<body>
+
+<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+        <li><a th:href="@{/movie/manager}">首页</a></li>
+        <li><a href="/movie/comment/getAllComments">评论列表</a></li>
+    </ul>
+</div>
+
+<div class="rightinfo">
+
+    <div class="tools">
+
+        <ul class="toolbar">
+            <li class="click"><span><img th:src="@{/assets/images/t03.png}" /></span>删除</li>
+        </ul>
+        <div class="search bar" style="float: right">
+            <form th:async="true" action="/movie/comment/search" method="post">
+                <input type="text" id="searchContent" th:name="searchContent" style="font-size: 17px" placeholder="请输入您需要查找的用户"/>
+                <button type="submit" value="搜索">
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+
+    <table class="tablelist">
+
+        <thead>
+        <tr style="height: 40px;font-size: 20px">
+            <th style="width:5%"><input name="" type="checkbox" value="" id="hxy"/></th>
+            <th style="width:5%">编号<i class="sort"><img th:src="@{/assets/images/px.gif}" /></i></th>
+            <th style="width:20%">电影名</th>
+            <th style="width:10%">用户名</th>
+            <th style="width:35%">评论内容</th>
+            <th style="width:15%">评论时间</th>
+            <th style="width:5%">评分</th>
+            <th style="width:5%">操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="commentDetail:${commentDetails}" style="height: 40px;font-size: 20px">
+            <div>
+                <td><input name="hxy" type="checkbox" th:value="${commentDetail.id}" /></td>
+                <td th:text="${commentDetail.id}"></td>
+                <td th:text="${commentDetail.movie_name}"></td>
+                <td th:text="${commentDetail.username}"></td>
+                <td th:text="${commentDetail.comment}" style="width:500px;display:block;overflow:hidden;word-break:keep-all;white-space:nowrap;text-overflow:ellipsis;"></td>
+                <td th:text="${commentDetail.comment_time}"></td>
+                <td th:text="${commentDetail.score}"></td>
+
+                <td><a class="tablelink" href="javascript:;" th:onclick="'deleteAction(\''+${commentDetail.id}+'\');'">删除</a></td>
+            </div>
+        </tr>
+
+        </tbody>
+    </table>
+
+
+
+    <div class="pagin">
+        <div class="message">共<i class="blue" th:text="${count}"></i>条记录，当前显示第&nbsp;<i class="blue" th:text="${pageBean.getCurrentPage()}">&nbsp;</i>页</div>
+        <ul class="paginList">
+            <li class="paginItem" th:if="${pageBean.getCurrentPage() - 1 gt 0}"><a th:href="${'/movie/comment/search/'+ searchContent+'/'+(pageBean.getCurrentPage() - 1)}"><span class="pagepre"></span></a></li>
+            <li class="paginItem" ><a th:href="${'/movie/comment/search/'+ searchContent+'/'+pageBean.getBeginPageIndex()}">首页</a></li>
+            <li class="paginItem" th:if="${pageBean.getCurrentPage() - 2 gt 0}"><a th:href="${'/movie/comment/search/'+ searchContent+'/'+ (pageBean.getCurrentPage() - 2)}" th:text="${pageBean.getCurrentPage() - 2}"></a></li>
+            <li class="paginItem" th:if="${pageBean.getCurrentPage() - 1 gt 0}"><a th:href="${'/movie/comment/search/'+ searchContent+'/'+ (pageBean.getCurrentPage() - 1)}" th:text="${pageBean.getCurrentPage() - 1}"></a></li>
+            <li class="paginItem current"><a th:href="${'/movie/comment/search/'+ searchContent+'/'+ pageBean.getCurrentPage()}" th:text="${pageBean.getCurrentPage()}" disabled="true" onclick="false"></a></li>
+            <li class="paginItem"  th:if="${(pageBean.getCurrentPage() + 1) le pageBean.pageCount}"><a th:href="${'/movie/comment/search/'+ searchContent+'/'+ (pageBean.getCurrentPage() + 1)}" th:text="${pageBean.getCurrentPage() + 1}"></a></li>
+            <li class="paginItem" th:if="${(pageBean.getCurrentPage() + 2) le pageBean.pageCount}"><a th:href="${'/movie/comment/search/'+ searchContent+'/'+ (pageBean.getCurrentPage() + 2)}" th:text="${pageBean.getCurrentPage() + 2}"></a></li>
+            <li class="paginItem"><a th:href="${'/movie/comment/search/'+ searchContent+'/'+ pageBean.pageCount}">末页</a></li>
+            <li class="paginItem" th:if="${pageBean.getCurrentPage()+1 le pageBean.pageCount}"><a th:href="${'/movie/comment/search/'+ searchContent+'/'+ (pageBean.getCurrentPage() + 1)}"><span class="pagenxt" ></span></a></li>
+        </ul>
+    </div>
+
+    <div class="tip">
+        <div class="tiptop"><span>提示信息</span><a></a></div>
+
+        <div class="tipinfo">
+            <div class="tipright">
+                <p>确定删除？</p>
+            </div>
+        </div>
+
+        <div class="tipbtn">
+            <input name="" type="button"  class="sure" value="确定" onclick="batchDelete()"/>&nbsp;
+            <input name="" type="button"  class="cancel" value="取消" />
+        </div>
+
+    </div>
+
+
+</div>
+
+<script type="text/javascript">
+    $('.tablelist tbody tr:odd').addClass('odd');
+</script>
+<script th:src="@{/comment.js/comment_manage.js}" type="text/javascript"></script>
+</body>
+</html>

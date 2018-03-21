@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>电影列表</title>
+    <title>用户列表</title>
     <link rel="stylesheet" th:href="@{/assets/css/style.css}"/>
     <link rel="stylesheet" th:href="@{/assets/css/searchbox.css}"/>
     <script type="text/javascript" th:src="@{/assets/js/jquery.js}"></script>
@@ -15,6 +15,12 @@
                 $(".imglist li.selected").removeClass("selected")
                 $(this).addClass("selected");
             })
+            $("#hxy").click(function(){
+                if(this.checked){
+                    $("[name=hxy]").attr("checked",true);}
+                else{ $("[name=hxy]").attr("checked",false);}
+            });
+
         })
     </script>
     <script type="text/javascript">
@@ -46,53 +52,44 @@
 <div class="place">
     <span>位置：</span>
     <ul class="placeul">
-        <li><a href="/movie/home">首页</a></li>
-        <li><a href="/movie/movies/getAllMovies">电影列表</a></li>
+        <li><a href="/movie/manager">首页</a></li>
+        <li><a href="/movie/user/userManage">用户列表</a></li>
     </ul>
 </div>
 
 <div class="rightinfo">
 
+
     <div class="tools">
 
         <ul class="toolbar">
-            <li><a href="/movie/movies/addMovieInfo"><span><img th:src="@{/assets/images/movies/t01.png}"/></span>添加</a></li>
             <li class="click"><span><img th:src="@{/assets/images/movies/t03.png}"/></span>删除</li>
         </ul>
-
-        <div class="search bar" style="float: right">
-            <form th:async="true" action="/movie/user/searchUser" method="post">
-                <input type="text" id="searchContent" th:name="username" style="font-size: 17px"/>
-                <button type="submit" value="搜索">
-                </button>
-            </form>
-        </div>
     </div>
 
 
     <table class="imgtable">
 
         <thead>
-        <tr>
-            <th><input name="" type="checkbox" value="" id="selectAll"/></th>
-            <th width="100px;"></th>
-            <th>id</th>
-            <th>邮箱</th>
-            <th>用户名</th>
-            <th>密码</th>
-            <th>操作</th>
+        <tr style="height: 40px;font-size: 20px">
+
+            <th style="width:5%"><input name="" type="checkbox" value="" id="hxy" /></th>
+            <th style="width:15%">id</th>
+            <th style="width:25%" >邮箱</th>
+            <th style="width:30%" >用户名</th>
+            <!--<th>密码</th>-->
+            <th style="width:25%">操作</th>
         </tr>
         </thead>
 
         <tbody>
 
-        <tr th:each="user:${pageInfo.list}">
-            <td><input class="selectRow" name="userSelect" type="checkbox"/></td>
-            <td></td>
+        <tr th:each="user:${pageInfo.list}" style="height: 40px;font-size: 20px">
+            <td><input name="hxy" type="checkbox" th:value="${user.id}"/></td>
             <td th:text="${user.id}"></td>
             <td th:text="${user.email}"></td>
             <td th:text="${user.username}"></td>
-            <td th:text="${user.password}"></td>
+            <!--<td th:text="${user.password}" ></td>-->
             <td>
                 <a class="update" th:data="${user.id}">修改</a>
                 <a class="delete" th:data="${user.id}">删除</a>
@@ -134,7 +131,7 @@
     </div>
 
     <div class="tipbtn">
-        <input name="" type="button"  class="sure" value="确定" />&nbsp;
+        <input name="" type="button"  class="sure" value="确定" onclick="batchDelete()"/>&nbsp;
         <input name="" type="button"  class="cancel" value="取消" />
     </div>
 
