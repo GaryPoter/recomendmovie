@@ -46,8 +46,24 @@ public class MovieController {
         return modelAndView;
     }
 
+<<<<<<< HEAD
     @RequestMapping(value = "/delete/{movie_id}", method = RequestMethod.GET)
     public ModelAndView delete(@PathVariable("movie_id") int id, Model model) {
+=======
+    @RequestMapping(value="/batchDelete/{chestr}",method=RequestMethod.GET)
+    public ModelAndView batchDelete(@PathVariable("chestr") String chestr,Model model){
+        String[] strArr = null;
+        strArr=chestr.split(",");
+        for(int i=0;i<strArr.length;i++){
+            int movieId= Integer.parseInt(strArr[i]);
+            movieService.deleteMovie(movieId);
+        }
+        return getAllMovies(model);
+    }
+
+    @RequestMapping(value="/delete/{movie_id}",method=RequestMethod.GET)
+    public ModelAndView delete(@PathVariable("movie_id") int id,Model model){
+>>>>>>> c8bde70f56c4a76f2a1eac8109305d604dae4681
         movieService.deleteMovie(id);
 
         return getAllMovies(model);

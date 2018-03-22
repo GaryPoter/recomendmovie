@@ -15,7 +15,6 @@ import java.util.ArrayList;
 @Service    //对应的是业务层Bean  在类前注释，将此类实例化
 @Transactional(readOnly = true)
 public class CommentServiceIml implements CommentService {
-
     @Autowired  // 在属性前配置，将属性对应的对象从工厂中取出并注入到该bean中
     private CommentMapper commentMapper;
 
@@ -94,6 +93,17 @@ public class CommentServiceIml implements CommentService {
     public ArrayList<CommentDetail> getAllCommentsByMoviePage(Long id, int currentPage, int pageSize) {
         int firstRec=(currentPage-1)*pageSize;
         return commentMapper.getAllCommentsByMoviePage(id,firstRec,pageSize);
+    }
+
+    @Override
+    public ArrayList<CommentDetail> searchCommentByUName(String uName) {
+        return commentMapper.searchCommentByUName(uName);
+    }
+
+    @Override
+    public ArrayList<CommentDetail> searchCommentByUNamePage(String uName, Integer currentPage, int pageSize) {
+        int firstRec=(currentPage-1)*pageSize;
+        return commentMapper.searchCommentByUNamePage(uName,firstRec,pageSize);
     }
 
 

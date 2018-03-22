@@ -6,3 +6,19 @@ function deleteAction(comment_id) {
     }
 
 }
+
+function batchDelete() {
+    var elements = document.getElementsByName("hxy");
+    var chestr="";
+    for(var i = 0; i <elements.length; i++){
+        if(elements[i].checked==true){
+            chestr+=elements[i].value+",";
+        }
+    }
+    if(chestr==""){
+        alert("请先选择需要删除的电影");
+    }
+    else{
+        $(window).attr('location','/movie/comment/batchDelete/'+chestr);
+    }
+}

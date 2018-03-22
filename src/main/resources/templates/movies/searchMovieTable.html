@@ -56,7 +56,7 @@
 
         <ul class="toolbar">
             <li><a href="/movie/movies/addMovieInfo"><span><img th:src="@{/assets/images/movies/t01.png}"/></span>添加</a></li>
-            <li class="click"><span><img th:src="@{/assets/images/movies/t03.png}"/></span>删除</li>
+            <!--<li class="click"><span><img th:src="@{/assets/images/movies/t03.png}"/></span>删除</li>-->
         </ul>
 
         <div class="search bar" style="float: right">
@@ -75,13 +75,12 @@
         <tr style="height: 40px;font-size: 20px" >
             <!--<th><input name="" type="checkbox" value="" checked="checked"/></th>-->
             <!--<th width="100px;"></th>-->
-            <th style="width:10%">电影名</th>
-            <th style="width:5%">类型</th>
-            <th style="width:20%">导演</th>
-            <th style="width:20%">主演</th>
-            <th style="width:10%">地区</th>
+            <th style="width:16%">电影名</th>
+            <th style="width:7%">类型</th>
+            <th style="width:22%">导演</th>
+            <th style="width:22%">主演</th>
             <th style="width:5%">时长</th>
-            <th style="width:20%">链接</th>
+            <th style="width:18%">链接</th>
             <th style="width:10%">操作</th>
         </tr>
         </thead>
@@ -97,7 +96,6 @@
                 <td th:text="${movie.type}"></td>
                 <td th:text="${movie.director}" > </td>
                 <td th:text="${movie.star}" style="width:500px;display:block;overflow:hidden;word-break:keep-all;white-space:nowrap;text-overflow:ellipsis;"></td>
-                <td th:text="${movie.area}"></td>
                 <td th:text="${movie.duration}"></td>
                 <td th:text="${movie.download_url}"></td>
                 <!--th:href="${'/movie/movies/delete/'+movie.id}" -->

@@ -103,7 +103,7 @@
                 <input hidden="hidden" id="id" th:value="${user.id}" />
                 <li><label>用户名<b>*</b></label><input id="username" type="text" class="dfinput" th:value="${user.username}" style="width:200px;" /></li>
                 <li><label>邮箱<b>*</b></label><input id="email" type="text" class="dfinput" th:value="${user.email}"  style="width:200px;" /></li>
-                <li><label>原始密码<b>*</b></label><input type="text" class="dfinput" th:value="${user.password}"  style="width:200px;" /></li>
+                <li><label>原始密码<b>*</b></label><input type="password" class="dfinput" th:value="${user.password}"  style="width:200px;" /></li>
                 <li><label>新密码<b>*</b></label><input id="password" type="password" class="dfinput"  style="width:200px;" /></li>
                 <li><label>确认新密码<b>*</b></label><input id="repassword" type="password" class="dfinput"  style="width:200px;" /></li>
                 <li><label>&nbsp;</label><input id="updateUser" type="button" class="btn"  value="马上修改" onclick="updateUser()"/></li>

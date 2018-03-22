@@ -57,5 +57,9 @@ public interface CommentService {
 
 
     ArrayList<CommentDetail> getAllCommentsByMoviePage(Long id, int currentPage, int pageSize);
+
+    ArrayList<CommentDetail> searchCommentByUName(String uName);
+
+    ArrayList<CommentDetail> searchCommentByUNamePage(String uName, Integer currentPage, int pageSize);
 }
 //>>>>>>>

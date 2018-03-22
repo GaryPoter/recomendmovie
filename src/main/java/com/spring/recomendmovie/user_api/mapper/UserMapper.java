@@ -41,4 +41,7 @@ public interface UserMapper{
 
     @InsertProvider(type = UserProvider.class, method = "insertUser")
     int insertUser(User user);
+
+    @Delete("delete from user where id=#{uId}")
+    boolean deleteUserById(@Param("uId") Long uId);
 }

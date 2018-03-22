@@ -8,10 +8,12 @@ import com.spring.recomendmovie.utils.message.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.rmi.server.UID;
 import java.util.ArrayList;
 
 @RestController
@@ -83,7 +85,7 @@ public class UserController {
         if (result.getCode() == Result.SUCCESS_CODE){
             httpSession.setAttribute("user", userService.login(user));
         }
-        return userService.register(new User(new Long(-1), name, email, password));
+        return result;
     }
 
     @PostMapping(value = "/delete")
@@ -96,5 +98,23 @@ public class UserController {
     @PostMapping(value = "/update")
     public Result updateUser(User user){
         return userService.updateUser(user);
+    }
+
+    @RequestMapping("/batchDelete")
+    public Result batchDelete(String chestr){
+        Result result = new Result();
+        result.setCode(Result.SUCCESS_CODE);
+        String[] strArr = null;
+        strArr=chestr.split(",");
+        for(int i=0;i<strArr.length;i++){
+            Long uId= Long.valueOf(strArr[i]);
+            boolean ifDelete=userService.deleteUserById(uId);
+            if(ifDelete==false){
+                result.setCode(Result.FAIL_CODE);
+                break;
+            }
+        }
+        return result;
+
     }
 }

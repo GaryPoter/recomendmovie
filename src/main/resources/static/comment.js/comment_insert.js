@@ -33,11 +33,12 @@ function addCommentAction() {
     var user_id=$("#uid").val();
     var movie_id=$("#mid").val();
     var comment = $("#comment").val();
+
     // var comment_time=$("#comment_time").val();
     // var date = new Date(comment_time[0],parseInt(comment_time[1])-1,comment_time[2]);
     // var comment_time="1999-09-09";
     var score=$("#score").val();
-    if(user_id != ''&&movie_id !='') {
+    if(user_id != null) {
         $.ajax({
             async:false,
             type:'POST',
@@ -61,11 +62,12 @@ function addCommentAction() {
                     alert("您还未登录，无法评论！");
                     $(window).attr('location', '/movie/user/login');
                 } else {
-                    $('#user_id').select().focus();
+                    alert("添加失败！");
                 }
             }
             });
         }else{
-            alert("未输入评论");
+        alert("您还未登录，无法评论！");
+        $(window).attr('location', '/movie/user/login');
         }
 }
