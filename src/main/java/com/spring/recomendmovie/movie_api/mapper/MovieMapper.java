@@ -1,19 +1,15 @@
 package com.spring.recomendmovie.movie_api.mapper;
 
 
-import com.spring.recomendmovie.movie_api.pojo.ManagerInfo;
-import com.spring.recomendmovie.movie_api.pojo.Movie;
-import com.spring.recomendmovie.movie_api.pojo.MovieDetail;
-import com.spring.recomendmovie.movie_api.pojo.MovieType;
-import com.spring.recomendmovie.utils.mapper.ObjMapper;
-import org.apache.catalina.Manager;
+import com.spring.recomendmovie.movie_api.pojo.*;
+
+import com.spring.recomendmovie.user_api.pojo.User;
 import org.apache.ibatis.annotations.*;
 
-import javax.websocket.server.PathParam;
 import java.util.ArrayList;
 
 @Mapper
-public interface MovieMapper extends ObjMapper<Movie> {
+public interface MovieMapper {
 
     @Select("select movie1.id,movie_name,download_url,image_url,director,star,area,duration,time,mabstract,rating,type.type from movie1,type where movie1.type=type.id and movie_name like CONCAT('%',#{movie_name},'%')")
     ArrayList<MovieDetail> getMovieByName(@Param("movie_name") String movieName);
@@ -70,4 +66,16 @@ public interface MovieMapper extends ObjMapper<Movie> {
 
     @Select("select * from movie1 where type=9 order by id limit 8,4")
     ArrayList<Movie> getFourMoviesk();
+
+    @Insert("insert into browselog (user_id,movie_id,browsetime,image_url) values (#{user_id},#{movie_id}, #{browsetime},#{image_url})")
+    int insertBrowseLog(BrowseLog browseLog);
+
+    @Select("select movie1.movie_name,movie1.image_url from browselog, movie1,user where user_id=#{user_id} and browselog.user_id=user.id and browselog.movie_id=movie1.id ")
+    ArrayList<Movie> getBrowseLog(@Param("user_id") Long user_id);
+
+    @Select("select distinct(movie1.movie_name), browselog.browsetime, browselog.movie_id,movie1.image_url from movie1, browselog  where movie1.id = browselog.movie_id and browselog.user_id = #{user_id} order by browsetime desc limit 5")
+    ArrayList<HistoryMovie> getTop5History(@Param("user_id") Long user_id);
+
+    @Delete("delete from browselog where user_id= #{user_id}")
+    int deleteBrowseLog(@Param("user_id") Long user_id, @Param("movie_id") Long movie_id);
 }

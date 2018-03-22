@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>电影列表</title>
+    <title>用户列表</title>
     <link rel="stylesheet" th:href="@{/assets/css/style.css}"/>
     <link rel="stylesheet" th:href="@{/assets/css/searchbox.css}"/>
     <script type="text/javascript" th:src="@{/assets/js/jquery.js}"></script>
@@ -46,8 +46,8 @@
 <div class="place">
     <span>位置：</span>
     <ul class="placeul">
-        <li><a href="/movie/home">首页</a></li>
-        <li><a href="/movie/movies/getAllMovies">电影列表</a></li>
+        <li><a href="/movie/manager">首页</a></li>
+        <li><a href="/movie/user/userManage">评论列表</a></li>
     </ul>
 </div>
 
@@ -55,10 +55,7 @@
 
     <div class="tools">
 
-        <ul class="toolbar">
-            <li><a href="/movie/movies/addMovieInfo"><span><img th:src="@{/assets/images/movies/t01.png}"/></span>添加</a></li>
-            <li class="click"><span><img th:src="@{/assets/images/movies/t03.png}"/></span>删除</li>
-        </ul>
+
 
         <div class="search bar" style="float: right">
             <form th:async="true" action="/movie/user/searchUser" method="post">
@@ -74,8 +71,6 @@
 
         <thead>
         <tr>
-            <th><input name="" type="checkbox" value="" id="selectAll"/></th>
-            <th width="100px;"></th>
             <th>id</th>
             <th>邮箱</th>
             <th>用户名</th>
@@ -87,8 +82,6 @@
         <tbody>
 
         <tr th:each="user:${pageInfo.list}">
-            <td><input class="selectRow" name="userSelect" type="checkbox"/></td>
-            <td></td>
             <td th:text="${user.id}"></td>
             <td th:text="${user.email}"></td>
             <td th:text="${user.username}"></td>

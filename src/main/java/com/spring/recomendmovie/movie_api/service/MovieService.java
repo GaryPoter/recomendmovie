@@ -1,14 +1,10 @@
 package com.spring.recomendmovie.movie_api.service;
 
 
-import com.spring.recomendmovie.movie_api.pojo.ManagerInfo;
-import com.spring.recomendmovie.movie_api.pojo.Movie;
-import com.spring.recomendmovie.movie_api.pojo.MovieDetail;
-import com.spring.recomendmovie.movie_api.pojo.MovieType;
-import org.apache.catalina.Manager;
+import com.spring.recomendmovie.movie_api.pojo.*;
+import com.spring.recomendmovie.user_api.pojo.User;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public interface MovieService {
     //获取所有的电影列表
@@ -48,4 +44,16 @@ public interface MovieService {
     ArrayList<Movie> getFourMoviesx();
 
     ArrayList<Movie> getFourMoviesk();
+
+    //得到浏览记录
+    ArrayList<Movie> getBrowseLog(Long id);
+
+    //插入浏览记录
+    int insertBrowseLog(BrowseLog browseLog);
+
+    //得到五条浏览记录
+    ArrayList<HistoryMovie> selectTop5History(Long user_id);
+
+    //删除浏览记录
+    int deleteBrowseLog(Long user_id, Long movie_id);
 }

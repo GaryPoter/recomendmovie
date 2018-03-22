@@ -57,5 +57,6 @@ public interface CommentMapper {
 
     @Delete("delete from user_comment_movie where user_id = #{id}")
     int deleteComments(@Param("id") Long id);
+
 //原来
 }

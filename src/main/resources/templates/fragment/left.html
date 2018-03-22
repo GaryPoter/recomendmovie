@@ -52,7 +52,7 @@
             <!--<span><img th:src="@{/assets/images/leftico01.png}" /></span>管理信息-->
         <!--</div>-->
             <ul class="menuson">
-                <li class="active"><cite></cite><a href="usertable.html" target="_self">用户管理</a><i></i></li>
+                <li class="active"><cite></cite><a  th:href="@{/movie/user/userManage}" target="_self">用户管理</a><i></i></li>
                 <li><cite></cite><a th:href="@{/movie/movies/getAllMovies}" target="_self">电影管理</a><i></i></li>
                 <li class="active"><cite></cite><a th:href="@{/movie/comment/getAllComments}" target="_self">评论管理</a><i></i></li>
             </ul>

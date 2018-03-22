@@ -6,7 +6,7 @@
 }
 
 .header-box {
-	background: #fff
+	height: 100px;
 }
 
 .topbar {
@@ -62,7 +62,7 @@
 
 @media screen and (max-width:640px) {
 	.m-header .m-logo {
-		width: 150px;
+		width: 20px;
 		margin: 8px auto
 	}
 	.m-header .m-logo img {
@@ -131,6 +131,7 @@
 
 .header {
 	padding: 25px 0
+	height: 90px
 }
 
 .header .logo {
