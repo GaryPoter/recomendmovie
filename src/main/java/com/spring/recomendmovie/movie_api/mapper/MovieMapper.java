@@ -81,6 +81,13 @@ public interface MovieMapper {
     @Select("select * from movielens where type = 21 order by id limit 1,6")
     ArrayList<Movie> getSixMoviesk();
 
+
+    @Select("select distinct(id),movie_name,download_url,movielens.image_url,director,star,area,duration,type,time,rating,mabstract from browselog,movielens where movie_id=id and user_id=#{id} order by id limit 1,4")
+    ArrayList<Movie> getAllLookingMoviesByUId(@Param("id") Long id);
+
+    @Select("select distinct(movielens.id),movie_name,download_url,movielens.image_url,director,star,duration,time,mabstract,rating,type1.type from movielens,browselog,type1 where movielens.id=movie_id and movielens.type = type1.id  and user_id=#{userID}")
+    ArrayList<MovieDetail> browsingHistory(@Param("userID") Integer userID);
+
     @Insert("insert into browselog (user_id,movie_id,browsetime,image_url) values (#{user_id},#{movie_id}, #{browsetime},#{image_url})")
     int insertBrowseLog(BrowseLog browseLog);
 
@@ -92,4 +99,5 @@ public interface MovieMapper {
 
     @Delete("delete from browselog where user_id= #{user_id}")
     int deleteBrowseLog(@Param("user_id") Long user_id, @Param("movie_id") Long movie_id);
+
 }

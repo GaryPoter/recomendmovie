@@ -48,6 +48,11 @@ public interface MovieService {
 //    ArrayList<Movie> getFourMoviesk();
     ArrayList<Movie> getSixMoviesk();
 
+
+    ArrayList<Movie> getAllLookingMoviesByUId(Long id);
+
+    ArrayList<MovieDetail> browsingHistory(Integer userID);
+
     //得到浏览记录
     ArrayList<Movie> getBrowseLog(Long id);
 
@@ -59,4 +64,5 @@ public interface MovieService {
 
     //删除浏览记录
     int deleteBrowseLog(Long user_id, Long movie_id);
+
 }

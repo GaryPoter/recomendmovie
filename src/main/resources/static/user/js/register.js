@@ -24,9 +24,13 @@ $('#registerBtn').on('click', function () {
             if(0 == response.code){
                 // document.getElementById("moviePage").click();
                 window.location.href="/movie/home";
-            }else {
+            }else if(1 == response.code){
                 $('#username').select().focus();
                 alert("注册失败！")
+            }else if(3 == response.code) {
+                alert("该用户已存在！")
+
+                $('input#email').select().focus();
             }
         }
     	});

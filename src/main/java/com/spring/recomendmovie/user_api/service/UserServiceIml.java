@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
-
+import javax.security.auth.login.FailedLoginException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,12 +69,18 @@ public class UserServiceIml implements UserService{
     @Transactional(readOnly = false)
     public Result register(User user) {
         Result result = new Result();
-        int i = userMapper.insertUser(user);
-        if(i != 0){
-            result.setCode(Result.SUCCESS_CODE);
-        }else{
-            result.setCode(Result.FAIL_CODE);
+        ArrayList<User> r = userMapper.searchUserByLKEmail(user.getEmail());
+        if(r != null && r.size() != 0){
+            result.setCode(Result.haveUser);
+        }else {
+            int i = userMapper.insertUser(user);
+            if(i != 0){
+                result.setCode(Result.SUCCESS_CODE);
+            }else{
+                result.setCode(Result.FAIL_CODE);
+            }
         }
+
         return result;
     }
 

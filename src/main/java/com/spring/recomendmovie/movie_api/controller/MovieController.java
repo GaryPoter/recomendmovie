@@ -27,8 +27,13 @@ public class MovieController {
     private MovieService movieService;
 
     @RequestMapping(value = "/search", method = RequestMethod.POST)
-    public ModelAndView searchMovie(@RequestParam("searchContent") String movieName, Model model) {
-        return searchMovieBy(1, movieName, model);
+    public ModelAndView searchMovie(@RequestParam("searchContent") String movieName,Model model,HttpSession httpSession) {
+        if (httpSession.getAttribute("managerInfo") != null) {
+            return searchMovieBy(1, movieName, model);
+        } else {
+            ModelAndView modelAndView = new ModelAndView("/manager/login");
+            return modelAndView;
+        }
     }
 
     @RequestMapping(value = "/search/{searchContent}/{current_page}", method = RequestMethod.GET)
@@ -47,6 +52,7 @@ public class MovieController {
     }
 
 //<<<<<<< HEAD
+<<<<<<< HEAD
     @RequestMapping(value = "/delete/{movie_id}", method = RequestMethod.GET)
     public ModelAndView delete(@PathVariable("movie_id") int id, Model model) {
 //=======
@@ -67,12 +73,50 @@ public class MovieController {
         movieService.deleteMovie(id);
 
         return getAllMovies(model);
+=======
+//    @RequestMapping(value = "/delete/{movie_id}", method = RequestMethod.GET)
+//    public ModelAndView delete(@PathVariable("movie_id") int id, Model model) {
+//=======
+    @RequestMapping(value="/batchDelete/{chestr}",method=RequestMethod.GET)
+    public ModelAndView batchDelete(@PathVariable("chestr") String chestr,Model model,HttpSession httpSession){
+        if(httpSession.getAttribute("managerInfo")!=null) {
+            String[] strArr = null;
+            strArr = chestr.split(",");
+            for (int i = 0; i < strArr.length; i++) {
+                int movieId = Integer.parseInt(strArr[i]);
+                movieService.deleteMovie(movieId);
+            }
+            return getAllMovies(model, httpSession);
+        }
+        else {
+            ModelAndView modelAndView = new ModelAndView("/manager/login");
+            return modelAndView;
+        }
+    }
+
+    @RequestMapping(value="/delete/{movie_id}",method=RequestMethod.GET)
+    public ModelAndView delete(@PathVariable("movie_id") int id,Model model,HttpSession httpSession){
+        if(httpSession.getAttribute("managerInfo")!=null) {
+            movieService.deleteMovie(id);
+            return getAllMovies(model, httpSession);
+        }
+        else {
+            ModelAndView modelAndView = new ModelAndView("/manager/login");
+            return modelAndView;
+        }
+>>>>>>> e5353a6949282bafd6d27ec13f1e57c4c240ec69
 
     }
 
     @RequestMapping("/getAllMovies")
-    public ModelAndView getAllMovies(Model model) {
-        return getAllMoviesBy(1, model);
+    public ModelAndView getAllMovies(Model model,HttpSession httpSession){
+        if(httpSession.getAttribute("managerInfo")!=null) {
+            return getAllMoviesBy(1, model);
+        }
+        else {
+            ModelAndView modelAndView = new ModelAndView("/manager/login");
+            return modelAndView;
+        }
     }
 
     @RequestMapping(value = "/getAllMovies/{current_page}", method = RequestMethod.GET)
@@ -158,6 +202,14 @@ public class MovieController {
 
     }
 
+    @RequestMapping(value="/moviesBrowsinghistory/{userId}",method = RequestMethod.GET)
+    public ModelAndView BrowsingHistory(Model model,@PathVariable("userId") Integer userID){
+        ModelAndView modelAndView = new ModelAndView("user/browsingHistory");
+        ArrayList<MovieDetail> movieDetails = movieService.browsingHistory(userID);
+        modelAndView.addObject("lookingMovies",movieDetails);
+        return modelAndView;
+    }
+
 //    @RequestMapping(value = "/insertBrowseLog")
 //    public Result insertBrowseLog(BrowseLog browseLog, HttpSession httpSession){
 //        Result result = new Result();
@@ -177,4 +229,5 @@ public class MovieController {
 //        }
 //        return result;
 //    }
+
 }

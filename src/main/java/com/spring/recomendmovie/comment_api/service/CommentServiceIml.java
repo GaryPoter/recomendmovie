@@ -106,5 +106,15 @@ public class CommentServiceIml implements CommentService {
         return commentMapper.searchCommentByUNamePage(uName,firstRec,pageSize);
     }
 
+    @Override
+    public ArrayList<CommentDetail> getAllCommentsByUserId(Long id) {
+        return commentMapper.getAllCommentsByUserId(id);
+    }
+
+    @Override
+    public ArrayList<CommentDetail> getAllCommentsByUserIdP(Long id, Integer currentPage, int pageSize) {
+        Integer firstRec=(currentPage-1)*pageSize;
+        return commentMapper.getAllCommentsByUserIdP(id,firstRec,pageSize);
+    }
 
 }

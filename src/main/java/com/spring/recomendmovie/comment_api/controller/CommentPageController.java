@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
 @Controller
@@ -21,9 +22,17 @@ public class CommentPageController {
     private CommentService commentService;
 
     @RequestMapping("/getAllComments")
-    public ModelAndView getAllComments(Model model){
-        return getAllCommentsBy(1,model);
+    public ModelAndView getAllComments(Model model, HttpSession httpSession){
+        if(httpSession.getAttribute("managerInfo")!=null) {
+            return getAllCommentsBy(1, model);
+        }
+        else{
+            ModelAndView modelAndView = new ModelAndView("/manager/login");
+            return modelAndView;
+        }
     }
+
+
     @RequestMapping(value = "/getAllComments/{currentPage}",method = RequestMethod.GET)
     public ModelAndView getAllCommentsBy(@PathVariable("currentPage") Integer currentPage, Model model){
         int pageSize=20;
@@ -42,22 +51,22 @@ public class CommentPageController {
 
 
     @RequestMapping(value="/delete/{comment_id}",method=RequestMethod.GET)
-    public ModelAndView delete(@PathVariable("comment_id") int id, Model model){
+    public ModelAndView delete(@PathVariable("comment_id") int id, Model model,HttpSession httpSession){
         commentService.deleteComment(id);
         // JOptionPane.showMessageDialog(null, "删除成功");
-        return getAllComments(model);
+        return getAllComments(model,httpSession);
     }
 
 
     @RequestMapping(value="/batchDelete/{chestr}",method=RequestMethod.GET)
-    public ModelAndView batchDelete(@PathVariable("chestr") String chestr,Model model){
+    public ModelAndView batchDelete(@PathVariable("chestr") String chestr,Model model,HttpSession httpSession){
         String[] strArr = null;
         strArr=chestr.split(",");
         for(int i=0;i<strArr.length;i++){
             int id= Integer.parseInt(strArr[i]);
             commentService.deleteComment(id);
         }
-        return getAllComments(model);
+        return getAllComments(model,httpSession);
     }
 
     @RequestMapping(value = "/updateComment", method = RequestMethod.GET)

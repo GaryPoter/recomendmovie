@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -36,22 +37,34 @@ public class MoviePageController {
 
 
     @RequestMapping(value ="/updateMovie/{id}", method = RequestMethod.GET)
-    public ModelAndView updateMoviePage(Model model, @PathVariable("id") Long id){
-        ModelAndView modelAndView = new ModelAndView("movies/updatemovie");
-        ArrayList<MovieType> movieTypes = movieService.getAllMovieType();
-        Movie movie=movieService.getMovieById(id);
-        modelAndView.addObject("movieTypes",movieTypes);
-        modelAndView.addObject("movie",movie);
-        return modelAndView;
+    public ModelAndView updateMoviePage(Model model, @PathVariable("id") Long id,HttpSession httpSession){
+        if(httpSession.getAttribute("managerInfo")!=null) {
+            ModelAndView modelAndView = new ModelAndView("movies/updatemovie");
+            ArrayList<MovieType> movieTypes = movieService.getAllMovieType();
+            Movie movie = movieService.getMovieById(id);
+            modelAndView.addObject("movieTypes", movieTypes);
+            modelAndView.addObject("movie", movie);
+            return modelAndView;
+        }
+        else {
+            ModelAndView modelAndView = new ModelAndView("/manager/login");
+            return modelAndView;
+        }
     }
 
 
     @RequestMapping ("/addMovieInfo")
-    public ModelAndView addMovieInfoPage(Model model){
+    public ModelAndView addMovieInfoPage(Model model,HttpSession httpSession){
+        if(httpSession.getAttribute("managerInfo")!=null) {
         ModelAndView modelAndView=new ModelAndView("movies/addmovie");
         ArrayList<MovieType> movieTypes = movieService.getAllMovieType();
         modelAndView.addObject("movieTypes",movieTypes);
         return modelAndView;
+        }
+        else {
+            ModelAndView modelAndView = new ModelAndView("/manager/login");
+            return modelAndView;
+        }
     }
 
 
@@ -59,6 +72,21 @@ public class MoviePageController {
     @RequestMapping(value="/movieDetails/{id}/{currentPage}",method = RequestMethod.GET)
     public ModelAndView movieDetails(Model model, @PathVariable("id") Long id, @PathVariable("currentPage") int currentPage, HttpSession httpSession)
     {
+//<<<<<<< HEAD
+//
+//            ModelAndView modelAndView = new ModelAndView("movies/movieDetail");
+//            MovieDetail movieDetail = movieService.getMovieDetailById(id);
+//            int pageSize = 7;
+//            ArrayList<CommentDetail> commentDetails = commentService.getAllCommentsByMovie(id);
+//            ArrayList<CommentDetail> commentDetails1 = commentService.getAllCommentsByMoviePage(id, currentPage, pageSize);
+//            PageBean pageBean = new PageBean(currentPage, pageSize, commentDetails1, commentDetails.size());
+//            int lenth = commentDetails.size();
+//            modelAndView.addObject("count", lenth);
+//            modelAndView.addObject("pageBean", pageBean);
+//            modelAndView.addObject("movieDetail", movieDetail);
+//            modelAndView.addObject("commentDetails", commentDetails1);
+//            return modelAndView;
+//=======
         ModelAndView modelAndView = new ModelAndView("movies/movieDetail");
         MovieDetail movieDetail = movieService.getMovieDetailById(id);
         User user = (User) httpSession.getAttribute("user");
@@ -88,6 +116,7 @@ public class MoviePageController {
         modelAndView.addObject("commentDetails",commentDetails1);
         modelAndView.addObject("historyMovie", historyMovies);
         return modelAndView;
+//>>>>>>> 8a55993026804d33e96887c1d87d3d578c8d6107
     }
 
 }

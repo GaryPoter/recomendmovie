@@ -2,8 +2,13 @@ package com.spring.recomendmovie.user_api.controller;
 
 
 
+import com.spring.recomendmovie.comment_api.pojo.CommentDetail;
+import com.spring.recomendmovie.comment_api.service.CommentService;
+import com.spring.recomendmovie.movie_api.pojo.Movie;
+import com.spring.recomendmovie.movie_api.service.MovieService;
 import com.spring.recomendmovie.user_api.pojo.User;
 import com.spring.recomendmovie.user_api.service.UserService;
+import com.spring.recomendmovie.utils.PageBean;
 import com.spring.recomendmovie.utils.message.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -22,6 +27,12 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private MovieService movieService;
+
+    @Autowired
+    private CommentService commentService;
 
 //    @Autowired
 //    private ItemService itemService;
@@ -100,7 +111,7 @@ public class UserController {
         return userService.updateUser(user);
     }
 
-    @RequestMapping("/batchDelete")
+    @PostMapping(value="/batchDelete")
     public Result batchDelete(String chestr){
         Result result = new Result();
         result.setCode(Result.SUCCESS_CODE);
@@ -116,5 +127,31 @@ public class UserController {
         }
         return result;
 
+    }
+    @RequestMapping(value = "/userHome/{id}/{currentPage}",method=RequestMethod.GET)
+    public ModelAndView userHome(@PathVariable("id") Long id,@PathVariable("currentPage") Integer currentPage, Model model,HttpSession httpSession){
+        if(httpSession.getAttribute("user")!=null) {
+            int pageSize = 7;
+            ModelAndView modelAndView = new ModelAndView("user/userHome");
+            User user = userService.getUserById(id);
+            modelAndView.addObject("user", user);
+            ArrayList<Movie> movies = movieService.getAllLookingMoviesByUId(id);
+            modelAndView.addObject("lookingMovies", movies);
+            ArrayList<Movie> movies1 = movieService.getTopTenMovies(user.getId());
+            modelAndView.addObject("movies1", movies1);
+            ArrayList<CommentDetail> commentDetails = commentService.getAllCommentsByUserId(id);
+            modelAndView.addObject("commentDetails", commentDetails);
+            ArrayList<CommentDetail> commentDetails1 = commentService.getAllCommentsByUserIdP(id, currentPage, pageSize);
+            PageBean pageBean = new PageBean(currentPage, pageSize, commentDetails1, commentDetails.size());
+            int lenth = commentDetails.size();
+            modelAndView.addObject("count", lenth);
+            modelAndView.addObject("pageBean", pageBean);
+            modelAndView.addObject("commentDetails1", commentDetails1);
+            return modelAndView;
+        }
+        else {
+            ModelAndView modelAndView = new ModelAndView("/login");
+            return modelAndView;
+        }
     }
 }

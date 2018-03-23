@@ -61,5 +61,9 @@ public interface CommentService {
     ArrayList<CommentDetail> searchCommentByUName(String uName);
 
     ArrayList<CommentDetail> searchCommentByUNamePage(String uName, Integer currentPage, int pageSize);
+
+    ArrayList<CommentDetail> getAllCommentsByUserId(Long id);
+
+    ArrayList<CommentDetail> getAllCommentsByUserIdP(Long id, Integer currentPage, int pageSize);
 }
 //>>>>>>>
