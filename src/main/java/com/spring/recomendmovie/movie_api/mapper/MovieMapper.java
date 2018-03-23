@@ -45,8 +45,10 @@ public interface MovieMapper {
     ArrayList<MovieDetail> getAllMoviesBy(@Param("firstRec") Integer firstRec,@Param("pageSize") int pageSize);
 
 
-    @Select("select * from movielens where type = 4 order by id limit 1,4")
-    ArrayList<Movie> getFourMovies();
+//    @Select("select * from movielens where type = 4 order by id limit 1,4")
+//    ArrayList<Movie> getFourMovies();
+    @Select("select * from movielens where type = 4 order by id limit 1,6")
+    ArrayList<Movie> getSixMovies();
 
     @Select("select movielens.id,movie_name,download_url,image_url,director,star,duration,time,mabstract,rating,type1.type from movielens,type1 where movielens.type=type1.id and movielens.id=#{id}")
     MovieDetail getMovieDetailById(Long id);
@@ -69,11 +71,15 @@ public interface MovieMapper {
     ArrayList<MovieDetail> recommendMoviesForUser(Integer userID);
 
 
-    @Select("select * from movielens where type = 12 order by id limit 1,4")
-    ArrayList<Movie> getFourMoviesx();
+//    @Select("select * from movielens where type = 12 order by id limit 1,4")
+//    ArrayList<Movie> getFourMoviesx();
+    @Select("select * from movielens where type = 12 order by id limit 1,6")
+    ArrayList<Movie> getSixMoviesx();
 
-    @Select("select * from movielens where type = 21 order by id limit 1,4")
-    ArrayList<Movie> getFourMoviesk();
+//    @Select("select * from movielens where type = 21 order by id limit 1,4")
+//    ArrayList<Movie> getFourMoviesk();
+    @Select("select * from movielens where type = 21 order by id limit 1,6")
+    ArrayList<Movie> getSixMoviesk();
 
     @Insert("insert into browselog (user_id,movie_id,browsetime,image_url) values (#{user_id},#{movie_id}, #{browsetime},#{image_url})")
     int insertBrowseLog(BrowseLog browseLog);

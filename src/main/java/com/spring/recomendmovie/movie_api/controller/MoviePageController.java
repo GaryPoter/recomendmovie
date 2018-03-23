@@ -81,7 +81,7 @@ public class MoviePageController {
         ArrayList<CommentDetail> commentDetails = commentService.getAllCommentsByMovie(id);
         ArrayList<CommentDetail> commentDetails1 = commentService.getAllCommentsByMoviePage(id,currentPage,pageSize);
         PageBean pageBean = new PageBean(currentPage,pageSize,commentDetails1,commentDetails.size());
-        int length=commentDetails.size();
+        int length = commentDetails.size();
         modelAndView.addObject("count",length);
         modelAndView.addObject("pageBean",pageBean);
         modelAndView.addObject("movieDetail",movieDetail);

@@ -28,13 +28,16 @@ public class HomeController {
     @RequestMapping("/home")
     public ModelAndView home(Model model, HttpSession httpSession){
         ModelAndView modelAndView = new ModelAndView("/index");
-        ArrayList<Movie> movies = movieService.getFourMovies();
+//        ArrayList<Movie> movies = movieService.getFourMovies();
+        ArrayList<Movie> movies = movieService.getSixMovies();
         modelAndView.addObject("movies",movies);
 
-        ArrayList<Movie> moviesx = movieService.getFourMoviesx();
+//        ArrayList<Movie> moviesx = movieService.getFourMoviesx();
+        ArrayList<Movie> moviesx = movieService.getSixMoviesx();
         modelAndView.addObject("moviesx",moviesx);
 
-        ArrayList<Movie> moviesk = movieService.getFourMoviesk();
+//        ArrayList<Movie> moviesk = movieService.getFourMoviesk();
+        ArrayList<Movie> moviesk = movieService.getSixMoviesk();
         modelAndView.addObject("moviesk",moviesk);
 
         if(httpSession.getAttribute("user")!=null){

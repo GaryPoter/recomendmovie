@@ -32,6 +32,12 @@ public class MovieServiceIml implements MovieService {
         Integer firstRec=(currentPage-1)*pageSize;
         return movieMapper.getAllMoviesBy(firstRec,pageSize);
     }
+
+    @Override
+    public ArrayList<Movie> getSixMovies() {
+        return movieMapper.getSixMovies();
+    }
+
     @Override
     public ArrayList<MovieDetail> searchMovieByMovieNamePage(String movieName, Integer currentPage,int pageSize){
         Integer firstRec=(currentPage-1)*pageSize;
@@ -55,14 +61,24 @@ public class MovieServiceIml implements MovieService {
     }
 
     @Override
-    public ArrayList<Movie> getFourMoviesx() {
-        return movieMapper.getFourMoviesx();
+    public ArrayList<Movie> getSixMoviesx() {
+        return movieMapper.getSixMoviesx();
     }
 
     @Override
-    public ArrayList<Movie> getFourMoviesk() {
-        return movieMapper.getFourMoviesk();
+    public ArrayList<Movie> getSixMoviesk() {
+        return movieMapper.getSixMoviesk();
     }
+
+//    @Override
+//    public ArrayList<Movie> getFourMoviesx() {
+//        return movieMapper.getFourMoviesx();
+//    }
+
+//    @Override
+//    public ArrayList<Movie> getFourMoviesk() {
+//        return movieMapper.getFourMoviesk();
+//    }
 
     @Override
     public ArrayList<Movie> getBrowseLog(Long id) {
@@ -119,10 +135,10 @@ public class MovieServiceIml implements MovieService {
     @Override
     public  Movie getMovieById(Long id){return movieMapper.getMovieById(id);}
 
-    @Override
-    public ArrayList<Movie> getFourMovies(){
-        return movieMapper.getFourMovies();
-    }
+//    @Override
+//    public ArrayList<Movie> getFourMovies(){
+//        return movieMapper.getFourMovies();
+//    }
 
     @Override
     public MovieDetail getMovieDetailById(Long id){

@@ -53,11 +53,11 @@
     <span>位置：</span>
     <ul class="placeul">
         <li><a href="/movie/manager">首页</a></li>
-<<<<<<< HEAD
+<!--<<<<<<< HEAD-->
         <li><a href="/movie/user/userManage">评论列表</a></li>
-=======
+<!--=======-->
         <li><a href="/movie/user/userManage">用户列表</a></li>
->>>>>>> c8bde70f56c4a76f2a1eac8109305d604dae4681
+<!--&gt;>>>>>> c8bde70f56c4a76f2a1eac8109305d604dae4681-->
     </ul>
 </div>
 
@@ -66,7 +66,7 @@
 
     <div class="tools">
 
-<<<<<<< HEAD
+<!--<<<<<<< HEAD-->
 
 
         <div class="search bar" style="float: right">
@@ -76,49 +76,49 @@
                 </button>
             </form>
         </div>
-=======
+<!--=======-->
         <ul class="toolbar">
             <li class="click"><span><img th:src="@{/assets/images/movies/t03.png}"/></span>删除</li>
         </ul>
->>>>>>> c8bde70f56c4a76f2a1eac8109305d604dae4681
+<!--&gt;>>>>>> c8bde70f56c4a76f2a1eac8109305d604dae4681-->
     </div>
 
 
     <table class="imgtable">
 
         <thead>
-<<<<<<< HEAD
+<!--<<<<<<< HEAD-->
         <tr>
             <th>id</th>
             <th>邮箱</th>
             <th>用户名</th>
             <th>密码</th>
             <th>操作</th>
-=======
-        <tr style="height: 40px;font-size: 20px">
+<!--=======-->
+        <!--<tr style="height: 40px;font-size: 20px">-->
 
-            <th style="width:5%"><input name="" type="checkbox" value="" id="hxy" /></th>
-            <th style="width:15%">id</th>
-            <th style="width:25%" >邮箱</th>
-            <th style="width:30%" >用户名</th>
-            <!--<th>密码</th>-->
-            <th style="width:25%">操作</th>
->>>>>>> c8bde70f56c4a76f2a1eac8109305d604dae4681
+            <!--<th style="width:5%"><input name="" type="checkbox" value="" id="hxy" /></th>-->
+            <!--<th style="width:15%">id</th>-->
+            <!--<th style="width:25%" >邮箱</th>-->
+            <!--<th style="width:30%" >用户名</th>-->
+            <!--&lt;!&ndash;<th>密码</th>&ndash;&gt;-->
+            <!--<th style="width:25%">操作</th>-->
+<!--&gt;>>>>>> c8bde70f56c4a76f2a1eac8109305d604dae4681-->
         </tr>
         </thead>
 
         <tbody>
 
-<<<<<<< HEAD
-        <tr th:each="user:${pageInfo.list}">
-=======
+<!--<<<<<<< HEAD-->
+        <!--<tr th:each="user:${pageInfo.list}">-->
+<!--=======-->
         <tr th:each="user:${pageInfo.list}" style="height: 40px;font-size: 20px">
-            <td><input name="hxy" type="checkbox" th:value="${user.id}"/></td>
->>>>>>> c8bde70f56c4a76f2a1eac8109305d604dae4681
+            <!--<td><input name="hxy" type="checkbox" th:value="${user.id}"/></td>-->
+<!--&gt;>>>>>> c8bde70f56c4a76f2a1eac8109305d604dae4681-->
             <td th:text="${user.id}"></td>
             <td th:text="${user.email}"></td>
             <td th:text="${user.username}"></td>
-            <!--<td th:text="${user.password}" ></td>-->
+            <td th:text="${user.password}" ></td>
             <td>
                 <a class="update" th:data="${user.id}">修改</a>
                 <a class="delete" th:data="${user.id}">删除</a>

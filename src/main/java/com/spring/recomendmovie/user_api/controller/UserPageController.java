@@ -89,7 +89,7 @@ public class UserPageController {
     public ModelAndView home(Model model,HttpSession httpSession){
         httpSession.setAttribute("user", null);
         ModelAndView modelAndView = new ModelAndView("/index");
-        ArrayList<Movie> movies = movieService.getFourMovies();
+        ArrayList<Movie> movies = movieService.getSixMovies();
         modelAndView.addObject("movies",movies);
         return  modelAndView;
     }

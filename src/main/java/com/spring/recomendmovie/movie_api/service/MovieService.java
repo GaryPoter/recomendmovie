@@ -29,7 +29,8 @@ public interface MovieService {
 
     ArrayList<MovieDetail> getAllMoviesBy(Integer currentPage,int pageSize);
 
-    ArrayList<Movie> getFourMovies();
+//    ArrayList<Movie> getFourMovies();
+    ArrayList<Movie> getSixMovies();
 
     MovieDetail getMovieDetailById(Long id);
 
@@ -41,9 +42,11 @@ public interface MovieService {
 
     ArrayList<MovieDetail> recommendMoviesForUser(Integer userID);
 
-    ArrayList<Movie> getFourMoviesx();
+//    ArrayList<Movie> getFourMoviesx();
+    ArrayList<Movie> getSixMoviesx();
 
-    ArrayList<Movie> getFourMoviesk();
+//    ArrayList<Movie> getFourMoviesk();
+    ArrayList<Movie> getSixMoviesk();
 
     //得到浏览记录
     ArrayList<Movie> getBrowseLog(Long id);

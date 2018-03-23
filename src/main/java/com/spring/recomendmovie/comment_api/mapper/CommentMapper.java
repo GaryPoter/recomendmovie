@@ -58,13 +58,13 @@ public interface CommentMapper {
     @Delete("delete from user_comment_movie where user_id = #{id}")
     int deleteComments(@Param("id") Long id);
 
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
     @Select("select user_comment_movie.id,username,movie_name,comment,comment_time,score from movielens,user,user_comment_movie where movielens.id=movie_id and user.id=user_id and username like (CONCAT('%',#{user_name},'%')) order by user_comment_movie.id desc")
     ArrayList<CommentDetail> searchCommentByUName(@Param("user_name") String uName);
 
     @Select("select user_comment_movie.id,username,movie_name,comment,comment_time,score from movielens,user,user_comment_movie where movielens.id=movie_id and user.id=user_id and username like (CONCAT('%',#{user_name},'%')) order by user_comment_movie.id desc limit #{firstRec},#{pageSize}")
     ArrayList<CommentDetail> searchCommentByUNamePage(@Param("user_name") String uName, @Param("firstRec") int firstRec, @Param("pageSize") int pageSize);
->>>>>>> c8bde70f56c4a76f2a1eac8109305d604dae4681
-//原来
+//>>>>>>> c8bde70f56c4a76f2a1eac8109305d604dae4681
+////原来
 }

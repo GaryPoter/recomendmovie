@@ -38,32 +38,32 @@ public class MovieController {
         ArrayList<MovieDetail> movieDetails = movieService.searchMovieByMovieNamePage(movieName, currentPage, pageSize);
         ModelAndView modelAndView = new ModelAndView("movies/searchMovieTable");
         PageBean pageBean = new PageBean(currentPage, pageSize, movieDetails, movieDetails1.size());
-        int lenth = movieDetails1.size();
-        modelAndView.addObject("count", lenth);
+        int length = movieDetails1.size();
+        modelAndView.addObject("count", length);
         modelAndView.addObject("pageBean", pageBean);
         modelAndView.addObject("movies", movieDetails);
         modelAndView.addObject("searchContent", movieName);
         return modelAndView;
     }
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
     @RequestMapping(value = "/delete/{movie_id}", method = RequestMethod.GET)
     public ModelAndView delete(@PathVariable("movie_id") int id, Model model) {
-=======
-    @RequestMapping(value="/batchDelete/{chestr}",method=RequestMethod.GET)
-    public ModelAndView batchDelete(@PathVariable("chestr") String chestr,Model model){
-        String[] strArr = null;
-        strArr=chestr.split(",");
-        for(int i=0;i<strArr.length;i++){
-            int movieId= Integer.parseInt(strArr[i]);
-            movieService.deleteMovie(movieId);
-        }
-        return getAllMovies(model);
-    }
-
-    @RequestMapping(value="/delete/{movie_id}",method=RequestMethod.GET)
-    public ModelAndView delete(@PathVariable("movie_id") int id,Model model){
->>>>>>> c8bde70f56c4a76f2a1eac8109305d604dae4681
+//=======
+//    @RequestMapping(value="/batchDelete/{chestr}",method=RequestMethod.GET)
+//    public ModelAndView batchDelete(@PathVariable("chestr") String chestr,Model model){
+//        String[] strArr = null;
+//        strArr=chestr.split(",");
+//        for(int i=0;i<strArr.length;i++){
+//            int movieId= Integer.parseInt(strArr[i]);
+//            movieService.deleteMovie(movieId);
+//        }
+//        return getAllMovies(model);
+//    }
+//
+//    @RequestMapping(value="/delete/{movie_id}",method=RequestMethod.GET)
+//    public ModelAndView delete(@PathVariable("movie_id") int id,Model model){
+//>>>>>>> c8bde70f56c4a76f2a1eac8109305d604dae4681
         movieService.deleteMovie(id);
 
         return getAllMovies(model);

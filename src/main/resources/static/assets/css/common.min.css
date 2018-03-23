@@ -7,6 +7,10 @@
 
 .header-box {
 	height: 100px;
+	position: absolute;
+	/*background-image: url("../images/index/header_01.jpg");*/
+	/*background-color: transparent;*/
+	z-index: 5;
 }
 
 .topbar {
