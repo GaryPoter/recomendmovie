@@ -27,19 +27,13 @@ public class MovieController {
     private MovieService movieService;
 
     @RequestMapping(value = "/search", method = RequestMethod.POST)
-<<<<<<< HEAD
-    public ModelAndView searchMovie(@RequestParam("searchContent") String movieName,Model model,HttpSession httpSession){
-        if(httpSession.getAttribute("managerInfo")!=null) {
+    public ModelAndView searchMovie(@RequestParam("searchContent") String movieName,Model model,HttpSession httpSession) {
+        if (httpSession.getAttribute("managerInfo") != null) {
             return searchMovieBy(1, movieName, model);
-        }
-        else {
+        } else {
             ModelAndView modelAndView = new ModelAndView("/manager/login");
             return modelAndView;
         }
-=======
-    public ModelAndView searchMovie(@RequestParam("searchContent") String movieName, Model model) {
-        return searchMovieBy(1, movieName, model);
->>>>>>> 8a55993026804d33e96887c1d87d3d578c8d6107
     }
 
     @RequestMapping(value = "/search/{searchContent}/{current_page}", method = RequestMethod.GET)
@@ -57,10 +51,10 @@ public class MovieController {
         return modelAndView;
     }
 
-<<<<<<< HEAD
-    @RequestMapping(value = "/delete/{movie_id}", method = RequestMethod.GET)
-    public ModelAndView delete(@PathVariable("movie_id") int id, Model model) {
-=======
+//<<<<<<< HEAD
+//    @RequestMapping(value = "/delete/{movie_id}", method = RequestMethod.GET)
+//    public ModelAndView delete(@PathVariable("movie_id") int id, Model model) {
+//=======
     @RequestMapping(value="/batchDelete/{chestr}",method=RequestMethod.GET)
     public ModelAndView batchDelete(@PathVariable("chestr") String chestr,Model model,HttpSession httpSession){
         if(httpSession.getAttribute("managerInfo")!=null) {
@@ -79,16 +73,9 @@ public class MovieController {
     }
 
     @RequestMapping(value="/delete/{movie_id}",method=RequestMethod.GET)
-<<<<<<< HEAD
     public ModelAndView delete(@PathVariable("movie_id") int id,Model model,HttpSession httpSession){
         if(httpSession.getAttribute("managerInfo")!=null) {
             movieService.deleteMovie(id);
-=======
-    public ModelAndView delete(@PathVariable("movie_id") int id,Model model){
->>>>>>> c8bde70f56c4a76f2a1eac8109305d604dae4681
-        movieService.deleteMovie(id);
->>>>>>> 8a55993026804d33e96887c1d87d3d578c8d6107
-
             return getAllMovies(model, httpSession);
         }
         else {
@@ -99,7 +86,6 @@ public class MovieController {
     }
 
     @RequestMapping("/getAllMovies")
-<<<<<<< HEAD
     public ModelAndView getAllMovies(Model model,HttpSession httpSession){
         if(httpSession.getAttribute("managerInfo")!=null) {
             return getAllMoviesBy(1, model);
@@ -108,10 +94,6 @@ public class MovieController {
             ModelAndView modelAndView = new ModelAndView("/manager/login");
             return modelAndView;
         }
-=======
-    public ModelAndView getAllMovies(Model model) {
-        return getAllMoviesBy(1, model);
->>>>>>> 8a55993026804d33e96887c1d87d3d578c8d6107
     }
 
     @RequestMapping(value = "/getAllMovies/{current_page}", method = RequestMethod.GET)
@@ -196,7 +178,7 @@ public class MovieController {
         return modelAndView;
 
     }
-<<<<<<< HEAD
+
     @RequestMapping(value="/moviesBrowsinghistory/{userId}",method = RequestMethod.GET)
     public ModelAndView BrowsingHistory(Model model,@PathVariable("userId") Integer userID){
         ModelAndView modelAndView = new ModelAndView("user/browsingHistory");
@@ -204,7 +186,6 @@ public class MovieController {
         modelAndView.addObject("lookingMovies",movieDetails);
         return modelAndView;
     }
-=======
 
 //    @RequestMapping(value = "/insertBrowseLog")
 //    public Result insertBrowseLog(BrowseLog browseLog, HttpSession httpSession){
@@ -225,5 +206,5 @@ public class MovieController {
 //        }
 //        return result;
 //    }
->>>>>>> 8a55993026804d33e96887c1d87d3d578c8d6107
+
 }

@@ -65,7 +65,6 @@ public class MovieServiceIml implements MovieService {
     }
 
     @Override
-<<<<<<< HEAD
     public ArrayList<Movie> getAllLookingMoviesByUId(Long id) {
         return movieMapper.getAllLookingMoviesByUId(id);
     }
@@ -73,7 +72,9 @@ public class MovieServiceIml implements MovieService {
     @Override
     public ArrayList<MovieDetail> browsingHistory(Integer userID) {
         return movieMapper.browsingHistory(userID);
-=======
+    }
+
+    @Override
     public ArrayList<Movie> getBrowseLog(Long id) {
         return movieMapper.getBrowseLog(id);
     }
@@ -91,7 +92,6 @@ public class MovieServiceIml implements MovieService {
     @Override
     public int deleteBrowseLog(Long user_id, Long movie_id) {
         return movieMapper.deleteBrowseLog(user_id, movie_id);
->>>>>>> 8a55993026804d33e96887c1d87d3d578c8d6107
     }
 
 

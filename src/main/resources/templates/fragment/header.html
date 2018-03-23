@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                         </div>
-<<<<<<< HEAD
+
                     </div>
                     <div class="am-u-md-9">
                         <div class="topbar-right am-text-right am-fr">
@@ -47,19 +47,7 @@
                             <div th:if="${session.user != null}">
                                 <a th:href="${'/movie/user/userHome/'+session.user.getId()+'/'+1}" th:text="${session.user.getEmail()}"></a>
                                 <a href="/movie/user/logOut">登出</a>
-=======
-                        <div class="am-u-md-9">
-                            <div class="topbar-right am-text-right am-fr">
 
-                                <div th:if="${session.user == null}">
-                                    <a href="/movie/user/login">登录</a>
-                                    <a href="/movie/user/register">注册</a>
-                                </div>
-                                <div th:if="${session.user != null}">
-                                    <a href="/movie/user/userDetailPage" th:text="${session.user.getEmail()}"></a>
-                                    <a href="/movie/user/logOut">登出</a>
-                                </div>
->>>>>>> 8a55993026804d33e96887c1d87d3d578c8d6107
                             </div>
                         </div>
                     </div>
@@ -78,7 +66,7 @@
                                 <a href="/movie/home"><img th:src="@{/assets/images/logo2_02.png}" alt="" /></a>
                             </div>
                         </div>
-<<<<<<< HEAD
+
                         <div>
                             <form style=" margin: 37px 0 17px 400px" th:async="true"  action="/movie/movies/movieListByUser" method="post">
                                 <input type="text" style="width: 320px;height: 38px;border: 1px solid #2a3e93;" id="searchContent" th:name="searchContent"/>
@@ -86,41 +74,41 @@
                                 <!--<input type="search" placeholder="查找电影" id="searchContent" th:name="searchContent"/>-->
                                 <!--<input type="submit" value="搜索"/>-->
                             </form>
-=======
-                        <div class="am-u-md-10">
-                            <div class="header-right am-fr">
-                                <div class="header-contact">
-                                    <div class="header_contacts--item">
-                                        <div class="contact_mini">
-                                            <i style="color:#7c6aa6" class="contact-icon am-icon-phone"></i>
-                                            <strong>0 (123) 456-7890</strong>
-                                            <span>周一~周五, 8:00 - 20:00</span>
-                                        </div>
-                                    </div>
-                                    <div class="header_contacts--item">
-                                        <div class="contact_mini">
-                                            <i style="color:#7c6aa6" class="contact-icon am-icon-envelope-o"></i>
-                                            <strong>springIn@126.com</strong>
-                                            <span>随时欢迎您的来信！</span>
-                                        </div>
-                                    </div>
-                                    <div class="header_contacts--item">
-                                        <div class="contact_mini">
-                                            <i style="color:#7c6aa6" class="contact-icon am-icon-map-marker"></i>
-                                            <strong>三江院,</strong>
-                                            <span>苏州市工业园区林泉街</span>
-                                        </div>
-                                    </div>
-                                </div>
+<!--=======-->
+                        <!--<div class="am-u-md-10">-->
+                            <!--<div class="header-right am-fr">-->
+                                <!--<div class="header-contact">-->
+                                    <!--<div class="header_contacts&#45;&#45;item">-->
+                                        <!--<div class="contact_mini">-->
+                                            <!--<i style="color:#7c6aa6" class="contact-icon am-icon-phone"></i>-->
+                                            <!--<strong>0 (123) 456-7890</strong>-->
+                                            <!--<span>周一~周五, 8:00 - 20:00</span>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="header_contacts&#45;&#45;item">-->
+                                        <!--<div class="contact_mini">-->
+                                            <!--<i style="color:#7c6aa6" class="contact-icon am-icon-envelope-o"></i>-->
+                                            <!--<strong>springIn@126.com</strong>-->
+                                            <!--<span>随时欢迎您的来信！</span>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="header_contacts&#45;&#45;item">-->
+                                        <!--<div class="contact_mini">-->
+                                            <!--<i style="color:#7c6aa6" class="contact-icon am-icon-map-marker"></i>-->
+                                            <!--<strong>三江院,</strong>-->
+                                            <!--<span>苏州市工业园区林泉街</span>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
 
 
-                                <form style="margin-top: 60px" th:async="true" action="/movie/movies/movieListByUser" method="post">
-                                    <input type="text" style="width: 400px;height: 40px;border: 1px solid #2a3e93;" id="searchContent" th:name="searchContent"/>
-                                    <input type="submit" value="搜索" placeholder="请输入电影名/导演/演员" style="height: 40px;width: 65px;color:#ffffdd;font-size: 18px;background-color: #6975a6;"/>
-                                </form>
+                                <!--<form style="margin-top: 60px" th:async="true" action="/movie/movies/movieListByUser" method="post">-->
+                                    <!--<input type="text" style="width: 400px;height: 40px;border: 1px solid #2a3e93;" id="searchContent" th:name="searchContent"/>-->
+                                    <!--<input type="submit" value="搜索" placeholder="请输入电影名/导演/演员" style="height: 40px;width: 65px;color:#ffffdd;font-size: 18px;background-color: #6975a6;"/>-->
+                                <!--</form>-->
 
-                            </div>
->>>>>>> c8bde70f56c4a76f2a1eac8109305d604dae4681
+                            <!--</div>-->
+<!--&gt;>>>>>> c8bde70f56c4a76f2a1eac8109305d604dae4681-->
 
                         </div>
 
@@ -140,14 +128,7 @@
                 </div>
             </div>
             <!--header end-->
-<<<<<<< HEAD
-=======
 
-
-            <!--nav start-->
-
-            <!--nav end-->
->>>>>>> c8bde70f56c4a76f2a1eac8109305d604dae4681
         </div>
     </div>
 
