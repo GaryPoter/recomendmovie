@@ -41,32 +41,40 @@ public class UserPageController {
         return pageInfo;
     }
 
-//    private PageInfo<User> queryAll(Integer pageNum, Integer pageSize) {
-//        PageHelper.startPage(pageNum, pageSize);
-//        List<User> list = userService.getAll();
-//        PageInfo<User> pageInfo = new PageInfo<User>(list);
-//        return  pageInfo;
-//    }
 
     @RequestMapping(value = "/userManage", method = RequestMethod.GET)
     public ModelAndView userManage(@RequestParam(value = "pageNum", required = false, defaultValue="1") Integer pageNum,
-                                   @RequestParam(value = "pageSize", required = false, defaultValue="10") Integer pageSize){
-        ModelAndView modelAndView = new ModelAndView("user/user_manage");
+                                   @RequestParam(value = "pageSize", required = false, defaultValue="10") Integer pageSize,HttpSession httpSession){
+
+        if(httpSession.getAttribute("managerInfo")!=null) {
+            ModelAndView modelAndView = new ModelAndView("user/user_manage");
+
         List<User> list = userService.getAll();
         modelAndView.addObject("pageInfo",getPageInfo(list, pageNum, pageSize));
         return modelAndView;
+        }
+        else{
+            ModelAndView modelAndView = new ModelAndView("/manager/login");
+            return modelAndView;
+        }
     }
 
     @GetMapping(value = "/updateUserPage")
-    public ModelAndView userDetail(@RequestParam(value = "id") Long id){
-        ModelAndView modelAndView = new ModelAndView("user/personalPage");
-        User user = userService.getUserById(id);
-        if(user != null) {
-            modelAndView.addObject("user", user);
-        }else{
-            modelAndView.addObject("user",new User());
+    public ModelAndView userDetail(@RequestParam(value = "id") Long id,HttpSession httpSession){
+        if(httpSession.getAttribute("managerInfo")!=null) {
+            ModelAndView modelAndView = new ModelAndView("user/personalPage");
+            User user = userService.getUserById(id);
+            if (user != null) {
+                modelAndView.addObject("user", user);
+            } else {
+                modelAndView.addObject("user", new User());
+            }
+            return modelAndView;
         }
-        return modelAndView;
+        else{
+            ModelAndView modelAndView = new ModelAndView("/manager/login");
+            return modelAndView;
+        }
     }
 
     @RequestMapping("/home")
@@ -93,4 +101,5 @@ public class UserPageController {
         modelAndView.addObject("movies",movies);
         return  modelAndView;
     }
+
 }

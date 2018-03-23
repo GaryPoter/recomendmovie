@@ -68,6 +68,16 @@ public class MovieServiceIml implements MovieService {
         return movieMapper.getFourMoviesk();
     }
 
+    @Override
+    public ArrayList<Movie> getAllLookingMoviesByUId(Long id) {
+        return movieMapper.getAllLookingMoviesByUId(id);
+    }
+
+    @Override
+    public ArrayList<MovieDetail> browsingHistory(Integer userID) {
+        return movieMapper.browsingHistory(userID);
+    }
+
 
     @Override
     @Transactional(readOnly = false)

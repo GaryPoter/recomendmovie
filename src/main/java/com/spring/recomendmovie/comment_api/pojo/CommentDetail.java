@@ -22,6 +22,16 @@ public class CommentDetail {
     @NotNull
     private Double score;
 
+    private String image_url;
+
+    public String getImage_url() {
+        return image_url;
+    }
+
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
+    }
+
     public Long getId() {
         return id;
     }
@@ -89,5 +99,15 @@ public class CommentDetail {
         this.movie_name = movie_name;
         this.comment = comment;
         this.score = score;
+    }
+
+    public CommentDetail(Long id, String username, String movie_name, String comment, String comment_time, Double score, String image_url) {
+        this.id = id;
+        this.username = username;
+        this.movie_name = movie_name;
+        this.comment = comment;
+        this.comment_time = comment_time;
+        this.score = score;
+        this.image_url = image_url;
     }
 }

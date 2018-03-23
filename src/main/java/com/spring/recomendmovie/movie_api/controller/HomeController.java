@@ -1,9 +1,11 @@
 package com.spring.recomendmovie.movie_api.controller;
 
+import com.spring.recomendmovie.movie_api.pojo.ManagerInfo;
 import com.spring.recomendmovie.movie_api.pojo.Movie;
 import com.spring.recomendmovie.movie_api.pojo.MovieDetail;
 import com.spring.recomendmovie.movie_api.service.MovieService;
 import com.spring.recomendmovie.user_api.pojo.User;
+import org.apache.catalina.Manager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,11 +47,22 @@ public class HomeController {
         return  modelAndView;
     }
     @RequestMapping("/manager")
-    public String manager(){
-        return "manager/main";
+    public String manager(HttpSession httpSession){
+        if(httpSession.getAttribute("managerInfo")!=null) {
+            return "manager/main";
+        }
+        else{
+            return "manager/login";
+        }
     }
 
     @RequestMapping("/managerLogin")
     public String managerLogin(){return "manager/login";}
+
+    @RequestMapping("/logOut")
+    public String logOut(HttpSession httpSession){
+        httpSession.setAttribute("managerInfo", null);
+        return "manager/main";
+    }
 
 }

@@ -1,5 +1,5 @@
 var ret_email = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/;
-var ret_password = /^[a-zA-Z][a-zA-Z0-9_]{5,20}$/;
+var ret_password = /^[a-zA-Z0-9_]{5,20}$/;
 function valid_email(e){
 	// return  true;
 

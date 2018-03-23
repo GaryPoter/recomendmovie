@@ -48,4 +48,8 @@ public interface MovieService {
     ArrayList<Movie> getFourMoviesx();
 
     ArrayList<Movie> getFourMoviesk();
+
+    ArrayList<Movie> getAllLookingMoviesByUId(Long id);
+
+    ArrayList<MovieDetail> browsingHistory(Integer userID);
 }

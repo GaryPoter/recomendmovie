@@ -49,7 +49,7 @@
                       <a href="/movie/user/register">注册</a>
                   </div>
                   <div th:if="${session.user != null}">
-                      <a href="/movie/user/userDetailPage" th:text="${session.user.getEmail()}"></a>
+                      <a th:href="${'/movie/user/userHome/'+session.user.getId()+'/'+1}" th:text="${session.user.getEmail()}"></a>
                       <a href="/movie/user/logOut">登出</a>
                   </div>
               </div>
@@ -249,12 +249,12 @@
               </div>
 
           </div>
-      </div>
+      <!--</div>-->
 
 
 
 
-      <div class="section news-section">
+      <!--<div class="section news-section">-->
       <div class="container">
         <!--news-section left start-->
         <div class="am-u-md-9">
@@ -331,7 +331,7 @@
         <!--news-section left end-->
 
         <!--news-section right start-->
-        <div class="am-u-md-3">
+        <div class="am-u-md-3" style="margin-top: 80px">
           <div class="blog_sidebar">
             <div class="widget">
               <h2 class="widget--title"><i class="am-icon-file-text-o"></i>猜你喜欢</h2>

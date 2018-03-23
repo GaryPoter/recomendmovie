@@ -39,7 +39,7 @@
                                 <a href="/movie/user/register">注册</a>
                             </div>
                             <div th:if="${session.user != null}">
-                                <a href="/movie/user/userDetailPage" th:text="${session.user.getEmail()}"></a>
+                                <a th:href="${'/movie/user/userHome/'+session.user.getId()+'/'+1}" th:text="${session.user.getEmail()}"></a>
                                 <a href="/movie/user/logOut">登出</a>
                             </div>
                         </div>

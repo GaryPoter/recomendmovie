@@ -9,7 +9,7 @@ public class Result {
 
     public static final int NOT_LOGIN_CODE = 2;
 
-
+    public static final int haveUser = 3;
 
     private Object item;
 
