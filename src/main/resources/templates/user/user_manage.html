@@ -53,7 +53,11 @@
     <span>位置：</span>
     <ul class="placeul">
         <li><a href="/movie/manager">首页</a></li>
+<<<<<<< HEAD
+        <li><a href="/movie/user/userManage">评论列表</a></li>
+=======
         <li><a href="/movie/user/userManage">用户列表</a></li>
+>>>>>>> c8bde70f56c4a76f2a1eac8109305d604dae4681
     </ul>
 </div>
 
@@ -62,15 +66,35 @@
 
     <div class="tools">
 
+<<<<<<< HEAD
+
+
+        <div class="search bar" style="float: right">
+            <form th:async="true" action="/movie/user/searchUser" method="post">
+                <input type="text" id="searchContent" th:name="username" style="font-size: 17px"/>
+                <button type="submit" value="搜索">
+                </button>
+            </form>
+        </div>
+=======
         <ul class="toolbar">
             <li class="click"><span><img th:src="@{/assets/images/movies/t03.png}"/></span>删除</li>
         </ul>
+>>>>>>> c8bde70f56c4a76f2a1eac8109305d604dae4681
     </div>
 
 
     <table class="imgtable">
 
         <thead>
+<<<<<<< HEAD
+        <tr>
+            <th>id</th>
+            <th>邮箱</th>
+            <th>用户名</th>
+            <th>密码</th>
+            <th>操作</th>
+=======
         <tr style="height: 40px;font-size: 20px">
 
             <th style="width:5%"><input name="" type="checkbox" value="" id="hxy" /></th>
@@ -79,13 +103,18 @@
             <th style="width:30%" >用户名</th>
             <!--<th>密码</th>-->
             <th style="width:25%">操作</th>
+>>>>>>> c8bde70f56c4a76f2a1eac8109305d604dae4681
         </tr>
         </thead>
 
         <tbody>
 
+<<<<<<< HEAD
+        <tr th:each="user:${pageInfo.list}">
+=======
         <tr th:each="user:${pageInfo.list}" style="height: 40px;font-size: 20px">
             <td><input name="hxy" type="checkbox" th:value="${user.id}"/></td>
+>>>>>>> c8bde70f56c4a76f2a1eac8109305d604dae4681
             <td th:text="${user.id}"></td>
             <td th:text="${user.email}"></td>
             <td th:text="${user.username}"></td>

@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <header th:replace="fragment/header::header1"/>
+<!--<body class="container">-->
 <body>
   <div class="layout">
+    <div class="row">
+      <div class="col-xs-8"></div>
+      <div class="col-xs-4">
+      </div></div>
+
     <!--===========layout-header================-->
       <div th:include="fragment/header::header"/>
 
@@ -13,7 +19,7 @@
   <div th:include="fragment/footer1::movie_service"/>
 
 
-  <div th:include="fragment/footer1::footer1"/>
+  <!--<div th:include="fragment/footer1::footer1"/>-->
 
   <div th:include="fragment/footer1::footer2" />
   

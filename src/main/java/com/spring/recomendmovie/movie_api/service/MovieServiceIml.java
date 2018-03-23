@@ -2,19 +2,15 @@ package com.spring.recomendmovie.movie_api.service;
 
 
 import com.spring.recomendmovie.movie_api.mapper.MovieMapper;
-import com.spring.recomendmovie.movie_api.pojo.ManagerInfo;
-import com.spring.recomendmovie.movie_api.pojo.Movie;
-import com.spring.recomendmovie.movie_api.pojo.MovieDetail;
-import com.spring.recomendmovie.movie_api.pojo.MovieType;
+import com.spring.recomendmovie.movie_api.pojo.*;
 
+import com.spring.recomendmovie.user_api.pojo.User;
 import com.spring.recomendmovie.utils.Table;
-import org.apache.catalina.Manager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
@@ -69,6 +65,7 @@ public class MovieServiceIml implements MovieService {
     }
 
     @Override
+<<<<<<< HEAD
     public ArrayList<Movie> getAllLookingMoviesByUId(Long id) {
         return movieMapper.getAllLookingMoviesByUId(id);
     }
@@ -76,6 +73,25 @@ public class MovieServiceIml implements MovieService {
     @Override
     public ArrayList<MovieDetail> browsingHistory(Integer userID) {
         return movieMapper.browsingHistory(userID);
+=======
+    public ArrayList<Movie> getBrowseLog(Long id) {
+        return movieMapper.getBrowseLog(id);
+    }
+
+    @Override
+    public int insertBrowseLog(BrowseLog browseLog) {
+        return movieMapper.insertBrowseLog(browseLog);
+    }
+
+    @Override
+    public ArrayList<HistoryMovie> selectTop5History(Long user_id) {
+        return movieMapper.getTop5History(user_id);
+    }
+
+    @Override
+    public int deleteBrowseLog(Long user_id, Long movie_id) {
+        return movieMapper.deleteBrowseLog(user_id, movie_id);
+>>>>>>> 8a55993026804d33e96887c1d87d3d578c8d6107
     }
 
 

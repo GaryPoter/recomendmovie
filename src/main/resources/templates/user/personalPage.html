@@ -67,10 +67,16 @@
                 <li><label>原始密码<b>*</b></label><input type="password" class="dfinput" th:value="${user.password}"  style="width:200px;" /></li>
                 <li><label>新密码<b>*</b></label><input id="password" type="password" class="dfinput"  style="width:200px;" /></li>
                 <li><label>确认新密码<b>*</b></label><input id="repassword" type="password" class="dfinput"  style="width:200px;" /></li>
-
                 <li><label>&nbsp;</label><input id="updateUser" type="button" class="btn"  value="马上修改" onclick="updateUser()"/></li>
 
             </ul>
+            <script>
+                $("body").keydown(function () {
+                    if (event.keyCode == "13"){
+                        $('#updateUser').click();
+                    }
+                });
+            </script>
 
         </div>
     </div>
