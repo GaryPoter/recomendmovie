@@ -65,4 +65,5 @@ public interface MovieService {
     //删除浏览记录
     int deleteBrowseLog(Long user_id, Long movie_id);
 
+    ArrayList<Movie> getSimMovies(Long id);
 }

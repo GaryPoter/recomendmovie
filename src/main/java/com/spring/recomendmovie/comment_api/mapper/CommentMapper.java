@@ -19,24 +19,20 @@ public interface CommentMapper {
     CommentDetail getCommentById(@Param("comment_id") long comment_id);
 
 
-    @Select("select user_comment_movie.id,username,movie_name,comment,comment_time,score from movie1,user,user_comment_movie where movie1.id=movie_id and user.id=user_id order by user_comment_movie.id desc")
+    @Select("select user_comment_movie.id,username,movie_name,comment,comment_time,score from movielens,user,user_comment_movie where movielens.id=movie_id and user.id=user_id order by user_comment_movie.id desc")
     ArrayList<CommentDetail> getAllComments();
 
     @Delete("delete from user_comment_movie where id =#{comment_id}")
     int deleteComment(@Param("comment_id") long comment_id);
 
-//<<<<<<< HEAD
-//    @Select("select user_comment_movie.id,username,movie_name,comment,comment_time,score from movie1,user,user_comment_movie where movie1.id=movie_id and user.id=user_id and movie_name=#{movie_name} order by user_comment_movie.id desc")
-//=======
-//    @Select("select username,comment,comment_time,score from user_comment_movie,user,movie where user_comment_movie.movie_id=#{movie_id}")
     @Select("SELECT username,comment,comment_time,score FROM commentDetail WHERE movie_id = #{movie_id}")
     ArrayList<CommentDetail> getCommentsByMovieId(@Param("movie_id") long movie_id);
 
     @Select("select user_comment_movie.id,username,movie_name,comment,comment_time,score from movie,user,user_comment_movie where movie.id=movie_id and user.id=user_id and movie_name=#{movie_name} order by user_comment_movie.id desc")
-//>>>>>>> 44afb6ab8a920ace2f477b3ca87a7381fdb22208
+
     ArrayList<CommentDetail> getCommentsByMovieName(@Param("movie_name") String movie_name);
 
-    @Select("select user_comment_movie.id,username,movie_name,comment,comment_time,score from movie1,user,user_comment_movie where movie1.id=movie_id and user.id=user_id and username=#{user_name} order by user_comment_movie.id desc")
+    @Select("select user_comment_movie.id,username,movie_name,comment,comment_time,score from movielens,user,user_comment_movie where movielens.id=movie_id and user.id=user_id and username=#{user_name} order by user_comment_movie.id desc")
     ArrayList<CommentDetail> getCommentsByUserName(@Param("user_name") String user_name);
 
     @Insert("insert into user_comment_movie(user_id,movie_id,comment,comment_time,score) values(#{user_id},#{movie_id},#{comment},#{comment_time},#{score})")
@@ -58,21 +54,11 @@ public interface CommentMapper {
     @Delete("delete from user_comment_movie where user_id = #{id}")
     int deleteComments(@Param("id") Long id);
 
-<<<<<<< HEAD
-//<<<<<<< HEAD
-//=======
-=======
-
->>>>>>> e5353a6949282bafd6d27ec13f1e57c4c240ec69
     @Select("select user_comment_movie.id,username,movie_name,comment,comment_time,score from movielens,user,user_comment_movie where movielens.id=movie_id and user.id=user_id and username like (CONCAT('%',#{user_name},'%')) order by user_comment_movie.id desc")
     ArrayList<CommentDetail> searchCommentByUName(@Param("user_name") String uName);
 
     @Select("select user_comment_movie.id,username,movie_name,comment,comment_time,score from movielens,user,user_comment_movie where movielens.id=movie_id and user.id=user_id and username like (CONCAT('%',#{user_name},'%')) order by user_comment_movie.id desc limit #{firstRec},#{pageSize}")
     ArrayList<CommentDetail> searchCommentByUNamePage(@Param("user_name") String uName, @Param("firstRec") int firstRec, @Param("pageSize") int pageSize);
-<<<<<<< HEAD
-//>>>>>>> c8bde70f56c4a76f2a1eac8109305d604dae4681
-////原来
-=======
 
 
     @Select("select username,movie_name,comment,comment_time,score,image_url from movielens,user_comment_movie,user where movielens.id=movie_id and user.id=user_id and user_id = #{id}")
@@ -81,6 +67,7 @@ public interface CommentMapper {
     @Select("select username,movie_name,comment,comment_time,score,image_url from movielens,user_comment_movie,user where movielens.id=movie_id and user.id=user_id and user_id = #{id} order by user_comment_movie.id desc limit #{firstRec},#{pageSize}")
     ArrayList<CommentDetail> getAllCommentsByUserIdP(@Param("id") Long id,@Param("firstRec") int firstRec,@Param("pageSize") int pageSize);
 
-//原来
->>>>>>> e5353a6949282bafd6d27ec13f1e57c4c240ec69
+    @Select("select count(*) from user_comment_movie where user_id = #{user_id} and movie_id = #{movie_id}")
+    int getCommentByUserAndMovie(@Param("user_id") Long user_id, @Param("movie_id") Long movie_id);
+
 }

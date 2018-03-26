@@ -110,6 +110,11 @@ public class MovieServiceIml implements MovieService {
         return movieMapper.deleteBrowseLog(user_id, movie_id);
     }
 
+    @Override
+    public ArrayList<Movie> getSimMovies(Long id) {
+        return movieMapper.getSimMovies(id);
+    }
+
 
     @Override
     @Transactional(readOnly = false)

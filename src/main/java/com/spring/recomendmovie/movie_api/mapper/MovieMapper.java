@@ -64,7 +64,7 @@ public interface MovieMapper {
     @Select("select * from manager where mName=#{mName} and mPassword=#{mPassword}")
     ManagerInfo login(@Param("mName") String mName,@Param("mPassword") String mPassword);
 
-    @Select("select * from movielens,TopTenOfPerson where movielens.id=movieID and userID=#{userID} order by id limit 1,4")
+    @Select("select * from movielens,recommendedmovies where movielens.id=movie_id and user_id=#{userID} order by movielens.rating limit 1,4")
     ArrayList<Movie> getTopTenMovies(@Param("userID") Long id);
 
     @Select("select movielens.id,movie_name,download_url,image_url,director,star,duration,time,mabstract,rating,type1.type from movielens,TopTenOfPerson,type1 where movielens.id=movieID and movielens.type = type1.id  and userID=#{userID}")
@@ -91,13 +91,15 @@ public interface MovieMapper {
     @Insert("insert into browselog (user_id,movie_id,browsetime,image_url) values (#{user_id},#{movie_id}, #{browsetime},#{image_url})")
     int insertBrowseLog(BrowseLog browseLog);
 
-    @Select("select movie1.movie_name,movie1.image_url from browselog, movie1,user where user_id=#{user_id} and browselog.user_id=user.id and browselog.movie_id=movie1.id ")
+    @Select("select movielens.movie_name,movielens.image_url from browselog, movielens,user where user_id=#{user_id} and browselog.user_id=user.id and browselog.movie_id=movielens.id ")
     ArrayList<Movie> getBrowseLog(@Param("user_id") Long user_id);
 
-    @Select("select distinct(movie1.movie_name), browselog.browsetime, browselog.movie_id,movie1.image_url from movie1, browselog  where movie1.id = browselog.movie_id and browselog.user_id = #{user_id} order by browsetime desc limit 5")
+    @Select("select distinct(movielens.movie_name), browselog.browsetime, browselog.movie_id,movielens.image_url from movielens, browselog  where movielens.id = browselog.movie_id and browselog.user_id = #{user_id} order by browsetime desc limit 5")
     ArrayList<HistoryMovie> getTop5History(@Param("user_id") Long user_id);
 
     @Delete("delete from browselog where user_id= #{user_id}")
     int deleteBrowseLog(@Param("user_id") Long user_id, @Param("movie_id") Long movie_id);
 
+    @Select("select movielens.* from movie_sim, movielens where movie_sim.movie_id1 = #{id} and movie_id2 = id")
+    ArrayList<Movie> getSimMovies(Long id);
 }

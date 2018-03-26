@@ -115,6 +115,8 @@ public class MoviePageController {
         modelAndView.addObject("movieDetail",movieDetail);
         modelAndView.addObject("commentDetails",commentDetails1);
         modelAndView.addObject("historyMovie", historyMovies);
+        ArrayList<Movie> recommendedMovies = movieService.getSimMovies(id);
+        modelAndView.addObject("recommendedMovies",recommendedMovies);
         return modelAndView;
 //>>>>>>> 8a55993026804d33e96887c1d87d3d578c8d6107
     }

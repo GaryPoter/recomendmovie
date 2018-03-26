@@ -10,6 +10,12 @@
     <link rel="stylesheet" th:href="@{/assets/css/news.min.css}" />
     <link rel="stylesheet" th:href="@{/assets/css/index.min.css}" />
     <link rel="stylesheet" th:href="@{/assets/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap-theme.min.css}"/>
+    <link rel="stylesheet" th:href="@{/rating/css/star-rating.css}" media="all" type="text/css"/>
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/rating/js/star-rating.js}" type="text/javascript"></script>
+
 </head>
 <body>
 <style type="text/css">
@@ -23,7 +29,7 @@
 </style>
 <div class="layout">
     <!--===========layout-header================-->
-<<<<<<< HEAD
+<!--<<<<<<< HEAD-->
       <div class="layout-header am-hide-sm-only" th:fragment="header">
           <div class="layout-header am-hide-sm-only">
               <!--topbar start-->
@@ -101,175 +107,175 @@
               </div>
           </div>
       <!--mobile header end-->
-=======
-    <div class="layout-header am-hide-sm-only">
-        <!--topbar start-->
-        <div class="topbar">
-            <div class="container">
-                <div class="am-g">
-                    <div class="am-u-md-3">
-                        <div class="topbar-left">
-                            <i class="am-icon-globe"></i>
-                            <div class="am-dropdown" data-am-dropdown="">
-                                <button class="am-btn am-btn-primary am-dropdown-toggle" data-am-dropdown-toggle="">Language <span class="am-icon-caret-down"></span></button>
-                                <ul class="am-dropdown-content">
-                                    <li><a href="#">English</a></li>
-                                    <li class="am-divider"></li>
-                                    <li><a href="#">Chinese</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="am-u-md-9">
-                        <div class="topbar-right am-text-right am-fr">
+<!--=======-->
+    <!--<div class="layout-header am-hide-sm-only">-->
+        <!--&lt;!&ndash;topbar start&ndash;&gt;-->
+        <!--<div class="topbar">-->
+            <!--<div class="container">-->
+                <!--<div class="am-g">-->
+                    <!--<div class="am-u-md-3">-->
+                        <!--<div class="topbar-left">-->
+                            <!--<i class="am-icon-globe"></i>-->
+                            <!--<div class="am-dropdown" data-am-dropdown="">-->
+                                <!--<button class="am-btn am-btn-primary am-dropdown-toggle" data-am-dropdown-toggle="">Language <span class="am-icon-caret-down"></span></button>-->
+                                <!--<ul class="am-dropdown-content">-->
+                                    <!--<li><a href="#">English</a></li>-->
+                                    <!--<li class="am-divider"></li>-->
+                                    <!--<li><a href="#">Chinese</a></li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="am-u-md-9">-->
+                        <!--<div class="topbar-right am-text-right am-fr">-->
 
-                            <div th:if="${session.user == null}">
-                                <a href="/movie/user/login">登录</a>
-                                <a href="/movie/user/register">注册</a>
-                            </div>
-                            <div th:if="${session.user != null}">
-                                <a th:href="${'/movie/user/userHome/'+session.user.getId()+'/'+1}" th:text="${session.user.getEmail()}"></a>
-                                <a href="/movie/user/logOut">登出</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--&lt;!&ndash;topbar end&ndash;&gt;-->
+                            <!--<div th:if="${session.user == null}">-->
+                                <!--<a href="/movie/user/login">登录</a>-->
+                                <!--<a href="/movie/user/register">注册</a>-->
+                            <!--</div>-->
+                            <!--<div th:if="${session.user != null}">-->
+                                <!--<a th:href="${'/movie/user/userHome/'+session.user.getId()+'/'+1}" th:text="${session.user.getEmail()}"></a>-->
+                                <!--<a href="/movie/user/logOut">登出</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--&lt;!&ndash;&lt;!&ndash;topbar end&ndash;&gt;&ndash;&gt;-->
 
-        <div class="header-box" data-am-sticky="">
-            <!--header start-->
-            <div class="container">
-                <div class="header">
-                    <div class="am-g">
-                        <div class="am-u-lg-2 am-u-sm-12">
-                            <div class="logo">
-                                <a href=""><img th:src="@{/assets/images/logo2_02.png}" alt="" /></a>
-                            </div>
-                        </div>
-                        <div class="am-u-md-10">
-                            <div class="header-right am-fr">
-                                <div class="header-contact">
-                                    <div class="header_contacts--item">
-                                        <div class="contact_mini">
-                                            <i style="color:#7c6aa6" class="contact-icon am-icon-phone"></i>
-                                            <strong>0 (123) 456-7890</strong>
-                                            <span>周一~周五, 8:00 - 20:00</span>
-                                        </div>
-                                    </div>
-                                    <div class="header_contacts--item">
-                                        <div class="contact_mini">
-                                            <i style="color:#7c6aa6" class="contact-icon am-icon-envelope-o"></i>
-                                            <strong>springIn@126.com</strong>
-                                            <span>随时欢迎您的来信！</span>
-                                        </div>
-                                    </div>
-                                    <div class="header_contacts--item">
-                                        <div class="contact_mini">
-                                            <i style="color:#7c6aa6" class="contact-icon am-icon-map-marker"></i>
-                                            <strong>三江院,</strong>
-                                            <span>苏州市工业园区林泉街</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <form style="margin-top: 60px" th:async="true" action="/movie/movies/movieListByUser" method="post">
-                                    <input type="text" style="width: 400px;height: 40px;border: 1px solid #2a3e93;" id="searchContent" th:name="searchContent"/>
-                                    <input type="submit" value="搜索" placeholder="请输入电影名/导演/演员" style="height: 40px;width: 65px;color:#ffffdd;font-size: 18px;background-color: #6975a6;"/>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--&lt;!&ndash;header end&ndash;&gt;-->
-
-
-            <!--&lt;!&ndash;nav start&ndash;&gt;-->
-            <!--nav end-->
-        </div>
-
-    </div>
+        <!--<div class="header-box" data-am-sticky="">-->
+            <!--&lt;!&ndash;header start&ndash;&gt;-->
+            <!--<div class="container">-->
+                <!--<div class="header">-->
+                    <!--<div class="am-g">-->
+                        <!--<div class="am-u-lg-2 am-u-sm-12">-->
+                            <!--<div class="logo">-->
+                                <!--<a href=""><img th:src="@{/assets/images/logo2_02.png}" alt="" /></a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="am-u-md-10">-->
+                            <!--<div class="header-right am-fr">-->
+                                <!--<div class="header-contact">-->
+                                    <!--<div class="header_contacts&#45;&#45;item">-->
+                                        <!--<div class="contact_mini">-->
+                                            <!--<i style="color:#7c6aa6" class="contact-icon am-icon-phone"></i>-->
+                                            <!--<strong>0 (123) 456-7890</strong>-->
+                                            <!--<span>周一~周五, 8:00 - 20:00</span>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="header_contacts&#45;&#45;item">-->
+                                        <!--<div class="contact_mini">-->
+                                            <!--<i style="color:#7c6aa6" class="contact-icon am-icon-envelope-o"></i>-->
+                                            <!--<strong>springIn@126.com</strong>-->
+                                            <!--<span>随时欢迎您的来信！</span>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="header_contacts&#45;&#45;item">-->
+                                        <!--<div class="contact_mini">-->
+                                            <!--<i style="color:#7c6aa6" class="contact-icon am-icon-map-marker"></i>-->
+                                            <!--<strong>三江院,</strong>-->
+                                            <!--<span>苏州市工业园区林泉街</span>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<form style="margin-top: 60px" th:async="true" action="/movie/movies/movieListByUser" method="post">-->
+                                    <!--<input type="text" style="width: 400px;height: 40px;border: 1px solid #2a3e93;" id="searchContent" th:name="searchContent"/>-->
+                                    <!--<input type="submit" value="搜索" placeholder="请输入电影名/导演/演员" style="height: 40px;width: 65px;color:#ffffdd;font-size: 18px;background-color: #6975a6;"/>-->
+                                <!--</form>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;&lt;!&ndash;header end&ndash;&gt;&ndash;&gt;-->
 
 
+            <!--&lt;!&ndash;&lt;!&ndash;nav start&ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;nav end&ndash;&gt;-->
+        <!--</div>-->
+
+    <!--</div>-->
 
 
-    <!--mobile header start-->
-    <div class="m-header">
-        <div class="am-g am-show-sm-only">
-            <div class="am-u-sm-2">
-                <div class="menu-bars">
-                    <a href="#doc-oc-demo1" data-am-offcanvas="{effect: 'push'}"><i class="am-menu-toggle-icon am-icon-bars"></i></a>
-                    <!-- 侧边栏内容 -->
-                    <nav data-am-widget="menu" class="am-menu  am-menu-offcanvas1" data-am-menu-offcanvas="" >
-                        <a href="javascript: void(0)" class="am-menu-toggle"></a>
 
-                        <div class="am-offcanvas" >
-                            <div class="am-offcanvas-bar">
-                                <ul class="am-menu-nav am-avg-sm-1">
-                                    <li><a href="../index.html" class="" >首页</a></li>
-                                    <li class="am-parent">
-                                        <a href="#" class="" >产品中心</a>
-                                        <ul class="am-menu-sub am-collapse ">
-                                            <li class="">
-                                                <a href="./product1.html" class="" >产品展示1</a>
-                                            </li>
-                                            <li class="">
-                                                <a href="./product2.html" class="" >产品展示2</a>
-                                            </li>
-                                            <li class="">
-                                                <a href="./product3.html" class="" >产品展示3</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class=""><a href="./example.html" class="" >客户案例</a></li>
-                                    <li class=""><a href="./solution.html" class="" >解决方案</a></li>
-                                    <li class="am-parent">
-                                        <a href="./news.html" class="" >新闻中心</a>
-                                        <ul class="am-menu-sub am-collapse  ">
-                                            <li class="">
-                                                <a href="./news-content.html" class="" >公司动态</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class=""><a href="./about.html" class="" >关于我们</a></li>
-                                    <li class="am-parent">
-                                        <a href="./news.html" class="nav-icon nav-icon-globe" >Language</a>
-                                        <ul class="am-menu-sub am-collapse  ">
-                                            <li>
-                                                <a href="#" >English</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-share-contain">
-                                        <div class="nav-share-links">
-                                            <i class="am-icon-facebook"></i>
-                                            <i class="am-icon-twitter"></i>
-                                            <i class="am-icon-google-plus"></i>
-                                            <i class="am-icon-pinterest"></i>
-                                            <i class="am-icon-instagram"></i>
-                                            <i class="am-icon-linkedin"></i>
-                                            <i class="am-icon-youtube-play"></i>
-                                            <i class="am-icon-rss"></i>
-                                        </div>
-                                    </li>
 
-                                </ul>
+    <!--&lt;!&ndash;mobile header start&ndash;&gt;-->
+    <!--<div class="m-header">-->
+        <!--<div class="am-g am-show-sm-only">-->
+            <!--<div class="am-u-sm-2">-->
+                <!--<div class="menu-bars">-->
+                    <!--<a href="#doc-oc-demo1" data-am-offcanvas="{effect: 'push'}"><i class="am-menu-toggle-icon am-icon-bars"></i></a>-->
+                    <!--&lt;!&ndash; 侧边栏内容 &ndash;&gt;-->
+                    <!--<nav data-am-widget="menu" class="am-menu  am-menu-offcanvas1" data-am-menu-offcanvas="" >-->
+                        <!--<a href="javascript: void(0)" class="am-menu-toggle"></a>-->
 
-                            </div>
-                        </div>
-                    </nav>
+                        <!--<div class="am-offcanvas" >-->
+                            <!--<div class="am-offcanvas-bar">-->
+                                <!--<ul class="am-menu-nav am-avg-sm-1">-->
+                                    <!--<li><a href="../index.html" class="" >首页</a></li>-->
+                                    <!--<li class="am-parent">-->
+                                        <!--<a href="#" class="" >产品中心</a>-->
+                                        <!--<ul class="am-menu-sub am-collapse ">-->
+                                            <!--<li class="">-->
+                                                <!--<a href="./product1.html" class="" >产品展示1</a>-->
+                                            <!--</li>-->
+                                            <!--<li class="">-->
+                                                <!--<a href="./product2.html" class="" >产品展示2</a>-->
+                                            <!--</li>-->
+                                            <!--<li class="">-->
+                                                <!--<a href="./product3.html" class="" >产品展示3</a>-->
+                                            <!--</li>-->
+                                        <!--</ul>-->
+                                    <!--</li>-->
+                                    <!--<li class=""><a href="./example.html" class="" >客户案例</a></li>-->
+                                    <!--<li class=""><a href="./solution.html" class="" >解决方案</a></li>-->
+                                    <!--<li class="am-parent">-->
+                                        <!--<a href="./news.html" class="" >新闻中心</a>-->
+                                        <!--<ul class="am-menu-sub am-collapse  ">-->
+                                            <!--<li class="">-->
+                                                <!--<a href="./news-content.html" class="" >公司动态</a>-->
+                                            <!--</li>-->
+                                        <!--</ul>-->
+                                    <!--</li>-->
+                                    <!--<li class=""><a href="./about.html" class="" >关于我们</a></li>-->
+                                    <!--<li class="am-parent">-->
+                                        <!--<a href="./news.html" class="nav-icon nav-icon-globe" >Language</a>-->
+                                        <!--<ul class="am-menu-sub am-collapse  ">-->
+                                            <!--<li>-->
+                                                <!--<a href="#" >English</a>-->
+                                            <!--</li>-->
+                                        <!--</ul>-->
+                                    <!--</li>-->
+                                    <!--<li class="nav-share-contain">-->
+                                        <!--<div class="nav-share-links">-->
+                                            <!--<i class="am-icon-facebook"></i>-->
+                                            <!--<i class="am-icon-twitter"></i>-->
+                                            <!--<i class="am-icon-google-plus"></i>-->
+                                            <!--<i class="am-icon-pinterest"></i>-->
+                                            <!--<i class="am-icon-instagram"></i>-->
+                                            <!--<i class="am-icon-linkedin"></i>-->
+                                            <!--<i class="am-icon-youtube-play"></i>-->
+                                            <!--<i class="am-icon-rss"></i>-->
+                                        <!--</div>-->
+                                    <!--</li>-->
 
-                </div>
-            </div>
-            <div class="am-u-sm-5 am-u-end">
-                <div class="m-logo">
-                    <a href=""><img th:src="@{/assets/images/logo.png}" alt=""></img></a>
-                </div>
-            </div>
-        </div>
-        <!--mobile header end-->
->>>>>>> e5353a6949282bafd6d27ec13f1e57c4c240ec69
+                                <!--</ul>-->
+
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</nav>-->
+
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="am-u-sm-5 am-u-end">-->
+                <!--<div class="m-logo">-->
+                    <!--<a href=""><img th:src="@{/assets/images/logo.png}" alt=""></img></a>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--&lt;!&ndash;mobile header end&ndash;&gt;-->
+<!--&gt;>>>>>> e5353a6949282bafd6d27ec13f1e57c4c240ec69-->
     </div>
 
     <!--===========layout-container================-->
@@ -350,6 +356,8 @@
                                         <figure class="comment--userpic"><img th:src="@{/assets/images/news/av01.jpg}" alt=""></img></figure>
                                         <strong class="comment--username"><i th:text="${commentDetail.username}"></i></strong>
                                         <time datetime="2001-05-15T19:00" class="comment--date" th:text="${commentDetail.comment_time}"></time>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <i th:text="${commentDetail.score}"></i>
                                     </header>
                                     <div class="comment--content">
                                         <p th:text="${commentDetail.comment}">
@@ -379,11 +387,44 @@
 
                         <div class="comment_form">
                             <!--class="comment_form&#45;&#45;title"-->
-                            <h2 class="comments--title">评分 </h2>
-                            <input type="text" id="score" placeholder="评分" style="width: 20%" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  maxlength = "1"/>
+                            <!--<input type="text" id="score" placeholder="评分" style="width: 20%" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  maxlength = "1"/>-->
+                            <div onload="score()" class="row">
+
+                                <!--<table id ="czy" class="row">-->
+                                    <!--<tr class="row">-->
+
+                                        <!--<td class="col-sm-1"/>-->
+                                        <!--<p style="font-size: 20px; font-family: '微软雅黑', '宋体'">&nbsp;&nbsp;给个评分吧</p>-->
+                                        <!--<td data="1" class="score col-sm-2 col-md-1"><h3>★</h3></td>-->
+                                        <!--<td data="2" class="score col-sm-2 col-md-1"><h3>★</h3></td>-->
+                                        <!--<td data="3" class="score col-sm-2 col-md-1"><h3>★</h3></td>-->
+                                        <!--<td data="4" class="score col-sm-2 col-md-1"><h3>★</h3></td>-->
+                                        <!--<td data="5" class="score col-sm-2 col-md-1"><h3>★</h3></td>-->
+                                        <!--<td class="col-sm-1"/>-->
+                                    <!--</tr>-->
+                                <!--</table>-->
+                                <table id ="czy">
+                                    <h3 style="font-size: 20px; font-family: '微软雅黑', '宋体'">&nbsp;&nbsp;评分
+                                    <tr>
+                                        <td>
+                                        <td><h3>★</h3></td>
+                                        <td><h3>★</h3></td>
+                                        <td><h3>★</h3></td>
+                                        <td><h3>★</h3></td>
+                                        <td><h3>★</h3></td>
+                                        </td>
+                                    </tr>
+                                    </h3>
+                                </table>
+                                <!--<input type="button" id="ok" value="打分"/>-->
+                                <input type="text" id="ratingScore" hidden="hidden"/>
+                            </div>
+                            <!--<form>-->
+                            <!--<input type="text" class="kv-fa rating-loading" value="3.75" data-size="xl" title=""/>-->
+                            <!--</form>-->
+
+
                             <h2 class="comments--title">发表评论 </h2>
-
-
                             <form class="am-form am-form-horizontal">
                                 <div class="am-form-group">
                                     <input type="hidden" id="uid" th:if="${session.user}!=null" th:value="${session.user.getId()}"/>
@@ -415,10 +456,8 @@
                 <div class="blog_sidebar">
                     <div class="widget">
                         <h2 class="widget--title"><i class="am-icon-file-text-o"></i>猜你喜欢</h2>
-                        <ul>
-                            <li><a href="#">至暗时刻</a></li>
-                            <li><a href="#">爱乐之城</a></li>
-                            <li><a href="#">诗歌天使</a></li>
+                        <ul th:each="movie:${recommendedMovies}">
+                            <li><a th:href="${'/movie/movies/movieDetails/' + movie.id + '/1'}" th:text="${movie.movie_name}"></a></li>
                         </ul>
                     </div>
                     <div class="widget">
@@ -490,10 +529,18 @@
         </div>
     </div>
 </div>
+
 <script th:src="@{/assets/js/jquery-2.1.0.js}" charset="utf-8"></script>
 <script th:src="@{/assets/js/amazeui.js}" charset="utf-8"></script>
 <script th:src="@{/assets/js/common.js}" charset="utf-8"></script>
 <script th:src="@{/comment.js/comment_insert.js}" type="text/javascript"></script>
+<script th:src="@{/assets/js/jquery.js}" charset="utf-8"></script>
+<script th:src="@{/assets/js/jquery.raty.min.js}" charset="utf-8"></script>
+<!--<script>-->
+    <!--$(document).on('ready', function () {-->
+        <!--$(".kv-fa").rating();-->
+    <!--});-->
+<!--</script>-->
 </body>
 
 </html>

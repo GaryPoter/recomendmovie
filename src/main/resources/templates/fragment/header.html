@@ -12,9 +12,11 @@
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap-theme.min.css}"/>
     <link rel="stylesheet" th:href="@{/assets/css/circle.css}" />
     <!--<link rel="stylesheet" th:href="@{/assets/css/searchbox.css}"/>-->
-    <script src="../../static/movie/movie_index.js"></script>
+    <script th:src="@{/movie/movie_index.js}"></script>
     <script th:src="@{/assets/js/circle.js}" charset="utf-8"></script>
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script th:src="@{/assets/js/jquery-2.1.0.js}" charset="utf-8"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+
 
 </head>
 <body>
@@ -23,7 +25,7 @@
     <div class="layout-header am-hide-sm-only" th:fragment="header">
         <!--<div class="layout-header am-hide-sm-only">-->
             <!--topbar start-->
-<<<<<<< HEAD
+<!--<<<<<<< HEAD-->
             <!--<div class="topbar">-->
                 <!--<div class="container">-->
                     <!--<div class="am-g">-->
@@ -57,7 +59,7 @@
                 <!--</div>-->
             <!--</div>-->
             <!--</div>-->
-=======
+<!--=======-->
             <div class="topbar">
                 <div class="container">
                     <div class="am-g">
@@ -92,7 +94,7 @@
                 </div>
             </div>
             </div>
->>>>>>> e5353a6949282bafd6d27ec13f1e57c4c240ec69
+<!--&gt;>>>>>> e5353a6949282bafd6d27ec13f1e57c4c240ec69-->
             <!--&lt;!&ndash;topbar end&ndash;&gt;-->
         <!--<div class="header-box" data-am-sticky="">-->
         <div class="header-box">
@@ -105,17 +107,11 @@
                                 <a href="/movie/home"><img th:src="@{/assets/images/logo2_02.png}" alt="" /></a>
                             </div>
                         </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> e5353a6949282bafd6d27ec13f1e57c4c240ec69
                         <div>
                             <form style=" margin: 37px 0 17px 400px" th:async="true"  action="/movie/movies/movieListByUser" method="post">
                                 <input type="text" style="width: 320px;height: 38px;border: 1px solid #2a3e93;" id="searchContent" th:name="searchContent"/>
                                 <input type="submit" value="搜索" style="margin-top:-4px;height: 38px;width: 80px;color:#ffffdd;font-size: 15px;font-family: '微软雅黑', '宋体'; background-color:#28a4c9;"/>
                             </form>
-<<<<<<< HEAD
-=======
 <!--=======-->
                         <!--<div class="am-u-md-10">-->
                             <!--<div class="header-right am-fr">-->
@@ -142,11 +138,11 @@
                                         <!--</div>-->
                                     <!--</div>-->
                                 <!--</div>-->
->>>>>>> e5353a6949282bafd6d27ec13f1e57c4c240ec69
+
 
                         </div>
 
-<<<<<<< HEAD
+
                         <div style="margin:-50px 0px 0px 250px; width: 75%;" >
                             <div class="topbar-right am-text-right am-fr" >
 
@@ -160,7 +156,7 @@
                                     <a style="color: red;font-family: '微软雅黑', '宋体';" href="/movie/user/logOut">退出登录</a>
                                 </div>
                             </div>
-=======
+
                                 <!--<form style="margin-top: 60px" th:async="true" action="/movie/movies/movieListByUser" method="post">-->
                                     <!--<input type="text" style="width: 400px;height: 40px;border: 1px solid #2a3e93;" id="searchContent" th:name="searchContent"/>-->
                                     <!--<input type="submit" value="搜索" placeholder="请输入电影名/导演/演员" style="height: 40px;width: 65px;color:#ffffdd;font-size: 18px;background-color: #6975a6;"/>-->
@@ -169,18 +165,13 @@
                             <!--</div>-->
 <!--&gt;>>>>>> c8bde70f56c4a76f2a1eac8109305d604dae4681-->
 
->>>>>>> e5353a6949282bafd6d27ec13f1e57c4c240ec69
                         </div>
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
-=======
-            <!--header end-->
->>>>>>> e5353a6949282bafd6d27ec13f1e57c4c240ec69
+
 
         </div>
     </div>
-</div>
 </body>
 </html>

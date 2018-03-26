@@ -9,6 +9,8 @@
     <link rel="stylesheet" th:href="@{/assets/css/common.min.css}"/>
     <link rel="stylesheet" th:href="@{/assets/css/index.min.css}"/>
     <link rel="stylesheet" th:href="@{/assets/css/circle.css}"/>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap-theme.min.css}"/>
 </head>
 <body>
 <div class="layout">
@@ -24,7 +26,11 @@
                                 <div class="am-g">
                                     <div class="am-u-lg-2 am-u-sm-12">
                                         <div class="logo">
-                                            <a href="/movie/home"><img th:src="@{/assets/images/logo2_02.png}" alt=""/></a>
+                                            <a href="/movie/home"><img th:src="@{/assets/images/logo_1.png}" style="opacity: 0.8" alt=""/></a>
+                                            <!--<a href="/movie/home">-->
+                                                <!--<p style="background-color:lightblue; font-family: 'SimHei';font-weight:bold;font-size: 40px;color: red">springIn</p>-->
+                                                <!--<img th:src="@{/assets/images/logo_1.png}" alt=""/>-->
+                                            <!--</a>-->
                                         </div>
                                     </div>
                                     <div>
@@ -83,6 +89,50 @@
 
 
     <div class="section" th:fragment="helper">
+        <!--导航栏-->
+        <div class="nav_bar">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">电影列表</a>
+                    </div>
+                    <div>
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#">全部电影</a></li>
+                            <li><a class="dropdown-toggle" data-toggle="dropdown">喜剧电影<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">按评分</a></li>
+                                    <li><a href="#">按点击量</a></li>
+                                    <li><a href="#">按评论数量</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">动作电影</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">按评分</a></li>
+                                    <li><a href="#">按点击量</a></li>
+                                    <li><a href="#">按评论数量</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a class="dropdown-toggle" data-toggle="dropdown">科幻电影</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">按评分</a></li>
+                                    <li><a href="#">按点击量</a></li>
+                                    <li><a href="#">按评论数量</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="dropdown-toggle" data-toggle="dropdown">恐怖电影</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">按评分</a></li>
+                                    <li><a href="#">按点击量</a></li>
+                                    <li><a href="#">按评论数量</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
         <div class="container-fluid">
             <div th:if="${session.user != null}">
                 <div class="section--header" style="margin-left: 40px;">
@@ -111,6 +161,7 @@
                     <div style="height: 30px;"></div>
         </div>
 
+
         <div class="section--header" style="margin-left: 40px">
             <h2 class="section--title" style="font-family: '微软雅黑', '宋体'; font-size: x-large">恐怖电影 &gt;</h2>
         </div>
@@ -126,13 +177,6 @@
                            th:text="${movies.movie_name}"></a>
                     </p>
 
-<<<<<<< HEAD
-=======
-                <div class="index-more">
-
-                    <a th:href="${'/movie/movies/moviesRecommendForUser/'+session.user.getId()}"><button type="button" class="am-btn am-btn-secondary">MORE&nbsp;&nbsp;</button></a>
-
->>>>>>> e5353a6949282bafd6d27ec13f1e57c4c240ec69
                 </div>
             </div>
         </div>
@@ -271,10 +315,8 @@
 <script th:src="@{/assets/js/amazeui.js}" charset="utf-8"></script>
 <script th:src="@{/assets/js/common.js}" charset="utf-8"></script>
 <script th:src="@{/assets/js/circle.js}" charset="utf-8"></script>
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
+<script th:src="@{/bootstrap/js/bootstrap.js}" charset="utf-8"></script>
+
 </body>
 
 </html>
