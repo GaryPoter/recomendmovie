@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+<title>SpringIn Movies 还记得许多年前的春天吗？</title>
+<link rel="stylesheet" th:href="@{/assets/css/amazeui.css}"/>
+<link rel="stylesheet" th:href="@{/assets/css/common.min.css}"/>
+<link rel="stylesheet" th:href="@{/assets/css/news.min.css}"/>
+<link rel="stylesheet" th:href="@{/assets/css/index.min.css}"/>
+<link rel="stylesheet" th:href="@{/assets/css/style.css}"/>
+</head>
+
+<body>
+<style type="text/css">
+    .promo_detailed--list > li {
+        display: block;
+        /*height:55px;*/
+        margin-top: 25px;
+        margin-bottom: 25px;
+        /*margin:25px*/
+    }
+</style>
+<div class="layout">
+    <!--===========layout-header================-->
+    <div class="layout-container" th:fragment="main_content">
+        <div class="index-page">
+            <div data-am-widget="tabs" class="am-tabs am-tabs-default">
+                <div class="header-box">
+                    <!--header start-->
+                    <div class="container">
+                        <div class="header">
+                            <div class="am-g">
+                                <div class="am-u-lg-2 am-u-sm-12">
+                                    <div class="logo">
+                                        <a href="/movie/home"><img th:src="@{/assets/images/logo_1.png}"
+                                                                   style="opacity: 0.8" alt=""/></a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <form style=" margin: 37px 0 17px 600px;  position: absolute; z-index: 10"
+                                          th:async="true" action="/movie/movies/movieListByUser" method="post">
+                                        <input type="text"
+                                               style="border:0 none;background:rgba(255,255,255,0.3);border-radius:19px;width: 320px;height: 38px;border: 1px solid #2a3e93; color: whitesmoke; font-size: 15px; font-family: '微软雅黑', '宋体'"
+                                               id="searchContent" th:name="searchContent"/>&nbsp;
+                                        <input type="submit" value="搜索"
+                                               style="margin-top:-4px;height: 38px;width: 80px;color:#ffffdd;font-size: 15px;font-family: '微软雅黑', '宋体'; background-color:#28a4c9;"/>
+                                    </form>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div style="margin:-50px 0px 0px 700px; width: 75%;">
+                        <div class="topbar-right am-text-right am-fr">
+
+                            <div th:if="${session.user == null}">
+                                <a style="color:white;font-family: '微软雅黑', '宋体';"
+                                   href="/movie/user/login">您好，请登录</a>
+                                &nbsp;&nbsp;
+                                <a style="color: white;font-family: '微软雅黑', '宋体';"
+                                   href="/movie/user/register">免费注册</a>
+                            </div>
+                            <div th:if="${session.user != null}">
+                                <a style="color: whitesmoke"
+                                   th:href="${'/movie/user/userHome/'+session.user.getId()+'/'+1}"
+                                   th:text="${session.user.getEmail()}"></a>&nbsp;&nbsp;
+                                <a style="color: white;font-family: '微软雅黑', '宋体';"
+                                   href="/movie/user/logOut">退出登录</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="tab1" class="tabson">
+
+        <div class="formtext">Hi，<b>admin</b>，欢迎您使用修改用户功能！</div>
+
+        <ul class="forminfo">
+            <input hidden="hidden" id="id" th:value="${user.id}"/>
+            <li><label>用户名<b>*</b></label><input id="username" type="text" class="dfinput" th:value="${user.username}"
+                                                 style="width:200px;"/></li>
+            <li><label>邮箱<b>*</b></label><input id="email" type="text" class="dfinput" th:value="${user.email}"
+                                                style="width:200px;"/></li>
+            <li><label>原始密码<b>*</b></label><input type="password" class="dfinput" th:value="${user.password}"
+                                                  style="width:200px;"/></li>
+            <li><label>新密码<b>*</b></label><input id="password" type="password" class="dfinput" style="width:200px;"/>
+            </li>
+            <li><label>确认新密码<b>*</b></label><input id="repassword" type="password" class="dfinput"
+                                                   style="width:200px;"/></li>
+            <li><label>&nbsp;</label><input id="updateUser" type="button" class="btn" value="马上修改"
+                                            onclick="updateUser()"/></li>
+
+        </ul>
+        <script>
+            $("body").keydown(function () {
+                if (event.keyCode == "13") {
+                    $('#updateUser').click();
+                }
+            });
+        </script>
+
+    </div>
+
+</div>
+
+<script type="text/javascript" th:src="@{/user/js/personalPage.js}"></script>
+<script type="text/javascript" th:src="@{/js/utils.js}"></script>
+
+<script type="text/javascript">
+    $("#usual1 ul").idTabs();
+</script>
+
+<script type="text/javascript">
+    $('.tablelist tbody tr:odd').addClass('odd');
+</script>
+</body>
+</html>

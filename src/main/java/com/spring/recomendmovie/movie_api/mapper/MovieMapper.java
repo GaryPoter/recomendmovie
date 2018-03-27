@@ -45,12 +45,14 @@ public interface MovieMapper {
     ArrayList<MovieDetail> getAllMoviesBy(@Param("firstRec") Integer firstRec,@Param("pageSize") int pageSize);
 
 
-//    @Select("select * from movielens where type = 4 order by id limit 1,4")
-//    ArrayList<Movie> getFourMovies();
+
     @Select("select * from movielens where type = 4 order by id limit 1,6")
     ArrayList<Movie> getSixMovies();
 
-    @Select("select movielens.id,movie_name,download_url,image_url,director,star,duration,time,mabstract,rating,type1.type from movielens,type1 where movielens.type=type1.id and movielens.id=#{id}")
+    @Select("select * from movielens where type = 4 order by rating desc limit 1,4")
+    ArrayList<Movie> getFourMovies();
+
+    @Select("select movielens.id,movie_name,download_url,image_url,director,star,duration,time,mabstract,format(rating,1) as rating,type1.type from movielens,type1 where movielens.type=type1.id and movielens.id=#{id}")
     MovieDetail getMovieDetailById(Long id);
 
 //    @Select("select distinct(movielens.id),movie_name,download_url,image_url,director,star,duration,time,mabstract,rating,type1.type from movielens,type1 " +
@@ -58,21 +60,26 @@ public interface MovieMapper {
 //            "or (director like (CONCAT('%',#{searchInfo},'%')))) or (star like CONCAT('%',#{searchInfo},'%'))" +
 //            "order by movielens.id desc limit #{firstRec},#{pageSize}")
     @Select("select movielens.id,movie_name,download_url,image_url,director,star,duration,time,mabstract,rating,type1.type from movielens,type1 " +
-            "where movielens.type=type1.id and movie_name like (CONCAT('%',#{searchInfo},'%')) order by movielens.id desc limit #{firstRec},#{pageSize}")
+            "where movielens.type=type1.id and movie_name like (CONCAT('%',#{searchInfo},'%')) order by rating desc limit #{firstRec},#{pageSize}")
     ArrayList<MovieDetail> searchMovieByMovieNamePage(@Param("searchInfo") String movieName,@Param("firstRec") Integer firstRec,@Param("pageSize") int pageSize);
 
     @Select("select * from manager where mName=#{mName} and mPassword=#{mPassword}")
     ManagerInfo login(@Param("mName") String mName,@Param("mPassword") String mPassword);
 
-    @Select("select * from movielens,recommendedmovies where movielens.id=movie_id and user_id=#{userID} order by movielens.rating limit 1,4")
+
+    @Select("select * from movielens,recommendedmovies where movielens.id=movie_id and user_id=#{userID} order by movielens.rating limit 1,6")
+//    @Select("select * from movielens,recommendedmovies where movielens.id=movie_id and user_id=#{userID} order by rating desc limit 1,4")
     ArrayList<Movie> getTopTenMovies(@Param("userID") Long id);
 
-    @Select("select movielens.id,movie_name,download_url,image_url,director,star,duration,time,mabstract,rating,type1.type from movielens,TopTenOfPerson,type1 where movielens.id=movieID and movielens.type = type1.id  and userID=#{userID}")
+    @Select("select * from movielens,recommendedmovies where movielens.id=movie_id and user_id=#{userID} order by movielens.rating limit 1,4")
+//    @Select("select * from movielens,recommendedmovies where movielens.id=movie_id and user_id=#{userID} order by rating desc limit 1,4")
+    ArrayList<Movie> getTopTenMovies4(@Param("userID") Long id);
+
+    @Select("select movielens.id,movie_name,download_url,image_url,director,star,duration,time,mabstract,format(rating,1) as rating,type1.type from movielens,recommendedmovies,type1 where movielens.id=movie_id and movielens.type = type1.id  and user_id=#{userID} order by rating desc")
     ArrayList<MovieDetail> recommendMoviesForUser(Integer userID);
 
 
-//    @Select("select * from movielens where type = 12 order by id limit 1,4")
-//    ArrayList<Movie> getFourMoviesx();
+
     @Select("select * from movielens where type = 12 order by id limit 1,6")
     ArrayList<Movie> getSixMoviesx();
 
@@ -82,10 +89,17 @@ public interface MovieMapper {
     ArrayList<Movie> getSixMoviesk();
 
 
+    @Select("select * from movielens where type = 12 order by rating desc limit 1,4")
+    ArrayList<Movie> getFourMoviesx();
+
+    @Select("select * from movielens where type = 21 order by rating desc limit 1,4")
+    ArrayList<Movie> getFourMoviesk();
+
+
     @Select("select distinct(id),movie_name,download_url,movielens.image_url,director,star,area,duration,type,time,rating,mabstract from browselog,movielens where movie_id=id and user_id=#{id} order by id limit 1,4")
     ArrayList<Movie> getAllLookingMoviesByUId(@Param("id") Long id);
 
-    @Select("select distinct(movielens.id),movie_name,download_url,movielens.image_url,director,star,duration,time,mabstract,rating,type1.type from movielens,browselog,type1 where movielens.id=movie_id and movielens.type = type1.id  and user_id=#{userID}")
+    @Select("select distinct(movielens.id),movie_name,download_url,movielens.image_url,director,star,duration,time,mabstract,format(rating,1) as rating,type1.type from movielens,browselog,type1 where movielens.id=movie_id and movielens.type = type1.id  and user_id=#{userID}")
     ArrayList<MovieDetail> browsingHistory(@Param("userID") Integer userID);
 
     @Insert("insert into browselog (user_id,movie_id,browsetime,image_url) values (#{user_id},#{movie_id}, #{browsetime},#{image_url})")
@@ -102,4 +116,17 @@ public interface MovieMapper {
 
     @Select("select movielens.* from movie_sim, movielens where movie_sim.movie_id1 = #{id} and movie_id2 = id")
     ArrayList<Movie> getSimMovies(Long id);
+
+    @Update("update movielens set rating = rating+(#{newRating}-rating)/(count+1),count=count+1 where id=#{movieId}")
+    boolean upadateRating(@Param("movieId") Long movieId, @Param("newRating") Double newRating);
+
+    @Select("select movielens.id,movie_name,download_url,image_url,director,star,duration,time,mabstract,format(rating,1) as rating,type1.type from movielens,type1 where movielens.type = type1.id and movielens.type=#{type} order by rating desc ")
+    ArrayList<MovieDetail> movieListByType(@Param("type") String type);
+
+    @Select("select type from type1 where id=#{type}")
+    String getType(@Param("type") Integer type);
+
+    @Select("select movielens.id,movie_name,download_url,image_url,director,star,duration,time,mabstract,format(rating,1) as rating,type1.type from movielens,type1 where movielens.type = type1.id and movielens.type=#{type} order by rating desc limit #{firstRec},#{pageSize}")
+    ArrayList<MovieDetail> movieListByTypePage(@Param("type") String type, @Param("firstRec") Integer firstRec,@Param("pageSize") int pageSize);
+
 }

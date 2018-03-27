@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>修改用户</title>
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/css/select.css}"/>
+    <link rel="stylesheet" th:src="@{/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:src="@{/bootstrap/css/bootstrap-theme.min.css}"/>
+    <script type="text/javascript" th:src="@{/assets/js/jquery.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/jquery.idTabs.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/select-ui.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/kindeditor.js}"></script>
+
+
+    <script type="text/javascript">
+        KE.show({
+            id : 'content7',
+            cssPath : './index.css'
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            $(".select1").uedSelect({
+                width : 345
+            });
+            $(".select2").uedSelect({
+                width : 167
+            });
+            $(".select3").uedSelect({
+                width : 100
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+
+<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+        <li><a href="/movie/user/userManage">用户列表</a></li>
+        <li><a href="#">修改用户</a></li>
+    </ul>
+</div>
+
+<div class="formbody">
+    <div id="usual1" class="usual">
+        <div class="itab">
+            <ul>
+                <li><a href="#tab1" class="selected">修改用户</a></li>
+            </ul>
+        </div>
+
+        <div id="tab1" class="tabson">
+
+            <div class="formtext">Hi，<b>admin</b>，欢迎您使用修改用户功能！</div>
+
+            <ul class="forminfo">
+                <input hidden="hidden" id="id" th:value="${user.id}" />
+                <li><label>用户名<b>*</b></label><input id="username" type="text" class="dfinput" th:value="${user.username}" style="width:200px;" /></li>
+                <li><label>邮箱<b>*</b></label><input id="email" type="text" class="dfinput" th:value="${user.email}"  style="width:200px;" /></li>
+                <li><label>原始密码<b>*</b></label><input type="password" class="dfinput" th:value="${user.password}"  style="width:200px;" /></li>
+                <li><label>新密码<b>*</b></label><input id="password" type="password" class="dfinput"  style="width:200px;" /></li>
+                <li><label>确认新密码<b>*</b></label><input id="repassword" type="password" class="dfinput"  style="width:200px;" /></li>
+                <li><label>&nbsp;</label><input id="updateUser" type="button" class="btn"  value="马上修改" onclick="updateUser()"/></li>
+
+            </ul>
+            <script>
+                $("body").keydown(function () {
+                    if (event.keyCode == "13"){
+                        $('#updateUser').click();
+                    }
+                });
+            </script>
+
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript" th:src="@{/user/js/personalPage.js}"></script>
+<script type="text/javascript" th:src="@{/js/utils.js}"></script>
+
+<script type="text/javascript">
+    $("#usual1 ul").idTabs();
+</script>
+
+<script type="text/javascript">
+    $('.tablelist tbody tr:odd').addClass('odd');
+</script>
+</body>
+</html>

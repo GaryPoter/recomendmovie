@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>顶部设计</title>
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}"/>
+    <script language="JavaScript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+    $(function(){
+        //顶部导航切换
+        $(".nav li a").click(function(){
+            $(".nav li a.selected").removeClass("selected")
+            $(this).addClass("selected");
+        })
+    })
+    </script>
+</head>
+
+<body >
+    <div th:fragment="top">
+
+        <div class="topleft">
+            <a href="../manager/main.html" target="_parent"><img th:src="@{/assets/images/logo.png}" title="系统首页" /></a>
+        </div>
+
+        <div class="topright">
+        <ul>
+            <li><span><img th:src="@{/assets/images/help.png}" title="帮助"  class="helpimg"/></span><a href="#">帮助</a></li>
+            <li><a href="#">关于</a></li>
+            <li th:if="${session.managerInfo==null}"><a href="/movie//managerLogin" target="_parent">登录</a></li>
+            <li th:if="${session.managerInfo!=null}"><a href="/movie/logOut" target="_parent">退出</a></li>
+        </ul>
+
+        <div class="user">
+            <span>admin</span>
+            <i>消息</i>
+            <b>5</b>
+        </div>
+
+        </div>
+    </div>
+</body>
+</html>

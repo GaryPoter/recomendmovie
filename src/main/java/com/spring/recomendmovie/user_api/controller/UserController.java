@@ -137,7 +137,7 @@ public class UserController {
             modelAndView.addObject("user", user);
             ArrayList<Movie> movies = movieService.getAllLookingMoviesByUId(id);
             modelAndView.addObject("lookingMovies", movies);
-            ArrayList<Movie> movies1 = movieService.getTopTenMovies(user.getId());
+            ArrayList<Movie> movies1 = movieService.getTopTenMovies4(user.getId());
             modelAndView.addObject("movies1", movies1);
             ArrayList<CommentDetail> commentDetails = commentService.getAllCommentsByUserId(id);
             modelAndView.addObject("commentDetails", commentDetails);

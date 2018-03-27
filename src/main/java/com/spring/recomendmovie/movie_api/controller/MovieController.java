@@ -5,6 +5,7 @@ import com.spring.recomendmovie.movie_api.service.MovieService;
 import com.spring.recomendmovie.utils.PageBean;
 import com.spring.recomendmovie.utils.message.Result;
 import com.sun.deploy.net.HttpResponse;
+import com.sun.org.apache.bcel.internal.generic.ARRAYLENGTH;
 import org.apache.catalina.Manager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -52,30 +53,6 @@ public class MovieController {
     }
 
 
-//    @RequestMapping(value = "/delete/{movie_id}", method = RequestMethod.GET)
-//    public ModelAndView delete(@PathVariable("movie_id") int id, Model model) {
-////=======
-////    @RequestMapping(value="/batchDelete/{chestr}",method=RequestMethod.GET)
-////    public ModelAndView batchDelete(@PathVariable("chestr") String chestr,Model model){
-////        String[] strArr = null;
-////        strArr=chestr.split(",");
-////        for(int i=0;i<strArr.length;i++){
-////            int movieId= Integer.parseInt(strArr[i]);
-////            movieService.deleteMovie(movieId);
-////        }
-////        return getAllMovies(model);
-////    }
-////
-////    @RequestMapping(value="/delete/{movie_id}",method=RequestMethod.GET)
-////    public ModelAndView delete(@PathVariable("movie_id") int id,Model model){
-////>>>>>>> c8bde70f56c4a76f2a1eac8109305d604dae4681
-//        movieService.deleteMovie(id);
-//
-//        return getAllMovies(model);
-//=======
-//    @RequestMapping(value = "/delete/{movie_id}", method = RequestMethod.GET)
-//    public ModelAndView delete(@PathVariable("movie_id") int id, Model model) {
-//=======
     @RequestMapping(value="/batchDelete/{chestr}",method=RequestMethod.GET)
     public ModelAndView batchDelete(@PathVariable("chestr") String chestr,Model model,HttpSession httpSession){
         if(httpSession.getAttribute("managerInfo")!=null) {
@@ -103,8 +80,6 @@ public class MovieController {
             ModelAndView modelAndView = new ModelAndView("/manager/login");
             return modelAndView;
         }
-//>>>>>>> e5353a6949282bafd6d27ec13f1e57c4c240ec69
-
     }
 
     @RequestMapping("/getAllMovies")
@@ -209,24 +184,26 @@ public class MovieController {
         return modelAndView;
     }
 
-//    @RequestMapping(value = "/insertBrowseLog")
-//    public Result insertBrowseLog(BrowseLog browseLog, HttpSession httpSession){
-//        Result result = new Result();
-//        if (httpSession.getAttribute("user") == null){
-//            result.setCode(Result.NOT_LOGIN_CODE);
-//        }else {
-//            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//            browseLog.setBrowseTime(df.format(new Date()));
-//
-//            if (movieService.insertBrowseLog(browseLog) != 0) {
-////                ArrayList<Movie> movies = movieService.getBrowseLog(browseLog.getUser_id());
-////                result.setItem(movies);
-//                result.setCode(Result.SUCCESS_CODE);
-//            } else {
-//                result.setCode(Result.FAIL_CODE);
-//            }
-//        }
-//        return result;
-//    }
+    @RequestMapping(value = "/moviesListByType/{type}",method=RequestMethod.GET)
+    public ModelAndView movieListByType(Model model,@PathVariable("type") String type){
+        return movieListByTypePage(model,type,1);
+    }
 
+    @RequestMapping(value="/moviesListByType/{type}/{currentPage}",method=RequestMethod.GET)
+    public ModelAndView movieListByTypePage(Model model,@PathVariable("type") String type,@PathVariable("currentPage") Integer currentPage){
+        int pageSize=10;
+        ModelAndView modelAndView = new ModelAndView("movies/classifyMovies");
+        ArrayList<MovieDetail> movieDetails = movieService.movieListByType(type);
+        ArrayList<MovieDetail> movieDetails1 =movieService.movieListByTypePage(type,currentPage,pageSize);
+        PageBean pageBean = new PageBean(currentPage,pageSize,movieDetails1,movieDetails.size());
+        int lenth=movieDetails.size();
+        modelAndView.addObject("count",lenth);
+        modelAndView.addObject("pageBean",pageBean);
+        modelAndView.addObject("Movies",movieDetails1);
+        Integer type2 = Integer.parseInt(type);
+        String type1 = movieService.getType(type2);
+        modelAndView.addObject("type1",type1);
+        modelAndView.addObject("type",type);
+        return modelAndView;
+    }
 }

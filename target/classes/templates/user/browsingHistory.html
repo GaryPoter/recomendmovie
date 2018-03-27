@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>SpringIn Movies 还记得许多年前的春天吗？</title>
+    <link rel="stylesheet" th:href="@{/assets/css/amazeui.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/css/common.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/css/news.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/css/index.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}"/>
+</head>
+<body>
+<style type="text/css">
+    .promo_detailed--list > li {
+        display: block;
+        /*height:55px;*/
+        margin-top: 25px;
+        margin-bottom: 25px;
+        /*margin:25px*/
+    }
+</style>
+<div class="layout">
+    <!--===========layout-header================-->
+    <div class="layout-header am-hide-sm-only">
+        <!--topbar start-->
+        <div class="topbar">
+            <div class="container">
+                <div class="am-g">
+                    <div class="am-u-md-3">
+                        <div class="topbar-left">
+                            <i class="am-icon-globe"></i>
+                            <div class="am-dropdown" data-am-dropdown="">
+                                <button class="am-btn am-btn-primary am-dropdown-toggle" data-am-dropdown-toggle="">
+                                    Language <span class="am-icon-caret-down"></span></button>
+                                <ul class="am-dropdown-content">
+                                    <li><a href="#">English</a></li>
+                                    <li class="am-divider"></li>
+                                    <li><a href="#">Chinese</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-u-md-9">
+                        <div class="topbar-right am-text-right am-fr">
+
+                            <div th:if="${session.user == null}">
+                                <a href="/movie/user/login">登录</a>
+                                <a href="/movie/user/register">注册</a>
+                            </div>
+                            <div th:if="${session.user != null}">
+                                <a href="/movie/user/userDetailPage" th:text="${session.user.getEmail()}"></a>
+                                <a href="/movie/user/logOut">登出</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--&lt;!&ndash;topbar end&ndash;&gt;-->
+
+        <div class="header-box" data-am-sticky="">
+            <!--header start-->
+            <div class="container">
+                <div class="header">
+                    <div class="am-g">
+                        <div class="am-u-lg-2 am-u-sm-12">
+                            <div class="logo">
+                                <a href=""><img th:src="@{/assets/images/logo2_02.png}" alt=""/></a>
+                            </div>
+                        </div>
+                        <div class="am-u-md-10">
+                            <div class="header-right am-fr">
+                                <div class="header-contact">
+                                    <div class="header_contacts--item">
+                                        <div class="contact_mini">
+                                            <i style="color:#7c6aa6" class="contact-icon am-icon-phone"></i>
+                                            <strong>0 (123) 456-7890</strong>
+                                            <span>周一~周五, 8:00 - 20:00</span>
+                                        </div>
+                                    </div>
+                                    <div class="header_contacts--item">
+                                        <div class="contact_mini">
+                                            <i style="color:#7c6aa6" class="contact-icon am-icon-envelope-o"></i>
+                                            <strong>springIn@126.com</strong>
+                                            <span>随时欢迎您的来信！</span>
+                                        </div>
+                                    </div>
+                                    <div class="header_contacts--item">
+                                        <div class="contact_mini">
+                                            <i style="color:#7c6aa6" class="contact-icon am-icon-map-marker"></i>
+                                            <strong>三江院,</strong>
+                                            <span>苏州市工业园区林泉街</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form style="margin-top: 60px" th:async="true" action="/movie/movies/movieListByUser"
+                                      method="post">
+                                    <input type="text" style="width: 400px;height: 40px;border: 1px solid #2a3e93;"
+                                           id="searchContent" th:name="searchContent"/>
+                                    <input type="submit" value="搜索" placeholder="请输入电影名/导演/演员"
+                                           style="height: 40px;width: 65px;color:#ffffdd;font-size: 18px;background-color: #6975a6;"/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--&lt;!&ndash;header end&ndash;&gt;-->
+
+
+            <!--&lt;!&ndash;nav start&ndash;&gt;-->
+            <!--nav end-->
+        </div>
+
+    </div>
+
+
+    <!--mobile header start-->
+    <div class="m-header">
+        <div class="am-g am-show-sm-only">
+            <div class="am-u-sm-2">
+                <div class="menu-bars">
+                    <a href="#doc-oc-demo1" data-am-offcanvas="{effect: 'push'}"><i
+                            class="am-menu-toggle-icon am-icon-bars"></i></a>
+                    <!-- 侧边栏内容 -->
+                    <nav data-am-widget="menu" class="am-menu  am-menu-offcanvas1" data-am-menu-offcanvas="">
+                        <a href="javascript: void(0)" class="am-menu-toggle"></a>
+
+                        <div class="am-offcanvas">
+                            <div class="am-offcanvas-bar">
+                                <ul class="am-menu-nav am-avg-sm-1">
+                                    <li><a href="../index.html" class="">首页</a></li>
+                                    <li class="am-parent">
+                                        <a href="#" class="">产品中心</a>
+                                        <ul class="am-menu-sub am-collapse ">
+                                            <li class="">
+                                                <a href="./product1.html" class="">产品展示1</a>
+                                            </li>
+                                            <li class="">
+                                                <a href="./product2.html" class="">产品展示2</a>
+                                            </li>
+                                            <li class="">
+                                                <a href="./product3.html" class="">产品展示3</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class=""><a href="./example.html" class="">客户案例</a></li>
+                                    <li class=""><a href="./solution.html" class="">解决方案</a></li>
+                                    <li class="am-parent">
+                                        <a href="./news.html" class="">新闻中心</a>
+                                        <ul class="am-menu-sub am-collapse  ">
+                                            <li class="">
+                                                <a href="./news-content.html" class="">公司动态</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class=""><a href="./about.html" class="">关于我们</a></li>
+                                    <li class="am-parent">
+                                        <a href="./news.html" class="nav-icon nav-icon-globe">Language</a>
+                                        <ul class="am-menu-sub am-collapse  ">
+                                            <li>
+                                                <a href="#">English</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-share-contain">
+                                        <div class="nav-share-links">
+                                            <i class="am-icon-facebook"></i>
+                                            <i class="am-icon-twitter"></i>
+                                            <i class="am-icon-google-plus"></i>
+                                            <i class="am-icon-pinterest"></i>
+                                            <i class="am-icon-instagram"></i>
+                                            <i class="am-icon-linkedin"></i>
+                                            <i class="am-icon-youtube-play"></i>
+                                            <i class="am-icon-rss"></i>
+                                        </div>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                        </div>
+                    </nav>
+
+                </div>
+            </div>
+            <div class="am-u-sm-5 am-u-end">
+                <div class="m-logo">
+                    <a href=""><img th:src="@{/assets/images/logo.png}" alt=""></img></a>
+                </div>
+            </div>
+        </div>
+        <!--mobile header end-->
+    </div>
+
+    <!--===========layout-container================-->
+
+
+    <div class="section news-section">
+        <div class="container">
+            <div>
+
+
+                <div style="height: 80px;width:100%;">
+                    <div style="width: 20%;float: left">
+                        <img th:src="@{/assets/images/news/av01.jpg}" alt=""/>
+                    </div>
+                    <div style="width:80%;height: 80px;float:right">
+                        <h1 style="text-align: -moz-left" th:text="${'您好！'+session.user.getUsername()}"></h1>
+                        <a style="font-size: 14px;color:dodgerblue">点此修改您的资料</a>
+                    </div>
+                </div>
+                <div style="height: 30px;width:100%;background: #995589">
+
+
+                </div>
+
+
+                <!--news-section left start-->
+                <div style="width:100%;">
+                    <!--class="am-u-md-9"-->
+                    <div class="comments">
+                        <h2 class="comments--title">浏览历史</h2>
+
+
+                        <div class="index-container">
+
+
+                            <div class="index-container" style="display: inline-table;float:left"
+                                 th:each="lookingMovies:${lookingMovies}">
+                                <div class="am-g">
+
+                                    <div style="width:220px;height: 300px;float: left">
+                                        <img th:src="${lookingMovies.image_url}" alt="" th:id="${lookingMovies.id}"
+                                             style="height: 240px;width:180px"/>
+                                        <p style="text-align: center">
+                                            <a th:href="${'/movie/movies/movieDetails/'+lookingMovies.id+'/'+1}"
+                                               th:text="${lookingMovies.movie_name}"></a>
+                                        </p>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div style="height: 250px;"></div>
+
+
+                            <div style="height: 30px;"></div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <!--<div th:if="${count gt 0}" class="pagin" style="height: 30px">-->
+
+                    <!--<ul class="paginList">-->
+                        <!--<li class="paginItem" th:if="${pageBean.getCurrentPage() - 1 gt 0}"><a-->
+                                <!--th:href="${'/movie/user/userHome/'+session.user.getId()+'/'+(pageBean.getCurrentPage() - 1)}"><span-->
+                                <!--class="pagepre"></span></a></li>-->
+                        <!--<li class="paginItem"><a-->
+                                <!--th:href="${'/movie/user/userHome/'+session.user.getId()+'/'+pageBean.getBeginPageIndex()}">首页</a>-->
+                        <!--</li>-->
+                        <!--<li class="paginItem" th:if="${pageBean.getCurrentPage() - 2 gt 0}"><a-->
+                                <!--th:href="${'/movie/user/userHome/'+session.user.getId()+'/'+(pageBean.getCurrentPage() - 2)}"-->
+                                <!--th:text="${pageBean.getCurrentPage() - 2}"></a></li>-->
+                        <!--<li class="paginItem" th:if="${pageBean.getCurrentPage() - 1 gt 0}"><a-->
+                                <!--th:href="${'/movie/user/userHome/'+session.user.getId()+'/'+(pageBean.getCurrentPage() - 1)}"-->
+                                <!--th:text="${pageBean.getCurrentPage() - 1}"></a></li>-->
+                        <!--<li class="paginItem current"><a-->
+                                <!--th:href="${'/movie/user/userHome/'+session.user.getId()+'/'+pageBean.getCurrentPage()}"-->
+                                <!--th:text="${pageBean.getCurrentPage()}" disabled="true" onclick="false"></a></li>-->
+                        <!--<li class="paginItem" th:if="${(pageBean.getCurrentPage() + 1) le pageBean.pageCount}"><a-->
+                                <!--th:href="${'/movie/user/userHome/'+session.user.getId()+'/'+(pageBean.getCurrentPage() + 1)}"-->
+                                <!--th:text="${pageBean.getCurrentPage() + 1}"></a></li>-->
+                        <!--<li class="paginItem" th:if="${(pageBean.getCurrentPage() + 2) le pageBean.pageCount}"><a-->
+                                <!--th:href="${'/movie/user/userHome/'+session.user.getId()+'/'+(pageBean.getCurrentPage() + 2)}"-->
+                                <!--th:text="${pageBean.getCurrentPage() + 2}"></a></li>-->
+                        <!--<li class="paginItem"><a-->
+                                <!--th:href="${'/movie/user/userHome/'+session.user.getId()+'/'+pageBean.pageCount}">末页</a>-->
+                        <!--</li>-->
+                        <!--<li class="paginItem" th:if="${pageBean.getCurrentPage()+1 le pageBean.pageCount}"><a-->
+                                <!--th:href="${'/movie/user/userHome/'+session.user.getId()+'/'+(pageBean.getCurrentPage() + 1)}"><span-->
+                                <!--class="pagenxt"></span></a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--===========layout-container================-->
+    <div class="layout-footer">
+        <div class="footer">
+            <div style="background-color:#383d61" class="footer--bg"></div>
+            <div class="footer--inner">
+                <div class="container">
+                    <div class="footer_main">
+                        <div class="am-g">
+                            <div class="am-u-md-3 ">
+                                <div class="footer_main--column">
+                                    <strong class="footer_main--column_title">关于我们</strong>
+                                    <div class="footer_about">
+                                        <p class="footer_about--text">
+                                            一个全球领先的电影推荐网站，由春天里研发团队于2018年3月建立。
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="am-u-md-3 ">
+                                <div class="footer_main--column">
+                                    <strong class="footer_main--column_title">推荐中心</strong>
+                                    <ul class="footer_navigation">
+                                        <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">Enterplorer
+                                            电影推荐首页</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="am-u-md-3 ">
+                                <div class="footer_main--column">
+                                    <strong class="footer_main--column_title">技术支持</strong>
+                                    <ul class="footer_navigation">
+                                        <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">网站开发白皮书</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="am-u-md-3 ">
+                                <div class="footer_main--column">
+                                    <strong class="footer_main--column_title">联系详情</strong>
+                                    <ul class="footer_contact_info">
+                                        <li class="footer_contact_info--item"><i class="am-icon-phone"></i><span>服务专线：400 069 0309</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script th:src="@{/assets/js/jquery-2.1.0.js}" charset="utf-8"></script>
+    <script th:src="@{/assets/js/amazeui.js}" charset="utf-8"></script>
+    <script th:src="@{/assets/js/common.js}" charset="utf-8"></script>
+    <script th:src="@{/comment.js/comment_insert.js}" type="text/javascript"></script>
+</body>
+
+</html>

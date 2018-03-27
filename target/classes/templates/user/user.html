@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html;charset=UTF-8"/>
+    <link th:src="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:src="@{/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+    <title>User</title>
+</head>
+<body>
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+
+<div class="">
+    <li class="">
+        <span th:text="${user.id}"/>
+        <span th:text="${user.name}"/>
+        <span th:text="${user.paswd}"/>
+    </li>
+</div>
+<button id="getUser" th:text="getUser"/>
+<button id="getUsers" th:text="getUsers"/>
+</body>
+<script type='text/javascript' th:inline="javascript">
+    $('#getUser').on('click', function () {
+        $.ajax({
+            async: false,
+            type: 'POST',
+            dataType: 'json',
+            data:{'id':1},
+            url: '/movie/user/getUser',
+            error : function(XMLHttpRequest, textStatus, errorThrown) {
+                console.log(XMLHttpRequest);
+                console.log(textStatus);
+                console.log(errorThrown);
+            },
+            success: function(response){
+                alert(response.id + response.name + response.paswd);
+            }
+        });
+    });
+
+    $('#getUsers').on('click', function () {
+        $.ajax({
+            async: false,
+            type: 'POST',
+            dataType: 'json',
+            data:{},
+            url: '/movie/user/getAllUser',
+            error : function(XMLHttpRequest, textStatus, errorThrown) {
+                console.log(XMLHttpRequest);
+                console.log(textStatus);
+                console.log(errorThrown);
+            },
+            success: function(response){
+
+                for(var user in response){
+                    alert(response[user].id + response[user].name + response[user].paswd);
+                }
+            }
+        });
+    });
+
+
+//    function myAjax(selector, data, url) {
+//        $(selector).on('click', function () {
+//            $.ajax({
+//                async: false,
+//                type: 'POST',
+//                dataType: 'json',
+//                data:data,
+//                url: url,
+//                error : function(XMLHttpRequest, textStatus, errorThrown) {
+//                    console.log(XMLHttpRequest);
+//                    console.log(textStatus);
+//                    console.log(errorThrown);
+//                },
+//                success: function(response){
+//                    return response;
+//                }
+//            });
+//        });
+//    }
+
+
+</script>
+</html>

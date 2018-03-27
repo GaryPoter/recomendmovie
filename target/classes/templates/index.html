@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<header th:replace="fragment/header::header1"/>
+<!--<body class="container">-->
+<body>
+  <div class="layout">
+    <div class="row">
+      <div class="col-xs-8"></div>
+      <div class="col-xs-4">
+      </div></div>
+
+    <!--===========layout-header================-->
+      <!--<div th:include="fragment/header::header"/>-->
+
+      <div th:include="fragment/footer1::main_content"/>
+      <div th:include="fragment/footer1::helper"/>
+  </div>
+
+  <div th:include="fragment/footer1::movie_service"/>
+
+
+  <!--<div th:include="fragment/footer1::footer1"/>-->
+
+  <div th:include="fragment/footer1::footer2" />
+  
+  <script th:src="@{/assets/js/jquery-2.1.0.js}" charset="utf-8"></script>
+  <script th:src="@{/assets/js/amazeui.js}" charset="utf-8"></script>
+  <script th:src="@{/assets/js/common.js}" charset="utf-8"></script>
+  <script th:src="@{/assets/js/circle.js}" charset="utf-8"></script>
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+</body>
+
+</html>

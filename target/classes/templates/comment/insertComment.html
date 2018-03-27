@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>添加评论</title>
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/css/select.css}"/>
+    <script type="text/javascript" th:src="@{/assets/js/jquery.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/jquery.idTabs.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/select-ui.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/kindeditor.js}"></script>
+
+    <script type="text/javascript">
+        KE.show({
+            id : 'content7',
+            cssPath : './index.css'
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            $(".select1").uedSelect({
+                width : 345
+            });
+            $(".select2").uedSelect({
+                width : 167
+            });
+            $(".select3").uedSelect({
+                width : 100
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+
+<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+        <li><a href="/movie/comment/getAllComments">首页</a></li>
+        <li><a href="#">系统设置</a></li>
+    </ul>
+</div>
+
+<div class="formbody">
+    <div id="usual1" class="usual">
+        <div class="itab">
+            <ul>
+                <li><a href="#tab1" class="selected">添加评论</a></li>
+            </ul>
+        </div>
+
+        <div id="tab1" class="tabson">
+
+            <div class="formtext">Hi，<b>admin</b>，欢迎您使用添加评论功能！</div>
+
+            <ul class="forminfo">
+                <li><label>用户名<b>*</b></label><input type="text" class="dfinput" value="输入用户名" id="user_id" style="width:200px"/></li>
+                <li><label>电影名<b>*</b></label><input type="text" id="movie_id" class="dfinput" value=""  style="width:200px;"/></li>
+                <li><label>评论<b>*</b></label><input type="text" id="comment" class="dfinput" value="输入评论" style="width:200px"/></li>
+                <li><label>评论时间<b>*</b></label><input type="date" id="comment_time" class="dfinput" value=""  style="width:200px;" /></li>
+                <li><label>评分<b>*</b></label><input type="text" id="score" class="dfinput" value=""  style="width:200px;" /></li>
+                <li><label>&nbsp;</label><input id="addComment" type="button" class="btn" onclick="addCommentAction()" value="马上添加"/></li>
+
+            </ul>
+
+        </div>
+    </div>
+
+</div>
+
+<script th:src="@{/comment.js/comment_insert.js}" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $("#usual1 ul").idTabs();
+</script>
+
+<script type="text/javascript">
+    $('.tablelist tbody tr:odd').addClass('odd');
+</script>
+
+
+
+</body>
+</html>

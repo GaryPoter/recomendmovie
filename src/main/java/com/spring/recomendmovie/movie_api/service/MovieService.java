@@ -53,6 +53,7 @@ public interface MovieService {
 
     ArrayList<MovieDetail> browsingHistory(Integer userID);
 
+
     //得到浏览记录
     ArrayList<Movie> getBrowseLog(Long id);
 
@@ -66,4 +67,15 @@ public interface MovieService {
     int deleteBrowseLog(Long user_id, Long movie_id);
 
     ArrayList<Movie> getSimMovies(Long id);
+
+
+    boolean upadateRating(Long movieId, Double rating);
+
+    ArrayList<MovieDetail> movieListByType(String type);
+
+    String getType(Integer type);
+
+    ArrayList<MovieDetail> movieListByTypePage(String type, Integer currentPage, int pageSize);
+
+    ArrayList<Movie> getTopTenMovies4(Long id);
 }

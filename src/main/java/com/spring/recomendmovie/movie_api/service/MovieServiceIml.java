@@ -6,6 +6,9 @@ import com.spring.recomendmovie.movie_api.pojo.*;
 
 import com.spring.recomendmovie.user_api.pojo.User;
 import com.spring.recomendmovie.utils.Table;
+
+import com.sun.deploy.security.ValidationState;
+import org.apache.catalina.Manager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -113,6 +116,32 @@ public class MovieServiceIml implements MovieService {
     @Override
     public ArrayList<Movie> getSimMovies(Long id) {
         return movieMapper.getSimMovies(id);
+    }
+    @Transactional(readOnly = false)
+    public boolean upadateRating(Long movieId, Double rating) {
+        return movieMapper.upadateRating(movieId,rating);
+    }
+
+    @Override
+    public ArrayList<MovieDetail> movieListByType(String type) {
+        return movieMapper.movieListByType(type);
+    }
+
+    @Override
+    public String getType(Integer type) {
+        return movieMapper.getType(type);
+    }
+
+    @Override
+    public ArrayList<MovieDetail> movieListByTypePage(String type, Integer currentPage, int pageSize) {
+        Integer firstRec=(currentPage-1)*pageSize;
+        return movieMapper.movieListByTypePage(type,firstRec,pageSize);
+
+    }
+
+    @Override
+    public ArrayList<Movie> getTopTenMovies4(Long id) {
+        return movieMapper.getTopTenMovies4(id);
     }
 
 

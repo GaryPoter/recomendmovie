@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>添加电影</title>
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/css/select.css}"/>
+    <script type="text/javascript" th:src="@{/assets/js/jquery.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/jquery.idTabs.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/select-ui.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/kindeditor.js}"></script>
+
+    <script type="text/javascript">
+        KE.show({
+            id : 'content7',
+            cssPath : './index.css'
+        });
+    </script>
+  
+    <script type="text/javascript">
+    $(document).ready(function(e) {
+     $(".select1").uedSelect({
+		    width : 345
+	    });
+	    $(".select2").uedSelect({
+		    width : 167
+	    });
+	    $(".select3").uedSelect({
+		    width : 100
+	    });
+    });
+    </script>
+
+</head>
+
+<body>
+
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+	    <li><a href="/movie/movies/getAllMovies">首页</a></li>
+	    <li><a href="#">系统设置</a></li>
+    </ul>
+  </div>
+    
+  <div class="formbody">
+	  <div id="usual1" class="usual">  
+    <div class="itab">
+  	<ul> 
+	    	<li><a href="#tab1" class="selected">添加电影</a></li> 
+	  	</ul>
+    </div> 
+    
+  	<div id="tab1" class="tabson">
+    
+    <div class="formtext">Hi，<b>admin</b>，欢迎您使用添加电影功能！</div>
+
+        <ul class="forminfo">
+            <li><label>电影封面<b>*</b></label><input type="text" class="dfinput" placeholder="请输入图片地址"  style="width:200px;" id="image_url"/></li>
+            <li><label>电影名<b>*</b></label><input type="text" id="movie_name" class="dfinput" value=""  style="width:200px;"/></li>
+            <li ><label>电影类型<b>*</b></label>
+                <div class="vocation" >
+                    <select class="select1" id="type">
+                        <option th:each="movieType:${movieTypes}"  th:text="${movieType.type}" th:value="${movieType.id}">
+                        </option>
+                    </select>
+                </div>
+            </li>
+    
+    <li><label>导演<b>*</b></label><input type="text" id="director" class="dfinput" value=""  style="width:200px;" /></li>
+    
+    <li><label>主演<b>*</b></label><input type="text" id="star" class="dfinput" value=""  style="width:200px;" /></li>
+
+    <li><label>地区<b>*</b></label><input type="text" id="area" class="dfinput" value=""  style="width:200px;" /></li>
+    
+    <li><label>链接<b>*</b></label><input type="text" class="dfinput" value=""  style="width:200px;" id="download_url"/></li>
+
+     <li><label>时长<b>*</b></label><input type="text" class="dfinput" value=""  style="width:200px;" id="duration"/></li>
+
+     <li><label>上映时间<b>*</b></label><input type="text" class="dfinput" value=""  style="width:200px;" id="time"/></li>
+
+     <li><label>简介<b>*</b></label><textarea class="dfinput" style="width:600px;height: 450px" id="mabstract"></textarea></li>
+
+
+    <li><label>&nbsp;</label><input id="addMovie" type="button" class="btn" onclick="addMovieAction()" value="马上添加"/></li>
+    
+    </ul>
+
+        <script>
+            $("body").keydown(function () {
+                if (event.keyCode == "13"){
+                    $('#addMovie').click();
+                }
+            });
+        </script>
+
+
+    </div>
+    </div> 
+       
+	</div>
+
+    <script th:src="@{/movie/movie_insert.js}" type="text/javascript"></script>
+
+	<script type="text/javascript"> 
+      $("#usual1 ul").idTabs(); 
+	</script>
+    
+  <script type="text/javascript">
+	$('.tablelist tbody tr:odd').addClass('odd');
+	</script>
+
+
+
+</body>
+</html>

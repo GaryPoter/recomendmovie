@@ -4,6 +4,7 @@ import com.spring.recomendmovie.comment_api.pojo.Comment;
 import com.spring.recomendmovie.comment_api.pojo.CommentDetail;
 import com.spring.recomendmovie.comment_api.service.CommentService;
 import com.spring.recomendmovie.movie_api.pojo.MovieDetail;
+import com.spring.recomendmovie.movie_api.service.MovieService;
 import com.spring.recomendmovie.utils.PageBean;
 import com.spring.recomendmovie.utils.message.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,14 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
+    @Autowired
+    private MovieService movieService;
+
+
     @RequestMapping("/insert")
     public Result insert(Comment comment, HttpSession httpSession) {
+        Double rating=comment.getScore();
+        Long movieId = comment.getMovie_id();
         Result result = new Result();
         if (httpSession.getAttribute("user") == null) {
             result.setCode(Result.NOT_LOGIN_CODE);
@@ -33,8 +40,10 @@ public class CommentController {
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             comment.setComment_time(df.format(new Date()));
 
-            if (commentService.insertComment(comment) != 0) {
-                result.setCode(Result.SUCCESS_CODE);
+            if ((commentService.insertComment(comment) != 0)&&(movieService.upadateRating(movieId,rating))) {
+
+                    result.setCode(Result.SUCCESS_CODE);
+
             } else {
                 result.setCode(Result.FAIL_CODE);
             }
